@@ -1,0 +1,2790 @@
+html, body{
+   background-color: #e9ebee;
+   /*overflow: hidden;*/
+   /*height: 100%;*/
+}
+
+header {
+	position: fixed;
+	z-index: 2;
+	width: 100%;
+}
+
+.ecran{
+	display: block;
+}
+
+.container{
+	/*min-height: 600px;*/
+	width: 100%;
+}
+
+.HeaderMobile{
+	width: 100%;
+	height: 40px;
+	background-color: #3c64b9;
+}
+
+.FooterMobile{
+	width: 100%;
+	height: 40px;
+	background-color: #3c64b9;
+	position: fixed;
+	bottom: 0px;
+}
+
+.container-left{
+	float: left;
+	min-height: 100vh;
+	width: 50%;
+	border-right-style: solid;
+	border-right-width: 1px;
+	background-color: #3b5998;
+	color: white;
+	font-style: normal;
+}
+
+.container-right{
+	float: right;
+	min-height: 100vh;
+	width: 50%;
+	border-right-style: solid;
+	border-right-width: 1px;
+	background-color: white;
+}
+
+.container-explication{
+	float: left;
+	margin-top: 30px;
+	width: 100%;
+	text-align: center;
+}
+
+.container-connexion{
+	float: left;
+	margin-top: 30px;
+	width: 100%;
+	text-align: left;
+}
+
+.slogan-acceuil{
+	margin-top: -10px;
+	font-size: 18px;
+}
+
+.mobile{
+	display: none;
+}
+
+.titreMobile{
+	margin-top: 5px;
+	font-size: 25px;
+	text-align: center;
+	font-style: bold;
+}
+
+.sloganMobile{
+	margin-top: 10px;
+	font-size: 18px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.explication{
+	text-align: left;
+	margin-left: 50px;
+	margin-top: 15px;
+	font-size: 20px;
+	font-style: normal;
+}
+
+.pub-application{
+	margin-top: 20px;
+}
+
+.containerIMG {
+    background-color: #e9ebee;
+    /* width: 900px; */
+    margin-left: auto;
+    margin-right: auto;
+    /*height: 500px;*/
+}
+
+.containerSupIMG{
+	background-color: #e9ebee;
+	display: block;
+	min-height: 750px;
+
+}
+
+.containerSite{
+	background-color: #e9ebee;
+	display: block;
+	height: 100%;
+}
+
+
+.headerSite{
+	height: 60px;
+    width: 100%;
+    /* background-color: #2185d0; */
+    /* background-image: linear-gradient(#6c96f5, #1c3c84 100%); */
+}
+
+.headerPage{
+	height: 46px;
+	min-width: 914px;
+	color: #3b5998;
+	background-color: white;
+	border-bottom-color: #3b5998;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+
+}
+
+.HeaderForget{
+	float: left;
+	color: white;
+	margin-left: 20px;
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+
+.formLogin{
+	float: right;
+	padding-top: 8px;
+}
+
+.forgetPassword{
+	margin-top: -10px;
+	font-size: 12px;
+	color: white;
+}
+
+.forgetPassword a{
+	color: white;
+}
+
+.forgetPassword a:hover{
+	color: white;
+}
+
+.logo{
+	width: 50px;
+	height: 50px;
+	float: left;
+	margin-left: 15px;
+	margin-top: 5px;
+}
+
+.logoPage{
+	width: 35px;
+    height: 35px;
+    float: left;
+    margin-left: 15px;
+    margin-top: 2px;
+}
+
+.iconMenu{
+	width: 17px;
+    height: 17px;
+    margin-right: 5px;
+}
+
+.iconConnexion{
+	width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.iconHeader{
+	width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.imgNotif{
+	width: 18px;
+    height: 18px;
+    margin-right: 5px;
+}
+
+.arrow{
+	width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.iconLivre{
+    margin-right: 5px;
+    height: 65px;
+}
+
+.retour{
+	margin-top: 7px;
+	margin-left: 10px;
+}
+
+.TextMenu{
+	display: inline-block;
+	position: relative;
+}
+
+.titreKURBYS{
+	float: left;
+	color: white;
+	font-size: 25px;
+	margin-left: 10px;
+	margin-top: 20px;
+}
+
+.titreKURBYSpage{
+	float: left;
+	color: white;
+	font-size: 25px;
+	margin-left: 10px;
+	margin-top: 15px;
+}
+
+.titreKURBYSpage a {
+	color: white;
+}
+
+.titreKURBYSpage a:hover {
+	color: white;
+}
+
+.FormSubscribe{
+	position: fixed;
+    width: 500px;
+    margin-top: 90px;
+    margin-left: 40px;
+    z-index: 10;
+    display: inline-block;
+}
+
+.footer{
+	width: 100%;
+	height: 50px;
+	background-color: white;
+}
+
+.ContainerFormSubcribe{
+	/*background-color: #278aaf94;*/
+    margin-top: -20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 20px;
+}
+
+.slogan{
+	float: left;
+	margin-left: 50px;
+	margin-top: 90px;
+	font-size: 30px;
+	color: black;
+	font-weight: bold;
+	width: 410px;
+}
+
+.containerFooter{
+	display: block;
+}
+
+.footerSlogan{
+	margin-left: auto;
+	margin-right: auto;
+	width: 400px;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.containerSupHeader{
+	background-color: #3b5998;
+	/*background-image: linear-gradient(#6c96f5, #1c3c84 100%);*/
+	/*background-image: linear-gradient(#7ba0ef, #3a5182 100%);*/
+	display: block;
+	position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 40px;
+}
+
+.containerConnexion{
+	 /* background-color: #2185d0; */
+    background-image: linear-gradient(#6c96f5, #1c3c84 100%);
+    /* background-image: linear-gradient(#7ba0ef, #3a5182 100%); */
+    display: block;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 60px;
+}
+
+.containerHeader{
+	/*width: 900px;*/
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.sincrire{
+	font-weight: bold;
+	font-size: 25px;
+	margin-bottom: 5px;
+}
+
+.gratuit{
+	font-size: 18px;
+	margin-bottom: 15px;
+	margin-top: 20px;
+}
+
+.consigneSite{
+	font-size: 15px;
+	margin-top: 20px;
+}
+
+.FlagEspace{
+	width: 5px;
+	display: inline-block;
+}
+
+.ContainerDrapeaux{
+	font-size: 15px;
+	margin-top: 20px;
+	
+}
+
+.Drapeaux{
+	height: 200px;
+	margin-top: 10px;
+}
+
+.buttonPush{
+	float: right;
+	/*margin-top: 5px;*/
+
+}
+
+.pusher{
+	/*display: inline-block;*/
+	margin-top: 3px;
+}
+
+.ListeSideBar{
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 20px;
+	background-color: #f5f5f5;
+	margin-top: 55px;
+}
+
+
+
+.SidebarUI{
+	background-color: #f5f5f5;
+}
+
+.ListRight{
+	width: 100px;
+}
+
+.ListItem{
+	
+	color: black;
+	font-weight: bold;
+}
+
+.ListItem:hover{
+	
+	color: #4183c4;
+}
+
+
+.MenuLeft {
+    margin-top: 45px;
+    position: fixed;
+    margin-left: 20px;
+    overflow: auto;
+    height: 100%;
+    
+}
+
+.MenuLeftLastConseiller{
+
+}
+
+.test{
+	height: 500px;
+}
+
+.HeaderLastConseiller{
+	/*background-image: linear-gradient(#6c96f5, #1c3c84 100%);*/
+	/*background-image: linear-gradient(#7ba0ef, #3a5182 100%);*/
+    width: 208px;
+    color: black;
+    text-align: center;
+    height: 40px;
+    padding-top: 8px;
+    font-size: 16px;
+    position: fixed;
+    margin-bottom: 10px;
+    display: block;
+    font-weight: bold;
+    background-color: white;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #e9ebee;
+    z-index: 10;
+    margin-top: 5px;
+
+}
+
+.HeaderMenu{
+	background-image: linear-gradient(#6c96f5, #1c3c84 100%);
+	/*background-image: linear-gradient(#7ba0ef, #3a5182 100%);*/
+    width: 208px;
+    color: white;
+    text-align: center;
+    height: 30px;
+    padding-top: 5px;
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: block;
+    position: fixed;
+    z-index: 10;
+}
+
+.MainContent {
+    width: 750px;
+    margin-top: 45px;
+    font-size: 14px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.MainContentProfil {
+    margin-top: 0px;
+    font-size: 14px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.MainContentSearchArticle{
+    min-width: 670px;
+    margin-top: 45px;
+    font-size: 14px;
+    margin-left: 240px;
+    margin-right: 20px;
+}
+
+.ProfilRight{
+	width: 200px;
+}
+
+.MainContentArticle{
+	float: right;
+    min-width: 670px;
+    margin-top: 5px;
+    /*min-height: 800px;*/
+    font-size: 14px;
+    margin-left: 240px;
+    margin-right: 20px;
+}
+
+.MainModifierConseiller{
+	float: right;
+    min-width: 700px;
+    margin-top: 55px;
+    min-height: 800px;
+    font-size: 14px;
+    margin-left: 240px;
+    margin-right: 20px;
+}
+
+
+.Accordeonvisible .ui.styled.accordion {
+    width: 100%;
+}
+
+.Checkbox{
+	margin-right: 15px;
+}
+
+.ListeMessages{
+	margin-top: 9px;
+}
+
+.ListeArticles{
+	margin-top: 15px;
+}
+
+.ListeArticles a{
+	text-decoration: none;
+	color: grey;
+}
+
+.ListeArticles a:hover{
+	text-decoration: none;
+	color: grey;
+}
+
+.ButtonTrier{
+	display: inline-block;
+	margin-top: 5px;
+}
+
+.trier{
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+.ContentQuestion{
+	margin-top: 0px;
+	font-size: 16px;
+}
+
+.dateMessage{
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.nameAuthor{
+	display: inline-block;
+}
+
+.NameAuthorMessage{
+	display: inline-block;
+}
+
+.ListeMessagesSingle{
+	margin-top: 3px;
+}
+	
+
+.repondreMessage{
+	float: right;
+	margin-top: -10px;
+}
+
+.repondreMessage1{
+	float: right;
+	margin-top: -10px;
+}
+
+.repondreMessage1 a{
+	color: white;
+}
+
+.repondreMessage1 a:hover{
+	color: white;
+}
+
+.repondreMessage2{
+	float: right;
+	margin-top: -10px;
+	margin-right: 10px;
+}
+
+.signaler{
+	float: right;
+	margin-top: 0px;
+	margin-right: 20px;
+	color: red;
+}
+
+.contacter{
+	display: inline-block;
+	margin-top: 0px;
+	margin-right: 10px;
+	color: red;
+}
+
+.categorie{
+	display: inline-block;
+	margin-left: 10px;
+	font-weight: bold;
+}
+
+.categorieArticles{
+	display: inline-block;
+	margin-left: 10px;
+	
+}
+
+.pseudo{
+	color: white;
+	margin-right: 20px;
+	height: 100%;
+}
+
+.notif{
+	color: white;
+	margin-right: 10px;
+	height: 100%;
+
+}
+
+.DropdownMenuNotif.ui.dropdown .menu{
+	position: absolute;
+    top: 45px;
+    left: -390px;
+    word-wrap: break-word; 
+}
+
+.DropdownNotif{
+	margin-top: 40px;
+	width: 400px;
+	height: 400px;
+	overflow-y: scroll;
+	padding-right: 17px;
+}
+
+.DropdownMenu.ui.dropdown .menu{
+	position: absolute;
+	top:35px;
+}
+
+.DropdownMenu a{
+	color: black;
+}
+
+.DropdownMenu a:hover{
+	color: black;
+}
+
+.menuIcon{
+	margin-left: 7px;
+	display: inline-block;
+}
+
+.colorIcon{
+	color: #ad4444;
+	display: inline-block;
+	margin-bottom: -10px;
+}
+
+.colorIconBlue{
+	color: #5c5cff;
+	display: inline-block;
+	margin-bottom: -10px;
+}
+
+.colorIconBlack{
+	color: black;
+	display: inline-block;
+	margin-bottom: -10px;
+}
+
+.colorIconVert{
+	color: green;
+	display: inline-block;
+	margin-bottom: -10px;
+}
+
+
+
+.ItemNotif{
+	background-color: red;
+}
+
+.AllNotif{
+	background-color: #e6e6e6;
+	position: fixed;
+	bottom: 0px;
+}
+
+.ToutesNotif{
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.StopScrollBody{
+	overflow: hidden;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+.ui.dropdown>.dropdown.icon{
+	display: none;
+}
+
+.menu {
+	position: relative;
+    margin-top: 20px;
+    display: none;
+}
+
+.ContainerNotifCircle{
+	display: inline-block;
+}
+
+.NotifCircle{
+	float: right;
+	background-color: red;
+	padding: 3px;
+	border-radius: 5px;
+}
+
+.Blockcategorie{
+	margin-top: 20px;
+}
+
+.visibleConseiller{
+	display: block;
+	
+}
+
+.visibleCategorie{
+	display: block;
+	margin-top: 20px;
+}
+
+.visiblenote{
+	display: block;
+}
+
+.visibleTitre{
+	color: black;
+}
+
+.visibleTitre a{
+	color: black;
+}
+
+.visibleTitre a:hover{
+	color: black;
+}
+
+.cacherCategorie{
+	display: none;
+}
+
+.DevenirConseiller{
+	float: left;
+	margin-left: 20px;
+	margin-top: 3px;
+}
+
+.containerChat{
+	background-color: #e9ebee;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.containerContactChat{
+	display: block;
+}
+
+.containerDiscussion{
+	display: block;
+	height: 100vh;
+	position: fixed;
+    right: 750px;
+}
+
+.MainContentChat{
+    height: 100%;
+    margin-left: 210px;
+    margin-top: 40px;
+    position: fixed;
+    left: 0px;
+}
+
+.ChatContactLeft{
+	float: left;
+    /* width: 150px; */
+    height: 100%;
+    margin-top: 40px;
+    overflow: auto;
+}
+
+.containerSiteChat{
+	background-color: #e9ebee;
+	display: block;
+	min-width: 900px;
+
+}
+
+.ValideChat{
+	position: fixed;
+	bottom: 0px;
+	background-color: yellow;
+	margin-left: 200px;
+	height: 150px;
+
+}
+
+.ValideChatTest{
+	/*position: fixed;
+	bottom: 0px;*/
+	
+	margin-bottom:200px;
+	margin-left: 200px;
+	background-color: red;
+	min-height: 200px;
+	height:70vh;
+}
+
+.ContentDiscussion{
+	background-color: white;
+    height: 100%;
+    padding-left: 10px;
+    overflow: auto;
+    position: fixed;
+    padding-right: 4%;
+    width: 85%;
+    padding-bottom: 350px;
+    margin-top: -10px;
+    border-top-style: solid;
+    border-top-color: #e9ebee;
+    border-top-width: 1px;
+    
+}
+
+.messageRight{
+	float: right;
+}
+
+.errorConnexion{
+	color: blue;
+}
+
+.forgetPassword a{
+	color: white;
+}
+
+.ResetPassword{
+	margin-top: 100px;
+}
+
+.lireCGU{
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.CGU{
+	padding-top: 15px;
+	background-color: white;
+	padding-left: 15px;
+	padding-right: 15px;
+	text-align: justify;
+}
+
+.TitreCommandements{
+	font-size: 25px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.SousTitreCommandements{
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.textCommandement{
+	padding-top: 15px;
+	background-color: white;
+	padding-left: 15px;
+	padding-right: 15px;
+	text-align: justify;
+	font-size: 16px;
+	height: 100vh;
+}
+
+.RegleCommandements{
+	font-size: 20px;
+	text-align: center;
+	font-weight: bold;
+	color: red;
+}
+
+.contact{
+	height: 100%;
+}
+
+.contactHeader{
+	margin-top: 50px;
+}
+
+.titreMessageGarcon {
+	font-size: 15px;
+    color: #0193ff;
+}
+
+.titreMessageGarcon a {
+	color: #0193ff;
+}
+
+.titreMessageGarcon a:hover {
+	color: #0193ff;
+}
+
+.titreMessageFille {
+	font-size: 15px;
+    color: #ff2c3e;
+}
+
+.titreMessageFille a {
+	color: #ff2c3e;
+}
+
+.titreMessageFille a:hover {
+	color: #ff2c3e;
+}
+
+.reponseMessage{
+	font-size: 14px;
+	color: white;
+}
+
+.reponseMessage a{
+	font-size: 14px;
+	color: white;
+}
+
+.reponseMessage a:hover{
+	font-size: 14px;
+	color: white;
+}
+
+.Fromfille{
+	background-color: white;
+    height: 30px;
+    margin-bottom: -15px;
+    padding-left: 3px;
+    padding-top: 4px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    display: inline-block;
+}
+
+.Fromgarcon{
+	background-color: white;
+    height: 30px;
+    margin-bottom: -15px;
+    padding-left: 3px;
+    padding-top: 4px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    display: inline-block;
+}
+
+
+.filleMessageBackground{
+	background-color: white;
+    height: 30px;
+    margin-bottom: -15px;
+    padding-left: 10px;
+    padding-top: 4px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.garconMessageBackground{
+	background-color: white;
+    height: 30px;
+    margin-bottom: -15px;
+    padding-left: 10px;
+    padding-top: 4px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.filleSearch{
+	background-color: white;
+    height: 30px;
+    margin-bottom: -15px;
+    padding-left: 15px;
+    padding-top: 4px;
+    /*border-top-left-radius: 5px;
+    border-top-right-radius: 5px;*/
+}
+
+.garconSearch{
+	background-color: white;
+    height: 30px;
+    margin-bottom: -15px;
+    padding-left: 15px;
+    padding-top: 4px;
+    /*border-top-left-radius: 5px;
+    border-top-right-radius: 5px;*/
+}
+
+.garconSearch:hover{
+	background-color: #dadada;
+}
+
+.filleSearch:hover{
+	background-color: #dadada;
+}
+
+.garconMessageBackConseil {
+    background-color: #79c6ff;
+    margin-bottom: -15px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+}
+
+.filleMessageBackConseil {
+    background-color: #fd9fd4;
+    margin-bottom: -15px;
+    padding-left: 10px;
+    padding-bottom: 1px;
+}
+
+.filleMessageDon{
+	color:#ff617d;
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.garconMessageDon{
+	color:#2185d0;
+	display: inline-block;
+	margin-left: 5px;
+}
+
+
+.filleMessage{
+	color:#ff617d;
+}
+
+.filleMessage a{
+	color:#ff617d;
+}
+
+.filleMessage a:hover{
+	color:#ff617d;
+}
+
+
+.garconMessage{
+	color:#2185d0;
+}
+
+.garconMessage a{
+	color:#2185d0;
+}
+
+.garconMessage a:hover{
+	color:#2185d0;
+}
+
+.espace{
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.cacher{
+	display: none;
+}
+
+.visible{
+	display: inline-block;
+}
+
+.onlineChat{
+	float: right;
+	color: #00bf00;
+}
+
+.visibleProfil{
+	display: inline-block;
+	width: 100%;
+}
+
+.visibleProfil a{
+	color: white;
+	font-size: 16px;
+}
+
+.visibleProfil a:hover{
+	color: white;
+	font-size: 16px;
+}
+
+.fille{
+	color:#ff617d;
+	display: inline-block;
+}
+
+.fille a{
+	color:#ff617d;
+}
+
+.fille a:hover{
+	color:#ff617d;
+}
+
+.garcon{
+	color:#2185d0;
+	display: inline-block;
+}
+
+.garcon a{
+	color:#2185d0;
+}
+
+.garcon a:hover{
+	color:#2185d0;
+}
+
+.vote{
+	color: green;
+	margin-right: 10px;
+}
+
+.consigne{
+	font-size: 16px;
+}
+
+.consigne1{
+	font-size: 14px;
+	display: inline-block;
+}
+
+.consigne2{
+	font-size: 16px;
+	margin-bottom: 15px;
+}
+
+.consigne3{
+	font-size: 14px;
+	color: red;
+	display: inline-block;
+	margin-left: 3px;
+}
+
+.filleConseiller{
+	background-color: #e03997;
+	color: white;
+	padding-left: 8px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;  
+}
+
+.garconConseiller{
+	background-color: #2185d0;
+	color: white;
+	padding-left: 8px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;  
+}
+
+.MainContent .ui.sortable.table thead th.ascending:after {
+    content: '';
+}
+
+.MainContent .ui.sortable.table thead th.sorted:after {
+    display: none;
+}
+
+
+.MainContentPage .ui.header:first-child{
+	text-align: center;
+}
+
+.ContentText{
+	font-size: 16px;
+}
+
+.ResultatConseiller{
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.valideChat{
+	background-color: #21ba45;
+    color: #fff;
+    text-shadow: none;
+    background-image: none;
+    height: 120px;
+    width: 40px;
+    border-radius: 4px;
+    padding-top: 20px;
+    padding-top: 40px;
+    padding-left: 5px;
+}
+
+.valideChatForm{
+	position: fixed;
+    bottom: 0px;
+    margin-right: 5px;
+    left: 210px;
+    width: 100%;
+}
+
+.valideChatArea{
+	/*width: 100%;*/
+	margin-top: 10px;
+	display: inline-block;
+}
+
+.ButtonChatForm{
+	display: inline-block;
+}
+
+.AffficheDiscussion{
+	display: block;
+}
+
+.AffficheContact{
+	display: block;
+	/*background-color: #e9ebee;*/
+	border-bottom-style: solid;
+	border-bottom-color: #e9ebee;
+	border-bottom-width: 1px;  
+}
+
+.message_droite{
+  display: block;
+  float: right;
+  background-color: #0084ff;
+  color: #fff;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 10px;
+  max-width: 80%;
+  clear: both;
+  margin-right: 10px;
+}
+
+
+.message_gauche{
+  display: block;
+  float: left;
+  background-color: #f5f3f3;
+  color: #000;
+  border-radius: 5px;
+  padding: 7px;
+  margin-bottom: 10px;
+  max-width: 80%;
+  clear: both;
+}
+
+.message_droite_date{
+  display: block;
+  font-size: 12px;
+  float: right;
+  color: #d2d2d2;
+  margin-bottom: 2px;
+  max-width: 80%;
+  clear: both;
+  margin-top: 20px;
+  margin-right: 10px;
+  
+}
+
+.message_gauche_date{
+  display: block;
+  float: left;
+  font-size: 12px;
+  color: #d2d2d2;
+  margin-bottom: 2px;
+  max-width: 80%;
+  clear: both;
+  margin-top: 20px;
+  
+}
+
+.headerChat{
+	height: 50px;
+    padding-left: 20px;
+    background-color: white;
+    border-bottom-style: solid;
+    border-bottom-color: #e9ebee;
+    border-bottom-width: 1px;
+    width:1500px;
+    margin-top: 5px;
+}
+
+.rientest{
+	    height: 50px;
+    background: red;
+}
+
+.display-linebreak {
+  white-space: pre-line;
+}
+
+.current{
+	background-color: #0084ff;
+	color: white;
+}
+
+.current.item{
+	background-color: #0084ff;
+	color: white;
+}
+
+.notRead{
+	background-color: orange;
+}
+
+.chat{
+	visibility: hidden;
+}
+
+.ChatUsername{
+	display: inline-block;
+	margin-right: 10px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.ChatAge{
+	display: inline-block;
+	margin-right: 10px;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.recommmander{
+	display: inline-block;
+	margin-right: 10px;
+	margin-top: 5px
+}
+
+.FaireDon{
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.bloquerRed{
+	display: inline-block;
+	margin-right: 10px;
+	color:red;
+	margin-top: 10px;
+}
+
+.menuFixe{
+	position: fixed;
+	top: 0px;
+}
+
+.espaceContact{
+	height: 40px;
+}
+
+.LastConseilleresContent{
+	margin-bottom: 10px;
+	z-index: -1;
+	width: 210px;
+}
+
+.SearchContent{
+	margin-left: -10px;
+}
+
+
+.visibleSearch{
+	display: inline-block;
+	width: 100%;
+}
+
+.presentationConseiller{
+	padding: 5px;
+	margin-top: 10px;
+}
+
+.TitreMenuItem{
+	font-weight: bold;
+	color: #3b5998;
+	padding-left: 10px;
+	
+}
+
+.MenuItem{
+	padding-left: 10px;
+	height: 30px;
+	color: black;
+	padding-top: 5px;
+	border-radius: 3px;
+}
+
+
+.MenuItem a{
+	color: black;
+	width: 250px;
+}
+
+.MenuItem a:hover{
+	color: black;
+}
+
+.MenuItem:hover{
+	color: black;
+	background-color: #f9f9f9;
+}
+
+.none{
+	display: none;
+}
+
+.invisible{
+	visibility: hidden;
+}
+
+.AgeProfil{
+	display: inline-block;
+	margin-left: 10px;
+	font-weight: normal;
+}
+
+.LastConnectionProfil{
+	font-weight: normal;
+	font-size: 13px;
+	margin-bottom: 6px;
+    margin-top: 6px;
+}
+
+.PointOnline{
+	color: green;
+	margin-right: 5px;
+}
+
+.PointOnlineConseiller{
+    color: green;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.ButtonProfil{
+	/*float: right;
+	margin-top: -70px;*/
+}
+
+.ButtonProfil a{
+	color: inherit;
+}
+
+.ButtonProfil a:hover{
+	color: inherit;
+}
+
+.modifierFormProfil{
+	float: right;
+	position: relative;
+	top: -5px;
+}
+
+
+.ui.message>:first-child .modifierFormProfil{
+    margin-top: -10px;
+}
+
+.recommandationsListe{
+	float: right;
+	margin-top: 10px;
+}
+
+.recommandationsListe a{
+	color: #4183c4;
+}
+
+.recommandationsListe a:hover{
+	color: white;
+}
+
+.recommandations{
+	margin-top: 10px;
+	display: inline-block;
+}
+
+.recommandations a{
+	color: #4183c4;
+}
+
+.recommandations a:hover{
+	color: white;
+}
+
+.recommandationsInline{
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.titreRecomandation{
+	display: inline-block;
+	/*width: 100%;*/
+	text-align: center;
+	margin-right: 5px;
+}
+
+.titreMessageRecommandation a{
+	color: white;
+	font-size: 14px;
+}
+
+.titreMessageRecommandation a:hover{
+	color: white;
+	font-size: 14px;
+}
+
+.noteRecommandation{
+	float: right;
+}
+
+.textProfil{
+	padding-top: 15px;
+	font-size: 15px;
+	color: black;
+}
+
+.inputprofil{
+	margin-top: 40px;
+}
+
+.titreProfil{
+	font-size: 16px;
+	height: 10px;
+	float: left;
+}
+
+.headerProfil{
+	height: 40px;
+}
+
+.MenuLeftLastConseiller{
+	height: 600px;
+	overflow: auto;
+	width: 210px;
+}
+
+.espaceConseiller{
+	height: 5px;
+}
+
+.supprimerFavoris{
+	float: right;
+	margin-top: -5px;
+}
+
+.AjouterReponse{
+	margin-top: 10px;
+}
+
+.ListeMesMessages{
+	margin-top: -5px;
+}
+
+.menuPerso{
+	margin-top: 20px;
+}
+
+.textCendrillon{
+	font-size: 16px;
+	text-align: justify;
+	line-height: 25px;
+}
+
+.center{
+	text-align: center;
+}
+
+.titre{
+	font-weight: bold;
+}
+
+.right{
+	float: right;
+}
+
+.imgLivre{
+	height: 350px;
+}
+
+.corpsText{
+	font-size: 16px;
+}
+
+.titreNumeros{
+	font-weight: bold;
+	font-size: 20px;
+	color: #8e0505;
+}
+
+.numero{
+	text-align: justify;
+}
+
+.contactMargin{
+	margin-top: 60px;
+	text-align: center;
+	font-size: 20px;
+}
+
+.textDons{
+	font-size: 16px;
+	margin-bottom: 5px;
+	
+}
+
+.cardSection{
+	margin-top: 30px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.cardblock{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-weight: normal;
+	padding-top: 10px;
+}
+
+.buttonMontant{
+    color: #fff;
+    text-shadow: none;
+    /*background-color: #2185d0;*/
+    font-size: .85714286rem;
+    margin: 0 .25em 0 0;
+    padding: .78571429em 1.5em .78571429em;
+    font-weight: 700;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    border-radius: .28571429rem;
+    overflow: visible;
+    width: 60px;
+    display: inline-block;
+}
+
+.buttonMontant:hover{
+	background-color:#db2828;
+}
+
+.red{
+	/*background-color:#db2828;*/
+	color: #fff;
+}
+
+.red1{
+	background-color:#db2828;
+	color: #fff;
+}
+
+.blue{
+	background-color: #2185d0;
+}
+
+
+.TotalDonEffectué{
+	display: inline-block;
+	float: right;
+}
+
+.demanderPaiement{
+	font-size: 16px;
+}
+
+.formPaiement{
+	margin-top: 10px;
+}
+
+.fnac{
+	width: 100px;
+	margin-top: 20px;
+}
+
+.amazon{
+	width: 130px;
+	margin-left: 20px;
+}
+
+.PubLivre{
+	float: right;
+	margin-top: 80px;
+	margin-right: 100px;
+	font-size: 16px;
+}
+
+.Commande{
+	margin-left: 10px;
+	display: inline-block;
+}
+
+.buttonCommande{
+	float: right;
+	margin-top: 50px;
+	margin-right: 50px;
+}
+
+.buttonCommande a{
+	color: white;
+}
+
+.buttonCommande a:hover{
+	color: white;
+}
+
+.imgLivreCommande{
+	margin-left: 100px;
+}
+
+.prix{
+	float: right;
+	margin-top: -200px;
+	margin-right: 100px;
+}
+
+.ItemChatNotif{
+	color: black;
+	margin-left: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+
+.dateNotifChat{
+	font-style: oblique;
+	float: right;
+}
+
+.NotifChatContent{
+	color: black;
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+.NotifChatContent a{
+	color: black;
+	font-weight: bold;
+}
+
+.NotifChatContent a:hover{
+	color: black;
+	font-weight: bold;
+}
+
+.FilleNotif{
+	color: #e03997;
+	display: inline-block;
+	margin-left: 3px;
+}
+
+.GarconNotif{
+	color: #2185d0;
+	display: inline-block;
+	margin-left: 3px;
+}
+
+.FilledateNotifChat{
+	font-style: oblique;
+	color: #e03997;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.GarcondateNotifChat{
+	font-style: oblique;
+	color: #2185d0;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.FilledateNotifReponse{
+	font-style: oblique;
+	color: #e03997;
+	display: inline-block;
+	margin-left: 10px;
+	float: right;
+	margin-right: 10px;
+}
+
+.GarcondateNotifReponse{
+	font-style: oblique;
+	color: #2185d0;
+	display: inline-block;
+	margin-left: 10px;
+	float: right;
+	margin-right: 10px;
+}
+
+.ListeChat{
+	width: 400px;
+}
+
+.ListeChatUnread{
+	background-color: #ffda96;
+	width: 400px;
+}
+
+.titreNotif{
+	margin-left: 5px;
+	display: inline-block;
+}
+
+.DropdownMenuNotif.ui.dropdown .menu>* {
+    white-space: inherit;
+}
+
+.iconNotif{
+	display: inline-block;
+	float: right;
+	margin-right: 10px;
+	color: grey;
+}
+
+.online{
+	width: 15px;
+    height: 15px;
+}
+
+.textOnline{
+	margin-top: -10px;
+	display: inline-block;
+}
+
+.visiblebutton{
+	display: inline-block;
+}
+
+.visibleNote{
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.deleteCount{
+	font-size: 16px;
+}
+
+.ageAuthor{
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.voirPlus{
+	margin-top: 20px;
+}
+
+.TitreNaissance{
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.TextNaissance{
+	font-size: 14px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.titreAide{
+	text-align: center;
+}
+
+.ContainerPresentation{
+	margin-top: 0px;
+	font-size: 15px;
+}
+
+.NotifUnread{
+	background-color: #f5f5f5db;
+}
+
+.VisibleAjouter{
+	margin-bottom: 20px;
+}
+
+.ConfirmationForm{
+	float: right;
+	margin-top: 0px;
+	display: inline-block;
+}
+
+.montantDonNotif{
+	float: right;
+	color: grey;
+	margin-right: 10px;
+}
+
+.espacePub{
+	margin-top: 8px;
+}
+
+.UpdateNaissance{
+	float: right;
+	margin-top: -50px;
+}
+
+.buttonSearch{
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.textConseillere{
+	font-size: 16px;
+}
+
+.ageAuthorReponse{
+    margin-top: -20px;
+    float: right;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.ageAuthorReponse a{
+    color: white;
+}
+
+.ageAuthorReponse a:hover{
+    color: white;
+}
+
+.ageConseiller{
+	margin-right: 10px;
+	display: inline-block;
+}
+
+.upVote{
+	width: 12px;
+	height: 12px;
+}
+
+.SingeMessagView{
+	margin-top: 50px;
+}
+
+.pushable>.pusher{
+	background-color: #e9ebee !important;
+}
+
+.deleteContact{
+	color: red;
+	float: right;
+	width: 20px;
+	height: 20px;
+	padding-left: 3px;
+	padding-top: 1px;
+}
+
+.Signaler1{
+	float: right;
+	margin-top: -10px;
+}
+
+.Signaler{
+	float: right;
+	margin-top: -10px;
+}
+
+.Signaler a{
+	color: white;
+}
+
+.Signaler a:hover{
+	color: white;
+}
+
+.visibleMessage{
+	/*display: inline-block;*/
+    margin-top: -10px;
+}
+
+.visibleArticle{
+	display: inline-block;
+    margin-top: -10px;
+    width: 100%;
+}
+
+.star {
+	color:#236fa9;
+	display: inline-block;
+	float: left;
+}
+
+.headerForm h2.ui.header{
+	color:#236fa9;
+	display: inline-block;
+	margin-bottom: 15px;
+}
+
+.labelLivre{
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.application{
+    display: inline-block;
+    width: 150px;
+    margin-right: 20px;
+    height: 55px;
+}
+
+.MessageLu{
+	margin-top: -10px;
+}
+
+.SupprimerChat{
+	margin-top: -10px;
+	color: red;
+	cursor:pointer;
+}
+
+.telechargerMobile{
+	margin-top: 300px;
+}
+
+.lesFilles{
+	/*color: #ffdadd;*/
+}
+
+.consigneMessage{
+	color: red;
+	margin-top: -10px;
+	margin-bottom: 10px;
+}
+
+.posterMessageMobile{
+	margin-top: 70px;
+	padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 50px;
+}
+
+.closeModal{
+	float: right;
+	width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.ButtonHeader{
+	display: inline-block;
+	margin-right: 10px;
+	padding: 6px;
+	border-radius: 3px;
+	height: 46px;
+	padding-top: 10px;
+}
+
+.ButtonHeader a{
+	text-decoration: none;
+	color: #3c64b9;
+	font-weight: bold;
+}
+
+.ButtonHeader:hover{
+	text-decoration: none;
+	color: #7598e0;
+	border-bottom-width: 3px;
+	border-bottom-color: #7598e0;
+	border-bottom-style: solid; 
+}
+
+.ButtonHeader a:hover{
+	text-decoration: none;
+	color: #7598e0;
+}
+
+.ButtonHeaderMobile{
+	padding-top: 8px;
+	margin-left: 10px;
+	float: left;
+}
+
+.ButtonFooterMobile{
+	display: inline-block;
+	width: 25%;
+	text-align: center;
+	padding-top: 8px;
+}
+
+.ButtonPseudo{
+	display: inline-block;
+	float: right;
+	margin-right: 10px;
+	padding: 6px;
+	border-radius: 3px;
+	height: 46px;
+	padding-top: 12px;
+}
+
+.ButtonPseudo a{
+	text-decoration: none;
+	color: #3c64b9;
+	font-weight: bold;
+}
+
+.ButtonPseudo:hover{
+	text-decoration: none;
+	color: #7598e0;
+}
+
+.ButtonPseudoHeader{
+	display: inline-block;
+	color: white;
+	font-size: 16px;
+	margin-top: 10px;
+	float: left;
+	margin-left: 10px;
+}
+
+.ButtonAide{
+	display: inline-block;
+	padding: 6px;
+	border-radius: 3px;
+	height: 46px;
+	float: right;
+}
+
+.ButtonPseudo a:hover{
+	text-decoration: none;
+	color: #7598e0;
+}
+
+.ButtonHeaderRight{
+	float: right;
+	color: white;
+	padding-top: 7px;
+	margin-right: 10px;
+}
+
+.BlocHead{
+	margin-left: auto;
+	margin-right: auto;
+	width: 750px;
+}
+
+.NoteConseiller{
+	display: inline-block;
+}
+
+.competence{
+	display: inline-block;
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+.Blockcompetence{
+	width: 70%;
+}
+
+.search{
+	display: inline-block;
+	/*width: 50px;*/
+	float: left;
+	margin-top: 2px;
+	/*margin-left: -10px;*/
+}
+
+.searchValide{
+	display: inline-block;
+	margin-top: 2px;
+}
+
+
+.containerResult{
+	height: 300px;
+    overflow-y: auto;
+    position: fixed;
+    width: 666px;
+    margin-left: 2px;
+    
+}
+
+.containerResultArticles{
+	height: 300px;
+    overflow-y: auto;
+    position: fixed;
+    margin-left: 245px;
+    z-index: 10;
+    margin-right: 20px;
+    width: 520px;
+    background-color: white;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+}
+
+.containerResultVideos{
+	/*height: 300px;*/
+    overflow-y: auto;
+    position: fixed;
+    margin-left: 245px;
+    z-index: 10;
+    margin-right: 20px;
+    width: 620px;
+    background-color: white;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+}
+
+.inlinePoster{
+	margin-bottom: 5px
+}
+
+.inlinePoster a{
+	color:black;
+}
+
+.inlinePoster a:hover{
+	color:black;
+}
+
+.categories{
+	margin-bottom: 5px;
+}
+
+.space{
+	height: 3px;
+}
+
+
+.compétences{
+	display: inline-block;
+	width: 200px;
+	margin-left: 10px;
+}
+
+.visibleForm{
+	display: block;
+}
+
+.ButtonAjouter{
+	float: right;
+	margin-top: -10px;
+}
+
+.iconWriting{
+	width: 15px;
+    height: 15px;
+    margin-right: 3px;
+    margin-left: 8px;
+}
+
+.iconread{
+	width: 10px;
+    height: 10px;
+    margin-right: 3px;
+    margin-left: 8px;
+}
+
+.NameWriting{
+ 	display: inline-block;
+ 	margin-right: 3px;
+}
+
+.TextWriting{
+	display: inline-block;
+}
+
+.visibleLoader{
+    display: block;
+    position: fixed;
+    margin-top: 60px;
+    width: 500px;
+    z-index: 100;
+}
+
+.DemanderConseil{
+	text-align: center;
+	background-color: #f2f2f5;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	border-radius: 2px;
+	box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
+	border-style: solid;
+	border-width: 1px;
+	border-color: #dadbdc;
+	font-weight: bold;
+	cursor: pointer;
+
+}
+
+.iconPoster{
+	height: 20px;
+	width: 20px;
+	display: inline-block;
+	margin-top: 5px;
+	float: left;
+	margin-right: 5px;
+}
+
+.textPoster{
+	display: inline-block;
+}
+
+.rdw-editor-main {
+    height: 500px !important; 
+    overflow: auto;
+    box-sizing: border-box;
+    /*border-style: solid;
+    border-width: 1px;*/
+    border:1px solid rgba(34,36,38,.15)
+}
+
+.rdw-emoji-modal{
+	left: -65px !important;
+}
+
+.rdw-image-modal{
+	left: -105px !important;
+}
+
+.rdw-embedded-modal{
+	left: -105px !important;
+}
+
+.rdw-embedded-modal-link-section{
+	width: 200px !important;
+}
+
+.PageRedigerArticle{
+	margin-top: -10px;
+}
+
+.SearchContentArticles{
+	position: relative;
+	position: relative;
+    margin-left: 5px;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+
+.SearchContentArticles a{
+    color: black;
+}
+
+.TitreArticle{
+	font-size: 18px;
+	color:black;
+}
+
+.IconListeArticle{
+	display: inline-block;
+	float: right;
+	margin-left: 15px;
+}
+
+.textIcon{
+	display: inline-block;
+	float: right;
+	margin-top: -3px;
+}
+
+.TitreSingleMessage{
+	text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.voteArticle{
+	float: right;
+	margin-top: -10px;
+}
+
+.votesArticles{
+	display: inline-block;
+	margin-left: 5px;
+	margin-right: 3px;
+}
+
+.pubArticle{
+	width: 470px;
+	height: 65px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.pubArticles{
+	width: 470px;
+	height: 65px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.pubHome{
+	width: 470px;
+	height: 65px;
+	/*background-color: red;*/
+    margin-top: 3px;
+    display: inline-block;
+}
+
+.centerpub{
+	width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+.NonValider{
+	color: red;
+	font-weight: bold;
+}
+
+.SupprimerArticle{
+	display: inline-block;
+    float: right;
+    margin-left: 15px;
+    margin-top: -5px;
+}
+
+.InputSearchArticles{
+ 	display: inline-block;
+ 	width: 80%;
+}
+
+.RedigerArticleInput{
+	display: inline-block;
+ 	width: 20%;
+    text-align: center;
+    background-color: #21ba45;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #dadbdc;
+    font-weight: bold;
+    cursor: pointer
+}
+
+.RedigerArticleInput a{
+	color: white;
+}
+
+.RedigerArticleInput a:hover{
+	color: white;
+}
+
+.blockVide{
+	height: 300px;
+}
+
+.MiniatureVideo{
+    /*height: 156px;*/
+    width: 256px;
+    float: left;
+    margin-left: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.titreVideo{
+	text-align: center;
+	color: red;
+	font-size: 15px;
+	/*height: 100%;*/
+}
+
+.InputSearchVideos{
+	width: 100%;
+}
+
+.CommentaireVideo{
+	margin-top: 20px;
+	color: black;
+	font-size: 15px;
+}
+
+.ContentVideo{
+	height: 390px;
+    width: 640px;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.LienEquipe{
+	display: inline-block;
+	color:red;
+	margin-left: 3px;
+}
+
+.LienEquipe a{
+	display: inline-block;
+	color:red;
+}
+
+.LienEquipe a:hover{
+	display: inline-block;
+	color:red;
+}
+
+.TitreEquipe{
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.ArticleModeration{
+	display: inline-block;
+	padding: 2px;
+	background-color: red;
+	margin-left: 3px;
+	color: white;
+	border-radius: 3px;
+}
+
+.SondageSemaine{
+	height: 65px;
+    /* width: 100%; */
+    display: inline-block;
+    /* background-color: red; */
+    /* margin-left: 150px; */
+    margin-right: 10px;
+    display: inline-block;
+    float: left;
+    margin-top: 1px;
+    text-align: center;
+    background-color: #ffffff;
+    line-height: 30px;
+    font-size: 14px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #dadbdc;
+    font-weight: bold;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.LivreAcceuil{
+	height: 65px;
+    display: inline-block;
+    margin-right: 5px;
+    margin-top: 1px;
+    text-align: center;
+    cursor: pointer;
+    float: left;
+}
+
+.NewSondageSemaine{
+	color: #ff6c6c;
+}
+
+.sondageTitre{
+	margin-top: -4px;
+}
+
+.LabelSondage{
+	color: red;
+	font-size:20px;
+}
+
+.titreQuestion{
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.ContentSondage{
+	display: block;
+}
+
+.pubSondage{
+	width: 470px;
+	height: 65px;
+	/*background-color: red;*/
+	margin-top: 3px;
+	width: 470px;
+    height: 65px;
+    margin-top: 3px;
+    display: block; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ChoixSondage{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.espaceSondage{
+	height: 20px;
+}
+
+.singleBar{
+	margin-top: -25px;
+}
+
+.resultBar{
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+.TousSondage{
+	/*float: right;*/
+}
+
+.IconListeSondage{
+	display: inline-block;
+	float: right;
+	margin-top: -10px;
+}
+
+.TitreSondage{
+	text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ageAuthorSondage{
+	margin-top: -20px;
+    float: right;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.ui.menu.fluid, .ui.vertical.menu.fluid{
+	background-color: white !important;
+}
+
+.ui.vertical.tabular.menu .item {
+    background: 0 0;
+    border-left: 0px solid ;
+    border-bottom: 0px solid ;
+    border-top: 1px solid !important;
+    border-right: none;
+    border-radius: 0px !important;
+}
+
+.ui.vertical.tabular.menu .item:hover {
+    background: #e9ebee;
+    color: #3c64b9;
+}
+
+.ui.vertical.tabular.menu .active.item {
+    background: none #fff;
+    color: rgba(0,0,0,.95);
+    border-color: black;
+    margin: 0 -1px 0 0;
+    border-radius: 0px !important;
+}
+
+
+
+@media only screen and (max-width: 1800px) {
+
+	.valideChatForm {
+   	 padding-right: 20%;
+	}
+
+}
+
+@media only screen and (max-width: 1180px) {
+
+	.valideChatForm {
+    	padding-right: 20%;
+	}
+
+}
+
+
+@media only screen and (max-width: 1080px) {
+
+	.ContentDiscussion{
+		padding-right: 9%;
+	}
+}
+
+@media only screen and (max-width: 980px) {
+
+	.valideChatForm {
+    	padding-right: 25%;
+	}
+}
+
+@media only screen and (max-width: 850px) {
+
+	.ContentDiscussion{
+		padding-right: 13%;
+	}
+
+	.valideChatForm {
+    	padding-right: 29%;
+	}
+
+
+}
+
+@media only screen and (max-height: 850px) {
+
+	.ContentDiscussion{
+		padding-bottom: 400px;
+	}
+
+}
+
+@media only screen and (max-height: 800px) {
+
+	.ContentDiscussion{
+		padding-bottom: 400px;
+	}
+
+	.MenuLeftLastConseiller{
+		height: 500px;
+		overflow: auto;
+	}
+}
+
+
+@media only screen and (max-height: 750px) {
+
+	.ContentDiscussion{
+		padding-bottom: 400px;
+	}
+
+	.MenuLeftLastConseiller{
+		height: 450px;
+		overflow: auto;
+	}
+}
+
+@media only screen and (max-height: 700px) {
+
+	.ContentDiscussion{
+		padding-bottom: 400px;
+	}
+
+	.MenuLeftLastConseiller{
+		height: 400px;
+		overflow: auto;
+	}
+}
+
+@media only screen and (max-height: 650px) {
+
+	.ContentDiscussion{
+		padding-bottom: 400px;
+	}
+}
+
+@media only screen and (max-height: 600px) {
+
+	.ContentDiscussion{
+		padding-bottom: 400px;
+	}
+}
+
+@media only screen and (max-height: 550px) {
+
+	.ContentDiscussion{
+		padding-bottom: 400px;
+	}
+
+}
