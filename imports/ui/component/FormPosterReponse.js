@@ -40,64 +40,51 @@ class FormPosterReponse extends Component {
 	  	const from_name = user.username;
 	  	const mail = this.props.mail;
 	  	const titre = this.props.titreMessage;
+	  	let id = this.props.id;
 
-	    {message == '' ?
-	  	 this.setState({messageVide: true}):
-	  	 this.setState({messageVide: false})
+	    {
+	    message == '' ?
+	  	this.setState({messageVide: true}):
+	  	this.setState({messageVide: false})
 	    }
 
 	  	{ //on verifie qu'il n'y à pas d'erreur avant d'envoyer le formulaire
-		    
-			this.state.messageVide == false 
-			?
-		  	Meteor.call('addReponse',
-		  	  message,
-		  	  this.props.id,
-		  	  (err) => {
-            	if(err){
-           		 } else {
-              	{
-			  	// Clear form
-		        ReactDOM.findDOMNode(this.refs.message).value = '';
-              	}     
-            	}
-          	})
-	        : ''
+		message !== ''
+		?
+     	Meteor.apply('addReponse', [{
+          message, id
+          }], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            ReactDOM.findDOMNode(this.refs.message).value = '';
+          },
+      	})
+
+       : ''
 	    }
 
-          	{
-          		!this.props.isOnline && this.state.messageVide == false  ?
+      	{
+  		!this.props.isOnline && this.state.messageVide == false  ?
+          Meteor.call(
+          'NouvelleReponse',
+          mail,
+          'Kurbys <kurbys@mail.kurbys.com>',
+          'Nouvelle réponse au message : ',
+          from_name,
+          message,
+          titre,
+          )  
+          : ''
+      	}
 
-		          Meteor.call(
-		          'NouvelleReponse',
-		          mail,
-		          'Kurbys <kurbys@mail.kurbys.com>',
-		          'Nouvelle réponse au message : ',
-		          from_name,
-		          message,
-		          titre,
-		          )  
-
-		          : ''
-          	}
-
-          	//{
-          		//!this.props.isOnline ?
-
-		          Meteor.call(
-		          'ReponseNotif',
-		           message,
-		  	  	   this.props.id,
-		          )
-		          //: ''
-          	//}
-
-          	
-
+	    Meteor.call(
+	      'ReponseNotif',
+	       	message,
+		  	this.props.id,
+	    )
 	}
 
   render() {
-
   		const { visible } = this.state
   		const { placeholderMessage } = this.state
 		
@@ -126,22 +113,20 @@ class FormPosterReponse extends Component {
 					    <Button type='submit' color="green">Valider</Button>
 			  		</Form>
 	  			</Segment>
-
 			</div>
-
 		);
   	}
 }
 
 export default FormPosterReponse =  withTracker(({ authorId }) => {
+
   const Handle = Meteor.subscribe('user', authorId);
   const loading = !Handle.ready();
   const user = Meteor.users.findOne({'_id':authorId});
   const reponseExists = !loading && !!user;
+
   return {
   isOnline:reponseExists ? user.status.online : '',
-  mail:reponseExists ? user.profile.mail : '',
-
-   
+  mail:reponseExists ? user.profile.mail : '',  
   };
 })(FormPosterReponse);

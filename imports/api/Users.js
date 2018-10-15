@@ -137,7 +137,7 @@ export const signalerUser = new ValidatedMethod({
   run({ id }) {
           let search = Meteor.users.findOne(id)
           let nbrSignaler = search.signaler;
-          if(nbrSignaler=="NaN"){nbrSignaler==0}
+          if(nbrSignaler=="NaN"){nbrSignaler=0}
           let updateSignaler = nbrSignaler + 1;
 
           Meteor.users.update({'_id':id}, {

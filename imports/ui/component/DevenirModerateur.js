@@ -15,29 +15,30 @@ class DevenirModerateur extends Component {
 
 
     render() {
-    const { visible } = this.state
-    if (!Meteor.loggingIn() && !Meteor.userId()){
-      return <Redirect to="/" />;
-    }  
-
-    return (
+      const { visible } = this.state
       
-        <div className="MainContentProfil">
-          <Header>
-          Devenir modérateur
-          </Header>
-          <Divider />
-          <div className="ListeMesMessages">
-            <div className="register blanc">
-                <div className="numero">
-                    <strong>Vous souhaitez rejoindre Kurbys ?</strong><br />
-                    </div>
-                </div>
+      if (!Meteor.loggingIn() && !Meteor.userId()){
+        return <Redirect to="/" />;
+      }  
+
+      return (
+          <div className="MainContentProfil">
+            <Header>
+            Devenir modérateur
+            </Header>
+            <Divider />
+            <div className="ListeMesMessages">
+              <div className="register blanc">
+                  <div className="numero">
+                      <strong>Vous souhaitez rejoindre Kurbys ?</strong><br />
+                      </div>
+                  </div>
+            </div>
           </div>
-        </div>
-     );
+       );
   }
 }
+
 export default withTracker(() => {
   return {
   };

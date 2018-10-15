@@ -7,9 +7,7 @@ import { Button, Checkbox, Form, Select, Input, Message } from 'semantic-ui-reac
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 
-
 //import {FormSubscribeContainer} from '../containers/FormSubscribeContainer.js';
-
 
 const options = [
   { key: 'm', text: 'Garçon', value: 'garcon' },
@@ -204,16 +202,18 @@ class FormSubscribe extends Component {
       const createdAt = new Date();
 
 	    //On verifie que le pseudo n'est pas vide
-	    {pseudo=='' ?
-	     this.setState({pseudo: true,error:true}) :
-	     this.setState({pseudo: false,
-    	})}
+	    {
+      pseudo=='' ?
+	    this.setState({pseudo: true,error:true}) :
+	    this.setState({pseudo: false})
+      }
 
 	    //On verifie que le mail n'est pas vide
-	    {!email ?
-	     this.setState({mail: true, error:true}) :
-	     this.setState({mail: false,
-    	})}
+	    {
+      !email ?
+	    this.setState({mail: true, error:true}) :
+	    this.setState({mail: false})
+      }
 
 	     //On verifie que les mots de passe correspondent
 	    /*{password1 !== password ?
@@ -222,16 +222,18 @@ class FormSubscribe extends Component {
     	})}*/
 
 	     //Les password ne doivent pas être vide
-	     {!password ?
-	     this.setState({password: true,error:true}) :
-	     this.setState({password: false,
-    	})}
+	    {
+      !password ?
+	    this.setState({password: true,error:true}) :
+	    this.setState({password: false})
+      }
 
 	      //On verifie que la date de naissance n'est pas vide
-	    {naissance =='Invalid Date' ?
-	     this.setState({naissance: true,error:true}) :
-	     this.setState({naissance: false,
-    	})}
+	    {
+      naissance =='Invalid Date' ?
+	    this.setState({naissance: true,error:true}) :
+	    this.setState({naissance: false})
+      }
 
 	     // On vérifie l'age > 13 ans
        let now = new Date();
@@ -240,29 +242,31 @@ class FormSubscribe extends Component {
   		 //on calcul l'age en années
   		 let age = diff / 31536000000;
 
-		  {age <13 ?
+		  {
+      age <13 ?
 	     this.setState({age: true,error:true}) :
 	     ''
     	}
 
 	     //Le sexe est obligatoire
-	    {!sexe ?
+	    {
+      !sexe ?
 	     this.setState({sexeVerif: true,error:true}) :
-	     this.setState({sexeVerif: false,
-    	})}
+	     this.setState({sexeVerif: false})
+      }
 
 	     //Les CGU sont obligatoires
 	    {
-        this.state.checkCGU ==false ?
-	      this.setState({CGU: true,error:true}) :
-	      this.setState({CGU: false})
+      this.state.checkCGU ==false ?
+      this.setState({CGU: true,error:true}) :
+      this.setState({CGU: false})
       }
 
         //Les commandements sont obligatoires
-       {
-        this.state.checkcommandements ==false ?
-        this.setState({commandements: true,error:true}) :
-        this.setState({commandements: false})
+      {
+      this.state.checkcommandements ==false ?
+      this.setState({commandements: true,error:true}) :
+      this.setState({commandements: false})
       }
 
       check(pseudo, String);
@@ -270,7 +274,6 @@ class FormSubscribe extends Component {
       check(password, String);
       check(naissance, Date);
       check(sexe, String);
-
 
        //on vérifie si le pseudo existe déjà
       Meteor.apply('FormSubscribePseudo', [{
@@ -297,6 +300,7 @@ class FormSubscribe extends Component {
       });
 
       let erreur = this.state.error 
+      
       if(erreur == false) {
            Accounts.createUser({
               username: pseudo,
@@ -310,12 +314,9 @@ class FormSubscribe extends Component {
               upvoters:[],
             }, (err) => {
               if(err){
-                
               } else {
-                {
-                    Meteor.userId() ? 
-                   this.setState({connection: true,}) : ""
-                }     
+                  Meteor.userId() ? 
+                  this.setState({connection: true,}) : ""
               }
             })   
         }
@@ -372,149 +373,145 @@ class FormSubscribe extends Component {
     }
 
 	   return (
-  	<div className="ContainerFormSubcribe">
-  		<div className="sincrire">Créer un compte</div>
-  		<div className="gratuit">Gratuit, pour tous.</div>	  
-			 
-			 <Form error onSubmit={this.Submit.bind(this)}>
+      	<div className="ContainerFormSubcribe">
+      		<div className="sincrire">Créer un compte</div>
+      		<div className="gratuit">Gratuit, pour tous.</div>	  
+    			 
+    			 <Form error onSubmit={this.Submit.bind(this)}>
+    			    <Form.Field required error={this.state.pseudo}>
+    			      <input onChange={this.ChangeInput.bind(this)}
+    			       ref="pseudo"
+    			       placeholder='Pseudo'
+    			       />
+    				 <Message
+    				    hidden={!this.state.pseudo}
+    			      error={this.state.pseudo}
+    			      header='Erreur pseudo'
+    			      content='Le pseudo est obligatoire'
+    			    />
+              <Message
+                hidden={!this.state.usernameExiste}
+                error={this.state.usernameExiste}
+                header='Erreur pseudo'
+                content='Ce pseudo existe déjà'
+              />
+    			    </Form.Field>
 
-			    <Form.Field required error={this.state.pseudo}>
-			      <input onChange={this.ChangeInput.bind(this)}
-			       ref="pseudo"
-			       placeholder='Pseudo'
-			       />
+    			    <Form.Field required error={this.state.mail}>
+    			      <input
+    			       ref="email"
+    			       type='email'
+    			       placeholder='Email'
+    			       />
+    			     <Message
+    			      error={this.state.mail}
+    			      hidden={!this.state.mail}
+    			      header='Erreur email'
+    			      content="L'adresse mail est obligatoire"
+    			     />
+               <Message
+                error={this.state.mailExiste}
+                hidden={!this.state.mailExiste}
+                header='Erreur email'
+                content="Cette adresse email existe déjà"
+               />
+    			    </Form.Field>
 
-				 <Message
-				    hidden={!this.state.pseudo}
-			      error={this.state.pseudo}
-			      header='Erreur pseudo'
-			      content='Le pseudo est obligatoire'
-			    />
-          <Message
-            hidden={!this.state.usernameExiste}
-            error={this.state.usernameExiste}
-            header='Erreur pseudo'
-            content='Ce pseudo existe déjà'
-          />
-			    </Form.Field>
+    			    <Form.Field required error={this.state.password}>
+    			      <input
+    			       ref="password2"
+    			       type='password'
+    			       placeholder='Mot de passe'
+    			      />
+    			     <Message
+    			      error={this.state.password}
+    			      hidden={!this.state.password}
+    			      header='Erreur mot de passe'
+    			      content="Le mot de passe est obligatoire"
+    			    />
+    			    </Form.Field>
+    			    
+    			    <label>Date de naissance</label>
+    			    <Form.Group widths='equal' error>
+    				    <Form.Select
+    				     fluid
+    				     options={Jours}
+    				     placeholder='Jour'
+    				     onChange={(e, { value }) => this.jours(value)}
+    				     />
 
+    				    <Form.Select
+    				     fluid
+    				     options={Mois}
+    				     placeholder='Mois'
+    				     onChange={(e, { value }) => this.mois(value)}
+    				      />
 
-			    <Form.Field required error={this.state.mail}>
-			      <input
-			       ref="email"
-			       type='email'
-			       placeholder='Email'
-			       />
-			     <Message
-			      error={this.state.mail}
-			      hidden={!this.state.mail}
-			      header='Erreur email'
-			      content="L'adresse mail est obligatoire"
-			     />
-           <Message
-            error={this.state.mailExiste}
-            hidden={!this.state.mailExiste}
-            header='Erreur email'
-            content="Cette adresse email existe déjà"
-           />
-			    </Form.Field>
+    				    <Form.Select
+    				     fluid
+    				     options={Année}
+    				     placeholder='Année'
+    				     onChange={(e, { value }) => this.année(value)}
+    				      />
+    			    </Form.Group>
+    			    <Message
+    			      error={this.state.naissance}
+    			      hidden={!this.state.naissance}
+    			      header='Erreur date de naissance'
+    			      content="La date de naissance est obligatoire"
+    			    />
+    			    <Message
+    			      error={this.state.age}
+    			      hidden={!this.state.age}
+    			      header="Tu ne peux pas t'inscire"
+    			      content="Tu dois avoir +13 ans pour t'inscire sur Kurbys"
+    			    />
 
-			    <Form.Field required error={this.state.password}>
-			      <input
-			       ref="password2"
-			       type='password'
-			       placeholder='Mot de passe'
-			      />
-			     <Message
-			      error={this.state.password}
-			      hidden={!this.state.password}
-			      header='Erreur mot de passe'
-			      content="Le mot de passe est obligatoire"
-			    />
-			    </Form.Field>
-			    
-			    <label>Date de naissance</label>
-			    <Form.Group widths='equal' error>
-				    <Form.Select
-				     fluid
-				     options={Jours}
-				     placeholder='Jour'
-				     onChange={(e, { value }) => this.jours(value)}
-				     />
+    			    <Form.Field
+    			     error={this.state.sexeVerif}
+    			     required
+    			     control={Select}
+    			     options={options}
+    			     placeholder='Sexe'
+    			     onChange={(e, { value }) => this.sexe(value)}
+    			     />
+    			     <Message
+    			      error={this.state.sexeVerif}
+    			      hidden={!this.state.sexeVerif}
+    			      header='Obligatoire'
+    			      content="Tu es un garçon ou une fille ?"
+    			    />
 
-				    <Form.Select
-				     fluid
-				     options={Mois}
-				     placeholder='Mois'
-				     onChange={(e, { value }) => this.mois(value)}
-				      />
+    			    <Form.Field required>
+    			      <Checkbox
+    			       onClick={this.CGU.bind(this)} 
+    			       label="J'accepte les CGU"
+    			       /> <p className="lireCGU"><Link to="/CGU" >Lire</Link></p>
+    			    </Form.Field>
+              <Message
+                error={this.state.CGU}
+                hidden={!this.state.CGU}
+                header='Obligatoire'
+                content="Tu dois accepter les conditions générales d'utilisation"
+              />
 
-				    <Form.Select
-				     fluid
-				     options={Année}
-				     placeholder='Année'
-				     onChange={(e, { value }) => this.année(value)}
-				      />
-			    </Form.Group>
-			    <Message
-			      error={this.state.naissance}
-			      hidden={!this.state.naissance}
-			      header='Erreur date de naissance'
-			      content="La date de naissance est obligatoire"
-			    />
-			    <Message
-			      error={this.state.age}
-			      hidden={!this.state.age}
-			      header="Tu ne peux pas t'inscire"
-			      content="Tu dois avoir +13 ans pour t'inscire sur Kurbys"
-			    />
+              <Form.Field required>
+                <Checkbox
+                 onClick={this.commandements.bind(this)} 
+                 label="J'accepte les 5 commandements de Kurbys"
+                 /> <p className="lireCGU"><Link to="/Commandements" >Lire</Link></p>
+              </Form.Field>
+    			    <Message
+    			      error={this.state.commandements}
+    			      hidden={!this.state.commandements}
+    			      header='Obligatoire'
+    			      content="Tu dois accepter les 5 commandements"
+    			    />
 
+    			    <Button type='submit' color='green'>Créer un compte</Button>
 
-			    <Form.Field
-			     error={this.state.sexeVerif}
-			     required
-			     control={Select}
-			     options={options}
-			     placeholder='Sexe'
-			     onChange={(e, { value }) => this.sexe(value)}
-			     />
-			     <Message
-			      error={this.state.sexeVerif}
-			      hidden={!this.state.sexeVerif}
-			      header='Obligatoire'
-			      content="Tu es un garçon ou une fille ?"
-			    />
-
-			    <Form.Field required>
-			      <Checkbox
-			       onClick={this.CGU.bind(this)} 
-			       label="J'accepte les CGU"
-			       /> <p className="lireCGU"><Link to="/CGU" >Lire</Link></p>
-			    </Form.Field>
-          <Message
-            error={this.state.CGU}
-            hidden={!this.state.CGU}
-            header='Obligatoire'
-            content="Tu dois accepter les conditions générales d'utilisation"
-          />
-
-          <Form.Field required>
-            <Checkbox
-             onClick={this.commandements.bind(this)} 
-             label="J'accepte les 5 commandements de Kurbys"
-             /> <p className="lireCGU"><Link to="/Commandements" >Lire</Link></p>
-          </Form.Field>
-			    <Message
-			      error={this.state.commandements}
-			      hidden={!this.state.commandements}
-			      header='Obligatoire'
-			      content="Tu dois accepter les 5 commandements"
-			    />
-
-			    <Button type='submit' color='green'>Créer un compte</Button>
-
-			</Form>
-		</div>
+    			</Form>
+    		</div>
 
 	);
   }

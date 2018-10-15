@@ -6,8 +6,6 @@ import { withTracker } from 'meteor/react-meteor-data';
 import ContactChatContent from '../component/ContactChatContent.js';
 import AdSense from 'react-adsense';
 
-
-
 import { ContactChat } from '../../api/ContactChat.js';
 
 class contactChat extends Component {
@@ -15,44 +13,36 @@ class contactChat extends Component {
 	componentWillMount(){
 		const to_id = this.props.to_id;
 		const myId = Meteor.userId();
-		Meteor.call('addContactChat',
-		  	  to_id,
-		  	  (err) => {
+		
+    Meteor.call(
+      'addContactChat',
+		  to_id,
+		  (err) => {
             	if(err){
-              
-           		 } else {
-              	{
-	               
-			        
-	              	}     
+           		 } else {     
             	}
-          	})
+    })
 	}
 
 	renderAllContactChat() {
-          let AllChat = this.props.allContactChat;
+      let AllChat = this.props.allContactChat;
 
-          return AllChat.map((message) => {
-           let date = Date.parse(message.post_date);
-             
-            return (
-              <ContactChatContent
-                key={message._id}
-                contact={message}
-                date={date}
-                to_id={this.props.to_id}
-                      
-              />
-            );
-          });
+      return AllChat.map((message) => {
+       let date = Date.parse(message.post_date);
+         
+        return (
+          <ContactChatContent
+            key={message._id}
+            contact={message}
+            date={date}
+            to_id={this.props.to_id}    
+          />
+        );
+      });
   }
   
-  
-
   render() {
-		
 		return (
-			
 		      	<div className="ChatContactLeft">
   					  <Menu vertical>
       					<div

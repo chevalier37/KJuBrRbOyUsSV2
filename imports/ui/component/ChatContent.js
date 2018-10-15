@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import Img from 'react-image'
 
 export default class ChatContent extends Component {
-
 		constructor(props) {
 		    super(props);
 		    this.state = {
@@ -22,35 +21,27 @@ export default class ChatContent extends Component {
 			const myId = Meteor.userId();
 
 			{
-				myId==this.props.message.from_id ?
-			 	this.setState({
-		      	message: 'message_droite'}) :
-			 	this.setState({
-		     	 message: 'message_gauche'})
+			myId===this.props.message.from_id ?
+		 	this.setState({message: 'message_droite'}) :
+		 	this.setState({message: 'message_gauche'})
 			}
 
 			{
-				this.props.message.read ?
-			 	this.setState({
-		      	read: true}) :
-			 	this.setState({
-		     	read: false})
+			this.props.message.read ?
+			this.setState({read: true}) :
+			this.setState({read: false})
 			}
 
 			{
-				myId==this.props.message.from_id ?
-			 	this.setState({
-		      	messageDate: 'message_droite_date'}) :
-			 	this.setState({
-		      	messageDate: 'message_gauche_date'})
+			myId===this.props.message.from_id ?
+		 	this.setState({messageDate: 'message_droite_date'}) :
+		 	this.setState({messageDate: 'message_gauche_date'})
 	    	}
 
 	    	{
-				myId==this.props.message.to_id ?
-			 	this.setState({
-		      	gauche: 'none'}) :
-			 	this.setState({
-		      	gauche: 'message_droite_date'})
+			myId==this.props.message.to_id ?
+			this.setState({gauche: 'none'}) :
+		 	this.setState({gauche: 'message_droite_date'})
 	    	}
 
 		    const date = this.props.date;
@@ -64,17 +55,17 @@ export default class ChatContent extends Component {
 		    let minutes = date_fr.getMinutes();
 		    if(minutes < 10){
 		        minutes = "0" + minutes;
-		   }
+		   	}
 
-		  let la_date = affiche_date +" " +heure + "h" + minutes;
-		  this.setState({date: la_date})
-	   
+			let la_date = affiche_date +" " +heure + "h" + minutes;
+			this.setState({date: la_date})
 		}
 
 		Supprimer(){
-			Meteor.call('supprimerChat',
-		    this.props.message._id,
-		     );
+			Meteor.call(
+				'supprimerChat',
+		    	this.props.message._id,
+		    );
 		}
 
 		componentDidMount() {
@@ -89,7 +80,6 @@ export default class ChatContent extends Component {
 		    this.el.scrollIntoView();
 		}
 
-
 		breaklines(){
 			let message = this.props.message.message
 			return message
@@ -102,8 +92,10 @@ export default class ChatContent extends Component {
 		    	<div className={"AffficheDiscussion" + " "+this.state.messageDate}>
 		    		{this.state.date}
 		    	</div>
-		    	<div className={"SupprimerChat" + " "+this.state.gauche}
-		    	     onClick={this.Supprimer.bind(this)}>
+		    	<div
+		    	 className={"SupprimerChat" + " "+this.state.gauche}
+		    	 onClick={this.Supprimer.bind(this)}
+		    	 >
 		    		supprimer
 		    	</div>
 				<div className={"AffficheDiscussion" + " "+this.state.message}>
@@ -112,7 +104,6 @@ export default class ChatContent extends Component {
 					</div>
 					<div ref={el => { this.el = el; }} >
 					</div>
-
 		    	</div>
 		    	<div className={"MessageLu" + " "+this.state.gauche}>
 		    		<div className={this.props.message.read ? "visible" : "none"}>

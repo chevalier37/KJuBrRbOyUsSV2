@@ -12,21 +12,21 @@ import { Posts } from '../../api/Messages.js';
 class ContentModifierMessage extends Component {
 
 	constructor(props) {
-			    super(props);
-			 
-			    this.state = {
-			      	allMessages: 'visible',
-				 	
-			    };
-			}
+	    super(props);
+	 
+	    this.state = {
+	      	allMessages: 'visible',
+		 	
+	    };
+	}
 
 	renderAllMessages() {
 	    let AllMessages = this.props.allMessages;
 
 	    return AllMessages.map((message) => {
-	     let date = Date.parse(message.post_date);
+	    	let date = Date.parse(message.post_date);
          
-	      return (
+	    return (
 	        <ListeModifierMessage
 	          key={message._id}
 	          message={message}
@@ -38,24 +38,23 @@ class ContentModifierMessage extends Component {
 	}
 			   
   render() {
-		
 		return (
 			<div className="MainContent">
 				<Segment>
 					<Header>
-					Modifier mon message
+						Modifier mon message
 					</Header>
 				</Segment>
 	  			<div className="ListeMesMessages">
 	  				{this.renderAllMessages()}
 	  			</div>
 			</div>
-
 		);
   	}
 }
 
 export default withTracker(({post_id}) => {
+	
 	const myId = Meteor.userId();
   	const Handle = Meteor.subscribe('MyMessages', myId);
   	const loading = !Handle.ready();

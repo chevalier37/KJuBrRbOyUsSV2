@@ -4,7 +4,6 @@ import { Segment, Button, Checkbox, Form, Header, TextArea, Divider } from 'sema
 import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 
-
 import ListeMessagesPostes from './ListeMessagesPostes.js';
 
 import { Posts } from '../../api/Messages.js';
@@ -12,21 +11,20 @@ import { Posts } from '../../api/Messages.js';
 class ContentMessagePostes extends Component {
 
 	constructor(props) {
-			    super(props);
-			 
-			    this.state = {
-			      	allMessages: 'visible',
-				 	
-			    };
-			}
+	    super(props);
+	 
+	    this.state = {
+	      	allMessages: 'visible',
+	    };
+	}
 
 	renderAllMessages() {
 	    let AllMessages = this.props.allMessages;
 
 	    return AllMessages.map((message) => {
-	     let date = Date.parse(message.post_date);
+	    	let date = Date.parse(message.post_date);
          
-	      return (
+	    return (
 	        <ListeMessagesPostes
 	          key={message._id}
 	          message={message}
@@ -38,11 +36,10 @@ class ContentMessagePostes extends Component {
 	}
 			   
   render() {
-		
 		return (
 			<div className="MainContentProfil">
 					<Header>
-					Mes messages
+						Mes messages
 					</Header>
 					<Divider />
 	  			<div className="ListeMesMessages">
@@ -55,6 +52,7 @@ class ContentMessagePostes extends Component {
 }
 
 export default withTracker(() => {
+	
 	const myId = Meteor.userId();
   	const Handle = Meteor.subscribe('MyMessages', myId);
   	const loading = !Handle.ready();

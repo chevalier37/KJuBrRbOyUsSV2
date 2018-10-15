@@ -7,37 +7,36 @@ import Img from 'react-image'
 
 export default class ContentMenuRight extends Component {
 
-  constructor(props) {
-    super(props);
- 
-    this.state = {
-      body: '',
-      logout:false,
-      username:'d',
-      chat:'',
-      activeItem: 'account'
-    };
-  }
+  	constructor(props) {
+	    super(props);
+	    this.state = {
+		    body: '',
+		    logout:false,
+		    username:'d',
+		    chat:'',
+		    activeItem: 'account'
+	    };
+  	}
 
     logout(){
-  	 this.setState({
-      logout: true,
-    });
-  	Meteor.logout()
-  }
+	  	this.setState({logout: true});
+	  	Meteor.logout()
+  	}
 
   	handleItemClick = (e, { name }) => this.setState({ activeItem: name })
   
   	render() {
   		const { activeItem } = this.state
 		const logout = this.state.logout;
+  		
   		if (logout) {
       	return <Redirect to="/" />;
     	}
+
 		return (
 			<div className="ListeSideBar">
 				<List relaxed>
-					 <Link to={'/Articles/' }>
+					<Link to={'/Articles/' }>
 					    <List.Item className="ListItem">
 						    <List.Header>
                      		<div className="star">   
@@ -266,8 +265,7 @@ export default class ContentMenuRight extends Component {
 
 				      <Divider />
 				      <Divider />
-				   
-				   
+
 					    <List.Item className="ListItem" onClick={this.logout.bind(this)}>
 					    	<List.Content>
 					        	<p className="colorIconBlack"> </p>
@@ -278,7 +276,7 @@ export default class ContentMenuRight extends Component {
 				      <Divider />
 
 				</List>
-			 </div>
+			</div>
 
 		);
   	}

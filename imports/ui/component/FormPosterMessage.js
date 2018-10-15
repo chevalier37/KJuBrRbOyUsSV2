@@ -123,16 +123,17 @@ class FormPosterMessage extends Component {
 	  	const Violence = this.state.Violence;
 	  	const autre = this.state.autre;
 
-	  	{titre == '' ?
-	  	 this.setState({titreVide: true}):
-	  	 this.setState({titreVide: false})
+	  	{
+	  	titre == '' ?
+	  	this.setState({titreVide: true}):
+	  	this.setState({titreVide: false})
 	    }
 
-	    {message == '' ?
-	  	 this.setState({messageVide: true}):
-	  	 this.setState({messageVide: false})
+	    {
+	    message == '' ?
+	  	this.setState({messageVide: true}):
+	  	this.setState({messageVide: false})
 	    }
-
 
 	    //nombre total de categorie
 	    NBRcategorie = 	this.state.CheckPremierAmour + 
@@ -165,27 +166,24 @@ class FormPosterMessage extends Component {
 	    				this.state.Violence + 
 	    				this.state.autre       
 
-	    {NBRcategorie == 0 ?
-	     this.setState({CatObligatoire: true}):
-	  	 this.setState({CatObligatoire: false})
+	    {
+	    NBRcategorie == 0 ?
+	    this.setState({CatObligatoire: true}):
+	  	this.setState({CatObligatoire: false})
 	    }
 
-	    {NBRcategorie > 2 ?
-	     this.setState({TropCat: true}):
-	  	 this.setState({TropCat: false})
+	    {
+	    NBRcategorie > 2 ?
+	    this.setState({TropCat: true}):
+	  	this.setState({TropCat: false})
 	    }				
-	  
 
 	  	{ //on verifie qu'il n'y à pas d'erreur avant d'envoyer le formulaire
-
 			this.state.titreVide ==false &&
 			this.state.messageVide == false &&
 			NBRcategorie > 0 &&
 			NBRcategorie < 3
-
-
 			?
-
 		  	Meteor.call('addMessage',
 		  	  titre,
 		  	  message,
@@ -223,7 +221,6 @@ class FormPosterMessage extends Component {
             	if(err){
               
            		 } else {
-              	{
 	                  // on cache les options après validation
 			        this.setState({
 				      categorie: 'cacherCategorie'
@@ -236,13 +233,10 @@ class FormPosterMessage extends Component {
 				  	// Clear form
 			        ReactDOM.findDOMNode(this.refs.titre).value = '';
 			        ReactDOM.findDOMNode(this.refs.message).value = '';
-	              	}     
-            	}
+              	}
           	})
-
 	        : ''
 	    }
-
 	}
 
 	premierAmour(value) {

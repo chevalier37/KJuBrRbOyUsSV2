@@ -101,23 +101,26 @@ export default class DevenirConseillerContent extends Component {
 	   }
 
 	   componentWillMount(){
-	   	Meteor.apply('IsConseillerHeader', [{
-	          }], {
-	          onResultReceived: (error, response) => {
-	            if (error) console.warn(error.reason);
-	            {response ?  
-	             this.setState({IsConseiller:true}) :
-	             this.setState({usernameExiste: 'visible'})}
-		          },
-	      	})
+		   	Meteor.apply(
+		   		'IsConseillerHeader',
+		   		[{}],
+		   		{
+		        onResultReceived: (error, response) => {
+		            if (error) console.warn(error.reason);
+		            {
+		            response ?  
+		             this.setState({IsConseiller:true}) :
+		             this.setState({usernameExiste: 'visible'})}
+			         },
+		    })
 	    }
 
 	  handleChange = (e, { value }) => this.setState({ value })
 
 	  handleClick = (e, titleProps) => {
-	    const { index } = titleProps
-	    const { activeIndex } = this.state
-	    const newIndex = activeIndex === index ? -1 : index
+	    const { index } = titleProps;
+	    const { activeIndex } = this.state;
+	    const newIndex = activeIndex === index ? -1 : index;
 
 	    this.setState({ activeIndex: newIndex })
 	  }
@@ -969,12 +972,14 @@ export default class DevenirConseillerContent extends Component {
   	render() {
 		const { activeIndex } = this.state;
 		const myId = Meteor.userId();
-		    if (!Meteor.loggingIn() && !Meteor.userId()){
-      		return <Redirect to="/" />;
-    		}
-    		if (this.state.ValidationConseiller){
-      		return <Redirect to={'/profil/' + myId}/>;
-    		}
+
+	    if (!Meteor.loggingIn() && !Meteor.userId()){
+  		return <Redirect to="/" />;
+		}
+
+		if (this.state.ValidationConseiller){
+  		return <Redirect to={'/profil/' + myId}/>;
+		}
 
 		return (
 			<div className="MainContent">
@@ -983,7 +988,7 @@ export default class DevenirConseillerContent extends Component {
 						Tu es déjà conseiller.
 					</Segment>
 				</div>
-			<div className={this.state.IsConseiller ? 'none' : ''}>
+				<div className={this.state.IsConseiller ? 'none' : ''}>
 				<Segment className="MainContent">
 					<Header>
 					Devenir conseiller

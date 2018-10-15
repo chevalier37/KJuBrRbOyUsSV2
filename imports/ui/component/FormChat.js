@@ -21,166 +21,159 @@ class FormChat extends Component {
 	}
 
 	focusMessage() {
-	     this.setState({
-	      placeholderMessage: '',
-	    });
-	     this.setState({
-	      writing:true,
-	    });
-	     Meteor.call('writing',
+	    this.setState({placeholderMessage: ''});
+	    this.setState({writing:true});
+
+	    Meteor.call(
+	    	'writing',
 	    	this.props.to_id,
-          (err) => {
-              if(err){
-               } else {
-                {}     
-              }
-            })
+	          (err) => {
+	              if(err){
+	               } else {
+	                {}     
+	              }
+        })
 	}
 
 	focusMessageOut() {
-	     this.setState({
-	      placeholderMessage:'Message',
-	    });
-	      this.setState({
-	      writing:false,
-	    });
-	      Meteor.call('NOTwriting',
+	    this.setState({placeholderMessage:'Message'});
+	    this.setState({writing:false});
+	      
+	    Meteor.call('NOTwriting',
 	    	this.props.to_id,
-          (err) => {
+          	(err) => {
               if(err){
                } else {
                 {}     
-              }
-            })
+            }
+        })
 	}
 
 	writing() {
-	     this.setState({
-	      writing:true,
-	    });
-	    Meteor.call('writing',
+	    this.setState({writing:true});
+	    
+	    Meteor.call(
+	    	'writing',
 	    	this.props.to_id,
-          (err) => {
-              if(err){
-               } else {
-                {}     
-              }
-            })
+	          (err) => {
+	              if(err){
+	               } else {
+	                {}     
+	              }
+        })
 	}
 
 	componentWillMount(){
-       const from_id = this.props.to_id
-        Meteor.apply('MyIdBloquerChat', [{
+        const from_id = this.props.to_id
+        
+        Meteor.apply(
+        	'MyIdBloquerChat',
+        	[{
             from_id
-            }], {
+            }],
+            {
             onResultReceived: (error, response) => {
               if (error) console.warn(error.reason);
               {response ?  
                this.setState({bloquer: true}) :
                this.setState({bloquer: false})}
-              },
+            },
 
         })
     }
 
     componentWillReceiveProps(){
-         const from_id = this.props.to_id
-          Meteor.apply('MyIdBloquerChat', [{
+        const from_id = this.props.to_id
+          
+        Meteor.apply(
+        	'MyIdBloquerChat',
+        	[{
             from_id
-            }], {
+            }],
+            {
             onResultReceived: (error, response) => {
               if (error) console.warn(error.reason);
               {response ?  
                this.setState({bloquer: true}) :
                this.setState({bloquer: false})}
-              },
-
+            },
         })
     }
 
 	Submit() {
-	  	
-	  	const message = ReactDOM.findDOMNode(this.refs.message).value.trim();
-	  	const to_id = this.props.to_id;
-	  	const to_name = this.props.username;
-	  	const user = Meteor.user();
-	  	const from_name = user.username;
-	  	const mail = this.props.mail;
-		  	Meteor.call('addMessageChat',
-		  	  message,
-		  	  to_id,
+		  	const message = ReactDOM.findDOMNode(this.refs.message).value.trim();
+		  	const to_id = this.props.to_id;
+		  	const to_name = this.props.username;
+		  	const user = Meteor.user();
+		  	const from_name = user.username;
+		  	const mail = this.props.mail;
+		  	
+		  	Meteor.call(
+		  		'addMessageChat',
+		  	  	message,
+		  	  	to_id,
 		  	  (err) => {
             	if(err){
               
            		 } else {
-              	{
-	               
 			        ReactDOM.findDOMNode(this.refs.message).value = '';
-	              	}     
             	}
           	})
 
-          	Meteor.call('NOTwriting',
-	    	this.props.to_id,
-          (err) => {
-              if(err){
-               } else {
-                {}     
-              }
+          	Meteor.call(
+          		'NOTwriting',
+		    	this.props.to_id,
+		          (err) => {
+		              if(err){
+		               } else {  
+		            }
             })
 
-          	  Meteor.call('updateContactOnline',
-		    		this.props.to_id,
+          	Meteor.call(
+          		'updateContactOnline',
+		    	this.props.to_id,
 			  	  (err) => {
 	            	if(err){
-	              
 	           		 } else {
-	              	{
 				        //this.setState({ redirect: true})
-		              	}     
-	            	}
+   	            	}
 	          	})
 
           	{
-          		!this.props.isOnline ?
-
-		          Meteor.call(
-		          'NouveauMessage',
-		          mail,
-		          'Kurbys <kurbys@mail.kurbys.com>',
-		          'Nouveau message de ',
-		          from_name,
-		          message,
-		          )
-		          : ''
+      		!this.props.isOnline ?
+	          Meteor.call(
+	          'NouveauMessage',
+	          mail,
+	          'Kurbys <kurbys@mail.kurbys.com>',
+	          'Nouveau message de ',
+	          from_name,
+	          message,
+	          )
+	          : ''
           	}
 
           	{
-          		!this.props.isOnline ?
-
-		          Meteor.call(
-		          'ChatNotif',
-		           message,
-		  	  	   to_id,
-		          )
-		          : ''
+      		!this.props.isOnline ?
+	          Meteor.call(
+	          'ChatNotif',
+	           message,
+	  	  	   to_id,
+	          )
+	        : ''
           	}
 
           	{
-          		!this.props.isOnline ?
-
-		          Meteor.call('serverNotification','Nouveau message','Tu as reçu un message de ' + from_name, to_id)
-		          : ''
+      		!this.props.isOnline ?
+	        Meteor.call(
+	        	'serverNotification',
+	        	'Nouveau message',
+	        	'Tu as reçu un message de ' + from_name, to_id
+	        )
+	          : ''
           	}
-
-
-
-          	
-
 	}
 
   render() {
- 		
   		const { placeholderMessage } = this.state
 		
 		return (
@@ -190,17 +183,15 @@ class FormChat extends Component {
 				    	<Img className="iconWriting" src="/pen.svg"/> {this.props.username} 
 				    </div>
 				    <div className="TextWriting">
-				    est en train d'écrire
+				    	est en train d'écrire
 				    </div>
 			    </div>
-			<Form onSubmit={this.Submit.bind(this)}>
-		    	<div className="ButtonChatForm1">
-			     	<Button color="green" fluid size="tiny">
-				    	Envoyer 
-				  	</Button>
-		    	</div>
-
-			    
+				<Form onSubmit={this.Submit.bind(this)}>
+			    	<div className="ButtonChatForm1">
+				     	<Button color="green" fluid size="tiny">
+					    	Envoyer 
+					  	</Button>
+			    	</div>
 				    <div className="valideChatArea1">
 				      <TextArea
 				       ref="message"
@@ -211,14 +202,14 @@ class FormChat extends Component {
 				       onChange={this.writing.bind(this)}
 				       />
 					</div>
-		  		</Form>
+			  	</Form>
 			</div>
 		);
   	}
 }
 
-
 export default FormChat =  withTracker(({ to_id }) => {
+
   const Handle = Meteor.subscribe('user', to_id);
   const loading = !Handle.ready();
   const user = Meteor.users.findOne({'_id':to_id});

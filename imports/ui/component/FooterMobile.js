@@ -10,11 +10,7 @@ class FooterMobile extends Component {
 	state = { visible: false }
 
   	handleButtonClick = () => this.setState({ visible: !this.state.visible })
-
   	handleSidebarHide = () => this.setState({ visible: false })
-
-	componentWillMount(){
-    }
 
   	render() {
   		const { visible } = this.state
@@ -45,10 +41,8 @@ class FooterMobile extends Component {
 							 <Img className="iconHeader" src="/bellMobile.svg"/>
 						</Link>
 					</div>
-
-
 				</div>
-			</div>
+		</div>
 	);
   }
 }

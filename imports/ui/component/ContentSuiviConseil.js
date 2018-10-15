@@ -13,13 +13,12 @@ import { Comments } from '../../api/Reponses.js';
 class ContentMessagePostes extends Component {
 
 	constructor(props) {
-			    super(props);
-			 
-			    this.state = {
-			      	allMessages: 'visible',
-				 	
-			    };
-			}
+		    super(props);
+		 
+		    this.state = {
+		      	allMessages: 'visible',
+		    };
+	}
 
 	renderAllMessages() {
 	    let AllMessages = this.props.allMessages;
@@ -39,11 +38,10 @@ class ContentMessagePostes extends Component {
 	}
 			   
   render() {
-		
 		return (
 			<div className="MainContentProfil">
 					<Header>
-					Les conseils que j'ai donné
+						Les conseils que j'ai donné
 					</Header>
 					<Divider />
 	  			<div className="ListeMesMessages">
@@ -56,6 +54,7 @@ class ContentMessagePostes extends Component {
 }
 
 export default withTracker(() => {
+	
 	const myId = Meteor.userId();
   	const Handle = Meteor.subscribe('MyReponses', myId);
   	const loading = !Handle.ready();

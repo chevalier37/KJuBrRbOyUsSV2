@@ -7,7 +7,6 @@ import { Sidebar, Segment, Button, Header, Divider} from 'semantic-ui-react'
 import Img from 'react-image'
 import { Route, Redirect } from 'react-router';
 
-
 //Component
 import HeaderPage from '../component/HeaderPage.js';
 import ListeRecommandationsDonner from '../component/ListeRecommandationsDonner.js';
@@ -27,22 +26,27 @@ class RecommandationsDonné extends Component {
 
     componentWillMount(){
       let id = Meteor.userId()
+      
       Meteor.apply('usernameRecommander', [{
               id,
               }], {
               onResultReceived: (error, response) => {
                 if (error) console.warn(error.reason);
                                  
-                 {response ?
+                {
+                response ?
                  this.setState({username: response.username}) 
                  :
-                 ''}
+                 ''
+                }
 
-                  {response ?
+                {
+                response ?
                  this.setState({gender: response.profile.gender}) 
                  :
-                 ''}
-                },
+                 ''
+                }
+              },
         })
     }
 
@@ -60,31 +64,31 @@ class RecommandationsDonné extends Component {
               />
             );
           });
-      }
+    }
 
     render() {
-    const { visible } = this.state  
+      const { visible } = this.state  
 
-    if (!Meteor.loggingIn() && !Meteor.userId()){
-      return <Redirect to="/" />;
-    }
-    
-    return (
-
-      <div className="MainContentProfil">
-          <Header>
-          Mes recommandations données
-          </Header>
-          <Divider />
-          <div className="ListeMesMessages">
-            {this.renderAllreponses()}
-          </div>
-      </div>
-    );
+      if (!Meteor.loggingIn() && !Meteor.userId()){
+        return <Redirect to="/" />;
+      }
+      
+      return (
+        <div className="MainContentProfil">
+            <Header>
+              Mes recommandations données
+            </Header>
+            <Divider />
+            <div className="ListeMesMessages">
+              {this.renderAllreponses()}
+            </div>
+        </div>
+      );
   }
 }
 
 export default RecommandationsDonné =  withTracker(() => {
+  
   const id = Meteor.userId();
   const Handle = Meteor.subscribe('Recommandations', id);
   const loading = !Handle.ready();
