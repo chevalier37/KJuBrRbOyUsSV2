@@ -312,6 +312,8 @@ class FormSubscribe extends Component {
               conseiller:false,
               signaler:0,
               upvoters:[],
+              voteUP:0,
+              voteDOWN:0,
             }, (err) => {
               if(err){
               } else {

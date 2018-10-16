@@ -16,67 +16,19 @@ class ListeReponses extends Component {
 		    this.state = {
 		      	sexe: '',
 			    disabled:false,
-			    disabledVote:false,
 			    color:true,
 			    IsModerateur:false,
 			    open:false,
+			    desactiver:false,
 		    };
 	}
 
 	handleConfirm = () => this.setState({ open: false })
     handleCancel = () => this.setState({ open: false })
 
-	signalerReponse() {
-		let Id = this.props.message._id;
-	    Meteor.apply('signalerReponse', [{
-          Id,
-          }], {
-          onResultReceived: (error, response) => {
-            if (error) console.warn(error.reason);
-          },
-      	});
-       	this.setState({disabled: true});
-       	this.setState({open: true});
-	 }
-
-	voteUP() {
-	 	let Id = this.props.message._id;
-
-		Meteor.apply('voteUP', [{
-          Id,
-          }], {
-          onResultReceived: (error, response) => {
-            if (error) console.warn(error.reason);
-          },
-      	});
-       	this.setState({disabledVote: true});
-        this.setState({color: false});
-	}
-
-	voteDOWN() {
-	 	let Id = this.props.message._id;
-
-		Meteor.apply('voteDOWN', [{
-          Id,
-          }], {
-          onResultReceived: (error, response) => {
-            if (error) console.warn(error.reason);
-          },
-      	});
-       	this.setState({disabledVote: true});
-        this.setState({color: false});
-	}
-
-	componentWillMount(){
+    componentWillMount(){
 		//on regarde si l'utilisateur est l'auteur de la réponse
-		let user = this.props.message.userId
-		
-		if(user == Meteor.userId()){
-		this.setState({disabledVote: true}) }
-
-		
-
-
+		let user = this.props.message.userId;
 
 		Meteor.apply('IsModerateur', [{
           }], {
@@ -121,9 +73,9 @@ class ListeReponses extends Component {
 		this.setState({nbrMois: nbrMois})
 
 
-		if(Meteor.userId() && _.include(this.props.message.upvoters, Meteor.userId())){
-       	this.setState({disabledVote: true}); this.setState({color: false})}else{
-       	this.setState({disabledVote: false})
+		if(_.include(this.props.message.upvoters, Meteor.userId()) || user == Meteor.userId()){
+       	this.setState({desactiver: true}); this.setState({color: false})}else{
+       	this.setState({desactiver: false})
    		}
 
    		{
@@ -134,6 +86,51 @@ class ListeReponses extends Component {
 
 
 	}
+
+	signalerReponse() {
+		let Id = this.props.message._id;
+	    Meteor.apply('signalerReponse', [{
+          Id,
+          }], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+          },
+      	});
+       	this.setState({disabled: true});
+       	this.setState({open: true});
+	 }
+
+	voteUP() {
+	 	let Id = this.props.message._id;
+	 	let UserId = this.props.message.userId;
+
+		Meteor.apply('voteUP', [{
+          Id, UserId
+          }], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+          },
+      	});
+       	this.setState({desactiver: true});
+        this.setState({color: false});
+	}
+
+	voteDOWN() {
+	 	let Id = this.props.message._id;
+	 	let UserId = this.props.message.userId;
+	 	
+		Meteor.apply('voteDOWN', [{
+          Id, UserId
+          }], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+          },
+      	});
+       	this.setState({desactiver: true});
+        this.setState({color: false});
+	}
+
+
 
 	show(){
 		confirmAlert({
@@ -227,7 +224,7 @@ class ListeReponses extends Component {
 								<span className="vote">
 									<Button
 									 size="tiny"
-									 disabled={this.state.disabledVote}
+									 disabled={this.state.desactiver}
 									 color='green'
 									 onClick={this.voteUP.bind(this)}
 									 >
@@ -240,7 +237,7 @@ class ListeReponses extends Component {
 								<span className="vote">
 									<Button
 									 size="tiny"
-									 disabled={this.state.disabledVote}
+									 disabled={this.state.desactiver}
 									 color='red'
 									 onClick={this.voteDOWN.bind(this)}
 									 >

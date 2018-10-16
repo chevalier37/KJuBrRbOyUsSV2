@@ -77,21 +77,36 @@ export const voteUP = new ValidatedMethod({
   //vote positif
   name: 'voteUP',
   validate: new SimpleSchema({
-    Id: { type: String }
+    Id: { type: String },
+    UserId: { type: String }
   }).validator(),
 
   applyOptions: {
     noRetry: true,
   },
 
-  run({ Id }) {
+  run({ Id, UserId }) {
       const search = Comments.findOne(Id);
       const nbrvote = search.votes;
       const updatevote = nbrvote + 1;
-
       Comments.update(Id, {
       $set: { votes: updatevote },
       });
+
+      // on ajoute le vote a l'utilisateur
+      const searchUser = Meteor.users.findOne({'_id':UserId});
+      const voteUP = searchUser.voteUP;
+      if(voteUP){
+        const updatevoteUp = voteUP + 1;
+        Meteor.users.update(UserId, {
+        $set: { voteUP: updatevoteUp },
+        });
+      }else{
+        const updatevoteUp = 1;
+        Meteor.users.update(UserId, {
+        $set: { voteUP: updatevoteUp },
+        });
+      }
 
       if (!search)
         throw new Meteor.Error('invalid', 'Post not found');
@@ -113,22 +128,37 @@ export const voteDOWN = new ValidatedMethod({
   //vote négatif
   name: 'voteDOWN',
   validate: new SimpleSchema({
-    Id: { type: String }
+    Id: { type: String },
+    UserId: { type: String }
   }).validator(),
 
   applyOptions: {
     noRetry: true,
   },
 
-  run({ Id }) {
+  run({Id, UserId}) {
       const search = Comments.findOne(Id);
       const nbrvote = search.voteDOWN;
       const updatevote = nbrvote + 1;
-
       Comments.update(Id, {
       $set: { voteDOWN: updatevote },
       });
 
+      // on ajoute le vote a l'utilisateur
+      const searchUser = Meteor.users.findOne({'_id':UserId});
+      const voteDOWN= searchUser.voteDOWN;
+      if(voteDOWN){
+        const updatevoteDOWN = voteDOWN + 1;
+        Meteor.users.update(UserId, {
+        $set: { voteDOWN: updatevoteDOWN },
+        });
+      }else{
+        const updatevoteDOWN = 1;
+        Meteor.users.update(UserId, {
+        $set: { voteDOWN: updatevoteDOWN },
+        });
+      }
+console.log(searchUser)
       if (!search)
         throw new Meteor.Error('invalid', 'Post not found');
       if (_.include(search.upvoters, this.userId))
