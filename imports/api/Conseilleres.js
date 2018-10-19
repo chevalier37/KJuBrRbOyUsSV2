@@ -1,8 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
+import { publishComposite } from 'meteor/reywood:publish-composite';
 
 export const Conseilleres = new Mongo.Collection('conseilleres');
+import { Comments } from './Reponses.js';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { DDPRateLimiter } from 'meteor/ddp-rate-limiter';
 
@@ -25,7 +27,7 @@ export const IsConseiller = new ValidatedMethod({
     noRetry: true,
   },
 
-  run({ id }) {
+  run({id}) {
     const IsConseiller = Conseilleres.find({'user_id':id}).count();
     {IsConseiller>0 ? Istrue = true : Istrue = false}
     return Istrue;
@@ -35,6 +37,101 @@ DDPRateLimiter.addRule({
     type: "method",
     name: "IsConseiller",
 }, requestLimit, requestTimeout);
+
+
+
+export const loginConseiller = new ValidatedMethod({
+  //on met à jour la table conseiller si l'utilisateur se connecte
+  name: 'loginConseiller',
+  validate: new SimpleSchema({
+  id: { type: String }
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({id}) {
+    const IsConseiller = Conseilleres.find({'user_id':id}).count();
+    {IsConseiller>0 ? Istrue = true : Istrue = false}
+    if (Istrue) {
+      if(IsConseiller){
+        Conseilleres.update({user_id:id}, {
+        $set: { online: true},
+        })
+      }
+  }
+  }
+});
+DDPRateLimiter.addRule({
+    type: "method",
+    name: "loginConseiller",
+}, requestLimit, requestTimeout);
+
+
+
+export const logoutConseiller = new ValidatedMethod({
+  //on met à jour la table conseiller si l'utilisateur se connecte
+  name: 'logoutConseiller',
+  validate: new SimpleSchema({
+  id: { type: String }
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({id}) {
+    const IsConseiller = Conseilleres.find({'user_id':id}).count();
+    {IsConseiller>0 ? Istrue = true : Istrue = false}
+    if (Istrue) {
+      if(IsConseiller){
+        Conseilleres.update({user_id:id}, {
+        $set: { online: false},
+        })
+      }/*else{
+       Conseilleres.insert({online:true});
+    }*/
+  }
+  }
+});
+DDPRateLimiter.addRule({
+    type: "method",
+    name: "logoutConseiller",
+}, requestLimit, requestTimeout);
+
+
+export const verifConseiller = new ValidatedMethod({
+  //on verifie si l'utilisateur peut devenir conseiller
+  name: 'verifConseiller',
+  validate: new SimpleSchema({
+    id: { type: String }
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({ id }) {
+    const search = Meteor.users.findOne({'_id':id});
+    const voteUP = search.voteUP;
+    const voteDOWN = search.voteDOWN;
+    const ratio = (voteUP / (voteUP+voteDOWN))*100;
+
+    const NBRaide = Comments.find({'userId':id}).count();
+
+    if(ratio > 85 && NBRaide >= 50){
+      return true;
+    }else{
+      return false
+    }
+  }
+});
+DDPRateLimiter.addRule({
+    type: "method",
+    name: "verifConseiller",
+}, requestLimit, requestTimeout);
+
 
 
 Meteor.methods({
@@ -1112,7 +1209,7 @@ Meteor.methods({
             if(IsConseiller){
              Conseilleres.update({user_id:this.userId}, {
               $set: { presentation: presentation},
-              }) && console.log(IsConseiller)
+              }) 
            }else{
              Conseilleres.insert({
                   user_id: this.userId,
@@ -1128,26 +1225,35 @@ Meteor.methods({
                     $set: { "conseiller": true,},
                     })
                 }
-             
       },
 
 
-      AllConseillers: function() {
+      /*AllConseillers: function() {
           let allConseiler = Meteor.users.find({'conseiller':true, 'status.online':true}).fetch();
           return allConseiler;
-      },
+      },*/
 
 });
 
-Meteor.publish('AllConseiller', function () {
-
-  return Conseilleres.find();
+publishComposite('AllConseillers', {
+    find() {
+        let allConseiller = Conseilleres.find(
+          {'online':true},{limit:30} 
+          );      
+  return allConseiller;
+    }/*,
+    children: [
+        {   collectionName: "relatedArticles1",
+            find(post) {
+                return Conseilleres.find(
+                    { 'user_id': post._id },
+                    { fields: { gender: 1, separation:1 } });
+            }
+        }
+        
+    ]*/
 });
 
-Meteor.publish('ConseillerOnline', function () {
-
-  return Conseilleres.find({'Online':true});
-});
 
 Meteor.publish('IsConseiller', function (id) {
   new SimpleSchema({

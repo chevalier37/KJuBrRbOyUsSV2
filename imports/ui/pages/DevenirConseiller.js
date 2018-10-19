@@ -19,7 +19,6 @@ class DevenirConseiller extends Component {
     state = { visible: false }
 
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
-
     handleSidebarHide = () => this.setState({ visible: false })
 
     /*componentWillMount(){
@@ -27,15 +26,9 @@ class DevenirConseiller extends Component {
 
     render() {
     const { visible } = this.state
-    /*if (!Meteor.loggingIn() && !Meteor.userId()){
+    if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
-    const naissance = this.props.naissance;
-    const typeNaissance = typeof naissance;
-     if (typeNaissance == 'string'){
-     }else if (typeNaissance !== 'object'){
-      return <Redirect to="/MiseAjourNaissance" />;
-    }*/
     
     return (
       <div className="container">
@@ -97,13 +90,6 @@ class DevenirConseiller extends Component {
 }
 
 export default withTracker(() => {
-  /*const id = Meteor.userId();
-  const Handle = Meteor.subscribe('user', id);
-  const loading = !Handle.ready();
-  const allreponses = Meteor.users.find({_id:id});
-  const reponseExists = !loading && !!allreponses;*/
-
   return {
-    /*naissance: reponseExists ? allreponses.fetch() : '',*/
   };
 })(DevenirConseiller);

@@ -1424,37 +1424,38 @@ class ProfilContent extends Component {
               	 			/>
               	 		</div>
 
-	              	 	{/*<div className={this.props.id == Meteor.userId() ? "UpdateNaissance" : 'none'}>
-		              	 	<Link to={'/MiseAjourNaissance/'}>
-		              	 		<Button>Date de naissance</Button>
-		              	 	</Link>
-	              	 	</div>*/}
-
               	 		<div className={this.props.profile.note>=1 && this.props.profile.note<2 ? "visiblenote" : "none"}>
 							<Rating icon='heart'
 		              			defaultRating={1}
-		              			maxRating={4}
+		              			maxRating={5}
 		              			disabled
               	 			/>
               	 		</div>
               	 		<div className={this.props.profile.note>=2 && this.props.profile.note<3 ? "visiblenote" : "none"}>
 							<Rating icon='heart'
 		              			defaultRating={2}
-		              			maxRating={4}
+		              			maxRating={5}
 		              			disabled
               	 			/>
               	 		</div>
               	 		<div className={this.props.profile.note>=3 && this.props.profile.note<4 ? "visiblenote" : "none"}>
 							<Rating icon='heart'
 		              			defaultRating={3}
-		              			maxRating={4}
+		              			maxRating={5}
 		              			disabled
               	 			/>
               	 		</div>
               	 		<div className={this.props.profile.note>=4 && this.props.profile.note<5 ? "visiblenote" : "none"}>
 							<Rating icon='heart'
 		              			defaultRating={4}
-		              			maxRating={4}
+		              			maxRating={5}
+		              			disabled
+              	 			/>
+              	 		</div>
+              	 		<div className={this.props.profile.note>=5 && this.props.profile.note<6 ? "visiblenote" : "none"}>
+							<Rating icon='heart'
+		              			defaultRating={5}
+		              			maxRating={5}
 		              			disabled
               	 			/>
               	 		</div>

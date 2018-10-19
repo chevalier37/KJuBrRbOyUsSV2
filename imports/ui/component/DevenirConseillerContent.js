@@ -98,20 +98,23 @@ export default class DevenirConseillerContent extends Component {
 	      erreurHarcelement:false,
 	      erreurDiscrimination:false,
 	      erreurViolence:false,
+
+	      verifConseiller:false,
 	   }
 
 	   componentWillMount(){
-		   	Meteor.apply(
-		   		'IsConseillerHeader',
-		   		[{}],
+	   	const id = Meteor.userId();
+		   	Meteor.apply(//on verifie si l'utilisateur peut devenir conseiller
+		   		'verifConseiller',
+		   		[{id}],
 		   		{
 		        onResultReceived: (error, response) => {
-		            if (error) console.warn(error.reason);
-		            {
-		            response ?  
-		             this.setState({IsConseiller:true}) :
-		             this.setState({usernameExiste: 'visible'})}
-			         },
+	            if (error) console.warn(error.reason);
+	            {
+	            response == true ?  
+	             this.setState({verifConseiller:true}) :
+	             ""}
+			   },
 		    })
 	    }
 
@@ -983,12 +986,24 @@ export default class DevenirConseillerContent extends Component {
 
 		return (
 			<div className="MainContent">
-				<div className={this.state.IsConseiller ? '' : 'none'}>
+				<div className={!this.state.verifConseiller ? '' : 'none'}>
 					<Segment>
-						Tu es déjà conseiller.
+						<Header>
+							Devenir conseiller
+						</Header>
+					<Divider />
+					<div className="expliqConseiller">
+							Tu ne peux pas encore devenir conseiller.<br /><br />
+							Pour devenir conseiller il faut : <br />
+							- Aider au moins 50 personnes <br />
+							- Avoir un taux de vote positif supérieur à 85% <br /><br />
+
+							Tu peux également <strong>devenir modérateur </strong>en rejoignant l'association Kurbys.<br />
+							Pour t'inscrire, il te suffit d'aller sur ton profil puis dans la rubrique "devenir modérateur"
+					</div>
 					</Segment>
 				</div>
-				<div className={this.state.IsConseiller ? 'none' : ''}>
+				<div className={!this.state.verifConseiller ? 'none' : ''}>
 				<Segment className="MainContent">
 					<Header>
 					Devenir conseiller

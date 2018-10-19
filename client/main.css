@@ -609,6 +609,13 @@ header {
 	font-weight: bold;
 }
 
+.categorieConseiller{
+	display: inline-block;
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: 14px;
+}
+
 .categorieArticles{
 	display: inline-block;
 	margin-left: 10px;
@@ -747,6 +754,11 @@ header {
 
 .visiblenote{
 	display: block;
+}
+
+.coeur{
+	float: right;
+    margin-top: -25px;
 }
 
 .visibleTitre{
@@ -1358,6 +1370,7 @@ header {
 .FaireDon{
 	display: inline-block;
 	margin-right: 10px;
+	margin-top: 5px;
 }
 
 .bloquerRed{
@@ -1971,6 +1984,10 @@ header {
 	margin-right: 15px;
 }
 
+.expliqConseiller{
+	font-size: 16px;
+}
+
 .SingeMessagView{
 	margin-top: 50px;
 }
@@ -1978,6 +1995,7 @@ header {
 .pushable>.pusher{
 	background-color: #e9ebee !important;
 }
+
 
 .deleteContact{
 	color: red;

@@ -27,17 +27,18 @@ class chat extends Component {
           update:false,
           gender:'',
           bloquer:false,
+          IsConseiller:false,
         };
     }
 
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
-
     handleSidebarHide = () => this.setState({ visible: false })
 
     componentWillMount(){
-       const from_id = this.props.match.params.id
+       const id = this.props.match.params.id;
+
         Meteor.apply('isContactBloquer', [{
-            from_id
+            id
             }], {
             onResultReceived: (error, response) => {
               if (error) console.warn(error.reason);
@@ -45,7 +46,6 @@ class chat extends Component {
                this.setState({bloquer: true}) :
                this.setState({bloquer: false})}
               },
-
         })
     }
 
@@ -67,9 +67,9 @@ class chat extends Component {
 
     componentWillReceiveProps(){
          this.setState({update: false})
-         const from_id = this.props.match.params.id
+         const id = this.props.match.params.id
           Meteor.apply('isContactBloquer', [{
-            from_id
+            id
             }], {
             onResultReceived: (error, response) => {
               if (error) console.warn(error.reason);
@@ -77,8 +77,21 @@ class chat extends Component {
                this.setState({bloquer: true}) :
                this.setState({bloquer: false})}
               },
+        }),
 
-        })
+        Meteor.apply(
+            'IsConseiller',
+            [{id}],
+            {
+              onResultReceived: (error, response) => {
+                if (error) console.warn(error.reason);
+                console.log(response)
+                {
+                response ?  
+                 this.setState({IsConseiller:true}) :
+                 this.setState({IsConseiller:false})}
+           },
+          })
     }
 
     bloquer(){
@@ -186,7 +199,7 @@ class chat extends Component {
                   <div className="ChatAge">  
                       {this.state.naissance} ans
                   </div>
-                  <div className={this.state.bloquer ? "none" : "recommmander"}>
+                  <div className={!this.state.IsConseiller ? "none" : "recommmander"}>
                       <Link to={'/Recommander/' + this.props.match.params.id}>    
                         <Button
                          basic

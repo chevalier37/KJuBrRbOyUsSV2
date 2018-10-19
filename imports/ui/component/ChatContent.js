@@ -12,7 +12,7 @@ export default class ChatContent extends Component {
 		      date:'',
 		      messageDate:'',
 		      read:false,
-		      gauche:''
+		      gauche:'',
 		    };
 		}
 	

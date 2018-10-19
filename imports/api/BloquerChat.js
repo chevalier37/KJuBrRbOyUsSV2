@@ -8,10 +8,6 @@ export let BloquerChat = new Mongo.Collection('BloquerChat');
 
 if (Meteor.isServer) {
 
-/*Meteor.startup(function () {  
-  Favoris._ensureIndex({ "from_id": 1});
-});*/
-
 Meteor.methods({
 
       bloquerChat: function(to_id) {
@@ -31,8 +27,8 @@ Meteor.methods({
                 });      
        },
 
-       isContactBloquer: function(from_id) {
-                const Isbloquer = BloquerChat.find({from_id:this.userId, to_id:from_id.from_id}).count();
+       isContactBloquer: function(id) {
+                const Isbloquer = BloquerChat.find({from_id:this.userId, to_id:id.from_id}).count();
                 {Isbloquer >=1 ? Istrue = true : Istrue = false}
                 return Istrue;
              }, 

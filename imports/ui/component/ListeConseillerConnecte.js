@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Segment, Button, Header, Divider, Label, Comment, Rating } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
+import Img from 'react-image'
 
 class ListeConseillerConnecte extends Component {
 	
@@ -13,7 +14,34 @@ class ListeConseillerConnecte extends Component {
 		      	sexe: '',
 			    disabled:false,
 			    disabledVote:false,
-			    premierAmour:false,
+			    premierAmour:" ",
+			    trahison:'',
+			    Friendzone:'',
+			    amourdistance:'',
+			    separation:'',
+			    timidite:'',
+			    depression:'',
+			    suicide:'',
+			    deces:'',
+			    mutilation:'',
+			    premierfois:'',
+			    Contraception:'',
+			    mst:'',
+			    viol:'',
+			    avortement:'',
+			    orientationSex:'',
+			    Anorexie:'',
+			    obesite:'',
+			    drogue:'',
+			    alcool:'',
+			    complexe:'',
+			    hopital:'',
+			    handicap:'',
+			    Accident:'',
+			    echecEcole:'',
+			    Harcelement:'',
+			    Discrimination:'',
+			    Violence:'',
 		    };
 		}
 
@@ -36,9 +64,9 @@ class ListeConseillerConnecte extends Component {
 		}
 
 		//On affiche les catégories
-		/*const premierAmour = this.props.message.premierAmour;
+		const premierAmour = this.props.message.premierAmour;
 		{ premierAmour ? 
-		  this.setState({premierAmour: true }) : ''
+		  this.setState({premierAmour:'Premier amour' }) : ''
 		}
 
 		const trahison = this.props.message.trahison;
@@ -174,7 +202,11 @@ class ListeConseillerConnecte extends Component {
 		const Violence = this.props.message.Violence;
 		{ Violence ? 
 		  this.setState({Violence: 'Violence '}) : ''
-		}*/
+		}
+
+		if(this.state.premierAmour){
+			this.setState({Amour: true})
+		}
 	}
 
 	breaklines(){
@@ -193,31 +225,199 @@ class ListeConseillerConnecte extends Component {
 			<div className="ListeMessages">
 		  		<Segment color={this.props.gender == "fille" ?
 	        				  "pink" : "blue" }>
-		  			<p className="ContentQuestion">
+		  			<div className="ContentQuestion">
 		  				<div className={this.props.gender == "fille" ?
 	        				  "titreMessageFille" : "titreMessageGarcon"
 	        				}>
-	        				<div className={"PointOnlineConseiller"}>
-								{/*<FaPoint />*/}
+	        				<div className="PointOnlineConseiller">
+								<Img className="online" src="/circle.svg"/>
 							</div>
-				  			{/*<Link to={'/profil/' + this.props.id}>*/}
 				  				{this.props.message.username} 
-				  			{/*</Link>*/}
 			  			</div>
+
+			  			<div className={this.props.message.note<1 ? "coeur" : "none"}>
+							<Rating icon='heart'
+		              			defaultRating={0}
+		              			maxRating={5}
+		              			disabled
+              	 			/>
+              	 		</div>
+
+              	 		<div className={this.props.message.note>=1 && this.props.message.note<2 ? "coeur" : "none"}>
+							<Rating icon='heart'
+		              			defaultRating={1}
+		              			maxRating={5}
+		              			disabled
+              	 			/>
+              	 		</div>
+              	 		<div className={this.props.message.note>=2 && this.props.message.note<3 ? "coeur" : "none"}>
+							<Rating icon='heart'
+		              			defaultRating={2}
+		              			maxRating={5}
+		              			disabled
+              	 			/>
+              	 		</div>
+              	 		<div className={this.props.message.note>=3 && this.props.message.note<4 ? "coeur" : "none"}>
+							<Rating icon='heart'
+		              			defaultRating={3}
+		              			maxRating={5}
+		              			disabled
+              	 			/>
+              	 		</div>
+              	 		<div className={this.props.message.note>=4 && this.props.message.note<5 ? "coeur" : "none"}>
+							<Rating icon='heart'
+		              			defaultRating={4}
+		              			maxRating={5}
+		              			disabled
+              	 			/>
+              	 		</div>
+              	 		<div className={this.props.message.note>=5 && this.props.message.note<6 ? "coeur" : "none"}>
+							<Rating icon='heart'
+		              			defaultRating={5}
+		              			maxRating={5}
+		              			disabled
+              	 			/>
+              	 		</div>
+
+			  			<div className="presentationConseiller">
+			  			{this.props.message.presentation} 
+			  			</div>
+
+			  			<div className="categorieConseiller">
+							
+							{ this.state.premierAmour ? 
+							<span className="espace">{this.state.premierAmour} </span>
+							 : "" }
+							
+							{ this.state.trahison ? 
+							<span className="espace">{this.state.trahison} </span>
+							 : "" } 
+
+							{ this.state.Friendzone ? 
+							<span className="espace">{this.state.Friendzone} </span>
+							 : "" }
+
+							{ this.state.amourdistance ? 
+							<span className="espace">{this.state.amourdistance} </span>
+							 : "" }
+
+							{ this.state.separation ? 
+							<span className="espace">{this.state.separation} </span>
+							 : "" }
+
+							{ this.state.timidite ? 
+							<span className="espace">{this.state.timidite} </span>
+							 : "" }
+
+							{ this.state.depression ? 
+							<span className="espace">{this.state.depression} </span>
+							 : "" }
+
+							{ this.state.suicide ? 
+							<span className="espace">{this.state.suicide} </span>
+							 : "" }
+
+							{ this.state.deces ? 
+							<span className="espace">{this.state.deces} </span>
+							 : "" }
+
+							{ this.state.mutilation ? 
+							<span className="espace">{this.state.mutilation} </span>
+							 : "" }
+
+							{ this.state.premierAmour ? 
+							<span className="espace">{this.state.premierfois} </span>
+							 : "" }
+
+							{ this.state.Contraception ? 
+							<span className="espace">{this.state.Contraception} </span>
+							 : "" }
+
+							{ this.state.mst ? 
+							<span className="espace">{this.state.mst} </span>
+							 : "" }
+
+							{ this.state.viol ? 
+							<span className="espace">{this.state.viol} </span>
+							 : "" }
+
+							{ this.state.premierAmour ? 
+							<span className="espace">{this.state.avortement}</span>
+							 : "" }
+
+							{ this.state.orientationSex ? 
+							<span className="espace">{this.state.orientationSex} </span>
+							 : "" }
+
+							{ this.state.Anorexie ? 
+							<span className="espace">{this.state.Anorexie} </span>
+							 : "" }
+
+							{ this.state.obesite ? 
+							<span className="espace">{this.state.obesite} </span>
+							 : "" }
+
+							{ this.state.drogue ? 
+							<span className="espace">{this.state.drogue} </span>
+							 : "" }
+
+							{ this.state.alcool ? 
+							<span className="espace">{this.state.alcool} </span>
+							 : "" }
+
+							{ this.state.complexe ? 
+							<span className="espace">{this.state.complexe} </span>
+							 : "" }
+
+							{ this.state.hopital ? 
+							<span className="espace">{this.state.hopital} </span>
+							 : "" }
+
+							{ this.state.handicap ? 
+							<span className="espace">{this.state.handicap}</span>
+							 : "" }
+
+							{ this.state.Accident ? 
+							<span className="espace">{this.state.Accident}</span>
+							 : "" }
+
+							{ this.state.echecEcole ? 
+							<span className="espace">{this.state.echecEcole} </span>
+							 : "" }
+
+							{ this.state.Harcelement ? 
+							<span className="espace">{this.state.Harcelement} </span>
+							 : "" }
+
+							{ this.state.Discrimination ? 
+							<span className="espace">{this.state.Discrimination} </span>
+							 : "" }
+
+							{ this.state.Violence ? 
+							<span className="espace">{this.state.Violence} </span>
+							 : "" }
+
+							{ this.state.autre ? 
+							<span className="espace">{this.state.autre} </span>
+ 							: "" }				
+						</div>
+
+
+
 			  			<div className="ageAuthorReponse">
 	        				<div className="ageConseiller">{age} ans</div>
 	        				<Button size="tiny"  color='blue'>
-										<Link to={'/VisiteProfil/' + this.props.message._id }>
+										<Link to={'/VisiteProfil/' + this.props.message.user_id }>
 										Profil
 										</Link>
 							</Button>
 	        				<Button size="tiny"  color='green'>
-										<Link to={'/Chat/' + this.props.message._id }>
+										<Link to={'/Chat/' + this.props.message.user_id }>
 										Contacter
 										</Link>
 							</Button>
 	        			</div>
-		  			</p>
+		  			</div>
 		  			    
 	  			</Segment>
 			</div>

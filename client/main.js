@@ -10,4 +10,19 @@ import './main.html';
 
 Meteor.startup(() => {
   render(renderRoutes(), document.getElementById('render-target'));
+	$(window).bind('beforeunload', function() {
+	  		const id = Meteor.userId();
+	  		Meteor.apply('logoutConseiller',
+	  		 [{
+	  		 	id
+	          }], {
+	          onResultReceived: (error, response) => {
+	            if (error) console.warn(error.reason);
+	            },
+	    	});
+	        return undefined;
+	    });
 });
+
+
+

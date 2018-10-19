@@ -53,14 +53,17 @@ class HeaderPage extends Component {
 	      poster:false,
 	      open:false,
 	      username:"",
-	      redirectBloquer:false
-
+	      redirectBloquer:false,
+	      IsConseiller:false,
 	    };
 	}
 
+
+
 	componentWillMount(){
 		let id = Meteor.userId();
-  		Meteor.apply('Username', [{
+
+		Meteor.apply('Username', [{
           id,
           }], {
           onResultReceived: (error, response) => {
@@ -75,7 +78,6 @@ class HeaderPage extends Component {
           }], {
           onResultReceived: (error, response) => {
             if (error) console.warn(error.reason);
-
             {
             response > 2 ?
              this.setState({redirectBloquer: true})
@@ -83,8 +85,21 @@ class HeaderPage extends Component {
              ""
             }
             },
-    	})
+    	});
 
+    	Meteor.apply(
+	   		'IsConseiller',
+	   		[{id}],
+	   		{
+	        onResultReceived: (error, response) => {
+	           if (error) console.warn(error.reason);
+	           {
+	            response ?  
+	             this.setState({IsConseiller:true}) :
+	             ""
+		       }
+		    },
+		});
   	}
 
 	 categorie(event) {
@@ -467,6 +482,20 @@ class HeaderPage extends Component {
 	    });
   	}
 
+  	loginConseiller(){
+  		const id = Meteor.userId();
+  		Meteor.apply('loginConseiller',
+  		 [{
+  		 	id
+          }], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            },
+    	});
+  	}
+
+  	
+
   	render() {
 
   		const { visible } = this.state
@@ -478,6 +507,14 @@ class HeaderPage extends Component {
   		
   		if (redirectBloquer){
       	return <Redirect to="/compteBloquer" />;
+    	}
+
+    	if(Meteor.userId()){
+    		this.loginConseiller()
+    	}
+
+    	if(!Meteor.userId()){
+    		this.logoutonseiller()
     	}
 
 	return (
@@ -503,7 +540,7 @@ class HeaderPage extends Component {
 							 <Img className="iconHeader" src="/advisor.svg"/>
 						</Link>
 					</div>
-					<div className="ButtonHeader">
+					<div className={this.state.IsConseiller ? "none" : "ButtonHeader"}>
 						<Link to="/DevenirConseiller" >
 							 <Img className="iconHeader" src="/new.svg"/>
 						</Link>
