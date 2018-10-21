@@ -3,59 +3,33 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
-import { Sidebar, Segment, Button, Header, Menu } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Header, Menu} from 'semantic-ui-react'
 import Img from 'react-image'
 import { Route, Redirect } from 'react-router';
-
+ 
 //Component
 import HeaderPage from '../component/HeaderPage.js';
 import FooterMobile from '../component/FooterMobile.js';
-import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
-import RecommanderContent from '../component/RecommanderContent.js';
+import ContentModifierRecommandations from '../component/ContentModifierRecommandations.js';
 
-import { Notifications } from '../../api/Notifications.js';
+class ModifierRecommandation extends Component {
 
-class recommander extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-          visible: false,
-          username:'',
-          gender:'',
-
-        }
-    }
+    state = { visible: false }
 
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
     handleSidebarHide = () => this.setState({ visible: false })
 
-    componentDidMount() {
-        this.scrollToTop();
-    }
 
-    componentDidUpdate() {
-        this.scrollToTop();
-    }
-
-    scrollToTop() {
-        this.el.scrollIntoView();
-    }
-
-  
     render() {
-    
-    const { visible } = this.state 
-
+    const { visible } = this.state  
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
     
     return (
       <div className="container">
-      <div ref={el => { this.el = el; }} ></div>
-        <header> 
+      <header> 
           {/* Header site*/}
           <div className="containerHeader ecran">
             <div className="headerPage">
@@ -83,8 +57,8 @@ class recommander extends Component {
           </div>
         </header>
        
-        <div>
-          <Sidebar.Pushable as={Segment}>
+          <div>
+          <Sidebar.Pushable >
             <Sidebar
               as={Menu}
               animation='overlay'
@@ -99,29 +73,20 @@ class recommander extends Component {
             </Sidebar>
 
             <Sidebar.Pusher>
-             <div className="containerSite" onClick={this.toggleHidden}>
-             <div className="containerIMG">
-                      <div className="MainContent">                      
-                         <RecommanderContent id={this.props.match.params.id} /> 
-                      </div>    
-                </div>
-                </div> 
+                <ContentModifierRecommandations post_id={this.props.match.params.id} />  
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>
 
-        <div className="FooterMobile mobile">
-              <FooterMobile />
+          <div className="FooterMobile mobile">
+                <FooterMobile />
+          </div>
         </div>
-      </div>
     );
   }
 }
 
-export default recommander =  withTracker(() => {
-  
-
-  return {
-
+export default withTracker(() => {
+  return {  
   };
-})(recommander);
+})(ModifierRecommandation);

@@ -111,7 +111,7 @@ export const ResetPassword = new ValidatedMethod({
     if (isExiste > 0 ){
     search = Meteor.users.findOne({'username':pseudo}),
     newPassword = password,
-    Accounts.setPassword(search._id, newPassword);
+    Accounts.setPassword(search._id, newPassword, {logout:false});
     return search;
     }
   }

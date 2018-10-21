@@ -26,6 +26,8 @@ import CGUProfil from '../component/CGUProfil.js';
 import PasswordProfil from '../component/PasswordProfil.js';
 import SupprimerCompte from '../component/SupprimerCompte.js';
 import Deconnexion from '../component/deconnexion.js';
+import Notifications from '../component/Notifications.js';
+import Livre from '../component/Livre.js';
 
 const panes = [
   { menuItem: 'Profil', render: () => <Tab.Pane><ProfilContent /></Tab.Pane> },
@@ -33,12 +35,12 @@ const panes = [
   { menuItem: 'Mes conseils', render: () => <Tab.Pane><ContentSuiviConseil  />  </Tab.Pane> },
   { menuItem: 'Recommandations reçues', render: () => <Tab.Pane><ContentRecommandations  /></Tab.Pane> },
   { menuItem: 'Recommandations données', render: () => <Tab.Pane><ContentRecommandationsDonner  /></Tab.Pane> },
-  { menuItem: 'Notifications', render: () => <Tab.Pane>Notifications</Tab.Pane> },
+  { menuItem: 'Notifications', render: () => <Tab.Pane><Notifications  /></Tab.Pane> },
   { menuItem: 'Devenir modérateur', render: () => <Tab.Pane><DevenirModerateur  /></Tab.Pane> },
   { menuItem: 'Numéros utiles', render: () => <Tab.Pane><NumerosUtiles  /></Tab.Pane> },
   { menuItem: 'Signaler bug', render: () => <Tab.Pane><SignalerBug  /></Tab.Pane> },
   { menuItem: 'Mot de passe', render: () => <Tab.Pane><PasswordProfil  /></Tab.Pane> },
-  { menuItem: 'Le secret de Cendrillon', render: () => <Tab.Pane>Le secret de Cendrillon</Tab.Pane> },
+  { menuItem: 'Le secret de Cendrillon', render: () => <Tab.Pane><Livre  /></Tab.Pane> },
   { menuItem: '5 Commandements', render: () => <Tab.Pane><Commandements  /></Tab.Pane> },
   { menuItem: 'C.G.U', render: () => <Tab.Pane><CGUProfil  /></Tab.Pane> },
   { menuItem: 'Nous contacter', render: () => <Tab.Pane><NousContacter  /></Tab.Pane> },
@@ -60,15 +62,9 @@ class Home extends Component {
 
     render() {
     const { visible } = this.state
-    /*if (!Meteor.loggingIn() && !Meteor.userId()){
+    if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
-    const naissance = this.props.naissance;
-    const typeNaissance = typeof naissance;
-     if (typeNaissance == 'string'){
-     }else if (typeNaissance !== 'object'){
-      return <Redirect to="/MiseAjourNaissance" />;
-    }*/
     
     return (
       <div className="container">
@@ -134,13 +130,8 @@ class Home extends Component {
 }
 
 export default withTracker(() => {
-  /*const id = Meteor.userId();
-  const Handle = Meteor.subscribe('user', id);
-  const loading = !Handle.ready();
-  const allreponses = Meteor.users.find({_id:id});
-  const reponseExists = !loading && !!allreponses;*/
 
   return {
-    /*naissance: reponseExists ? allreponses.fetch() : '',*/
+
   };
 })(Home);

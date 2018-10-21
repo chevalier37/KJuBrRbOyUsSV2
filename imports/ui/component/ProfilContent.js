@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Segment, Button, Form, Header, TextArea, Message, Divider, Rating, Input, Label} from 'semantic-ui-react'
+import { Segment, Button, Form, Header, TextArea, Message, Divider, Rating, Input, Label, Confirm} from 'semantic-ui-react'
 import { Link, Redirect } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -11,6 +11,7 @@ import { Recommandations } from '../../api/Recommandations.js';
 class ProfilContent extends Component {
 
 	  state = {
+	  		open:false,
 		    username:'',
 		    gender:'',
 		    errorCommentaire: false,
@@ -180,7 +181,17 @@ class ProfilContent extends Component {
 	  	  
 	   }
 
-	   handleRate = (e, { rating, maxRating }) => this.setState({ rating, maxRating })
+	    handleRate = (e, { rating, maxRating }) => this.setState({ rating, maxRating })
+	   	show = () => this.setState({ open: true })
+		handleCancel = () => this.setState({ open: false })
+		handleConfirm = () => (
+			this.setState({ open: false }),
+			Meteor.apply('supprimerConseiller', [{}], {
+		          onResultReceived: (error, response) => {
+		            if (error) console.warn(error.reason);             	              
+		            },
+		    })
+		)
 
 	   nbrRecommandations(){
 			const nbrRecommandations = this.props.Recommandations;
@@ -1320,7 +1331,6 @@ class ProfilContent extends Component {
 			else {return "Il y a " + nbrMois +" mois" }
 		}
 
-
   render() {
 			const { activeIndex } = this.state;
 			const myId = Meteor.userId();
@@ -1415,69 +1425,78 @@ class ProfilContent extends Component {
 						<Header>
 						Profil <div className={this.props.profile.gender} >{this.props.user.username} </div>
 						<div className="AgeProfil">{age} ans</div>
+						
+						<div className={this.state.IsConseiller ? 'VisibleAjouter' : 'none'}>
+								<div className={this.props.profile.note<1 ? "visiblenote" : "none"}>
+									<Rating icon='heart'
+				              			defaultRating={0}
+				              			maxRating={4}
+				              			disabled
+		              	 			/>
+		              	 		</div>
 
-						<div className={this.props.profile.note<1 ? "visiblenote" : "none"}>
-							<Rating icon='heart'
-		              			defaultRating={0}
-		              			maxRating={4}
-		              			disabled
-              	 			/>
-              	 		</div>
-
-              	 		<div className={this.props.profile.note>=1 && this.props.profile.note<2 ? "visiblenote" : "none"}>
-							<Rating icon='heart'
-		              			defaultRating={1}
-		              			maxRating={5}
-		              			disabled
-              	 			/>
-              	 		</div>
-              	 		<div className={this.props.profile.note>=2 && this.props.profile.note<3 ? "visiblenote" : "none"}>
-							<Rating icon='heart'
-		              			defaultRating={2}
-		              			maxRating={5}
-		              			disabled
-              	 			/>
-              	 		</div>
-              	 		<div className={this.props.profile.note>=3 && this.props.profile.note<4 ? "visiblenote" : "none"}>
-							<Rating icon='heart'
-		              			defaultRating={3}
-		              			maxRating={5}
-		              			disabled
-              	 			/>
-              	 		</div>
-              	 		<div className={this.props.profile.note>=4 && this.props.profile.note<5 ? "visiblenote" : "none"}>
-							<Rating icon='heart'
-		              			defaultRating={4}
-		              			maxRating={5}
-		              			disabled
-              	 			/>
-              	 		</div>
-              	 		<div className={this.props.profile.note>=5 && this.props.profile.note<6 ? "visiblenote" : "none"}>
-							<Rating icon='heart'
-		              			defaultRating={5}
-		              			maxRating={5}
-		              			disabled
-              	 			/>
-              	 		</div>
-              	 		<div className="LastConnectionProfil">
-	              	 		<div className={"PointOnline" + " " + this.connection()}>
-								{/*<FaPoint />*/}
+		              	 		<div className={this.props.profile.note>=1 && this.props.profile.note<2 ? "visiblenote" : "none"}>
+									<Rating icon='heart'
+				              			defaultRating={1}
+				              			maxRating={5}
+				              			disabled
+		              	 			/>
+		              	 		</div>
+		              	 		<div className={this.props.profile.note>=2 && this.props.profile.note<3 ? "visiblenote" : "none"}>
+									<Rating icon='heart'
+				              			defaultRating={2}
+				              			maxRating={5}
+				              			disabled
+		              	 			/>
+		              	 		</div>
+		              	 		<div className={this.props.profile.note>=3 && this.props.profile.note<4 ? "visiblenote" : "none"}>
+									<Rating icon='heart'
+				              			defaultRating={3}
+				              			maxRating={5}
+				              			disabled
+		              	 			/>
+		              	 		</div>
+		              	 		<div className={this.props.profile.note>=4 && this.props.profile.note<5 ? "visiblenote" : "none"}>
+									<Rating icon='heart'
+				              			defaultRating={4}
+				              			maxRating={5}
+				              			disabled
+		              	 			/>
+		              	 		</div>
+		              	 		<div className={this.props.profile.note>=5 && this.props.profile.note<6 ? "visiblenote" : "none"}>
+									<Rating icon='heart'
+				              			defaultRating={5}
+				              			maxRating={5}
+				              			disabled
+		              	 			/>
+		              	 		</div>
+		              	 		{/*<div className="LastConnectionProfil">
+			              	 		<div className={"PointOnline" + " " + this.connection()}>
+										<FaPoint />
+									</div>
+		              	 			{this.connectionText()}
+		              	 		</div>*/}
 							</div>
-              	 			{this.connectionText()}
-              	 		</div>
-
-						<div className={"ButtonProfil" +
-										 " " +
-										this.props.NotIdProfile
-										}
-						>
-
+						<div className={this.state.IsConseiller ? 'supprimerConseiller' : 'none'}>
+							<Button color='orange' size='mini' onClick={this.show}>
+					    		 	Ne plus être conseiller
+				    		</Button>
+				    		<Confirm
+					          open={this.state.open}
+					          cancelButton='Annuler'
+					          confirmButton="Confirmer"
+					          onCancel={this.handleCancel}
+					          onConfirm={this.handleConfirm}
+					          content='Etes-vous sûr de ne plus être conseiller ?'
+					        />
 						</div>
+
+						<div className={"ButtonProfil" + " " +this.props.NotIdProfile}></div>
 
 						</Header>
 				
 					<Divider />
-				<div className={this.state.IsConseiller ? 'VisibleAjouter' : 'none'}>
+				<div className={this.state.IsConseiller ? 'VisibleConseillerProfil' : 'none'}>
 					<Segment >
 			  			<Label attached='top'  basic color='blue' className="headerProfil">
 			  			<div className="titreProfil">Présentation</div>

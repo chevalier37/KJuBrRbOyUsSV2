@@ -30,7 +30,8 @@ class SignalerBug extends Component {
           <div className="ListeMesMessages">
             <div className="register blanc">
                 <div className="numero">
-                    Tu as remarqué un bug ?
+                    Tu as remarqué un bug ?<br />
+                    Merci de contacter <Link to={'/Chat/oANNC3P9SpQ5Fw8Qg'} >Caroline </Link> pour le signaler.
                     </div>
                 </div>
           </div>

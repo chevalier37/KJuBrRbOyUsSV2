@@ -744,7 +744,6 @@ header {
 
 .visibleConseiller{
 	display: block;
-	
 }
 
 .visibleCategorie{
@@ -761,8 +760,14 @@ header {
     margin-top: -25px;
 }
 
+.visibleTitreSignalé{
+	color: red;
+	font-size: 16px;
+}
+
 .visibleTitre{
 	color: black;
+	font-size: 16px;
 }
 
 .visibleTitre a{
@@ -1109,6 +1114,7 @@ header {
 .visibleProfil{
 	display: inline-block;
 	width: 100%;
+	margin-top: 10px;
 }
 
 .visibleProfil a{
@@ -1406,7 +1412,11 @@ header {
 }
 
 .presentationConseiller{
-	padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 30px
+}
+
+.ModifierNote{
 	margin-top: 10px;
 }
 
@@ -1414,7 +1424,14 @@ header {
 	font-weight: bold;
 	color: #3b5998;
 	padding-left: 10px;
-	
+}
+
+.moderateur{
+	font-size: 16px;
+}
+
+.ahref{
+	margin-right: 3px;
 }
 
 .MenuItem{
@@ -1425,6 +1442,11 @@ header {
 	border-radius: 3px;
 }
 
+.blocLivre{
+	width: 230px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .MenuItem a{
 	color: black;
@@ -1633,6 +1655,7 @@ header {
 
 .numero{
 	text-align: justify;
+	font-size: 16px;
 }
 
 .contactMargin{
@@ -1658,6 +1681,19 @@ header {
 	margin-bottom: 10px;
 	font-weight: normal;
 	padding-top: 10px;
+}
+
+.totalNotif{
+	background-color: red;
+    width: 18px;
+    height: 20px;
+    color: white;
+    border-radius: 5px;
+    float: right;
+    text-align: center;
+    /* margin-top: -25px; */
+    margin-left: -10px;
+    z-index: 100;
 }
 
 .buttonMontant{
@@ -1721,10 +1757,11 @@ header {
 }
 
 .PubLivre{
-	float: right;
 	margin-top: 80px;
-	margin-right: 100px;
-	font-size: 16px;
+    font-size: 16px;
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .Commande{
@@ -1873,6 +1910,14 @@ header {
 	margin-left: 10px;
 }
 
+.visibleNotif{
+	display: inline-block;
+}
+
+.supprimerNotif{
+	display: inline-block;
+}
+
 .deleteCount{
 	font-size: 16px;
 }
@@ -1930,6 +1975,10 @@ header {
 
 .espacePub{
 	margin-top: 8px;
+}
+
+.espaceNotif{
+	height: 0.1px;
 }
 
 .UpdateNaissance{
@@ -2712,6 +2761,15 @@ header {
     border-radius: 0px !important;
 }
 
+.ui.grid>* {
+    padding-left: 0.5rem !important;
+    padding-right: 0rem !important;
+}
+
+.supprimerConseiller{
+	float: right;
+    margin-top: -70px
+}
 
 
 @media only screen and (max-width: 1800px) {

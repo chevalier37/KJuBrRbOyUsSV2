@@ -17,15 +17,6 @@ class ListeRecommandationsDonner extends Component {
 		    };
 		}
 
-	signalerReponse() {
-	    Meteor.call('signalerReponse', this.props.message._id);
-       	this.setState({disabled: true});
-	 }
-
-	 vote() {
-	    Meteor.call('vote', this.props.message._id);
-       	this.setState({disabledVote: true});
-	 }
 
 	 Supprimer(){
 		Meteor.call('supprimerRecommandation',
@@ -60,19 +51,6 @@ class ListeRecommandationsDonner extends Component {
 		const nbrMois = Math.round(nbrJours/30);
 		this.setState({nbrMois: nbrMois})
 
-
-		{
-		Meteor.userId() && _.include(this.props.message.upvoters, Meteor.userId()) ?
-       	this.setState({disabledVote: true}) :
-       	this.setState({disabledVote: false})
-   		}
-
-   		{
-		Meteor.userId() && _.include(this.props.message.signalerTab, Meteor.userId()) ?
-       	this.setState({disabled: true}) :
-       	this.setState({disabled: false})
-   		}
-
 	}
 
 	breaklines(){
@@ -90,7 +68,7 @@ class ListeRecommandationsDonner extends Component {
 			  			<div className={this.props.message.to_gender == "fille" ?
 	        				  "titreMessageFille" : "titreMessageGarcon"
 	        				}>
-				  			<Link to={'/profil/' + this.props.message.to_id}>
+				  			<Link to={'/VisiteProfil/' + this.props.message.to_id}>
 				  				{this.props.message.to_name} 
 				  			</Link>
 			  			</div>
@@ -118,15 +96,49 @@ class ListeRecommandationsDonner extends Component {
 	         				}
 	         				</div>
 
-							<div className="noteRecommandation" >
-								<span className="vote">
+							<div className={this.props.message.note<1 ? "noteRecommandation" : "none"}>
 									<Rating icon='heart'
-			              			defaultRating={this.props.message.note}
-			              			maxRating={4}
-			              			disabled
-              	 				/>
-								</span>
-							</div>
+				              			defaultRating={0}
+				              			maxRating={4}
+				              			disabled
+		              	 			/>
+		              	 		</div>
+
+		              	 		<div className={this.props.message.note>=1 && this.props.message.note<2 ? "noteRecommandation" : "none"}>
+									<Rating icon='heart'
+				              			defaultRating={1}
+				              			maxRating={5}
+				              			disabled
+		              	 			/>
+		              	 		</div>
+		              	 		<div className={this.props.message.note>=2 && this.props.message.note<3 ? "noteRecommandation" : "none"}>
+									<Rating icon='heart'
+				              			defaultRating={2}
+				              			maxRating={5}
+				              			disabled
+		              	 			/>
+		              	 		</div>
+		              	 		<div className={this.props.message.note>=3 && this.props.message.note<4 ? "noteRecommandation" : "none"}>
+									<Rating icon='heart'
+				              			defaultRating={3}
+				              			maxRating={5}
+				              			disabled
+		              	 			/>
+		              	 		</div>
+		              	 		<div className={this.props.message.note>=4 && this.props.message.note<5 ? "noteRecommandation" : "none"}>
+									<Rating icon='heart'
+				              			defaultRating={4}
+				              			maxRating={5}
+				              			disabled
+		              	 			/>
+		              	 		</div>
+		              	 		<div className={this.props.message.note>=5 && this.props.message.note<6 ? "noteRecommandation" : "none"}>
+									<Rating icon='heart'
+				              			defaultRating={5}
+				              			maxRating={5}
+				              			disabled
+		              	 			/>
+		              	 		</div>
 
 							<div className="repondreMessage2" >
 								<Button

@@ -103,10 +103,9 @@ export default class DevenirConseillerContent extends Component {
 	   }
 
 	   componentWillMount(){
-	   	const id = Meteor.userId();
 		   	Meteor.apply(//on verifie si l'utilisateur peut devenir conseiller
 		   		'verifConseiller',
-		   		[{id}],
+		   		[{}],
 		   		{
 		        onResultReceived: (error, response) => {
 	            if (error) console.warn(error.reason);
@@ -1034,7 +1033,7 @@ export default class DevenirConseillerContent extends Component {
 					      		*Obligatoire
 					      	</div>
 					      </label>
-					      <TextArea autoHeight ref="presentation" rows={5} />
+					      <TextArea ref="presentation" rows={5} />
 					       <Message
 						            hidden={!this.state.errorConseiller}
 						            error={this.state.errorConseiller}

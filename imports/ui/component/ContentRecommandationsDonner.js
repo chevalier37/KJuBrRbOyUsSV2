@@ -52,7 +52,6 @@ class RecommandationsDonné extends Component {
 
     renderAllreponses() {
           let Allreponses = this.props.allreponses;
-
           return Allreponses.map((message) => {
            let date = Date.parse(message.date);
              
@@ -90,7 +89,7 @@ class RecommandationsDonné extends Component {
 export default RecommandationsDonné =  withTracker(() => {
   
   const id = Meteor.userId();
-  const Handle = Meteor.subscribe('Recommandations', id);
+  const Handle = Meteor.subscribe('RecommandationsDonnées', id);
   const loading = !Handle.ready();
   const allreponses = Recommandations.find({'from_id':id}, { sort: {date: -1 } });
   const reponseExists = !loading && !!allreponses;

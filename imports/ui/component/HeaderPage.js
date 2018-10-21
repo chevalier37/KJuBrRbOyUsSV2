@@ -55,6 +55,7 @@ class HeaderPage extends Component {
 	      username:"",
 	      redirectBloquer:false,
 	      IsConseiller:false,
+	      notifNonLu:"",
 	    };
 	}
 
@@ -70,6 +71,16 @@ class HeaderPage extends Component {
             if (error) console.warn(error.reason);
             {response ?
              this.setState({username: response}) :
+             ""}
+          },
+      	});
+
+      	Meteor.apply('notifNonLu', [{
+          }], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            {response ?
+             this.setState({notifNonLu: response}) :
              ""}
           },
       	});
@@ -504,6 +515,7 @@ class HeaderPage extends Component {
   		const { placeholderMessage } = this.state
   		const { username } = this.state
   		const { redirectBloquer } = this.state
+  		const { notifNonLu } = this.state
   		
   		if (redirectBloquer){
       	return <Redirect to="/compteBloquer" />;
@@ -529,6 +541,9 @@ class HeaderPage extends Component {
 						<Link to="/Notifications" >
 							<Img className="iconHeader" src="/bell.svg"/>
 						</Link>
+						<div className={this.state.notifNonLu > 0 ? "totalNotif" : "none"}>
+						    {notifNonLu}
+						</div>
 					</div>
 					<div className="ButtonHeader">
 						<Link to={'/Chat/' + Meteor.userId() }>

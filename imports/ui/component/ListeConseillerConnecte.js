@@ -279,7 +279,7 @@ class ListeConseillerConnecte extends Component {
               	 			/>
               	 		</div>
 
-			  			<div className="presentationConseiller">
+			  			<div className={"presentationConseiller" + " " + "display-linebreak"}>
 			  			{this.props.message.presentation} 
 			  			</div>
 

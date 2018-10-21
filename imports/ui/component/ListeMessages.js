@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Segment, Button, Checkbox, Form, Header, Divider, Label, Comment } from 'semantic-ui-react'
+import { Segment, Button, Checkbox, Form, Header, Divider, Label, Comment, Confirm } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import { Comments } from '../../api/Reponses.js';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -52,12 +52,33 @@ class ListeMessages extends Component {
 			    disabled:false,
 			    author_id:false,
 			    IsModerateur:false,
+			    open:false,
 		    };
 		}
+
+	handleConfirm = () => this.setState({ open: false })
+    handleCancel = () => this.setState({ open: false })
 
 	signaler() {
 	    Meteor.call('signaler', this.props.message._id);
        	this.setState({disabled: true});
+       	this.setState({open: true});
+
+       	const to_id = this.props.message.post_author_id;
+       	const post_title = this.props.message.post_title;
+       	const message = this.props.message.post_content;
+
+       	Meteor.apply('SignalerNotif', [{
+       		to_id,
+       		post_title,
+       		message,
+          }], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+             },
+   		 })
+
+
 	 }
 
 	componentWillMount(){
@@ -75,7 +96,7 @@ class ListeMessages extends Component {
             }
 
             },
-    })
+   		 })
 
 		const sexe = this.props.message.gender;
 	    const author_id = this.props.message.post_author_id;
@@ -369,6 +390,14 @@ class ListeMessages extends Component {
 								<Button basic size="tiny" disabled={this.state.disabled} color='red' onClick={this.signaler.bind(this)}>
 									Signaler
 								</Button>
+								<Confirm
+							          open={this.state.open}
+							          content="Merci d'avoir signalé ce message"
+							          onCancel={this.handleCancel}
+							          onConfirm={this.handleConfirm}
+							          cancelButton='Quitter'
+          							  confirmButton="Valider"
+							        />
 							</div>
 							<div className={this.state.author_id ?
 	        				  			"Signaler" : "none"}

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Checkbox, Form,  Message } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Checkbox, Form,  Message, Confirm } from 'semantic-ui-react'
 import { Route, Redirect } from 'react-router';
 
 //Component
@@ -28,11 +28,31 @@ class chat extends Component {
           gender:'',
           bloquer:false,
           IsConseiller:false,
+          MyConseiller:false,
+          open:false,
         };
     }
 
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
     handleSidebarHide = () => this.setState({ visible: false })
+
+    handleConfirm = () =>{
+      const to_id = this.props.match.params.id;
+      Meteor.apply('obtenirRecommandation', [{
+            to_id
+            }], {
+            onResultReceived: (error, response) => {
+              if (error) console.warn(error.reason);
+              {response ?  
+               this.setState({bloquer: true}) :
+               this.setState({bloquer: false})}
+              },
+        })
+
+      this.setState({ open: false })
+    }
+
+    handleCancel = () => this.setState({ open: false })
 
     componentWillMount(){
        const id = this.props.match.params.id;
@@ -65,9 +85,13 @@ class chat extends Component {
           });
     }
 
+    cloreDiscussion(){
+      this.setState({open: true});
+    }
+
     componentWillReceiveProps(){
          this.setState({update: false})
-         const id = this.props.match.params.id
+         let id = this.props.match.params.id
           Meteor.apply('isContactBloquer', [{
             id
             }], {
@@ -85,11 +109,25 @@ class chat extends Component {
             {
               onResultReceived: (error, response) => {
                 if (error) console.warn(error.reason);
-                console.log(response)
                 {
                 response ?  
                  this.setState({IsConseiller:true}) :
                  this.setState({IsConseiller:false})}
+           },
+          })
+
+        // Suis-je un conseiller ?
+        Meteor.apply(
+            'MyConseiller',
+            [{}],
+            {
+              onResultReceived: (error, response) => {
+                if (error) console.warn(error.reason);
+                console.log(response)
+                {
+                response ?  
+                 this.setState({MyConseiller:true}) :
+                 this.setState({MyConseiller:false})}
            },
           })
     }
@@ -209,6 +247,25 @@ class chat extends Component {
                            Recommander
                         </Button>
                       </Link>
+                  </div>
+                  <div className={this.state.MyConseiller ? "recommmander" : "none"}>
+                        <Button
+                         basic
+                         color='purple'
+                         size='tiny'
+                         onClick={this.cloreDiscussion.bind(this)}
+                           > 
+                           Clore la discussion
+                        </Button>
+                        <Confirm
+                        open={this.state.open}
+                        content="Si tu estimes avoir terminé d'aider cet utilisateur, tu peux clore la discussion afin d'obtenir une recommandation de sa part."
+                        onCancel={this.handleCancel}
+                        onConfirm={this.handleConfirm}
+                        cancelButton='Annuler'
+                        confirmButton="Clore la discussion"
+                      />
+
                   </div>
                   <div className={this.state.bloquer ? "bloquerRed" :"none"}>
                     Utilisateur bloqué !

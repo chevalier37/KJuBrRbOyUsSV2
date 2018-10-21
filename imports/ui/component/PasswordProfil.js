@@ -15,21 +15,34 @@ class PasswordProfil extends Component {
     super(props);
     this.state = {
       errorLogin:false,
+      errorPseudo:false,
       pseudo:false,
       mail:false,
       password:false,
       connection:false,
       errorPassword:false,
-      visible:false,     
+      visible:false, 
+      success:false,
+      username:"",    
     };   
+  }
+
+  componentWillMount(){
+    let id = Meteor.userId();
+    Meteor.apply('Username', [{
+          id,
+          }], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            {response ?
+             this.setState({username: response}) :
+             ""}
+          },
+        });
   }
 
     Submit(event) {
       event.preventDefault();
-
-      this.setState({errorLogin: false, })
-      this.setState({pseudo: false, })
-      this.setState({mail: false, })
 
       const pseudo = ReactDOM.findDOMNode(this.refs.pseudo).value.trim();
       const email = ReactDOM.findDOMNode(this.refs.email).value.trim();
@@ -48,7 +61,8 @@ class PasswordProfil extends Component {
       })}
 
        //Les password ne doivent pas être vide
-       {password == '' ?
+      {
+       password == '' ?
        this.setState({errorPassword: true,}) :
        ''
       }
@@ -70,8 +84,13 @@ class PasswordProfil extends Component {
           },
       });
 
+      const errorLogin = this.state.errorLogin;
+      const errorPassword = this.state.errorPassword;
+      const errorPseudo = this.state.errorPseudo;
+      
+
       {
-        this.state.errorLogin==false
+        errorLogin == false && errorPassword == false && errorPseudo == false
         ?
         Meteor.apply('ResetPassword', [{
         pseudo:pseudo,
@@ -79,33 +98,21 @@ class PasswordProfil extends Component {
         }], {
         onResultReceived: (error, response) => {
           if (error) console.warn(error.reason);
-          {response ?
+          /*{response ?
           this.setState({errorLogin: false,})
            :
-           this.setState({errorLogin: true,})}
-
-          },
-        })
-        :
-        ''
+           this.setState({errorLogin: true,})}*/
+          }
+        }) : ""
       }
-        
-      const errorLogin = this.state.errorLogin;
-      const errorPassword = this.state.errorPassword;
 
-      if (errorLogin == false && errorPassword == false) {
-          Meteor.loginWithPassword(pseudo, password, (err) => {
-            if(err){
-             
-              this.setState({erreurLogin: true,})
-            } else {
-              {
-              Meteor.userId() ? 
-              this.setState({connection: true,}): ''     
-              }
-            }
-          });
+      if (pseudo == this.state.username && pseudo && email && password !== '') {
+        ReactDOM.findDOMNode(this.refs.pseudo).value ="";
+        ReactDOM.findDOMNode(this.refs.email).value="";
+        ReactDOM.findDOMNode(this.refs.password2).value="";
+        this.setState({success: true})
       }
+      
   }
 
     render() {
@@ -124,11 +131,17 @@ class PasswordProfil extends Component {
           <div className="ListeMesMessages">
             <div className="register blanc">
                 <div className="numero">
-                   <Form error onSubmit={this.Submit.bind(this)}>
+                   <Form error success onSubmit={this.Submit.bind(this)}>
 
                         <Message
                           hidden={!this.state.errorLogin}
                           error={this.state.errorLogin}
+                          header='Erreur'
+                          content='Erreur identifiant'
+                        />
+                         <Message
+                          hidden={!this.state.errorPseudo}
+                          error={this.state.errorPseudo}
                           header='Erreur'
                           content='Erreur identifiant'
                         />
@@ -142,7 +155,7 @@ class PasswordProfil extends Component {
                           hidden={!this.state.pseudo}
                           error={this.state.pseudo}
                           header='Erreur pseudo'
-                          content='Le pseudo est obligatoire'
+                          content="Le pseudo n'est pas le bon"
                         />
                         </Form.Field>
 
@@ -169,12 +182,19 @@ class PasswordProfil extends Component {
                            placeholder='Nouveau mot de passe'
                           />
                          <Message
-                          error={this.state.password}
-                          hidden={!this.state.password}
+                          error={this.state.errorPassword}
+                          hidden={!this.state.errorPassword}
                           header='Erreur mot de passe'
-                          content="Les mots de passe ne correspondent pas"
+                          content="Mot de passe obligatoire"
                         />
                         </Form.Field>
+
+                        <Message
+                          hidden={!this.state.success}
+                          success={this.state.success}
+                          header='Confirmation'
+                          content='Ton mot de passe a bien été changé'
+                        />
 
                         <Button type='submit' color='green'>Valider</Button>
 

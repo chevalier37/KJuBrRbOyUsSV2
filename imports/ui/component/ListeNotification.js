@@ -102,14 +102,92 @@ class ListeNotifications extends Component {
 				  			</div>
 			  			</span>
 
+			  			<span className={this.props.message.type=='signaler' ?
+	        				  "visibleTitreSignalé" : "none"
+	        				}>
+				  			Message signalé !
+				  			<div className="iconNotif">
+				  				<Img className="imgNotif" src="/warning.svg"/>
+				  			</div>
+			  			</span>
 
+			  			<span className={this.props.message.type=='voteUp' ?
+	        				  "visibleTitre" : "none"
+	        				}>
+				  			Conseil approuvé
+				  			<div className="iconNotif">
+				  				<Img className="imgNotif" src="/like.svg"/>
+				  			</div>
+			  			</span>
+
+			  			<span className={this.props.message.type=='conseiller' ?
+	        				  "visibleTitre" : "none"
+	        				}>
+				  			Tu peux devenir conseiller !
+				  			<div className="iconNotif">
+				  				<Img className="imgNotif" src="/newAdvisor.svg"/>
+				  			</div>
+			  			</span>
+
+			  			<span className={this.props.message.type=='obtenirRecommandation' ?
+	        				  "visibleTitre" : "none"
+	        				}>
+				  			Tu peux laisser une recommandation
+				  			<div className="iconNotif">
+				  				<Img className="imgNotif" src="/heart.svg"/>
+				  			</div>
+			  			</span>
 		  		</div>
 	  			
 	  			<Segment color={this.props.message.gender=="fille" ?
 	        				  "pink" : "blue" }>			
-		  			<p className="ContentQuestion">
-		  				{this.breaklines()}
-		  			</p>
+		  			<div className="ContentQuestion">
+			  			 <div className={this.props.message.type=='signaler' ? "visibleNotif" : "none"}>
+			  			 	Ton message a été signalé par un utilisateur.<br />
+			  			 	A partir de <strong>3 avertissemens</strong> ton compte sera bloqué.<br /><br />
+			  			 	<strong>Messages : </strong> <br />
+			  			 </div>
+
+			  			  <div className={this.props.message.type=='voteUp' ? "visibleNotif" : "none"}>
+			  			 	Félicitation ! Ton conseil a été approuvé par un utilisateur.<br />
+			  			 	Merci d'apporter ton aide.<br /><br />
+			  			 	<strong>Ton conseil : </strong> <br />
+			  			 </div>
+
+			  			 <div className={this.props.message.type=='conseiller' ? "visibleNotif" : "none"}>
+			  			 	Grâce à tes précieux conseils, tu peux maintenant devenir conseiller.<br />
+			  			 	Tu vas pouvoir aider davantage de personnes.<br />
+			  			 	Tu recevras aussi des recommandations de la part des gens que tu aides.<br /><br />
+			  			 	Bienvenue dans l'équipe des conseillers !<br /><br />
+			  			 	<Link to={'/DevenirConseiller/'}>
+										<Button
+				         					size="medium"
+											color='green'
+										 >
+											Devenir conseiller 
+										</Button>
+							</Link>
+			  			 </div>
+
+			  			 <div className={this.props.message.type=='obtenirRecommandation' ? "visibleNotif" : "none"}>
+			  			 	Les conseils de <strong>{this.props.message.nameConseiller}</strong> ont-ils été utilises ?<br />
+			  			 	N'hésite pas à lui laisser une recommandation pour donner ton avis.<br /><br />
+			  			 	
+			  			 	<Link to={'/Recommander/' + this.props.message.conseillerID}>
+										<Button
+				         					size="medium"
+											color='green'
+										 >
+											Laisser une recommandation
+										</Button>
+							</Link>
+			  			 </div>
+			  			 
+			  			 <div className="messageNOTIF">
+			  				{this.breaklines()}
+			  			 </div>
+
+		  			</div>
 		  			
 		  			<Divider />
 		  	
@@ -160,14 +238,15 @@ class ListeNotifications extends Component {
 							</div>
 
 	         				<div className="supprimerFavoris">
-		         				<Button
-		         					size="mini"
-									color='red'
-									onClick={this.Supprimer.bind(this)}
-								 >
-									Supprimer 	 
-								</Button>
-
+		         				<div className={this.props.message.type !=='signaler' ? "supprimerNotif" : "none"}>
+			         				<Button
+			         					size="mini"
+										color='red'
+										onClick={this.Supprimer.bind(this)}
+									 >
+										Supprimer 	 
+									</Button>
+								</div>
 								<div className={this.props.message.type=='chat' ? "visiblebutton" : "none"}>
 									<Link to={'/Chat/' + this.props.message.from_id}>
 										<Button
@@ -201,8 +280,8 @@ class ListeNotifications extends Component {
 									</Link>
 								</div>
 
-								<div className={this.props.message.type=='don' ? "visiblebutton" : "none"}>
-									<Link to={'/ListeDons/' + myId}>
+								<div className={this.props.message.type=='voteUp' ? "visiblebutton" : "none"}>
+									<Link to={'/singleMessage/' + this.props.message.postId}>
 										<Button
 				         					size="mini"
 											color='green'

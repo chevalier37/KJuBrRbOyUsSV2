@@ -21,24 +21,24 @@ class RecommanderContent extends Component {
 
 	   componentWillMount(){
 	   	let id = this.props.id;
-			   	Meteor.apply('usernameRecommander', [{
-			          id,
-			          }], {
-			          onResultReceived: (error, response) => {
-			            if (error) console.warn(error.reason);
-			            		             
-			             {response ?
-			             this.setState({username: response.username}) 
-			             :
-			             ''}
+		   	Meteor.apply('usernameRecommander', [{
+		          id,
+		          }], {
+		          onResultReceived: (error, response) => {
+		            if (error) console.warn(error.reason);
+		            		             
+		             {response ?
+		             this.setState({username: response.username}) 
+		             :
+		             ''}
 
-			              {response ?
-			             this.setState({gender: response.profile.gender}) 
-			             :
-			             ''}
+		              {response ?
+		             this.setState({gender: response.profile.gender}) 
+		             :
+		             ''}
 
-			            },
-			    });
+		            },
+		    });
 		}
 
 	  Submit(event){
@@ -66,21 +66,21 @@ class RecommanderContent extends Component {
          	this.state.errorRating==false &&
          	this.state.errorCommentaire==false
          	?
-         	Meteor.call('Recommander',
-         		id,
-			  	presentation,
-			  	note,
-			  	  (err) => {
-	            	if(err){console.log(err)
-	           		 } else {
-	              	{
-				        this.setState({
-					      Validation: true
-					    })
-					  
-		              	}     
-	            	}
-	          	})
+
+			Meteor.apply('Recommander', [{
+		          	id,
+				  	presentation,
+				  	note,
+		          }], {
+		          onResultReceived: (error, response) => {
+		            if (error){
+		            	console.warn(error.reason);
+		        	}else{
+		        		this.setState({ Validation: true})
+		        	}		             
+		            },
+		    })
+
          	: ''
 
          }

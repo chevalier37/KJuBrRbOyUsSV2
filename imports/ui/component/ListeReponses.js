@@ -98,6 +98,17 @@ class ListeReponses extends Component {
       	});
        	this.setState({disabled: true});
        	this.setState({open: true});
+
+       	const to_id = this.props.message.userId;
+       	const message = this.props.message.comments;
+       	Meteor.apply('SignalerNotif', [{
+       		to_id,
+       		message,
+          }], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+             },
+   		 })
 	 }
 
 	voteUP() {
@@ -113,6 +124,19 @@ class ListeReponses extends Component {
       	});
        	this.setState({desactiver: true});
         this.setState({color: false});
+
+        const to_id = this.props.message.userId;
+       	const message = this.props.message.comments;
+       	const postId = this.props.message.postId;
+       	Meteor.apply('voteUPnotif', [{
+       		to_id,
+       		message,
+       		postId
+          }], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+             },
+   		 })
 	}
 
 	voteDOWN() {

@@ -24,6 +24,7 @@ import ModifierConseiller from '../../../imports/ui/pages/ModifierConseiller.js'
 import Recommander from '../../../imports/ui/pages/Recommander.js';
 import ValiderRecommandation from '../../../imports/ui/pages/ValiderRecommandation.js';
 import compteBloquer from '../../../imports/ui/pages/compteBloquer.js';
+import ModifierRecommandation from '../../../imports/ui/pages/ModifierRecommandation.js';
 {/*import contact from '../../../imports/ui/pages/contact.js';
 import singleMessage from '../../../imports/ui/pages/SingleMessage.js';
 import Recommander from '../../../imports/ui/pages/Recommander.js';
@@ -110,6 +111,7 @@ export const renderRoutes = () => (
       <Route path="/Recommander/:id" component={Recommander}/>
       <Route path="/ValiderRecommandation/" component={ValiderRecommandation}/>
       <Route path="/compteBloquer/" component={compteBloquer}/>
+      <Route path="/ModifierRecommandation/:id" component={ModifierRecommandation}/>
       {/*<Route path="/contact" component={contact}/>
       <Route path="/singleMessage/:id" component={singleMessage}/>
       <Route path="/Recommander/:id" component={Recommander}/>

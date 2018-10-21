@@ -44,26 +44,17 @@ class allNotifications extends Component {
     }
 
     componentWillMount(){
-      let id = this.props.match.params.id
-      Meteor.apply('usernameRecommander', [{
-              id,
-              }], {
-              onResultReceived: (error, response) => {
-                if (error) console.warn(error.reason);
-                                 
-                 {response ?
-                 this.setState({username: response.username}) 
-                 :
-                 ''}
+      Meteor.apply('allRead', [{
+            }], {
+            onResultReceived: (error, response) => {
+              if (error) console.warn(error.reason);
+              /*{response ?
+               this.setState({notifNonLu: response}) :
+               ""}*/
+            },
+          });
+    }
 
-                  {response ?
-                 this.setState({gender: response.profile.gender}) 
-                 :
-                 ''}
-
-                },
-        })   
-      }
 
     renderAllreponses() {
           let Allreponses = this.props.allreponses;
@@ -138,7 +129,8 @@ class allNotifications extends Component {
             <Sidebar.Pusher>
              <div className="containerSite" onClick={this.toggleHidden}>
              <div className="containerIMG">
-                      <div className="MainContent">                      
+                      <div className="MainContent">
+                      <div className="espaceNotif"></div>                      
                          {this.renderAllreponses()}
                       </div>    
                 </div>

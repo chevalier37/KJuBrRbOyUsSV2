@@ -7,7 +7,7 @@ export const Conseilleres = new Mongo.Collection('conseilleres');
 import { Comments } from './Reponses.js';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { DDPRateLimiter } from 'meteor/ddp-rate-limiter';
-
+import { Notifications } from './Notifications.js';
 
 if (Meteor.isServer) {
 const requestLimit = 5;
@@ -17,10 +17,10 @@ DDPRateLimiter.setErrorMessage("Error DDPRateLimiter")
 
 
 export const IsConseiller = new ValidatedMethod({
-  //on verifie si le pseudo existe déjà
+  //on verifie si l'utilisateur est conseiller
   name: 'IsConseiller',
   validate: new SimpleSchema({
-    id: { type: String }
+    id: { type: String },
   }).validator(),
 
   applyOptions: {
@@ -30,12 +30,77 @@ export const IsConseiller = new ValidatedMethod({
   run({id}) {
     const IsConseiller = Conseilleres.find({'user_id':id}).count();
     {IsConseiller>0 ? Istrue = true : Istrue = false}
+
+    const search = Meteor.users.findOne({'_id':this.userId});
+    const voteUP = search.voteUP;
+    const voteDOWN = search.voteDOWN;
+    const ratio = (voteUP / (voteUP+voteDOWN))*100;
+
+    const NBRaide = Comments.find({'userId':this.userId}).count();
+
+    if(!Istrue && ratio > 85 && NBRaide >= 50){// l'utilisateur peut devenir conseiller
+      Notifications.insert({
+                  date: new Date(),
+                  to_id:this.userId,
+                  read:false,
+                  type:'conseiller',
+                });
+    }
+
     return Istrue;
+  }
+});
+/*DDPRateLimiter.addRule({
+    type: "method",
+    name: "IsConseiller",
+}, requestLimit, requestTimeout);*/
+
+
+
+export const MyConseiller = new ValidatedMethod({
+  //on verifie si l'utilisateur est conseiller
+  name: 'MyConseiller',
+  validate: new SimpleSchema({
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({}) {
+    const IsConseiller = Conseilleres.find({'user_id':this.userId}).count();
+    {IsConseiller>0 ? Istrue = true : Istrue = false}
+
+    return Istrue;
+  }
+});
+/*DDPRateLimiter.addRule({
+    type: "method",
+    name: "MyConseiller",
+}, requestLimit, requestTimeout);*/
+
+
+
+export const supprimerConseiller = new ValidatedMethod({
+  //l'utilisateur ne veut plus être conseiller
+  name: 'supprimerConseiller',
+  validate: new SimpleSchema({
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({}) {
+    Conseilleres.remove({_id:this.userId});
+    Meteor.users.update({_id:this.userId}, {
+                    $set: {"conseiller": false},
+                    })
   }
 });
 DDPRateLimiter.addRule({
     type: "method",
-    name: "IsConseiller",
+    name: "supprimerConseiller",
 }, requestLimit, requestTimeout);
 
 
@@ -63,15 +128,15 @@ export const loginConseiller = new ValidatedMethod({
   }
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "loginConseiller",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
 export const logoutConseiller = new ValidatedMethod({
-  //on met à jour la table conseiller si l'utilisateur se connecte
+  //on met à jour la table conseiller si l'utilisateur se déconnecte
   name: 'logoutConseiller',
   validate: new SimpleSchema({
   id: { type: String }
@@ -105,20 +170,19 @@ export const verifConseiller = new ValidatedMethod({
   //on verifie si l'utilisateur peut devenir conseiller
   name: 'verifConseiller',
   validate: new SimpleSchema({
-    id: { type: String }
   }).validator(),
 
   applyOptions: {
     noRetry: true,
   },
 
-  run({ id }) {
-    const search = Meteor.users.findOne({'_id':id});
+  run({}) {
+    const search = Meteor.users.findOne({'_id':this.userId});
     const voteUP = search.voteUP;
     const voteDOWN = search.voteDOWN;
     const ratio = (voteUP / (voteUP+voteDOWN))*100;
 
-    const NBRaide = Comments.find({'userId':id}).count();
+    const NBRaide = Comments.find({'userId':this.userId}).count();
 
     if(ratio > 85 && NBRaide >= 50){
       return true;
@@ -1222,17 +1286,10 @@ Meteor.methods({
                 });
 
              Meteor.users.update({_id:this.userId}, {
-                    $set: { "conseiller": true,},
+                    $set: { "conseiller": true},
                     })
                 }
       },
-
-
-      /*AllConseillers: function() {
-          let allConseiler = Meteor.users.find({'conseiller':true, 'status.online':true}).fetch();
-          return allConseiler;
-      },*/
-
 });
 
 publishComposite('AllConseillers', {
