@@ -1465,6 +1465,7 @@ class ProfilContentVisite extends Component {
               	 		</div>
 
 						<div className={"ButtonProfil" +
+						
 										 " " +
 										this.props.NotIdProfile
 										}

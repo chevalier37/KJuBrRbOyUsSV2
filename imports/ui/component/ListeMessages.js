@@ -70,13 +70,20 @@ class ListeMessages extends Component {
 
        	Meteor.apply('SignalerNotif', [{
        		to_id,
-       		post_title,
        		message,
           }], {
           onResultReceived: (error, response) => {
             if (error) console.warn(error.reason);
              },
    		 })
+
+       	Meteor.call(//notification par mail
+              'SignalerMail',
+              'Kurbys <kurbys@mail.kurbys.com>',
+              'Ton message a été signalé ',
+              to_id,
+              message,
+        )
 
 
 	 }

@@ -84,6 +84,7 @@ DDPRateLimiter.addRule({
 
 
 
+
 export const obtenirRecommandation = new ValidatedMethod({
   //quand un conseiller clos une discussion, l'utilisateur reçoit une notification afin de laisser une recommandation
   name: 'obtenirRecommandation',
@@ -121,7 +122,6 @@ DDPRateLimiter.addRule({
 
 
 
-
 export const voteUPnotif = new ValidatedMethod({
   //l'auteur est averti que sa réponse à reçu un vote positif
   name: 'voteUPnotif',
@@ -154,6 +154,87 @@ DDPRateLimiter.addRule({
     type: "method",
     name: "voteUPnotif",
 }, requestLimit, requestTimeout);
+
+
+export const choixNotif = new ValidatedMethod({
+  //l'utilisateur choisi ses notifications par mail'
+  name: 'choixNotif',
+  validate: new SimpleSchema({
+    MessagePrive: {type: Boolean},
+    RecoitConseil: {type: Boolean},
+    LaisserRecommandation: {type: Boolean},
+    recommandation: {type: Boolean},
+    messageSignalé: {type: Boolean},
+    voteUp: {type: Boolean},
+    conseiller: {type: Boolean},
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({MessagePrive, RecoitConseil, LaisserRecommandation, recommandation, messageSignalé, voteUp, conseiller}) {
+    // on regarde si l'utilisateur à déjà modifier des notifications
+    const search = Notifications.find({'IdChoix':this.userId}).count()
+    if(search>0){
+      Notifications.update(
+        {'IdChoix':this.userId},
+        {$set: {
+          'MessagePrive': MessagePrive,
+          'RecoitConseil': RecoitConseil,
+          'LaisserRecommandation': LaisserRecommandation,
+          'recommandation': recommandation,
+          'messageSignalé': messageSignalé,
+          'voteUp': voteUp,
+          'conseiller': conseiller
+        }})
+    }else{
+       Notifications.insert({
+          date: new Date(),
+          IdChoix:this.userId,
+          MessagePrive: MessagePrive,
+          RecoitConseil: RecoitConseil,
+          LaisserRecommandation: LaisserRecommandation,
+          recommandation: recommandation,
+          messageSignalé: messageSignalé,
+          voteUp: voteUp,
+          conseiller: conseiller
+        });
+    }
+  }
+});
+DDPRateLimiter.addRule({
+    type: "method",
+    name: "choixNotif",
+}, requestLimit, requestTimeout);
+
+
+
+export const SearchchoixNotif = new ValidatedMethod({
+  //on recherche les choix que l'utilisateur à fait pour ses notification par mail
+  name: 'SearchchoixNotif',
+  validate: new SimpleSchema({
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run() {
+    // on regarde si l'utilisateur à déjà modifier des notifications
+    const search = Notifications.findOne({'IdChoix':this.userId})
+    if(search){
+      return search
+    }else{
+      return false
+    }
+  }
+});
+DDPRateLimiter.addRule({
+    type: "method",
+    name: "SearchchoixNotif",
+}, requestLimit, requestTimeout);
+
 
 
 Meteor.methods({

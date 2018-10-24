@@ -137,10 +137,11 @@ renderAllreponses() {
                   <Divider />
                   <div className="pubSondage">
                     <AdSense.Google
-                      client='ca-pub-6112176939320267'
-                      slot='4929880369'
-                      style={{ display: 'inline-block',width:'468px', height:'60px'}}
-                    />
+                    client='ca-pub-6112176939320267'
+                    slot='4083773640'
+                     style={{display:'inline-block', width:728, height:90}}
+                    format=''
+                  />
                   </div>
                    {this.renderAllreponses()}
                   </div>    

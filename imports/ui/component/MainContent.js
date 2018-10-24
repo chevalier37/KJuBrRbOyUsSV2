@@ -325,8 +325,9 @@ class MainContent extends Component {
 					<div className="pubHome">
 					        <AdSense.Google
 					          client='ca-pub-6112176939320267'
-					          slot='5922557517'
-					          format="auto"
+					          slot='4083773640'
+					           style={{display:'inline-block', width:728, height:90}}
+					          format=''
 					        />
 				</div>
 
@@ -345,7 +346,7 @@ class MainContent extends Component {
 					    	onClick={this.poster.bind(this)}
 					    	 >
 					    	 <div className="textPoster">
-					    	 <Img className="iconPoster" src="/order.svg"/>
+					    	 <Img className="iconPoster" src="/sort.svg"/>
 					    	 Trier les messages
 					    	 </div>
 					    </div>

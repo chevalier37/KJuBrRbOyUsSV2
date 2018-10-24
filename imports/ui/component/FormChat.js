@@ -148,6 +148,7 @@ class FormChat extends Component {
 	          'Nouveau message de ',
 	          from_name,
 	          message,
+	          this.props.to_id,
 	          )
 	          : ''
           	}
@@ -162,15 +163,7 @@ class FormChat extends Component {
 	        : ''
           	}
 
-          	{
-      		!this.props.isOnline ?
-	        Meteor.call(
-	        	'serverNotification',
-	        	'Nouveau message',
-	        	'Tu as reçu un message de ' + from_name, to_id
-	        )
-	          : ''
-          	}
+          	
 	}
 
   render() {

@@ -109,6 +109,14 @@ class ListeReponses extends Component {
             if (error) console.warn(error.reason);
              },
    		 })
+
+       	Meteor.call(//notification par mail
+              'SignalerMail',
+              'Kurbys <kurbys@mail.kurbys.com>',
+              'Ton message a été signalé ',
+              to_id,
+              message,
+        )
 	 }
 
 	voteUP() {
@@ -195,7 +203,7 @@ class ListeReponses extends Component {
 			  			<div className={colorSexe=="pink" ?
 	        				  "titreMessageFille" : "titreMessageGarcon"
 	        				}>
-				  			<Link to={'/profil/' + this.props.message.userId}>
+				  			<Link to={'/VisiteProfil/' + this.props.message.userId}>
 				  			{this.props.message.post_author}
 				  			</Link>
 			  			</div>

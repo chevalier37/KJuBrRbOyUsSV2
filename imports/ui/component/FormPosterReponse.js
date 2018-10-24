@@ -62,7 +62,7 @@ class FormPosterReponse extends Component {
 
        : ''
 	    }
-
+	    const authorId = this.props.authorId;
       	{
   		!this.props.isOnline && this.state.messageVide == false  ?
           Meteor.call(
@@ -73,6 +73,7 @@ class FormPosterReponse extends Component {
           from_name,
           message,
           titre,
+          authorId,
           )  
           : ''
       	}

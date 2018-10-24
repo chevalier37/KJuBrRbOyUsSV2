@@ -498,7 +498,7 @@ class FormSubscribe extends Component {
               />
 
               <Form.Field required>
-                <Checkbox
+              <Checkbox
                  onClick={this.commandements.bind(this)} 
                  label="J'accepte les 5 commandements de Kurbys"
                  /> <p className="lireCGU"><Link to="/Commandements" >Lire</Link></p>

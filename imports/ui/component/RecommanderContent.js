@@ -85,7 +85,7 @@ class RecommanderContent extends Component {
 
          }
 
-         {
+         	{
           		!this.props.isOnline &&
           		this.state.errorRating==false &&
          		this.state.errorCommentaire==false  ?
@@ -97,6 +97,7 @@ class RecommanderContent extends Component {
 		          'Nouvelle recommandation de ',
 		          from_name,
 		          presentation,
+		          id
 		          )  
 
 		          : ''
@@ -118,8 +119,6 @@ class RecommanderContent extends Component {
 		          : ''
 
         }
-
-        Meteor.call('serverNotification','Recommandation','Nouvelle recommandation de ' + from_name, id)
    
 		}
 

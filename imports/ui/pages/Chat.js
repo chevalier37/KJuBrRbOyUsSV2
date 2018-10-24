@@ -5,6 +5,9 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Checkbox, Form,  Message, Confirm } from 'semantic-ui-react'
 import { Route, Redirect } from 'react-router';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-000000-01');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 //Component
 import HeaderPage from '../component/HeaderPage.js';
@@ -30,6 +33,7 @@ class chat extends Component {
           IsConseiller:false,
           MyConseiller:false,
           open:false,
+          mail:"",
         };
     }
 
@@ -38,16 +42,23 @@ class chat extends Component {
 
     handleConfirm = () =>{
       const to_id = this.props.match.params.id;
+      //Notification.js
       Meteor.apply('obtenirRecommandation', [{
             to_id
             }], {
             onResultReceived: (error, response) => {
               if (error) console.warn(error.reason);
-              {response ?  
-               this.setState({bloquer: true}) :
-               this.setState({bloquer: false})}
               },
         })
+      let to_name = this.state.username;
+      let mail = this.state.mail;
+      Meteor.call(//notification par mail
+              'obtenirRecommandationMail',
+              mail,
+              'Kurbys <kurbys@mail.kurbys.com>',
+              'Laisse une recommandation à ',
+              to_name,
+              ) 
 
       this.setState({ open: false })
     }
@@ -123,7 +134,6 @@ class chat extends Component {
             {
               onResultReceived: (error, response) => {
                 if (error) console.warn(error.reason);
-                console.log(response)
                 {
                 response ?  
                  this.setState({MyConseiller:true}) :
@@ -202,6 +212,12 @@ class chat extends Component {
 
               {response ?
              this.setState({gender: response.profile.gender}) 
+             
+             :
+             ''}
+
+              {response ?
+             this.setState({mail: response.profile.mail}) 
              
              :
              ''}

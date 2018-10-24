@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 import { Route, Redirect } from 'react-router';
+import {Helmet} from "react-helmet";
 
 class HeaderPage extends Component {
 
@@ -55,7 +56,7 @@ class HeaderPage extends Component {
 	      username:"",
 	      redirectBloquer:false,
 	      IsConseiller:false,
-	      notifNonLu:"",
+	      notifNonLu:"0",
 	    };
 	}
 
@@ -516,7 +517,15 @@ class HeaderPage extends Component {
   		const { username } = this.state
   		const { redirectBloquer } = this.state
   		const { notifNonLu } = this.state
+  		const totalNotif = this.state.notifNonLu
+  		const NotifHead = totalNotif.toString();
   		
+  		if(totalNotif == "0"){
+  			const NotifHead = '0';
+  		}else{
+  			const NotifHead = totalNotif.toString()
+  		}
+  		  		
   		if (redirectBloquer){
       	return <Redirect to="/compteBloquer" />;
     	}
@@ -531,6 +540,10 @@ class HeaderPage extends Component {
 
 	return (
 			<div className="headerTitre">
+			<Helmet>
+	              <meta charSet="utf-8" />
+	              <title>({NotifHead}) Kurbys</title>
+	         </Helmet>
 				<div className="BlocHead">
 					<div className="ButtonHeader">
 						<Link to="/home" >

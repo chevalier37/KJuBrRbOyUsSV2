@@ -1432,6 +1432,12 @@ header {
 
 .ahref{
 	margin-right: 3px;
+	color: red;
+}
+
+.ahref:hover{
+	margin-right: 3px;
+	color: red;
 }
 
 .MenuItem{
@@ -2499,15 +2505,11 @@ header {
 }
 
 .pubHome{
-	width: 470px;
-	height: 65px;
-	/*background-color: red;*/
-    margin-top: 3px;
-    display: inline-block;
+	
 }
 
 .centerpub{
-	width: 700px;
+	width: 728px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 3px;
@@ -2682,14 +2684,9 @@ header {
 }
 
 .pubSondage{
-	width: 470px;
-	height: 65px;
-	/*background-color: red;*/
+	width: 728px;
 	margin-top: 3px;
-	width: 470px;
-    height: 65px;
     margin-top: 3px;
-    display: block; 
     margin-left: auto;
     margin-right: auto;
 }

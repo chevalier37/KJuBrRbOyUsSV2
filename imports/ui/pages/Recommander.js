@@ -14,7 +14,6 @@ import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
 import RecommanderContent from '../component/RecommanderContent.js';
 
-import { Notifications } from '../../api/Notifications.js';
 
 class recommander extends Component {
 
