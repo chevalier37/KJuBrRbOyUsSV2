@@ -4,7 +4,7 @@ import { Segment, Button, Checkbox, Form, Header, Divider, Label, Comment, Ratin
 import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import Img from 'react-image'
-
+import PropTypes from 'prop-types';
 
 class ListeNotifications extends Component {
 	
@@ -270,7 +270,7 @@ class ListeNotifications extends Component {
 								</div>
 
 								<div className={this.props.message.type=='recommandaton' ? "visiblebutton" : "none"}>
-									<Link to={'/Recommandations/' + myId}>
+									<Link to={'/profil/' + myId}>
 										<Button
 				         					size="mini"
 											color='green'
@@ -298,6 +298,10 @@ class ListeNotifications extends Component {
 		);
   	}
 }
+
+ListeNotifications.propTypes = {
+        message: PropTypes.array.isRequired,
+    };
 
 export default ListeNotifications =  withTracker(({ id }) => {
   return {

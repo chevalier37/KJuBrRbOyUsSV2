@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Segment, Button, Form, Header, Divider, TextArea } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import Img from 'react-image'
+import PropTypes from 'prop-types';
 
 export default class ChatContent extends Component {
 		constructor(props) {
@@ -86,6 +87,12 @@ export default class ChatContent extends Component {
 		}
 		
   render() {
+
+  	ChatContent.propTypes = {
+        message: PropTypes.object.isRequired,
+        to_id: PropTypes.string.isRequired,
+        date:  PropTypes.number.isRequired
+    };
 
 	    return (
 	    	<div>

@@ -250,8 +250,8 @@ Meteor.methods({
 
 
 
-Meteor.publish('AllMessages', function ( ) {
-  return Posts.find({});
+Meteor.publish('AllMessages', function (more) {
+  return Posts.find({}, { sort: { post_date: -1 }, limit:30});
 });
 
 

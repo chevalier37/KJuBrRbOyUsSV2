@@ -4,6 +4,7 @@ import { Header, Menu, Divider} from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import Img from 'react-image'
+import PropTypes from 'prop-types';
 
 class ContactChatContent extends Component {
 
@@ -86,6 +87,12 @@ class ContactChatContent extends Component {
 	    )
 	}
 }
+
+ 	ContactChatContent.propTypes = {
+        currentContact: PropTypes.string.isRequired,
+        read: PropTypes.string.isRequired,
+        contact: PropTypes.object.isRequired,
+    };
 
 export default ContactChatContent =  withTracker(({to_id, contact}) => {
 	

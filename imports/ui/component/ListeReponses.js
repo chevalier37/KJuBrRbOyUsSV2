@@ -7,7 +7,7 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 import { hot } from 'react-hot-loader'
 import Img from 'react-image'
-
+import PropTypes from 'prop-types';
 
 class ListeReponses extends Component {
 	
@@ -298,6 +298,10 @@ class ListeReponses extends Component {
 		);
   	}
 }
+
+ListeReponses.propTypes = {
+        message: PropTypes.array.isRequired,
+    };
 
 export default ListeReponses =  withTracker(({ message }) => {
 	

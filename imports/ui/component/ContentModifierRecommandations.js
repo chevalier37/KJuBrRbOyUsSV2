@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Segment, Button, Checkbox, Form, Header, TextArea } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
-
+import PropTypes from 'prop-types';
 import FormPosterMessage from './FormPosterMessage.js';
 import ListeModifierRecommandation from './ListeModifierRecommandation.js';
 
@@ -54,6 +54,10 @@ class ContentModifierRecommandations extends Component {
 		);
   	}
 }
+
+ContentModifierRecommandations.propTypes = {
+        allMessages: PropTypes.array.isRequired,
+    };
 
 export default withTracker(({post_id}) => {
 	const myId = Meteor.userId();

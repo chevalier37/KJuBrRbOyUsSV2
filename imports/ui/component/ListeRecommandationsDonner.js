@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Segment, Button, Header, Divider, Label, Comment, Rating } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
-
+import PropTypes from 'prop-types';
 
 class ListeRecommandationsDonner extends Component {
 	
@@ -165,6 +165,10 @@ class ListeRecommandationsDonner extends Component {
   	}
 }
 
+ListeRecommandationsDonner.propTypes = {
+        message: PropTypes.array.isRequired,
+    };
+    
 export default ListeRecommandationsDonner =  withTracker(() => {
   return {
   };

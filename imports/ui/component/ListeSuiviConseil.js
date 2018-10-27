@@ -4,6 +4,7 @@ import { Segment, Button, Checkbox, Form, Header, Divider, Label, Comment } from
 import { Link } from 'react-router-dom';
 import { Comments } from '../../api/Reponses.js';
 import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
 
 class ListeSuiviConseil extends Component {
 	
@@ -171,6 +172,10 @@ class ListeSuiviConseil extends Component {
 		);
   	}
 }
+
+ListeSuiviConseil.propTypes = {
+        message: PropTypes.array.isRequired,
+    };
 
 export default ListeSuiviConseil =  withTracker(({ id }) => {
 

@@ -4,6 +4,7 @@ import { Segment, Button, Header, Divider, Label, Comment, Rating } from 'semant
 import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import Img from 'react-image'
+import PropTypes from 'prop-types';
 
 class ListeConseillerConnecte extends Component {
 	
@@ -424,6 +425,10 @@ class ListeConseillerConnecte extends Component {
 		);
   	}
 }
+
+ListeConseillerConnecte.propTypes = {
+        message: PropTypes.array.isRequired,
+    };
 
 export default ListeConseillerConnecte =  withTracker(() => {
 

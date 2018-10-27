@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Posts } from '../../api/Messages.js';
 import { Comments } from '../../api/Reponses.js';
+import PropTypes from 'prop-types';
 
 class ListeMessagePost extends Component {
 	
@@ -109,6 +110,10 @@ class ListeMessagePost extends Component {
 		);
   	}
 }
+
+ListeMessagePost.propTypes = {
+        message: PropTypes.array.isRequired,
+    };
 
 export default ListeMessagePost =  withTracker(({ id }) => {
   const Handle = Meteor.subscribe('Message', id);

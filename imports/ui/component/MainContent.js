@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import Img from 'react-image'
 import AdSense from 'react-adsense';
-
+import PropTypes from 'prop-types';
 import FormPosterMessage from './FormPosterMessage.js';
 import ListeMessages from './ListeMessages.js';
 
@@ -318,10 +318,14 @@ class MainContent extends Component {
   	}
 			   
   render() {
+  	if(this.props.more>5){
+  		this.el.scrollIntoView();
+  	}
 
 		return (
 			<div className="MainContent">
 				<div className="centerpub">
+					<div className="space" />
 					<div className="pubHome">
 					        <AdSense.Google
 					          client='ca-pub-6112176939320267'
@@ -329,7 +333,7 @@ class MainContent extends Component {
 					           style={{display:'inline-block', width:728, height:90}}
 					          format=''
 					        />
-				</div>
+					</div>
 
 				{/*<Message warning>
 				    <Message.Header>NOUVEAUTE : Vidéos</Message.Header>
@@ -427,6 +431,7 @@ class MainContent extends Component {
 	  			<div className={this.state.allMessages}>
 					
 	  				{this.renderAllMessages()}
+	  				
 	  				<div className={this.state.more > this.props.countAllMessages ? "none" : "voirPlus" }>
 						<Button
 							fluid
@@ -527,11 +532,16 @@ class MainContent extends Component {
   	}
 }
 
-export default withTracker(() => {
+MainContent.propTypes = {
+    allMessages: PropTypes.array.isRequired,
+};
+
+export default withTracker(({more}) => {
   const Handle = Meteor.subscribe('AllMessages');
   const loading = !Handle.ready();
 
   const allposts = Posts.find({}, { sort: { post_date: -1 }, limit:30});
+
   const amour = Posts.find({$or:
   	[{premierAmour:true},
   	{trahison:true},

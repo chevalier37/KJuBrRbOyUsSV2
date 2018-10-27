@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import ContactChatContent from '../component/ContactChatContent.js';
 import AdSense from 'react-adsense';
-
+import PropTypes from 'prop-types';
 import { ContactChat } from '../../api/ContactChat.js';
 
 class contactChat extends Component {
@@ -58,6 +58,11 @@ class contactChat extends Component {
 		);
   }
 }
+
+  contactChat.propTypes = {
+      allContactChat: PropTypes.array.isRequired,
+      to_id: PropTypes.string.isRequired,
+  };
 
 export default contactChat =  withTracker(() => {
   const from_id = Meteor.userId();

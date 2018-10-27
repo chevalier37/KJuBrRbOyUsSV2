@@ -6,6 +6,7 @@ import { Comments } from '../../api/Reponses.js';
 import { withTracker } from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 import { Route, Redirect } from 'react-router';
+import PropTypes from 'prop-types';
 
 class ListeModifierMessage extends Component {
 	
@@ -479,6 +480,10 @@ class ListeModifierMessage extends Component {
 		);
   	}
 }
+
+ListeModifierMessage.propTypes = {
+        message: PropTypes.array.isRequired,
+    };
 
 export default ListeModifierMessage =  withTracker(({ id }) => {
 

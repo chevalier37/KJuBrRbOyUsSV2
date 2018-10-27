@@ -15,16 +15,51 @@ import ContentMenuMobile from '../component/ContentMenuMobile.js';
 
 class Home extends Component {
 
-    state = { visible: false }
+    constructor(props) {
+          super(props);
+       
+          this.state = {
+          visible:false,
+          moreAutre:5,
+          };
+          /*this.handleScroll = this.handleScroll.bind(this);*/
+      }
+
+     /* handleScroll() {
+        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+        const body = document.body;
+        const html = document.documentElement;
+        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
+        const windowBottom = windowHeight + window.pageYOffset;
+        if (windowBottom >= docHeight) {
+          let plus = this.state.moreAutre + 5
+        this.setState({moreAutre: plus});
+        } 
+      }
+
+    componentDidMount() {
+      window.addEventListener("scroll", this.handleScroll);
+    }
+
+    componentWillUnmount() {
+      window.removeEventListener("scroll", this.handleScroll);
+    }*/
+
+
 
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
     handleSidebarHide = () => this.setState({ visible: false })
 
-    /*componentWillMount(){
-    }*/
+    VoirAutre() {
+    let plus = this.state.moreAutre + 5
+        this.setState({moreAutre: plus});
+        
+    }
 
     render() {
     const { visible } = this.state
+    const { moreAutre } = this.state
+
     /*if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
@@ -71,17 +106,25 @@ class Home extends Component {
               as={Menu}
               animation='overlay'
               icon='labeled'
-              inverted
               onHide={this.handleSidebarHide}
               vertical
               visible={visible}
               width='thin'
             >
-              <ContentMenuMobile />
+                <ContentMenuMobile />
             </Sidebar>
 
             <Sidebar.Pusher>
-              <MainContent  />  
+
+              <MainContent more={moreAutre} />
+             
+           {/* <Button
+              fluid
+                  color="green"
+                  onClick={this.VoirAutre.bind(this)}>
+                  Voir plus test
+            </Button>*/}
+
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>
@@ -95,13 +138,8 @@ class Home extends Component {
 }
 
 export default withTracker(() => {
-  /*const id = Meteor.userId();
-  const Handle = Meteor.subscribe('user', id);
-  const loading = !Handle.ready();
-  const allreponses = Meteor.users.find({_id:id});
-  const reponseExists = !loading && !!allreponses;*/
 
   return {
-    /*naissance: reponseExists ? allreponses.fetch() : '',*/
+
   };
 })(Home);

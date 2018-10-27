@@ -57,6 +57,7 @@ class HeaderPage extends Component {
 	      redirectBloquer:false,
 	      IsConseiller:false,
 	      notifNonLu:"0",
+	      SuperModerateur:false,
 	    };
 	}
 
@@ -108,6 +109,20 @@ class HeaderPage extends Component {
 	           {
 	            response ?  
 	             this.setState({IsConseiller:true}) :
+	             ""
+		       }
+		    },
+		});
+
+		Meteor.apply(
+	   		'SuperModerateur',
+	   		[{}],
+	   		{
+	        onResultReceived: (error, response) => {
+	           if (error) console.warn(error.reason);
+	           {
+	            response ?  
+	             this.setState({SuperModerateur:true}) :
 	             ""
 		       }
 		    },
@@ -570,6 +585,11 @@ class HeaderPage extends Component {
 					</div>
 					<div className={this.state.IsConseiller ? "none" : "ButtonHeader"}>
 						<Link to="/DevenirConseiller" >
+							 <Img className="iconHeader" src="/new.svg"/>
+						</Link>
+					</div>
+					<div className={!this.state.SuperModerateur ? "none" : "ButtonHeader"}>
+						<Link to="/ajouterModerateur" >
 							 <Img className="iconHeader" src="/new.svg"/>
 						</Link>
 					</div>

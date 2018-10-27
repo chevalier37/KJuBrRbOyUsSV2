@@ -93,7 +93,7 @@ header {
 .explication{
 	text-align: left;
 	margin-left: 50px;
-	margin-top: 15px;
+	margin-top: 30px;
 	font-size: 20px;
 	font-style: normal;
 }
@@ -199,10 +199,21 @@ header {
     margin-right: 5px;
 }
 
+.iconMain{
+	margin-top: -5px;
+    float: left;
+}
+
 .iconHeader{
 	width: 25px;
     height: 25px;
     margin-right: 5px;
+}
+
+.colorIconblue{
+	width: 20px;
+    height: 20px;
+    margin-left: 8px;
 }
 
 .imgNotif{
@@ -374,14 +385,17 @@ header {
 }
 
 .ListeSideBar{
-	padding-left: 10px;
+	/*padding-left: 10px;
 	padding-right: 10px;
-	padding-top: 20px;
-	background-color: #f5f5f5;
+	padding-top: 20px;*/
+	background-color: white;
 	margin-top: 55px;
 }
 
-
+.ui.thin.left.sidebar, .ui.thin.right.sidebar {
+    width: 250px !important;
+    text-align: left !important;
+}
 
 .SidebarUI{
 	background-color: #f5f5f5;
@@ -811,6 +825,7 @@ header {
     margin-top: 40px;
     position: fixed;
     left: 0px;
+    background-color: white;
 }
 
 .ChatContactLeft{
@@ -864,6 +879,14 @@ header {
     
 }
 
+@-moz-document url-prefix() {
+  	.ContentDiscussion{
+		padding-bottom: 0px;
+		height: 500px;
+	}
+}
+
+
 .messageRight{
 	float: right;
 }
@@ -900,7 +923,7 @@ header {
 }
 
 .SousTitreCommandements{
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
@@ -2386,7 +2409,7 @@ header {
 
 .DemanderConseil{
 	text-align: center;
-	background-color: #f2f2f5;
+	background-color: #3a62bb;
 	height: 30px;
 	line-height: 30px;
 	font-size: 14px;
@@ -2397,6 +2420,7 @@ header {
 	border-color: #dadbdc;
 	font-weight: bold;
 	cursor: pointer;
+	color: white;
 
 }
 
@@ -2819,6 +2843,13 @@ header {
 		padding-bottom: 400px;
 	}
 
+	@-moz-document url-prefix() {
+  	.ContentDiscussion{
+		padding-bottom: 0px;
+		height: 500px;
+	}
+	}
+
 }
 
 @media only screen and (max-height: 800px) {
@@ -2830,6 +2861,13 @@ header {
 	.MenuLeftLastConseiller{
 		height: 500px;
 		overflow: auto;
+	}
+
+	@-moz-document url-prefix() {
+  	.ContentDiscussion{
+		padding-bottom: 0px;
+		height: 450px;
+	}
 	}
 }
 
@@ -2844,6 +2882,14 @@ header {
 		height: 450px;
 		overflow: auto;
 	}
+
+
+	@-moz-document url-prefix() {
+  	.ContentDiscussion{
+		padding-bottom: 0px;
+		height: 400px;
+	}
+	}
 }
 
 @media only screen and (max-height: 700px) {
@@ -2856,12 +2902,26 @@ header {
 		height: 400px;
 		overflow: auto;
 	}
+
+	@-moz-document url-prefix() {
+  	.ContentDiscussion{
+		padding-bottom: 0px;
+		height: 350px;
+	}
+	}
 }
 
 @media only screen and (max-height: 650px) {
 
 	.ContentDiscussion{
 		padding-bottom: 400px;
+	}
+
+	@-moz-document url-prefix() {
+  	.ContentDiscussion{
+		padding-bottom: 0px;
+		height: 250px;
+	}
 	}
 }
 
@@ -2870,12 +2930,26 @@ header {
 	.ContentDiscussion{
 		padding-bottom: 400px;
 	}
+
+	@-moz-document url-prefix() {
+  	.ContentDiscussion{
+		padding-bottom: 0px;
+		height: 200px;
+	}
+	}
 }
 
 @media only screen and (max-height: 550px) {
 
 	.ContentDiscussion{
 		padding-bottom: 400px;
+	}
+
+	@-moz-document url-prefix() {
+  	.ContentDiscussion{
+		padding-bottom: 0px;
+		height: 150px;
+	}
 	}
 
 }

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Sidebar, Segment, Button, Header, Divider} from 'semantic-ui-react'
 import Img from 'react-image'
 import { Route, Redirect } from 'react-router';
+import PropTypes from 'prop-types';
 
 //Component
 import HeaderPage from '../component/HeaderPage.js';
@@ -85,6 +86,10 @@ class allRecommandations extends Component {
     );
   }
 }
+
+allRecommandations.propTypes = {
+        allMessages: PropTypes.array.isRequired,
+    };
 
 export default allRecommandations =  withTracker(() => {
   

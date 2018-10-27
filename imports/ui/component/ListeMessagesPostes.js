@@ -4,6 +4,7 @@ import { Segment, Button, Checkbox, Form, Header, Divider, Label, Comment } from
 import { Link } from 'react-router-dom';
 import { Comments } from '../../api/Reponses.js';
 import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
 
 class ListeMessagesPostes extends Component {
 	
@@ -307,13 +308,12 @@ class ListeMessagesPostes extends Component {
 							</div>
 
 							<div className="repondreMessage1" >
-								<Button size="tiny"  color='orange'>
-										<Link to={'/ModifierMessage/' + this.props.message._id }>
-										Modifier
-										</Link>
-								</Button>
+								<Link to={'/ModifierMessage/' + this.props.message._id }>
+									<Button size="tiny"  color='orange'>
+											Modifier
+									</Button>
+								</Link>
 							</div>
-
 
 							<p className="categorie">
 							
@@ -443,6 +443,10 @@ class ListeMessagesPostes extends Component {
 		);
   	}
 }
+
+ListeMessagesPostes.propTypes = {
+        message: PropTypes.array.isRequired,
+    };
 
 export default ListeMessagesPostes =  withTracker(({ id }) => {
 

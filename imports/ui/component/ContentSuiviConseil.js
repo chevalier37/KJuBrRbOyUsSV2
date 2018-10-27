@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Segment, Button, Checkbox, Form, Header, TextArea, Divider } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
-
+import PropTypes from 'prop-types';
 import FormPosterMessage from './FormPosterMessage.js';
 import ListeSuiviConseil from './ListeSuiviConseil.js';
 
@@ -52,6 +52,10 @@ class ContentMessagePostes extends Component {
 		);
   	}
 }
+
+ContentMessagePostes.propTypes = {
+        allMessages: PropTypes.array.isRequired,
+    };
 
 export default withTracker(() => {
 	

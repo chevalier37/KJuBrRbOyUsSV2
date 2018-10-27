@@ -13,7 +13,7 @@ import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { DDPRateLimiter } from 'meteor/ddp-rate-limiter';
 
 if (Meteor.isServer) {
-const requestLimit = 5;
+const requestLimit = 10;
 const requestTimeout = 5000;
 DDPRateLimiter.setErrorMessage("Error DDPRateLimiter")
 
@@ -237,6 +237,81 @@ DDPRateLimiter.addRule({
 
 
 
+export const SuperModerateur = new ValidatedMethod({
+  //on regarde si l'utilisateur est le superModerateur
+  name: 'SuperModerateur',
+  validate: new SimpleSchema({
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run() {
+
+    if(this.userId == "qWnQQWAHxQNmZx6sT" ||
+       this.userId == "oANNC3P9SpQ5Fw8Qg"
+       ){
+      return true
+    }
+    
+  }
+});
+DDPRateLimiter.addRule({
+    type: "method",
+    name: "SuperModerateur",
+}, requestLimit, requestTimeout);
+
+
+
+export const addModerateur = new ValidatedMethod({
+  //on ajoute un moderateur
+  name: 'addModerateur',
+  validate: new SimpleSchema({
+  id: { type: String },
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({id}) {
+    
+        Meteor.users.update({_id:id}, {
+        $set: { "moderateur": true,},
+        })
+  }
+});
+DDPRateLimiter.addRule({
+    type: "method",
+    name: "addModerateur",
+}, requestLimit, requestTimeout);
+
+
+
+export const IsModerateur = new ValidatedMethod({
+  //on virifie si l'utilisateur est un moderateur
+  name: 'IsModerateur',
+  validate: new SimpleSchema({
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run() {
+      
+        let search = Meteor.users.findOne({'_id':this.userId});
+        let Ismoderateur = search.moderateur;
+        return Ismoderateur;        
+  }
+});
+/*DDPRateLimiter.addRule({
+    type: "method",
+    name: "IsModerateur",
+}, requestLimit, requestTimeout);*/
+
+
 Meteor.methods({
 
       FormLogin: function(username,password) {
@@ -298,8 +373,6 @@ Meteor.methods({
           //console.log("ContactChat") 
           }
 
-         
-
           if(Chat.find({from_id:myId}).count() >0 || Chat.find({to_id:myId}).count() >0){
           Chat.remove({from_id:myId})
           Chat.remove({to_id:myId}) 
@@ -327,26 +400,7 @@ Meteor.methods({
                     $set: { "conseiller": true,},
                     })
                 }
-             },
-
-        addModerateur: function() {
-                     Meteor.users.update({_id:this.userId}, {
-                    $set: { "moderateur": true,},
-                    })
-             },
-
-        IsModerateur: function() {
-                      let search = Meteor.users.findOne({'_id':this.userId});
-                      let Ismoderateur = search.moderateur;
-                      return Ismoderateur;
-                   },
-
-
-      
-
-       
-
-       
+             }, 
 
 });
 
@@ -366,11 +420,9 @@ Accounts.onCreateUser(function(options, user) {
 
 
 Meteor.publish('fetchUser', function ( ) {
-
   const options = {
     fields: { username: 1 }
   };
-
 
   return Meteor.users.find(options);
 });

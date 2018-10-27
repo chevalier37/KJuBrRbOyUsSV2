@@ -7,6 +7,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 import { hot } from 'react-hot-loader'
+import PropTypes from 'prop-types';
 
 class ListeMessages extends Component {
 	
@@ -387,11 +388,11 @@ class ListeMessages extends Component {
 	          					</Link>
 	          				</div>
 	          				<div className="Signaler1" >
+	          				<Link to={'/Chat/' + this.props.message.post_author_id }>
 								<Button basic size="tiny"  color='blue'>
-									<Link to={'/Chat/' + this.props.message.post_author_id }>
 									Message privé
-									</Link>
 								</Button>
+							</Link>
 							</div>
 							<div className="Signaler" >
 								<Button basic size="tiny" disabled={this.state.disabled} color='red' onClick={this.signaler.bind(this)}>
@@ -409,11 +410,11 @@ class ListeMessages extends Component {
 							<div className={this.state.author_id ?
 	        				  			"Signaler" : "none"}
 	        				 >
+	        				 <Link to={'/ModifierMessage/' + this.props.message._id }>
 								<Button size="tiny"  color='orange'>
-									<Link to={'/ModifierMessage/' + this.props.message._id }>
 									Modifier
-									</Link>
 								</Button>
+							</Link>
 							</div>
 							<div className={this.state.IsModerateur ? "repondreMessage" : "none"}>
 	          						<Button 
@@ -550,6 +551,10 @@ class ListeMessages extends Component {
 		);
   	}
 }
+
+ListeMessages.propTypes = {
+        message: PropTypes.array.isRequired,
+    };
 
 export default ListeMessages =  withTracker(({ id }) => {
   const HandleReponse = Meteor.subscribe('reponsesSingleMessage', id);
