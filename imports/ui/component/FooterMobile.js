@@ -7,13 +7,26 @@ import { withTracker } from 'meteor/react-meteor-data';
 
 class FooterMobile extends Component {
 
-	state = { visible: false }
+	state = { visible: false, notifNonLu:"0", }
+
+	componentWillMount(){
+		Meteor.apply('notifNonLu', [{
+	          }], {
+	          onResultReceived: (error, response) => {
+	            if (error) console.warn(error.reason);
+	            {response ?
+	             this.setState({notifNonLu: response}) :
+	             ""}
+	          },
+	      	});
+	}
 
   	handleButtonClick = () => this.setState({ visible: !this.state.visible })
   	handleSidebarHide = () => this.setState({ visible: false })
 
   	render() {
   		const { visible } = this.state
+  		const { notifNonLu } = this.state
 
 	return (
 		<div className="headerTitre">
@@ -40,6 +53,9 @@ class FooterMobile extends Component {
 						<Link to="/Notifications" >
 							 <Img className="iconHeader" src="/bellMobile.svg"/>
 						</Link>
+						<div className={this.state.notifNonLu > 0 ? "totalNotifMobile" : "none"}>
+						    {notifNonLu}
+						</div>
 					</div>
 				</div>
 		</div>
@@ -48,13 +64,8 @@ class FooterMobile extends Component {
 }
 
 export default FooterMobile =  withTracker(() => {
-  /*const userId = Meteor.userId()
-  const Handle = Meteor.subscribe('IsConseiller', userId);
-  const loading = !Handle.ready();
-  const allreponses = Conseilleres.find({'user_id':userId});
-  const reponseExists = !loading && !!allreponses;*/
 
   return {
-    /*user: reponseExists ? allreponses.count() : [],*/
+
   };
 })(FooterMobile);

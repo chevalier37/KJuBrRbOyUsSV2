@@ -187,6 +187,23 @@
 		margin-right: 10px;
 	}
 
+	.totalNotifMobile {
+	    background-color: red;
+	    width: 18px;
+	    height: 20px;
+	    color: white;
+	    border-radius: 5px;
+	    /* float: right; */
+	    text-align: center;
+	    /* margin-top: -25px; */
+	    margin-left: -10px;
+	    z-index: 100;
+	    display: inline-block;
+	    /* margin-bottom: 100px; */
+	    position: relative;
+	    top: -10px;
+	}
+
 
 
 }
