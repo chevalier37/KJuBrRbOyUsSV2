@@ -136,7 +136,7 @@ class FormPosterMessage extends Component {
 	    }
 
 	    //nombre total de categorie
-	    NBRcategorie = 	this.state.CheckPremierAmour + 
+	    const NBRcategorie = 	this.state.CheckPremierAmour + 
 	    				this.state.trahison +
 	    				this.state.Friendzone +
 	    				this.state.amourdistance +
@@ -184,8 +184,8 @@ class FormPosterMessage extends Component {
 			NBRcategorie > 0 &&
 			NBRcategorie < 3
 			?
-		  	Meteor.call('addMessage',
-		  	  titre,
+		  	 Meteor.apply('addMessage',
+		  	  [{titre,
 		  	  message,
 		  	  premierAmour,
 		  	  trahison,
@@ -215,12 +215,11 @@ class FormPosterMessage extends Component {
 		      Harcelement,
 		      Discrimination,
 		      Violence,
-		      autre,
+		      autre}],
 		  	 
-		  	  (err) => {
-            	if(err){
-              
-           		 } else {
+		  	  {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
 	                  // on cache les options après validation
 			        this.setState({
 				      categorie: 'cacherCategorie'
@@ -231,9 +230,9 @@ class FormPosterMessage extends Component {
 				    });
 			    
 				  	// Clear form
-			        ReactDOM.findDOMNode(this.refs.titre).value = '';
-			        ReactDOM.findDOMNode(this.refs.message).value = '';
-              	}
+			        {/*ReactDOM.findDOMNode(this.refs.titre).value = '';
+			        ReactDOM.findDOMNode(this.refs.message).value = '';*/}
+              	},
           	})
 	        : ''
 	    }

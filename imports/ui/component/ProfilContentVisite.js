@@ -1473,7 +1473,10 @@ class ProfilContentVisite extends Component {
 							<Button
 							 inverted
 							 color='brown'>
-								 <Link to={'/Chat/'+ this.props.id }>	
+								 <Link to={'/Chat/'+ this.props.id } className="ecran">	
+								 	Contacter
+								 </Link>
+								 <Link to={'/MOBILEChat/'+ this.props.id } className="mobile">	
 								 	Contacter
 								 </Link>
 							 </Button>
@@ -1484,7 +1487,10 @@ class ProfilContentVisite extends Component {
 							<Button
 							 inverted 
 							 color='green'>
-								 <Link to={'/Recommander/'+ this.props.id }>	
+								 <Link to={'/Recommander/'+ this.props.id} className="ecran">	
+								 	Recommander
+								 </Link>
+								 <Link to={'/MOBILERecommander/'+ this.props.id} className="mobile">	
 								 	Recommander
 								 </Link>
 							 </Button>

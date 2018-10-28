@@ -24,6 +24,14 @@
 		display: block !important;
 	}
 
+	.mobileProfile{
+		display: block !important;
+	}
+
+	.ecranProfile{
+		display: none !important;
+	}
+
 	.ecran{
 		display: none !important;
 	}
@@ -56,7 +64,7 @@
 	}
 
 	.pushable {
-	    /*height: 2000px !important;*/
+	    min-height: 1000px !important;
 	    background-color: #e9ebee !important;
 	}
 
@@ -90,6 +98,7 @@
     	margin-top: 55px !important;
     	margin-left: 10px !important;
     	margin-right: 10px !important;
+    	margin-bottom: 70px !important;
 	}
 
 	.ChatContactLeft {
@@ -138,6 +147,7 @@
 
 	.headerChat{
 		height: 70px !important;
+		padding-left: 10px !important;
 	}
 
 	.espaceNotif {
@@ -146,13 +156,13 @@
 
 	.container-right{
 		/*background-color: #3b5998 !important;*/
-		 background-color: #2185d0 !important;
-    background-image: linear-gradient(#1c3c84,#6c96f5 100%) !important;
+		background-color: #2185d0 !important;
+    	background-image: linear-gradient(#1c3c84,#6c96f5 100%) !important;
 		color: white;
 	}
 
 	.ui.checkbox input.hidden+label {
-    	color: white !important;
+    	color: black !important;
 	}
 
 	.lireCGU a{
@@ -161,6 +171,20 @@
 
 	.MobileProfil{
 		margin-right: 10px !important;
+	}
+
+	.MainModifierConseiller {
+	    float: none !important;
+	    min-width: 10px !important;
+	}
+
+	.voirPlus {
+	    margin-right: 10px !important;
+	}
+
+	.contentReco{
+		margin-top: 40px;
+		margin-right: 10px;
 	}
 
 

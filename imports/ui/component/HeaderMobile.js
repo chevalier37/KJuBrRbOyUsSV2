@@ -194,6 +194,24 @@ class HeaderMobile extends Component {
 	    });
 	    }
 
+	    if(pathname == "MOBILLEModifierConseiller"){
+	      this.setState({
+	      pathname: "Expériences",
+	    });
+	    }
+
+	    if(pathname == "MOBILERecommander"){
+	      this.setState({
+	      pathname: "Recommander",
+	    });
+	    }
+
+	    if(pathname == "ValiderRecommandation"){
+	      this.setState({
+	      pathname: "Validation",
+	    });
+	    }
+
 		Meteor.apply('Username', [{
           id,
           }], {

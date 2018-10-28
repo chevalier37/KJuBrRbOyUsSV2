@@ -9,7 +9,9 @@ import { Route, Redirect } from 'react-router';
 
 import FormSubscribe from '../component/FormSubscribe.js';
 import FormLogin from '../component/FormLogin.js';
-
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-108632466-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 
 class Connexion extends Component {

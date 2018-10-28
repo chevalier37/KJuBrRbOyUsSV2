@@ -7,6 +7,9 @@ import { Button, Checkbox, Form,  Message, Segment, Header} from 'semantic-ui-re
 import { check } from 'meteor/check';
 import { Route, Redirect } from 'react-router';
 import Img from 'react-image'
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-108632466-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 class forgotPassword extends Component {
 static contextTypes = {
@@ -126,6 +129,7 @@ static contextTypes = {
               <div className="retour mobile" onClick={this.context.router.history.goBack}>
                 <Img className="arrow" src="/arrow.svg"/> 
               </div>
+
            
             <div className="HeaderForget ecran">
               Kurbys

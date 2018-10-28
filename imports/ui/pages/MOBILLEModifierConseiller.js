@@ -3,71 +3,37 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Checkbox, Form,  Message } from 'semantic-ui-react'
-import Img from 'react-image'
+import { Sidebar, Segment, Button, Header, Menu} from 'semantic-ui-react'
 import { Route, Redirect } from 'react-router';
+import Img from 'react-image'
 import ReactGA from 'react-ga';
 ReactGA.initialize('UA-108632466-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
-
+ 
 //Component
 import HeaderPage from '../component/HeaderPage.js';
-import HeaderMobile from '../component/HeaderMobile.js';
 import FooterMobile from '../component/FooterMobile.js';
+import HeaderMobile from '../component/HeaderMobile.js';
 import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
-
-class Home extends Component {
-
-    constructor(props) {
-          super(props);
-       
-          this.state = {
-          visible:false,
-          moreAutre:5,
-          };
-          /*this.handleScroll = this.handleScroll.bind(this);*/
-      }
-
-     /* handleScroll() {
-        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-        const body = document.body;
-        const html = document.documentElement;
-        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
-        const windowBottom = windowHeight + window.pageYOffset;
-        if (windowBottom >= docHeight) {
-          let plus = this.state.moreAutre + 5
-        this.setState({moreAutre: plus});
-        } 
-      }
-
-    componentDidMount() {
-      window.addEventListener("scroll", this.handleScroll);
-    }
-
-    componentWillUnmount() {
-      window.removeEventListener("scroll", this.handleScroll);
-    }*/
+import ModifierConseillerContent from '../component/ModifierConseillerContent.js';
 
 
+class MOBILLEModifierConseiller extends Component {
+
+    state = { visible: false }
 
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
     handleSidebarHide = () => this.setState({ visible: false })
 
-    VoirAutre() {
-    let plus = this.state.moreAutre + 5
-        this.setState({moreAutre: plus});
-        
-    }
+    
 
     render() {
     const { visible } = this.state
-    const { moreAutre } = this.state
-
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
-    }
-    
+    }  
+
     return (
       <div className="container">
         <header> 
@@ -78,7 +44,7 @@ class Home extends Component {
             </div>
           </div>
 
-          {/* Header mobile*/}
+         {/* Header mobile*/}
           <div className="HeaderMobile mobile">
             <div className="headerTitre">
             <div className="ButtonHeaderMobile">
@@ -88,7 +54,7 @@ class Home extends Component {
             </div>
           </div>
         </header>
-
+       
         <div>
           <Sidebar.Pushable >
             <Sidebar
@@ -100,20 +66,13 @@ class Home extends Component {
               visible={visible}
               width='thin'
             >
-                <ContentMenuMobile />
+              <ContentMenuMobile />
             </Sidebar>
 
             <Sidebar.Pusher>
-
-              <MainContent more={moreAutre} />
-             
-           {/* <Button
-              fluid
-                  color="green"
-                  onClick={this.VoirAutre.bind(this)}>
-                  Voir plus test
-            </Button>*/}
-
+              <div className="containerSite" onClick={this.toggleHidden}>              
+                    <ModifierConseillerContent /> 
+                </div>
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>
@@ -127,8 +86,6 @@ class Home extends Component {
 }
 
 export default withTracker(() => {
-
   return {
-
   };
-})(Home);
+})(MOBILLEModifierConseiller);

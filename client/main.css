@@ -76,6 +76,14 @@ header {
 	display: none;
 }
 
+.mobileProfile{
+	display: none ;
+}
+
+.ecranProfile{
+	display: block;
+}
+
 .titreMobile{
 	margin-top: 5px;
 	font-size: 25px;
@@ -622,6 +630,11 @@ header {
 	margin-top: 0px;
 	margin-right: 20px;
 	color: red;
+}
+
+.Modifier{
+	float: right;
+    margin-top: -22px;
 }
 
 .contacter{
@@ -1973,6 +1986,7 @@ header {
 
 .voirPlus{
 	margin-top: 20px;
+	margin-right: 10px;
 }
 
 .TitreNaissance{
@@ -2117,6 +2131,7 @@ header {
 .visibleMessage{
 	/*display: inline-block;*/
     margin-top: -10px;
+    margin-bottom: 20px;
 }
 
 .visibleArticle{
@@ -2179,7 +2194,7 @@ header {
     padding-left: 5px;
     padding-right: 5px;
     margin-bottom: 50px;
-    background-color: white;
+    /*background-color: white;*/
     height: 1000px;
 }
 

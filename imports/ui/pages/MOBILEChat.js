@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Checkbox, Form,  Message, Confirm } from 'semantic-ui-react'
 import { Route, Redirect } from 'react-router';
 import ReactGA from 'react-ga';
-ReactGA.initialize('UA-000000-01');
+ReactGA.initialize('UA-108632466-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 //Component
@@ -34,6 +34,7 @@ class MOBILEChat extends Component {
           MyConseiller:false,
           open:false,
           mail:"",
+          redirect:false,
         };
     }
 
@@ -61,6 +62,7 @@ class MOBILEChat extends Component {
               ) 
 
       this.setState({ open: false })
+      this.setState({ redirect: true })
     }
 
     handleCancel = () => this.setState({ open: false })
@@ -173,9 +175,13 @@ class MOBILEChat extends Component {
     render() {
     
     const { visible } = this.state
+    const { redirect } = this.state
     
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
+    } 
+    if (redirect){
+      return <Redirect to={"/MOBILEcontactChat/" + Meteor.userId()} />;
     } 
 
       const to_id = this.props.match.params.id;
@@ -234,7 +240,7 @@ class MOBILEChat extends Component {
               <div className="MainContentChat">
                 <div className="headerChat">
                   <div className={"ChatUsername" + " " + this.state.gender}>
-                      <Link to={'/Profil/' + this.props.match.params.id}>
+                      <Link to={'/VisiteProfil/' + this.props.match.params.id}>
                       {this.state.username}
                       </Link>
                   </div>
@@ -243,7 +249,7 @@ class MOBILEChat extends Component {
                   </div>
                   <div>
                       <div className={!this.state.IsConseiller ? "none" : "recommmander"}>
-                          <Link to={'/Recommander/' + this.props.match.params.id}>    
+                          <Link to={'/MOBILERecommander/' + this.props.match.params.id}>    
                             <Button
                              basic
                              color='green'

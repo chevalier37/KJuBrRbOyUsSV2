@@ -482,7 +482,7 @@ class ListeModifierMessage extends Component {
 }
 
 ListeModifierMessage.propTypes = {
-        message: PropTypes.array.isRequired,
+        message: PropTypes.object.isRequired,
     };
 
 export default ListeModifierMessage =  withTracker(({ id }) => {

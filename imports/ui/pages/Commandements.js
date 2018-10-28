@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import { Button, Checkbox, Form,  Message, Segment, Header} from 'semantic-ui-react'
 import { check } from 'meteor/check';
 import { Route, Redirect } from 'react-router';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-108632466-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 class CGU extends Component {
 

@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Checkbox, Form,  Message } from 'semantic-ui-react'
 import { Route, Redirect } from 'react-router';
 import Img from 'react-image'
-
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-108632466-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 import MOBILEcontact from '../component/MOBILEcontact.js';
 import HeaderPage from '../component/HeaderPage.js';
@@ -28,8 +30,12 @@ class MOBILEcontactChat extends Component {
           update:false,
           gender:'',
           visibleLeft:false,
+          visible: false,
         };
     }
+
+    handleButtonClick = () => this.setState({ visible: !this.state.visible })
+    handleSidebarHide = () => this.setState({ visible: false })
 
     toggleVisibility(){
       this.scrollToTop();

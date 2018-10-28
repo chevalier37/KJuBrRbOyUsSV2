@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Checkbox, Form,  Message } from 'semantic-ui-react'
 import Img from 'react-image'
 import { Route, Redirect } from 'react-router';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-108632466-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
  
 //Component
 import HeaderPage from '../component/HeaderPage.js';

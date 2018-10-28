@@ -133,7 +133,7 @@ class RecommanderContent extends Component {
     		}
 
 		return (
-			<div className="MainContent">
+			<div >
 				<Segment className="MainContent">
 					
 						<Header>

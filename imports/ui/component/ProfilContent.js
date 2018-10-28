@@ -1533,20 +1533,39 @@ class ProfilContent extends Component {
 						 </div>
 					</Segment>
 				</div>
-				<div className={"visibleProfil" + " " +this.props.IdProfile}>
-					<Button
-					  color="green"
-					  fluid
-					  disabled={!this.state.IsConseiller} >
-						 <Link to="/ModifierConseiller" >
-						 	Ajouter une experience
-						 </Link>
-					</Button>
-					<Message
-				    	hidden={this.state.IsConseiller}
-				      	header="Tu n'es pas conseiller"
-				      	content='Seuls les conseillers peuvent ajouter des expériences'
-				    />
+				<div className="ecranProfile">
+					<div className={"visibleProfil" + " " + this.props.IdProfile}>
+						<Button
+						  color="green"
+						  fluid
+						  disabled={!this.state.IsConseiller} >
+							 <Link to="/ModifierConseiller" >
+							 	Ajouter une experience
+							 </Link>
+						</Button>
+						<Message
+					    	hidden={this.state.IsConseiller}
+					      	header="Tu n'es pas conseiller"
+					      	content='Seuls les conseillers peuvent ajouter des expériences'
+					    />
+					</div>
+				</div>
+				<div className="mobileProfile">
+					<div className={"visibleProfil" + " " + this.props.IdProfile}>
+						<Button
+						  color="green"
+						  fluid
+						  disabled={!this.state.IsConseiller} >
+							 <Link to="/MOBILLEModifierConseiller" >
+							 	Ajouter une experience
+							 </Link>
+						</Button>
+						<Message
+					    	hidden={this.state.IsConseiller}
+					      	header="Tu n'es pas conseiller"
+					      	content='Seuls les conseillers peuvent ajouter des expériences'
+					    />
+					</div>
 				</div>
 
 				<Segment className={premierAmour} >

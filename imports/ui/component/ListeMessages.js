@@ -342,6 +342,13 @@ class ListeMessages extends Component {
 	        				}>
 			  			{this.props.message.post_title}
 			  			</div>
+			  			<div className={this.state.author_id ? "Modifier" : "none"}>
+		        				 <Link to={'/ModifierMessage/' + this.props.message._id }>
+									<Button size="mini"  color='orange'>
+										Modifier
+									</Button>
+								</Link>
+						</div>
 		  		</div>
 	  			<Segment color={colorSexe=="pink" ?
 	        				  "pink" : "blue" }>
@@ -414,15 +421,7 @@ class ListeMessages extends Component {
 	          							  confirmButton="Valider"
 								        />
 								</div>
-								<div className={this.state.author_id ?
-		        				  			"Signaler" : "none"}
-		        				 >
-		        				 <Link to={'/ModifierMessage/' + this.props.message._id }>
-									<Button size="tiny"  color='orange'>
-										Modifier
-									</Button>
-								</Link>
-								</div>
+								
 							</div>
 
 							<div className={this.state.IsModerateur ? "repondreMessage ecran" : "none"}>

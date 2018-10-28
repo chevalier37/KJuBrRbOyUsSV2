@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Checkbox, Form,  Message } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Header, Menu } from 'semantic-ui-react'
 import Img from 'react-image'
 import { Route, Redirect } from 'react-router';
 import ReactGA from 'react-ga';
@@ -12,57 +12,44 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 
 //Component
 import HeaderPage from '../component/HeaderPage.js';
-import HeaderMobile from '../component/HeaderMobile.js';
 import FooterMobile from '../component/FooterMobile.js';
+import HeaderMobile from '../component/HeaderMobile.js';
 import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
+import RecommanderContent from '../component/RecommanderContent.js';
 
-class Home extends Component {
+
+class MOBILERecommander extends Component {
 
     constructor(props) {
-          super(props);
-       
-          this.state = {
-          visible:false,
-          moreAutre:5,
-          };
-          /*this.handleScroll = this.handleScroll.bind(this);*/
-      }
+        super(props);
+        this.state = {
+          visible: false,
+          username:'',
+          gender:'',
 
-     /* handleScroll() {
-        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-        const body = document.body;
-        const html = document.documentElement;
-        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
-        const windowBottom = windowHeight + window.pageYOffset;
-        if (windowBottom >= docHeight) {
-          let plus = this.state.moreAutre + 5
-        this.setState({moreAutre: plus});
-        } 
-      }
-
-    componentDidMount() {
-      window.addEventListener("scroll", this.handleScroll);
+        }
     }
-
-    componentWillUnmount() {
-      window.removeEventListener("scroll", this.handleScroll);
-    }*/
-
-
 
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
     handleSidebarHide = () => this.setState({ visible: false })
 
-    VoirAutre() {
-    let plus = this.state.moreAutre + 5
-        this.setState({moreAutre: plus});
-        
+    componentDidMount() {
+        this.scrollToTop();
     }
 
+    componentDidUpdate() {
+        this.scrollToTop();
+    }
+
+    scrollToTop() {
+        this.el.scrollIntoView();
+    }
+
+  
     render() {
-    const { visible } = this.state
-    const { moreAutre } = this.state
+    
+    const { visible } = this.state 
 
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
@@ -70,6 +57,7 @@ class Home extends Component {
     
     return (
       <div className="container">
+      <div ref={el => { this.el = el; }} ></div>
         <header> 
           {/* Header site*/}
           <div className="containerHeader ecran">
@@ -78,7 +66,7 @@ class Home extends Component {
             </div>
           </div>
 
-          {/* Header mobile*/}
+           {/* Header mobile*/}
           <div className="HeaderMobile mobile">
             <div className="headerTitre">
             <div className="ButtonHeaderMobile">
@@ -88,9 +76,9 @@ class Home extends Component {
             </div>
           </div>
         </header>
-
+       
         <div>
-          <Sidebar.Pushable >
+          <Sidebar.Pushable>
             <Sidebar
               as={Menu}
               animation='overlay'
@@ -100,20 +88,15 @@ class Home extends Component {
               visible={visible}
               width='thin'
             >
-                <ContentMenuMobile />
+              <ContentMenuMobile />
             </Sidebar>
 
             <Sidebar.Pusher>
-
-              <MainContent more={moreAutre} />
-             
-           {/* <Button
-              fluid
-                  color="green"
-                  onClick={this.VoirAutre.bind(this)}>
-                  Voir plus test
-            </Button>*/}
-
+             <div className="containerSite" onClick={this.toggleHidden}>
+                      <div className="contentReco">                      
+                         <RecommanderContent id={this.props.match.params.id} /> 
+                      </div>    
+                </div> 
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>
@@ -126,9 +109,10 @@ class Home extends Component {
   }
 }
 
-export default withTracker(() => {
+export default MOBILERecommander =  withTracker(() => {
+  
 
   return {
 
   };
-})(Home);
+})(MOBILERecommander);

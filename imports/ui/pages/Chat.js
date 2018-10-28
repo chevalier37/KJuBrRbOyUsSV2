@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Checkbox, Form,  Message, Confirm } from 'semantic-ui-react'
 import { Route, Redirect } from 'react-router';
 import ReactGA from 'react-ga';
-ReactGA.initialize('UA-000000-01');
+ReactGA.initialize('UA-108632466-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 //Component
@@ -246,7 +246,7 @@ class chat extends Component {
               <div className="MainContentChat">
                 <div className="headerChat">
                   <div className={"ChatUsername" + " " + this.state.gender}>
-                      <Link to={'/Profil/' + this.props.match.params.id}>
+                      <Link to={'/VisiteProfil/' + this.props.match.params.id}>
                       {this.state.username}
                       </Link>
                   </div>

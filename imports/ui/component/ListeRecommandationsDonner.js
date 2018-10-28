@@ -166,7 +166,7 @@ class ListeRecommandationsDonner extends Component {
 }
 
 ListeRecommandationsDonner.propTypes = {
-        message: PropTypes.array.isRequired,
+        message: PropTypes.object.isRequired,
     };
     
 export default ListeRecommandationsDonner =  withTracker(() => {

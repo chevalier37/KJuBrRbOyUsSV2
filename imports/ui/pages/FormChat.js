@@ -7,6 +7,10 @@ import { withTracker } from 'meteor/react-meteor-data';
 import Img from 'react-image'
 import { Chat } from '../../api/Chat.js';
 import { Writing } from '../../api/Writing.js';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-108632466-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 //Icons
 import Send from 'react-icons/lib/fa/paper-plane-o';
 
