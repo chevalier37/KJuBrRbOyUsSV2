@@ -36,6 +36,133 @@
 		width: 100% !important;
 	    margin-left: 5px !important;
 	    margin-right: 5px !important;
+	    margin-bottom: 50px !important;
 	}
+
+	.buttonMobile{
+		margin-top: 20px;
+	    margin-bottom: 10px;
+	    height: 20px;
+	}
+
+	.headerPoster{
+		margin-bottom: 20px;
+	    font-size: 18px;
+	    font-weight: bold;
+	}
+
+	.pushable>.pusher {
+    	background-color: #e9ebee !important;
+	}
+
+	.pushable {
+	    /*height: 2000px !important;*/
+	    background-color: #e9ebee !important;
+	}
+
+
+	.visibleCategorie {
+	    margin-left: 10px;
+	}
+
+	.MobileCategorie{
+		display: none !important;
+	}
+
+	.cacherCategorie{
+		display: block !important;
+	}
+
+	.MobileSubmit{
+		float: right !important;
+	}
+
+	.choixCat{
+		font-size: 18px;
+		font-weight: bold;
+	}
+
+	.containerSite {
+   	 	background-color: #e9ebee !important;
+	}
+
+	.MainContentProfil {
+    	margin-top: 55px !important;
+    	margin-left: 10px !important;
+    	margin-right: 10px !important;
+	}
+
+	.ChatContactLeft {
+	    float: none;
+	    width: 100%;
+	    height: 100%;
+	    margin-top: 0px !important;
+	    overflow: auto; 
+	    padding-right: 20px;
+	    padding-left: 20px;
+	    background-color: white !important;
+	}
+
+	.AffficheContact {
+	    padding-bottom: 10px;
+	    padding-top: 10px;
+	}
+
+	.mobileContact{
+		font-weight: bold;
+		color: black;
+		font-size: 16px;
+	}
+
+	.MainContentChat {
+	    margin-left: 0px !important;
+	    margin-top: 0px !important;
+	}
+
+	.ContentDiscussion {
+	 	padding-right: 0px !important;
+	    width: 100% !important;
+	}
+
+	.valideChatForm {
+	    position: fixed !important;
+	    margin-left: 0px !important;
+	    left: 0px !important;
+	    width: 100% !important;
+	    padding-right: 0px !important;
+	}
+
+	.ContentDiscussion {
+    	padding-bottom: 300px !important;
+	}
+
+	.headerChat{
+		height: 70px !important;
+	}
+
+	.espaceNotif {
+    	height: 0px !important;
+	}
+
+	.container-right{
+		/*background-color: #3b5998 !important;*/
+		 background-color: #2185d0 !important;
+    background-image: linear-gradient(#1c3c84,#6c96f5 100%) !important;
+		color: white;
+	}
+
+	.ui.checkbox input.hidden+label {
+    	color: white !important;
+	}
+
+	.lireCGU a{
+		color: white !important;
+	}
+
+	.MobileProfil{
+		margin-right: 10px !important;
+	}
+
+
 
 }

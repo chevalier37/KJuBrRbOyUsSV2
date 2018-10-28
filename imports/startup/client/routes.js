@@ -10,10 +10,12 @@ import ResultatsConseiller from '../../../imports/ui/pages/ResultatsConseiller.j
 import Profil from '../../../imports/ui/pages/Profil.js';*/}
 import DevenirConseiller from '../../../imports/ui/pages/DevenirConseiller.js';
 import Chat from '../../../imports/ui/pages/Chat.js';
+import MOBILEcontactChat from '../../../imports/ui/pages/MOBILEcontactChat.js';
 import forgotPassword from '../../../imports/ui/pages/forgotPassword.js';
 import CGU from '../../../imports/ui/pages/CGU.js';
 import Commandements from '../../../imports/ui/pages/Commandements.js';
 import PosterMessage from '../../../imports/ui/pages/PosterMessage.js';
+import MOBILEmessagePoste from '../../../imports/ui/pages/MOBILEmessagePoste.js';
 import Notifications from '../../../imports/ui/pages/Notifications.js';
 import ConseillerConnecter from '../../../imports/ui/pages/ConseillerConnecter.js';
 import ModifierMessage from '../../../imports/ui/pages/ModifierMessage.js';
@@ -26,6 +28,20 @@ import ValiderRecommandation from '../../../imports/ui/pages/ValiderRecommandati
 import compteBloquer from '../../../imports/ui/pages/compteBloquer.js';
 import ModifierRecommandation from '../../../imports/ui/pages/ModifierRecommandation.js';
 import ajouterModerateur from '../../../imports/ui/pages/ajouterModerateur.js';
+import MOBILEmesConseils from '../../../imports/ui/pages/MOBILEmesConseils.js';
+import MOBILErecommandationsRecus from '../../../imports/ui/pages/MOBILErecommandationsRecus.js';
+import MOBILErecommandationsDonne from '../../../imports/ui/pages/MOBILErecommandationsDonne.js';
+import MOBILEnotifications from '../../../imports/ui/pages/MOBILEnotifications.js';
+import MOBILEmoderateur from '../../../imports/ui/pages/MOBILEmoderateur.js';
+import MOBILEnumerosUtiles from '../../../imports/ui/pages/MOBILEnumerosUtiles.js';
+import MOBILEsignalerBug from '../../../imports/ui/pages/MOBILEsignalerBug.js';
+import MOBILEpassword from '../../../imports/ui/pages/MOBILEpassword.js';
+import MOBILELivre from '../../../imports/ui/pages/MOBILELivre.js';
+import MOBILEcommandements from '../../../imports/ui/pages/MOBILEcommandements.js';
+import MOBILEcgu from '../../../imports/ui/pages/MOBILEcgu.js';
+import MOBILEcontact from '../../../imports/ui/pages/MOBILEcontact.js';
+import MOBILEsupprimer from '../../../imports/ui/pages/MOBILEsupprimer.js';
+import MOBILEChat from '../../../imports/ui/pages/MOBILEChat.js';
 {/*import contact from '../../../imports/ui/pages/contact.js';
 import singleMessage from '../../../imports/ui/pages/SingleMessage.js';
 import Recommander from '../../../imports/ui/pages/Recommander.js';
@@ -98,6 +114,7 @@ export const renderRoutes = () => (
       <Route path="/ResultatsConseiller/:theme" component={ResultatsConseiller}/>
       <Route path="/Profil/:id" component={Profil}/>*/}
       <Route path="/Chat/:id" component={Chat}/>
+      <Route path="/MOBILEcontactChat/:id" component={MOBILEcontactChat}/>
       <Route path="/forgotPassword" component={forgotPassword}/>
       <Route path="/CGU" component={CGU}/>
       <Route path="/Commandements" component={Commandements}/>
@@ -114,6 +131,21 @@ export const renderRoutes = () => (
       <Route path="/compteBloquer/" component={compteBloquer}/>
       <Route path="/ModifierRecommandation/:id" component={ModifierRecommandation}/>
       <Route path="/ajouterModerateur/" component={ajouterModerateur}/>
+      <Route path="/MOBILEmessagePoste/" component={MOBILEmessagePoste}/>
+      <Route path="/MOBILEmesConseils/" component={MOBILEmesConseils}/>
+      <Route path="/MOBILErecommandationsRecus/" component={MOBILErecommandationsRecus}/>
+      <Route path="/MOBILErecommandationsDonne/" component={MOBILErecommandationsDonne}/>
+      <Route path="/MOBILEnotifications/" component={MOBILEnotifications}/>
+      <Route path="/MOBILEmoderateur/" component={MOBILEmoderateur}/>
+      <Route path="/MOBILEnumerosUtiles/" component={MOBILEnumerosUtiles}/>
+      <Route path="/MOBILEsignalerBug/" component={MOBILEsignalerBug}/>
+      <Route path="/MOBILEpassword/" component={MOBILEpassword}/>
+      <Route path="/MOBILELivre/" component={MOBILELivre}/>
+      <Route path="/MOBILEcommandements/" component={MOBILEcommandements}/>
+      <Route path="/MOBILEcgu/" component={MOBILEcgu}/>
+      <Route path="/MOBILEcontact/" component={MOBILEcontact}/>
+      <Route path="/MOBILEsupprimer/" component={MOBILEsupprimer}/>
+      <Route path="/MOBILEChat/:id" component={MOBILEChat}/>
       {/*<Route path="/contact" component={contact}/>
       <Route path="/singleMessage/:id" component={singleMessage}/>
       <Route path="/Recommander/:id" component={Recommander}/>

@@ -10,6 +10,7 @@ import { Route, Redirect } from 'react-router';
 //Component
 import HeaderPage from '../component/HeaderPage.js';
 import FooterMobile from '../component/FooterMobile.js';
+import HeaderMobile from '../component/HeaderMobile.js';
 import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
 import ListeNotification from '../component/ListeNotification.js';
@@ -94,19 +95,10 @@ class allNotifications extends Component {
           {/* Header mobile*/}
           <div className="HeaderMobile mobile">
             <div className="headerTitre">
-              <div className="">
-                <div className="ButtonHeaderMobile">
-                     <Img className="iconHeader" src="/menu.svg" onClick={this.handleButtonClick} />
-                </div>
-                <div className="ButtonPseudoHeader">
-                  Pseudo
-                </div>
-                <div className="ButtonHeaderRight">
-                  <Link to="/PosterMessage" >
-                     <Img className="iconHeader" src="/edit.svg"/>
-                  </Link>
-                </div>
-              </div>
+            <div className="ButtonHeaderMobile">
+                <Img className="iconHeader" src="/menu.svg" onClick={this.handleButtonClick} />
+            </div>
+                <HeaderMobile />
             </div>
           </div>
         </header>
@@ -117,7 +109,6 @@ class allNotifications extends Component {
               as={Menu}
               animation='overlay'
               icon='labeled'
-              inverted
               onHide={this.handleSidebarHide}
               vertical
               visible={visible}
@@ -128,13 +119,11 @@ class allNotifications extends Component {
 
             <Sidebar.Pusher>
              <div className="containerSite" onClick={this.toggleHidden}>
-             <div className="containerIMG">
                       <div className="MainContent">
                       <div className="espaceNotif"></div>                      
                          {this.renderAllreponses()}
                       </div>    
-                </div>
-                </div> 
+              </div>
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>
@@ -151,7 +140,7 @@ export default allNotifications =  withTracker(() => {
   const myId = Meteor.userId();
   const Handle = Meteor.subscribe('Notifications', myId);
   const loading = !Handle.ready();
-  const allreponses = Notifications.find({'to_id':myId}, { sort: {date: -1 } });
+  const allreponses = Notifications.find({'to_id':myId}, { sort: {date: -1 }, limit:30 });
   const reponseExists = !loading && !!allreponses;
 
   return {

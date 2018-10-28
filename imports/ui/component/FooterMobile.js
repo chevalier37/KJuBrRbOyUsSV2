@@ -19,25 +19,25 @@ class FooterMobile extends Component {
 		<div className="headerTitre">
 				<div className="">
 					<div className="ButtonFooterMobile">
-						<Link to="/DevenirConseiller" >
+						<Link to="/home" >
 							 <Img className="iconHeader" src="/homeMobile.svg"/>
 						</Link>
 					</div>
 
 					<div className="ButtonFooterMobile">
-						<Link to="/DevenirConseiller" >
+						<Link to={'/profil/' + Meteor.userId()}>
 							 <Img className="iconHeader" src="/userMobile.svg"/>
 						</Link>
 					</div>
 
 					<div className="ButtonFooterMobile">
-						<Link to="/DevenirConseiller" >
+						<Link to={'/MOBILEcontactChat/' + Meteor.userId() }>
 							 <Img className="iconHeader" src="/chatMobile.svg"/>
 						</Link>
 					</div>
 
 					<div className="ButtonFooterMobile">
-						<Link to="/DevenirConseiller" >
+						<Link to="/Notifications" >
 							 <Img className="iconHeader" src="/bellMobile.svg"/>
 						</Link>
 					</div>

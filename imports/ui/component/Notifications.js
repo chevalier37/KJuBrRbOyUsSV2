@@ -141,15 +141,17 @@ class Notifications extends Component {
 
       return (
           <div className="MainContentProfil">
-            <Header>
-            Notifications
-            </Header>
-            <Divider />
+             <div className="ecran">
+                <Header>
+                Notifications
+                </Header>
+                <Divider />
+            </div>
             <div className="ListeMesMessages">
               <div className="register blanc">
                   <div className="moderateur">
-                      <strong>Activer les notifications par mail quand :</strong><br /><br />
-
+                      <div className="ecran"><strong>Activer les notifications par mail quand :</strong></div>
+                      <div className="mobile"><strong>Activer les notifications quand :<br /></strong></div><br />
                       <Form onSubmit={this.Submit.bind(this)} success>
                         <Form.Field>
                           <Checkbox 

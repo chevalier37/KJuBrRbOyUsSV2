@@ -388,6 +388,6 @@ Meteor.publish('Notifications', function (id) {
       id: {type: String},
     }).validate({id});
 
-  return Notifications.find({'to_id':id})
+  return Notifications.find({'to_id':id}, { sort: {date: -1 }, limit:30 });
 });
 }

@@ -64,9 +64,6 @@ export default class FormLogin extends Component {
 						</Form.Field>
 						<Button type='submit' color='blue' >Connexion</Button>
 					</Form>
-					<div className="forgetPassword">
-					 	<Link to="/forgotPassword" >Mot de passe oublié</Link>
-					</div>
 		 	     	<Message
 				    hidden={!this.state.erreurLogin}
 				    error={this.state.erreurLogin}

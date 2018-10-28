@@ -29,10 +29,14 @@ class SignalerBug extends Component {
           <Divider />
           <div className="ListeMesMessages">
             <div className="register blanc">
-                <div className="numero">
+                <div className="numero ecran">
                     Tu as remarqué un bug ?<br />
                     Merci de contacter <Link to={'/Chat/oANNC3P9SpQ5Fw8Qg'} >Caroline </Link> pour le signaler.
-                    </div>
+                </div>
+                </div>
+                <div className="numero mobile">
+                    Tu as remarqué un bug ?<br />
+                    Merci de contacter <Link to={'/MOBILEChat/oANNC3P9SpQ5Fw8Qg'} >Caroline </Link> pour le signaler.
                 </div>
           </div>
         </div>

@@ -47,7 +47,7 @@ class Commandements extends Component {
                   <div className="SousTitreCommandements">Tu signaleras toutes dérives</div>
                   Si un utilisateur à un comportement inapproprié (vulgaire, fake message, harcèlement...) tu dois le signaler. Après validation par notre équipe, son compte sera bloqué.<br /><br />
 
-                  <div className="RegleCommandements">Les utilisateurs qui ne respectent pas ces commandements seront bannis du site.</div><br />
+                  <div className="RegleCommandements">Les utilisateurs qui ne respectent pas ces commandements seront bannis de kurbys.</div><br />
 
                 </div>
 

@@ -404,22 +404,22 @@ class ListeConseillerConnecte extends Component {
 						</div>
 
 
-
-			  			<div className="ageAuthorReponse">
-	        				<div className="ageConseiller">{age} ans</div>
-	        				<Button size="tiny"  color='blue'>
-										<Link to={'/VisiteProfil/' + this.props.message.user_id }>
-										Profil
-										</Link>
-							</Button>
-	        				<Button size="tiny"  color='green'>
-										<Link to={'/Chat/' + this.props.message.user_id }>
-										Contacter
-										</Link>
-							</Button>
-	        			</div>
+						<div className="buttonMobile">
+				  			<div className="ageAuthorReponse">
+		        				<div className="ageConseiller">{age} ans</div>
+		        				<Button size="tiny"  color='blue'>
+											<Link to={'/VisiteProfil/' + this.props.message.user_id }>
+											Profil
+											</Link>
+								</Button>
+		        				<Button size="tiny"  color='green'>
+											<Link to={'/Chat/' + this.props.message.user_id }>
+											Contacter
+											</Link>
+								</Button>
+		        			</div>
+		        		</div>
 		  			</div>
-		  			    
 	  			</Segment>
 			</div>
 		);
@@ -427,7 +427,7 @@ class ListeConseillerConnecte extends Component {
 }
 
 ListeConseillerConnecte.propTypes = {
-        message: PropTypes.array.isRequired,
+        message: PropTypes.object.isRequired,
     };
 
 export default ListeConseillerConnecte =  withTracker(() => {

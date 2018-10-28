@@ -174,7 +174,7 @@ class ListeSuiviConseil extends Component {
 }
 
 ListeSuiviConseil.propTypes = {
-        message: PropTypes.array.isRequired,
+        message: PropTypes.object.isRequired,
     };
 
 export default ListeSuiviConseil =  withTracker(({ id }) => {

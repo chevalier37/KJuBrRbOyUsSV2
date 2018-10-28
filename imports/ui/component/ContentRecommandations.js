@@ -88,7 +88,7 @@ class allRecommandations extends Component {
 }
 
 allRecommandations.propTypes = {
-        allMessages: PropTypes.array.isRequired,
+        allreponses: PropTypes.array.isRequired,
     };
 
 export default allRecommandations =  withTracker(() => {

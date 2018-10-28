@@ -29,7 +29,7 @@ class DevenirConseiller extends Component {
           <Divider />
           <div className="ListeMesMessages">
             <div class="register blanc">
-                         <div class="numero">
+                         <div className="numero">
                             <div className="titreNumeros">Police / Gendarmerie: 17</div><br />
                             <strong>Dans quelles situations appeler le 17 ?</strong><br />
 

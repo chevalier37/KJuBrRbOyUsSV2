@@ -11,6 +11,7 @@ import { Route, Redirect } from 'react-router';
 //Component
 import ListeConseillerConnecte from '../component/ListeConseillerConnecte.js';
 import HeaderPage from '../component/HeaderPage.js';
+import HeaderMobile from '../component/HeaderMobile.js';
 import FooterMobile from '../component/FooterMobile.js';
 import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
@@ -312,19 +313,10 @@ class ConseillerConnecter extends Component {
           {/* Header mobile*/}
           <div className="HeaderMobile mobile">
             <div className="headerTitre">
-              <div className="">
-                <div className="ButtonHeaderMobile">
-                     <Img className="iconHeader" src="/menu.svg" onClick={this.handleButtonClick} />
-                </div>
-                <div className="ButtonPseudoHeader">
-                  Pseudo
-                </div>
-                <div className="ButtonHeaderRight">
-                  <Link to="/PosterMessage" >
-                     <Img className="iconHeader" src="/edit.svg"/>
-                  </Link>
-                </div>
-              </div>
+            <div className="ButtonHeaderMobile">
+                <Img className="iconHeader" src="/menu.svg" onClick={this.handleButtonClick} />
+            </div>
+                <HeaderMobile />
             </div>
           </div>
         </header>
@@ -334,7 +326,6 @@ class ConseillerConnecter extends Component {
               as={Menu}
               animation='overlay'
               icon='labeled'
-              inverted
               onHide={this.handleSidebarHide}
               vertical
               visible={visible}
@@ -346,7 +337,6 @@ class ConseillerConnecter extends Component {
               <Sidebar.Pusher>
         
                 <div className="containerSite" onClick={this.toggleHidden}>
-                    <div className="containerIMG">
                       <div className="MainContent">
                          <Segment>
                          <Header>
@@ -484,12 +474,13 @@ class ConseillerConnecter extends Component {
                             </Button>
                           </div>
                         </div>
-                       
-                      </div>  
                     </div> 
                 </div>
               </Sidebar.Pusher>
         </Sidebar.Pushable>
+        <div className="FooterMobile mobile">
+              <FooterMobile />
+        </div>
       
       </div>
     );

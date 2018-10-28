@@ -445,7 +445,7 @@ class ListeMessagesPostes extends Component {
 }
 
 ListeMessagesPostes.propTypes = {
-        message: PropTypes.array.isRequired,
+        message: PropTypes.object.isRequired,
     };
 
 export default ListeMessagesPostes =  withTracker(({ id }) => {

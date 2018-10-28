@@ -379,44 +379,53 @@ class ListeMessages extends Component {
 	         				}
 	         				</div>
 	         				<div className="dateMessage">{this.props.nbrreponse} {this.reponse()} </div>
-	          				
-	          				<div className="repondreMessage">
-	          					<Link to={'/singleMessage/' + this.props.message._id} >
-	          						<Button  size="tiny" color="green">
-	          							Aider
-	          						</Button>
-	          					</Link>
-	          				</div>
-	          				<div className="Signaler1" >
-	          				<Link to={'/Chat/' + this.props.message.post_author_id }>
-								<Button basic size="tiny"  color='blue'>
-									Message privé
-								</Button>
-							</Link>
+	          				<div className="buttonMobile">
+		          				<div className="repondreMessage">
+		          					<Link to={'/singleMessage/' + this.props.message._id} >
+		          						<Button  size="tiny" color="green">
+		          							Aider
+		          						</Button>
+		          					</Link>
+		          				</div>
+		          				<div className="Signaler1 ecran" >
+		          				<Link to={'/Chat/' + this.props.message.post_author_id }>
+									<Button basic size="tiny"  color='blue'>
+										Message privé
+									</Button>
+								</Link>
+								</div>
+								<div className="Signaler1 mobile" >
+		          				<Link to={'/MOBILEChat/' + this.props.message.post_author_id }>
+									<Button basic size="tiny"  color='blue'>
+										Message privé
+									</Button>
+								</Link>
+								</div>
+								<div className="Signaler" >
+									<Button basic size="tiny" disabled={this.state.disabled} color='red' onClick={this.signaler.bind(this)}>
+										Signaler
+									</Button>
+									<Confirm
+								          open={this.state.open}
+								          content="Merci d'avoir signalé ce message"
+								          onCancel={this.handleCancel}
+								          onConfirm={this.handleConfirm}
+								          cancelButton='Quitter'
+	          							  confirmButton="Valider"
+								        />
+								</div>
+								<div className={this.state.author_id ?
+		        				  			"Signaler" : "none"}
+		        				 >
+		        				 <Link to={'/ModifierMessage/' + this.props.message._id }>
+									<Button size="tiny"  color='orange'>
+										Modifier
+									</Button>
+								</Link>
+								</div>
 							</div>
-							<div className="Signaler" >
-								<Button basic size="tiny" disabled={this.state.disabled} color='red' onClick={this.signaler.bind(this)}>
-									Signaler
-								</Button>
-								<Confirm
-							          open={this.state.open}
-							          content="Merci d'avoir signalé ce message"
-							          onCancel={this.handleCancel}
-							          onConfirm={this.handleConfirm}
-							          cancelButton='Quitter'
-          							  confirmButton="Valider"
-							        />
-							</div>
-							<div className={this.state.author_id ?
-	        				  			"Signaler" : "none"}
-	        				 >
-	        				 <Link to={'/ModifierMessage/' + this.props.message._id }>
-								<Button size="tiny"  color='orange'>
-									Modifier
-								</Button>
-							</Link>
-							</div>
-							<div className={this.state.IsModerateur ? "repondreMessage" : "none"}>
+
+							<div className={this.state.IsModerateur ? "repondreMessage ecran" : "none"}>
 	          						<Button 
 	          						 size="mini"
 	          						 color="red"
@@ -553,7 +562,7 @@ class ListeMessages extends Component {
 }
 
 ListeMessages.propTypes = {
-        message: PropTypes.array.isRequired,
+        message: PropTypes.object.isRequired,
     };
 
 export default ListeMessages =  withTracker(({ id }) => {

@@ -13,7 +13,7 @@ import FooterMobile from '../component/FooterMobile.js';
 import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
 import FormPosterMessage from '../component/FormPosterMessage.js';
-
+import HeaderMobile from '../component/HeaderMobile.js';
 
 class PosterMessage extends Component {
 
@@ -23,8 +23,13 @@ class PosterMessage extends Component {
 
     handleSidebarHide = () => this.setState({ visible: false })
 
-    /*componentWillMount(){
-    }*/
+    componentDidMount() {
+        this.scrollToTop();
+    }
+
+     scrollToTop() {
+        this.el.scrollIntoView();
+    }
 
     render() {
     const { visible } = this.state
@@ -51,35 +56,26 @@ class PosterMessage extends Component {
           {/* Header mobile*/}
           <div className="HeaderMobile mobile">
             <div className="headerTitre">
-              <div className="">
-                <div className="ButtonHeaderMobile">
-                     <Img className="iconHeader" src="/menu.svg" onClick={this.handleButtonClick} />
-                </div>
-                <div className="ButtonPseudoHeader">
-                  Pseudo
-                </div>
-                <div className="ButtonHeaderRight">
-                  <Link to="/PosterMessage" >
-                     <Img className="iconHeader" src="/edit.svg"/>
-                  </Link>
-                </div>
-              </div>
+            <div className="ButtonHeaderMobile">
+                <Img className="iconHeader" src="/menu.svg" onClick={this.handleButtonClick} />
+            </div>
+                <HeaderMobile />
             </div>
           </div>
         </header>
 
         <div>
-          <Sidebar.Pushable as={Segment}>
+          <Sidebar.Pushable >
             <Sidebar
               as={Menu}
               animation='overlay'
               icon='labeled'
-              inverted
               onHide={this.handleSidebarHide}
               vertical
               visible={visible}
               width='thin'
             >
+            <div ref={el => { this.el = el; }} ></div>
               <ContentMenuMobile />
             </Sidebar>
 

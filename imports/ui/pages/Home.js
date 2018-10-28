@@ -9,6 +9,7 @@ import { Route, Redirect } from 'react-router';
  
 //Component
 import HeaderPage from '../component/HeaderPage.js';
+import HeaderMobile from '../component/HeaderMobile.js';
 import FooterMobile from '../component/FooterMobile.js';
 import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
@@ -60,15 +61,9 @@ class Home extends Component {
     const { visible } = this.state
     const { moreAutre } = this.state
 
-    /*if (!Meteor.loggingIn() && !Meteor.userId()){
+    if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
-    const naissance = this.props.naissance;
-    const typeNaissance = typeof naissance;
-     if (typeNaissance == 'string'){
-     }else if (typeNaissance !== 'object'){
-      return <Redirect to="/MiseAjourNaissance" />;
-    }*/
     
     return (
       <div className="container">
@@ -83,19 +78,10 @@ class Home extends Component {
           {/* Header mobile*/}
           <div className="HeaderMobile mobile">
             <div className="headerTitre">
-              <div className="">
-                <div className="ButtonHeaderMobile">
-                     <Img className="iconHeader" src="/menu.svg" onClick={this.handleButtonClick} />
-                </div>
-                <div className="ButtonPseudoHeader">
-                  Pseudo
-                </div>
-                <div className="ButtonHeaderRight">
-                  <Link to="/PosterMessage" >
-                     <Img className="iconHeader" src="/edit.svg"/>
-                  </Link>
-                </div>
-              </div>
+            <div className="ButtonHeaderMobile">
+                <Img className="iconHeader" src="/menu.svg" onClick={this.handleButtonClick} />
+            </div>
+                <HeaderMobile />
             </div>
           </div>
         </header>

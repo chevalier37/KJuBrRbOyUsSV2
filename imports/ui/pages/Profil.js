@@ -10,6 +10,7 @@ import { Route, Redirect } from 'react-router';
 //Component
 import HeaderPage from '../component/HeaderPage.js';
 import FooterMobile from '../component/FooterMobile.js';
+import HeaderMobile from '../component/HeaderMobile.js';
 import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
 import ProfilContent from '../component/ProfilContent.js';
@@ -50,7 +51,7 @@ const panes = [
 ]
 
 
-class Home extends Component {
+class Profil extends Component {
 
     state = { visible: false }
 
@@ -76,22 +77,13 @@ class Home extends Component {
             </div>
           </div>
 
-          {/* Header mobile*/}
+         {/* Header mobile*/}
           <div className="HeaderMobile mobile">
             <div className="headerTitre">
-              <div className="">
-                <div className="ButtonHeaderMobile">
-                     <Img className="iconHeader" src="/menu.svg" onClick={this.handleButtonClick} />
-                </div>
-                <div className="ButtonPseudoHeader">
-                  Pseudo
-                </div>
-                <div className="ButtonHeaderRight">
-                  <Link to="/PosterMessage" >
-                     <Img className="iconHeader" src="/edit.svg"/>
-                  </Link>
-                </div>
-              </div>
+            <div className="ButtonHeaderMobile">
+                <Img className="iconHeader" src="/menu.svg" onClick={this.handleButtonClick} />
+            </div>
+                <HeaderMobile />
             </div>
           </div>
         </header>
@@ -102,7 +94,6 @@ class Home extends Component {
               as={Menu}
               animation='overlay'
               icon='labeled'
-              inverted
               onHide={this.handleSidebarHide}
               vertical
               visible={visible}
@@ -114,9 +105,17 @@ class Home extends Component {
             <Sidebar.Pusher>
               <div className="containerSite" onClick={this.toggleHidden}>
                   <div className="MainContent">
-                  <Tab menu={{ fluid: true, vertical: true, tabular: true }} panes={panes} />             
+                  <Tab
+                   menu={{ fluid: true, vertical: true, tabular: true }}
+                   panes={panes}
+                   className="ecran"
+                    />             
                   </div> 
               </div>  
+
+              <div className="mobile">
+                <ProfilContent />
+              </div>
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>
@@ -134,4 +133,4 @@ export default withTracker(() => {
   return {
 
   };
-})(Home);
+})(Profil);

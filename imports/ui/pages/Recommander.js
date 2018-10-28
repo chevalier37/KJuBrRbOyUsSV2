@@ -88,7 +88,6 @@ class recommander extends Component {
               as={Menu}
               animation='overlay'
               icon='labeled'
-              inverted
               onHide={this.handleSidebarHide}
               vertical
               visible={visible}

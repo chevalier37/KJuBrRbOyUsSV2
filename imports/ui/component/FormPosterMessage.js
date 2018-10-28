@@ -417,7 +417,7 @@ class FormPosterMessage extends Component {
 	      poster: !this.state.poster,
 	    });
   	}
-
+  	
   	render() {
 
   		const { visible } = this.state
@@ -430,9 +430,11 @@ class FormPosterMessage extends Component {
     	}
 		
 		return (
-			<div className="posterMessageMobile">
+			<div className="posterMessageMobile" >
 				    <Form error onSubmit={this.Submit.bind(this)}>
-				
+				    <div className="mobile headerPoster">
+					    	Poster un message
+				    </div>
 				     <div className="consigneMessage">Attention : Pas de faute d'orthographe sinon ton message sera supprimé !</div>
 					    <Form.Field>
 					      <label>Titre du message</label>
@@ -475,11 +477,14 @@ class FormPosterMessage extends Component {
 				          />
 					    </Form.Field>
 					    
-					    <Button onClick={this.categorie.bind(this)} color="teal">
+					    <Button onClick={this.categorie.bind(this)} color="teal" className="MobileCategorie">
 				    	 Catégories
 				    	</Button>
 
 						<div className={categorie}>
+							<div className="choixCat">
+								Choisir une catégorie :
+							</div>
 						    	 <Header
 						    	 as='h5'
 						    	 >
@@ -753,7 +758,7 @@ class FormPosterMessage extends Component {
 						    	 as='h3'>
 						    	</Header>
 						</div>
-					    <Button type='submit' color="green">Valider</Button>
+					    <Button type='submit' color="green" className="MobileSubmit">Valider</Button>
 			
 			  		</Form>
 			</div>

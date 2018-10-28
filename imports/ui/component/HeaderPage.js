@@ -61,8 +61,6 @@ class HeaderPage extends Component {
 	    };
 	}
 
-
-
 	componentWillMount(){
 		let id = Meteor.userId();
 

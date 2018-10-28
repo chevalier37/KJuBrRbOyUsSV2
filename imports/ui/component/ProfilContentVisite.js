@@ -1408,7 +1408,7 @@ class ProfilContentVisite extends Component {
 
 		return (
 			<div className="MainContent">
-				<Segment >
+				<Segment className="MobileProfil" >
 						<Header>
 						Profil <div className={this.props.profile.gender} >{this.props.user.username} </div>
 						<div className="AgeProfil">{age} ans</div>
@@ -1495,7 +1495,7 @@ class ProfilContentVisite extends Component {
 					</Segment >
 
 					<Divider />
-				<div className={this.state.IsConseiller ? ' ' : 'none'}>
+				<div className={this.state.IsConseiller ? 'MobileProfil' : 'none'}>
 					<Segment >
 			  			<Label attached='top'  basic color='blue' className="headerProfil">
 			  			<div className="titreProfil">Présentation</div>
@@ -1548,7 +1548,7 @@ class ProfilContentVisite extends Component {
 				    />
 				</div>
 
-				<Segment className={premierAmour} >
+				<Segment className={premierAmour + " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='red' className="headerProfil">
 		  			<div className="titreProfil">Premier amour</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -1589,7 +1589,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={trahison}>
+				<Segment className={trahison + " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='red' className="headerProfil">
 		  			<div className="titreProfil">Trahison amoureuse</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -1630,7 +1630,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={Friendzone}>
+				<Segment className={Friendzone+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='red' className="headerProfil">
 		  			<div className="titreProfil">Friendzone</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -1672,7 +1672,7 @@ class ProfilContentVisite extends Component {
 				</Segment>
 
 
-				<Segment className={amourdistance}>
+				<Segment className={amourdistance+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='red' className="headerProfil">
 		  			<div className="titreProfil">Amour à distance</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -1712,7 +1712,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={separation}>
+				<Segment className={separation+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='red' className="headerProfil">
 		  			<div className="titreProfil">Séparation</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -1753,7 +1753,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={timidite}>
+				<Segment className={timidite+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='orange' className="headerProfil">
 		  			<div className="titreProfil">Timidité</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -1794,7 +1794,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={depression}>
+				<Segment className={depression+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='orange' className="headerProfil">
 		  			<div className="titreProfil">Dépression</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -1835,7 +1835,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={suicide}>
+				<Segment className={suicide+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='orange' className="headerProfil">
 		  			<div className="titreProfil">Suicide</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -1876,7 +1876,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={deces}>
+				<Segment className={deces+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='orange' className="headerProfil">
 		  			<div className="titreProfil">Décès</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -1916,7 +1916,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={mutilation}>
+				<Segment className={mutilation+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='orange' className="headerProfil">
 		  			<div className="titreProfil">Mutilation</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -1957,7 +1957,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={premierfois}>
+				<Segment className={premierfois+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='teal' className="headerProfil">
 		  			<div className="titreProfil">Première fois</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -1998,7 +1998,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={contraception}>
+				<Segment className={contraception+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='teal' className="headerProfil">
 		  			<div className="titreProfil">Contraception</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -2039,7 +2039,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={mst}>
+				<Segment className={mst+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='teal' className="headerProfil">
 		  			<div className="titreProfil">Maladie, MST</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -2080,7 +2080,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={viol}>
+				<Segment className={viol+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='teal' className="headerProfil">
 		  			<div className="titreProfil">Viol</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -2121,7 +2121,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={avortement}>
+				<Segment className={avortement+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='teal' className="headerProfil">
 		  			<div className="titreProfil">Avortement</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -2162,7 +2162,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={orientationSex}>
+				<Segment className={orientationSex+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='teal' className="headerProfil">
 		  			<div className="titreProfil">Orientation sexuelle</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -2203,7 +2203,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={Anorexie}>
+				<Segment className={Anorexie+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='violet' className="headerProfil">
 		  			<div className="titreProfil">Anorexie</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -2244,7 +2244,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={obesite}>
+				<Segment className={obesite+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='violet' className="headerProfil">
 		  			<div className="titreProfil">Obésité</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -2287,7 +2287,7 @@ class ProfilContentVisite extends Component {
 
 
 
-					<Segment className={drogue}>
+					<Segment className={drogue+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='violet' className="headerProfil">
 		  			<div className="titreProfil">Drogue</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -2328,7 +2328,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={alcool}>
+					<Segment className={alcool + " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='violet' className="headerProfil">
 		  			<div className="titreProfil">Alcool</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -2369,7 +2369,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={complexe}>
+					<Segment className={complexe+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='violet' className="headerProfil">
 		  			<div className="titreProfil">Complexe</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -2410,7 +2410,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={hopital}>
+					<Segment className={hopital+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='violet' className="headerProfil">
 		  			<div className="titreProfil">Hospitalisation</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -2451,7 +2451,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={handicap}>
+					<Segment className={handicap+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='violet' className="headerProfil">
 		  			<div className="titreProfil">Handicap</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -2492,7 +2492,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={accident}>
+				<Segment className={accident+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='violet' className="headerProfil">
 		  			<div className="titreProfil">Accident</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -2533,7 +2533,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={echecEcole}>
+					<Segment className={echecEcole+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='brown' className="headerProfil">
 		  			<div className="titreProfil">Echec scolaire</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -2574,7 +2574,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={Harcelement}>
+					<Segment className={Harcelement+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='brown' className="headerProfil">
 		  			<div className="titreProfil">Harcèlement</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -2615,7 +2615,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={discrimination}>
+					<Segment className={discrimination+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='brown' className="headerProfil">
 		  			<div className="titreProfil">Discrimination</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
@@ -2656,7 +2656,7 @@ class ProfilContentVisite extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={Violence}>
+					<Segment className={Violence+ " " + "MobileProfil"} >
 		  			<Label attached='top'  basic color='brown' className="headerProfil">
 		  			<div className="titreProfil">Violence</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>

@@ -129,7 +129,7 @@ class ListeReponses extends Component {
 }
 
 ListeReponses.propTypes = {
-        message: PropTypes.array.isRequired,
+        message: PropTypes.object.isRequired,
     };
 
 export default ListeReponses =  withTracker(() => {

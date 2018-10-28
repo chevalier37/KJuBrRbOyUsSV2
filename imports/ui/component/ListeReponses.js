@@ -219,7 +219,7 @@ class ListeReponses extends Component {
 		  			</p>
 		  			<Divider />
 		  			<Comment>
-	      				<Comment.Content>
+	      				<div className="commentReponse">
 	         				<div className="dateMessage">
 		         			{	this.state.nbrSeconde<60 ? "Il y a 30 secondes": 
 		         				this.state.nbrMinutes<2 ? "Il y a " + this.state.nbrMinutes +" minute": 
@@ -248,50 +248,51 @@ class ListeReponses extends Component {
           							  confirmButton="Valider"
 							        />
 									<div className="contacter" >
-										<Link to={'/Chat/' + this.props.message.userId }>
+										<Link to={'/MOBILEChat/' + this.props.message.userId }>
 										Message privé
 										</Link>
 									</div>
 								</div>
-								<span className="vote">
-									<Button
-									 size="tiny"
-									 disabled={this.state.desactiver}
-									 color='green'
-									 onClick={this.voteUP.bind(this)}
-									 >
-									 	<div className="NBRvote"> {this.props.message.votes}</div>
-										Conseil utile
-										<Img className="upVote" src="/up.svg"/>
-								    </Button>
-								</span>
+								<div className="voteMobile">
+									<span className="vote">
+										<Button
+										 size="tiny"
+										 disabled={this.state.desactiver}
+										 color='green'
+										 onClick={this.voteUP.bind(this)}
+										 >
+										 	<div className="NBRvote"> {this.props.message.votes}</div>
+											Conseil utile
+											<Img className="upVote" src="/up.svg"/>
+									    </Button>
+									</span>
 
-								<span className="vote">
-									<Button
-									 size="tiny"
-									 disabled={this.state.desactiver}
-									 color='red'
-									 onClick={this.voteDOWN.bind(this)}
-									 >
-									 	<div className="NBRvote"> {this.props.message.voteDOWN}</div>
-									 	Conseil inutile
-										<Img className="upVote" src="/down.svg"/>
-										 
-								    </Button>
-								</span>
+									<span className="vote">
+										<Button
+										 size="tiny"
+										 disabled={this.state.desactiver}
+										 color='red'
+										 onClick={this.voteDOWN.bind(this)}
+										 >
+										 	<div className="NBRvote"> {this.props.message.voteDOWN}</div>
+										 	Conseil inutile
+											<Img className="upVote" src="/down.svg"/>
+											 
+									    </Button>
+									</span>
 
-								<div className={this.state.IsModerateur ? "contacter" : "none"}>
-	          						<Button
-	          						 size="mini"
-	          						 color="red"
-	          						 onClick={this.show.bind(this)}
-	          						 >
-	          							Supprimer
-	          						</Button>
-	          					</div>
-		
+									<div className={this.state.IsModerateur ? "contacter ecran" : "none"}>
+		          						<Button
+		          						 size="mini"
+		          						 color="red"
+		          						 onClick={this.show.bind(this)}
+		          						 >
+		          							Supprimer
+		          						</Button>
+		          					</div>
+								</div>
 							</div>
-	      				</Comment.Content>
+	      				</div>
 	    			</Comment>
 	  			</Segment>
 			</div>
@@ -300,7 +301,7 @@ class ListeReponses extends Component {
 }
 
 ListeReponses.propTypes = {
-        message: PropTypes.array.isRequired,
+        message: PropTypes.object.isRequired,
     };
 
 export default ListeReponses =  withTracker(({ message }) => {

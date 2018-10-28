@@ -16,6 +16,7 @@ import ContentMenuMobile from '../component/ContentMenuMobile.js';
 import FormPosterReponse from '../component/FormPosterReponse.js';
 import SingleMessagePost from '../component/SingleMessagePost.js';
 import ListeReponses from '../component/ListeReponses.js';
+import HeaderMobile from '../component/HeaderMobile.js';
 
 import { Comments } from '../../api/Reponses.js';
 import { Posts } from '../../api/Messages.js';
@@ -88,19 +89,10 @@ renderAllreponses() {
           {/* Header mobile*/}
           <div className="HeaderMobile mobile">
             <div className="headerTitre">
-              <div className="">
-                <div className="ButtonHeaderMobile">
-                     <Img className="iconHeader" src="/menu.svg" onClick={this.handleButtonClick} />
-                </div>
-                <div className="ButtonPseudoHeader">
-                  Pseudo
-                </div>
-                <div className="ButtonHeaderRight">
-                  <Link to="/PosterMessage" >
-                     <Img className="iconHeader" src="/edit.svg"/>
-                  </Link>
-                </div>
-              </div>
+            <div className="ButtonHeaderMobile">
+                <Img className="iconHeader" src="/menu.svg" onClick={this.handleButtonClick} />
+            </div>
+                <HeaderMobile />
             </div>
           </div>
         </header>
@@ -111,7 +103,6 @@ renderAllreponses() {
               as={Menu}
               animation='overlay'
               icon='labeled'
-              inverted
               onHide={this.handleSidebarHide}
               vertical
               visible={visible}

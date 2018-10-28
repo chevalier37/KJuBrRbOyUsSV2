@@ -31,6 +31,7 @@ class CGU extends Component {
       <div className="container">
       <div ref={el => { this.el = el; }} ></div>
         <header>
+        
         </header>
 
         <div className="containerSupIMG">

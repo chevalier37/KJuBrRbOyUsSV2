@@ -324,7 +324,7 @@ class MainContent extends Component {
 
 		return (
 			<div className="MainContent">
-				<div className="centerpub">
+				<div className="centerpub ecran">
 					<div className="space" />
 					<div className="pubHome">
 					        <AdSense.Google
@@ -342,6 +342,19 @@ class MainContent extends Component {
 				    </p>
 				</Message>*/}
 				
+				</div>
+
+				{/* PUB mobile*/}
+				<div className="pubMobile mobile">
+					<div className="space" />
+					<div className="pubHome">
+					        <AdSense.Google
+					          client='ca-pub-6112176939320267'
+					          slot='8072163696'
+					           style={{display:'inline-block', width:320, height:50}}
+					          format=''
+					        />
+					</div>
 				</div>
 
 				<div className='inlinePoster'>
