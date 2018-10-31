@@ -129,13 +129,29 @@ renderAllreponses() {
                       />
                   </div>
                   <Divider />
-                  <div className="pubSondage">
-                    <AdSense.Google
-                    client='ca-pub-6112176939320267'
-                    slot='4083773640'
-                     style={{display:'inline-block', width:728, height:90}}
-                    format=''
-                  />
+                  <div className="centerpub ecran">
+                    <div className="space" />
+                    <div className="pubHome">
+                            <AdSense.Google
+                              client='ca-pub-6112176939320267'
+                              slot='4083773640'
+                               style={{display:'inline-block', width:728, height:90}}
+                              format=''
+                            />
+                    </div>                 
+                  </div>
+
+                  {/* PUB mobile*/}
+                  <div className="pubMobile mobile">
+                    <div className="space" />
+                    <div className="pubHome">
+                            <AdSense.Google
+                              client='ca-pub-6112176939320267'
+                              slot='8072163696'
+                               style={{display:'inline-block', width:320, height:50}}
+                              format=''
+                            />
+                    </div>
                   </div>
                    {this.renderAllreponses()}
                   </div>    
