@@ -69,6 +69,15 @@ class MOBILEChat extends Component {
     componentWillMount(){
        const id = this.props.match.params.id;
 
+       Meteor.call(
+        'addContactChat',
+        to_id,
+        (err) => {
+                if(err){
+                 } else {     
+                }
+       })
+
         Meteor.apply('isContactBloquer', [{
             id
             }], {
