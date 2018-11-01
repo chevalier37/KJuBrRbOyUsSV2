@@ -15,6 +15,7 @@ class ContactChatContent extends Component {
 	      toName:'',
 	      toId:'',
 	      currentContact:'',
+	      sexe:''
 	    };
 	}
 
@@ -24,6 +25,19 @@ class ContactChatContent extends Component {
 	componentWillMount(){
 		const user = Meteor.user();
 		const username = user.username;	
+		const to_id = this.props.contact.from_id;
+		const from_id = this.props.contact.to_id;
+
+		Meteor.apply('sexContact', [{
+		    	to_id, from_id,
+	          }], {
+	          onResultReceived: (error, response) => {
+	            if (error) console.warn(error.reason);
+	            if(response){
+	            	this.setState({sexe: response})
+	            }
+	        },
+	    })
 
 		{
 		this.props.contact.to_name === username ?
@@ -71,7 +85,9 @@ class ContactChatContent extends Component {
 								</div>
 								<Link to={'/Chat/' + this.state.toId}>	
 							        <div className={this.props.currentContact + " " + this.props.read}>
+							        <div className={this.state.sexe == "fille" ? "fille" : "garconMessage"}>
 							          	{this.state.toName}
+							         </div>
 								          <div className={this.props.isOnline == true ? "onlineChat" : "none"} >
 								         	{/*<FaCircle />*/}
 								          </div>

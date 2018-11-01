@@ -191,7 +191,7 @@ class FormChat extends Component {
 				       onFocus={this.focusMessage.bind(this)}
 				       onBlur={this.focusMessageOut.bind(this)}
 				       placeholder={placeholderMessage}
-				       rows={8}
+				       rows={6}
 				       onChange={this.writing.bind(this)}
 				       />
 					</div>

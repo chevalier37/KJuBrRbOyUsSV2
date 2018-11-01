@@ -343,6 +343,34 @@ export const UserOnline= new ValidatedMethod({
 });
 
 
+export const sexContact= new ValidatedMethod({
+  //on cherche de l'utilisateur pour la liste des contacts
+  name: 'sexContact',
+  validate: new SimpleSchema({
+    to_id: { type: String },
+    from_id: { type: String },
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({ to_id, from_id}) {
+    if(to_id === this.userId){
+        const id = from_id;
+        let search = Meteor.users.findOne(id);
+        let gender = search.profile.gender;
+        return gender
+    } else{
+        const id = to_id;
+        let search = Meteor.users.findOne(id);
+        let gender = search.profile.gender;
+        return gender
+    }
+  }
+});
+
+
 
 Meteor.methods({
 

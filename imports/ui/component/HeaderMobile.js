@@ -166,7 +166,7 @@ class HeaderMobile extends Component {
 
 	    if(pathname == "PosterMessage"){
 	      this.setState({
-	      pathname: "Demander une aide",
+	      pathname: "Demande d'aide",
 	    });
 	    }
 
