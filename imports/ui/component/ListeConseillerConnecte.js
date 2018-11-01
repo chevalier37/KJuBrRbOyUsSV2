@@ -64,6 +64,15 @@ class ListeConseillerConnecte extends Component {
 		  	 this.setState({sexe: 'blue'})
 		}
 
+		const id = this.props.message.user_id;
+		Meteor.apply('UserOnline', [{
+		    	id,
+	          }], {
+	          onResultReceived: (error, response) => {
+	            if (error) console.warn(error.reason);
+	        },
+	      	})
+
 		//On affiche les catégories
 		const premierAmour = this.props.message.premierAmour;
 		{ premierAmour ? 

@@ -312,6 +312,38 @@ export const IsModerateur = new ValidatedMethod({
 }, requestLimit, requestTimeout);*/
 
 
+
+export const UserOnline= new ValidatedMethod({
+  //on regarde si l'utilisateur est connecté
+  name: 'UserOnline',
+  validate: new SimpleSchema({
+    id: { type: String },
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({ id}) {
+    let search = Meteor.users.findOne(id);
+    let online = search.status.online;
+    if(!online){
+    const IsConseiller = Conseilleres.find({'user_id':id}).count();
+    {IsConseiller>0 ? Istrue = true : Istrue = false}
+    if (Istrue) {
+      if(IsConseiller){
+        Conseilleres.update({user_id:id}, {
+        $set: { online: false},
+        })
+      }
+  }
+}
+
+  }
+});
+
+
+
 Meteor.methods({
 
       FormLogin: function(username,password) {

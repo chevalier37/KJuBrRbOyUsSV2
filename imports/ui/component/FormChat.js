@@ -185,13 +185,23 @@ class FormChat extends Component {
 					    	Envoyer 
 					  	</Button>
 			    	</div>
-				    <div className="valideChatArea1">
+				    <div className="valideChatArea1 ecran">
 				      <TextArea
 				       ref="message"
 				       onFocus={this.focusMessage.bind(this)}
 				       onBlur={this.focusMessageOut.bind(this)}
 				       placeholder={placeholderMessage}
 				       rows={8}
+				       onChange={this.writing.bind(this)}
+				       />
+					</div>
+					<div className="valideChatArea1 mobile">
+				      <TextArea
+				       ref="message"
+				       onFocus={this.focusMessage.bind(this)}
+				       onBlur={this.focusMessageOut.bind(this)}
+				       placeholder={placeholderMessage}
+				       rows={6}
 				       onChange={this.writing.bind(this)}
 				       />
 					</div>
