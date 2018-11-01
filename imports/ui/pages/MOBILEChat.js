@@ -185,7 +185,7 @@ class MOBILEChat extends Component {
     } 
 
       const to_id = this.props.match.params.id;
-       
+       console.log(to_id)
       if(this.state.update==false && to_id != Meteor.userId()){
 
         //on cherche le username, l'age et on met tous les message en 'read'
@@ -195,7 +195,7 @@ class MOBILEChat extends Component {
           onResultReceived: (error, response) => {
             if (error) console.warn(error.reason);
             let now = new Date();
-            console.log(response)
+            
             if(response.profile.naissance){
               let userAge = response.profile.naissance;
               let diff = now - userAge;
