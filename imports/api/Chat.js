@@ -23,17 +23,19 @@ export const updateContact = new ValidatedMethod({
 
   run({ to_id }) {
             const search = Meteor.users.findOne({'_id':to_id});
+            
             const to_name = search.username;
-            
+           
             const searchContact = ContactChat.findOne({$or : [{from_id: this.userId, to_id:to_id}, {from_id: to_id, to_id:this.userId}]});
-            
+
+            if(searchContact){
 
             {searchContact.authorLastMessage && searchContact.authorLastMessage != this.userId ?
               ContactChat.update(searchContact._id, {$set: {read:true} }) : ''}
 
             const searchMessage = Chat.find({$or : [{from_id: to_id, to_id:this.userId}]});
             ContactChat.update(searchMessage._id, {$set: {read:true}})
-            
+            }
             Chat.update({'to_id':this.userId, 'from_id':to_id},{$set: {read:true}}, {multi: true})
             
             Notifications.update({'to_id':this.userId, 'type':'message'},{$set: {read:true}}, {multi: true})

@@ -10,7 +10,6 @@ ReactGA.initialize('UA-108632466-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 //Component
-import ContactChat from '../component/ContactChat.js';
 import FooterMobile from '../component/FooterMobile.js';
 import ChatContent from '../component/ChatContent.js';
 import FormChat from '../component/FormChat.js';

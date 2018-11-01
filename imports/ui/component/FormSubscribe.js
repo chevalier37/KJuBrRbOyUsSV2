@@ -281,7 +281,6 @@ class FormSubscribe extends Component {
           }], {
           onResultReceived: (error, response) => {
             if (error) console.warn(error.reason);
-            console.log(response)
             {response ?
              this.setState({usernameExiste: true,error:true}) :
              this.setState({usernameExiste: false})}
