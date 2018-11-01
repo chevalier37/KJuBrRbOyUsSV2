@@ -76,7 +76,7 @@ class ListeNotifications extends Component {
 				  			Nouveau message de {this.props.message.from_name} 
 				  			</Link>
 				  			<div className="iconNotif">
-				  				<Img className="imgNotif" src="/chatNotif.svg"/>
+				  				<Img className="imgNotif" src="/chatNotif.png"/>
 				  			</div>
 			  			</span>
 
@@ -87,7 +87,7 @@ class ListeNotifications extends Component {
 				  			Nouvelle réponse au message : {this.props.message.post_title} 
 				  			</Link>
 				  			<div className="iconNotif">
-				  				<Img className="imgNotif" src="/email.svg"/>
+				  				<Img className="imgNotif" src="/email.png"/>
 				  			</div>
 			  			</span>
 
@@ -98,7 +98,7 @@ class ListeNotifications extends Component {
 				  			Nouvelle recommandation de {this.props.message.from_name} 
 				  			</Link>
 				  			<div className="iconNotif">
-				  				<Img className="imgNotif" src="/medal.svg"/>
+				  				<Img className="imgNotif" src="/medal.png"/>
 				  			</div>
 			  			</span>
 
@@ -107,7 +107,7 @@ class ListeNotifications extends Component {
 	        				}>
 				  			Message signalé !
 				  			<div className="iconNotif">
-				  				<Img className="imgNotif" src="/warning.svg"/>
+				  				<Img className="imgNotif" src="/warning.png"/>
 				  			</div>
 			  			</span>
 
@@ -116,7 +116,7 @@ class ListeNotifications extends Component {
 	        				}>
 				  			Conseil approuvé
 				  			<div className="iconNotif">
-				  				<Img className="imgNotif" src="/like.svg"/>
+				  				<Img className="imgNotif" src="/like.png"/>
 				  			</div>
 			  			</span>
 
@@ -125,7 +125,7 @@ class ListeNotifications extends Component {
 	        				}>
 				  			Tu peux devenir conseiller !
 				  			<div className="iconNotif">
-				  				<Img className="imgNotif" src="/newAdvisor.svg"/>
+				  				<Img className="imgNotif" src="/newAdvisor.png"/>
 				  			</div>
 			  			</span>
 
@@ -134,7 +134,7 @@ class ListeNotifications extends Component {
 	        				}>
 				  			Tu peux laisser une recommandation
 				  			<div className="iconNotif">
-				  				<Img className="imgNotif" src="/heart.svg"/>
+				  				<Img className="imgNotif" src="/heart.png"/>
 				  			</div>
 			  			</span>
 		  		</div>

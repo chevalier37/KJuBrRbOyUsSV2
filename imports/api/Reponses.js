@@ -66,10 +66,10 @@ export const addReponse = new ValidatedMethod({
           });         
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "addReponse",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -117,10 +117,10 @@ export const voteUP = new ValidatedMethod({
       });         
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "voteUP",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -168,10 +168,10 @@ console.log(searchUser)
       });         
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "voteDOWN",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -208,19 +208,14 @@ export const signalerReponse = new ValidatedMethod({
       }
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "signalerReponse",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
 Meteor.methods({
-
-      
-       
-      
-
       ReponseChat: function(message_id){
         check(message_id, String);
         Comments.update(message_id, {$set: {read:true} })

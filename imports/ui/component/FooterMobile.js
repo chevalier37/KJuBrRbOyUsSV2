@@ -33,25 +33,25 @@ class FooterMobile extends Component {
 				<div className="">
 					<div className="ButtonFooterMobile">
 						<Link to="/home" >
-							 <Img className="iconHeader" src="/homeMobile.svg"/>
+							 <Img className="iconHeader" src="/homeMobile.png"/>
 						</Link>
 					</div>
 
 					<div className="ButtonFooterMobile">
 						<Link to={'/profil/' + Meteor.userId()}>
-							 <Img className="iconHeader" src="/userMobile.svg"/>
+							 <Img className="iconHeader" src="/userMobile.png"/>
 						</Link>
 					</div>
 
 					<div className="ButtonFooterMobile">
 						<Link to={'/MOBILEcontactChat/' + Meteor.userId() }>
-							 <Img className="iconHeader" src="/chatMobile.svg"/>
+							 <Img className="iconHeader" src="/chatMobile.png"/>
 						</Link>
 					</div>
 
 					<div className="ButtonFooterMobile">
 						<Link to="/Notifications" >
-							 <Img className="iconHeader" src="/bellMobile.svg"/>
+							 <Img className="iconHeader" src="/bellMobile.png"/>
 						</Link>
 						<div className={this.state.notifNonLu > 0 ? "totalNotifMobile" : "none"}>
 						    {notifNonLu}

@@ -35,10 +35,10 @@ export const FormSubscribePseudo = new ValidatedMethod({
     return IsPseudo
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "FormSubscribePseudo",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -60,10 +60,10 @@ export const FormSubscribeMail = new ValidatedMethod({
     return IsMail;
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "FormSubscribeMail",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -87,10 +87,10 @@ export const UserExiste = new ValidatedMethod({
     return Istrue;
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "UserExiste",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -116,10 +116,10 @@ export const ResetPassword = new ValidatedMethod({
     }
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "ResetPassword",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -154,10 +154,10 @@ export const signalerUser = new ValidatedMethod({
 
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "signalerUser",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -180,10 +180,10 @@ export const NBRsignalerUser = new ValidatedMethod({
          
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "NBRsignalerUser",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -205,10 +205,10 @@ export const IsUserSignaler = new ValidatedMethod({
          }
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "IsUserSignaler",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -230,10 +230,10 @@ export const Username = new ValidatedMethod({
     return username;
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "Username",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -257,10 +257,10 @@ export const SuperModerateur = new ValidatedMethod({
     
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "SuperModerateur",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -282,10 +282,10 @@ export const addModerateur = new ValidatedMethod({
         })
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "addModerateur",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 

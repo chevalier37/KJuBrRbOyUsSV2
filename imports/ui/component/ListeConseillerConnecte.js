@@ -413,7 +413,7 @@ class ListeConseillerConnecte extends Component {
 											</Link>
 								</Button>
 		        				<Button size="tiny"  color='green'>
-											<Link to={'/Chat/' + this.props.message.user_id }>
+											<Link to={'/MobileChat/' + this.props.message.user_id }>
 											Contacter
 											</Link>
 								</Button>

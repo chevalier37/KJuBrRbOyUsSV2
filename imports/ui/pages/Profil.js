@@ -84,7 +84,7 @@ class Profil extends Component {
           <div className="HeaderMobile mobile">
             <div className="headerTitre">
             <div className="ButtonHeaderMobile">
-                <Img className="iconHeader" src="/menu.svg" onClick={this.handleButtonClick} />
+                <Img className="iconHeader" src="/menu.png" onClick={this.handleButtonClick} />
             </div>
                 <HeaderMobile />
             </div>

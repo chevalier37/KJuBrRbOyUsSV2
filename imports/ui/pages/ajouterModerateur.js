@@ -56,7 +56,7 @@ class ajouterModerateur extends Component {
             <div className="headerTitre">
               <div className="">
                 <div className="ButtonHeaderMobile">
-                     <Img className="iconHeader" src="/menu.svg" onClick={this.handleButtonClick} />
+                     <Img className="iconHeader" src="/menu.png" onClick={this.handleButtonClick} />
                 </div>
                 <div className="ButtonPseudoHeader">
                   Pseudo

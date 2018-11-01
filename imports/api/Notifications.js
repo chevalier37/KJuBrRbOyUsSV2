@@ -27,10 +27,10 @@ export const notifNonLu = new ValidatedMethod({
     return totalNotif
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "notifNonLu",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -48,10 +48,10 @@ export const allRead = new ValidatedMethod({
     Notifications.update({'to_id':this.userId}, {$set: {'read': true}}, {multi:true})
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "allRead",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -77,10 +77,10 @@ export const SignalerNotif = new ValidatedMethod({
                 });
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "SignalerNotif",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -115,10 +115,10 @@ export const obtenirRecommandation = new ValidatedMethod({
 
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "obtenirRecommandation",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -150,10 +150,10 @@ export const voteUPnotif = new ValidatedMethod({
     }
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "voteUPnotif",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 export const choixNotif = new ValidatedMethod({
@@ -203,10 +203,10 @@ export const choixNotif = new ValidatedMethod({
     }
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "choixNotif",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -230,10 +230,10 @@ export const SearchchoixNotif = new ValidatedMethod({
     }
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "SearchchoixNotif",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 

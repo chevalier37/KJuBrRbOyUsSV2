@@ -98,10 +98,10 @@ export const supprimerConseiller = new ValidatedMethod({
                     })
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "supprimerConseiller",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -160,10 +160,10 @@ export const logoutConseiller = new ValidatedMethod({
   }
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "logoutConseiller",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 export const verifConseiller = new ValidatedMethod({

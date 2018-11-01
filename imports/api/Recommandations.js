@@ -77,10 +77,10 @@ export const Recommander = new ValidatedMethod({
           }
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "Recommander",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 
@@ -146,10 +146,10 @@ export const ModifierRecommandation = new ValidatedMethod({
 
   }
 });
-DDPRateLimiter.addRule({
+/*DDPRateLimiter.addRule({
     type: "method",
     name: "ModifierRecommandation",
-}, requestLimit, requestTimeout);
+}, requestLimit, requestTimeout);*/
 
 
 

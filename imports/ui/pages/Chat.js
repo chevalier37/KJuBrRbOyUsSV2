@@ -189,14 +189,17 @@ class chat extends Component {
           onResultReceived: (error, response) => {
             if (error) console.warn(error.reason);
             let now = new Date();
-            let diff = now - response.profile.naissance;
-            let age = Math.round(diff / 31536000000);
-            
-            {response ?
-             this.setState({naissance: age})
-            
-             :
-             ''}
+            let userAge = response.profile.naissance;
+            if(userAge){
+              let diff = now - userAge;
+              let age = Math.round(diff / 31536000000);
+              
+              {response ?
+               this.setState({naissance: age})
+              
+               :
+               ''}
+            }
 
              {response ?
              this.setState({update: true})
@@ -250,7 +253,7 @@ class chat extends Component {
                       {this.state.username}
                       </Link>
                   </div>
-                  <div className="ChatAge">  
+                  <div className={ this.state.naissance ? "ChatAge" : "none"}>  
                       {this.state.naissance} ans
                   </div>
                   <div className={!this.state.IsConseiller ? "none" : "recommmander"}>
