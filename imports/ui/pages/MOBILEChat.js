@@ -68,6 +68,7 @@ class MOBILEChat extends Component {
 
     componentWillMount(){
        const id = this.props.match.params.id;
+       const to_id = this.props.match.params.id;
 
        Meteor.call(
         'addContactChat',
