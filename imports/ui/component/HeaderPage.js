@@ -519,8 +519,7 @@ class HeaderPage extends Component {
     	});
   	}
 
-  	
-
+  
   	render() {
 
   		const { visible } = this.state
