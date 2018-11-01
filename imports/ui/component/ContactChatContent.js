@@ -60,7 +60,6 @@ class ContactChatContent extends Component {
     const { contextRef } = this.state
 	    return (
 				<div className={"AffficheContact" + " "+this.state.message}  >
-					<Link to={'/Chat/' + this.state.toId}>	
 						<div className={this.props.currentContact + " " + this.props.read} >
 							<Menu.Item
 					         onClick={this.handleItemClick}
@@ -68,21 +67,23 @@ class ContactChatContent extends Component {
 					         >
 					          <Menu.Header>
 						        <div className="deleteContact" onClick={this.delete.bind(this)} >
-									<Img className="iconread" src="/unread.svg"/>
+									<Img className="iconread" src="/unread.png"/>
 								</div>
-						        <div className={this.props.currentContact + " " + this.props.read}>
-						          	{this.state.toName}
-							          <div className={this.props.isOnline == true ? "onlineChat" : "none"} >
-							         	{/*<FaCircle />*/}
-							          </div>
-						        </div>
+								<Link to={'/Chat/' + this.state.toId}>	
+							        <div className={this.props.currentContact + " " + this.props.read}>
+							          	{this.state.toName}
+								          <div className={this.props.isOnline == true ? "onlineChat" : "none"} >
+								         	{/*<FaCircle />*/}
+								          </div>
+							        </div>
+						        </Link>
 					          </Menu.Header>
 						          <div className={this.props.currentContact + " " + this.props.read + " " +"display-linebreak"}>
 						          	{this.breaklines()}
 						          </div>
 					        </Menu.Item>
 					    </div>
-				    </Link>
+				    
 	    		</div>
 	    )
 	}

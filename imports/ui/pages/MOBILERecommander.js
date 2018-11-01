@@ -38,10 +38,6 @@ class MOBILERecommander extends Component {
         this.scrollToTop();
     }
 
-    componentDidUpdate() {
-        this.scrollToTop();
-    }
-
     scrollToTop() {
         this.el.scrollIntoView();
     }

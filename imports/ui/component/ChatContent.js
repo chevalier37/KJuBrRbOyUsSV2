@@ -114,10 +114,10 @@ export default class ChatContent extends Component {
 		    	</div>
 		    	<div className={"MessageLu" + " "+this.state.gauche}>
 		    		<div className={this.props.message.read ? "visible" : "none"}>
-		    			<Img className="iconread" src="/check.svg"/> message lu
+		    			<Img className="iconread" src="/check.png"/> message lu
 		    		</div>
 		    		<div className={!this.props.message.read? "visible" : "none"}>
-		    			<Img className="iconread" src="/unread.svg"/> message non lu
+		    			<Img className="iconread" src="/unread.png"/> message non lu
 		    		</div>
 		    	</div>
 	    	</div>

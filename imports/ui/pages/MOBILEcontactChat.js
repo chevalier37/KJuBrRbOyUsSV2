@@ -132,6 +132,7 @@ class MOBILEcontactChat extends Component {
 
     return (
       <div className="container">
+      <div ref={el => { this.el = el; }} ></div>
          <header> 
           {/* Header site*/}
           <div className="containerHeader ecran">

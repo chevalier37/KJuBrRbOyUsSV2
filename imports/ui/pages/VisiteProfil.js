@@ -25,8 +25,9 @@ class VisiteProfil extends Component {
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
     handleSidebarHide = () => this.setState({ visible: false })
 
-    /*componentWillMount(){
-    }*/
+    componentDidMount() {
+        this.el.scrollIntoView();
+    }
 
     render() {
     const { visible } = this.state;
@@ -42,6 +43,7 @@ class VisiteProfil extends Component {
     
     return (
       <div className="container">
+      <div ref={el => { this.el = el; }} ></div>
         <header> 
           {/* Header site*/}
           <div className="containerHeader ecran">

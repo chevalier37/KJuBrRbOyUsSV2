@@ -17,6 +17,15 @@ class deconnexion extends Component {
 
     logout(){
       this.setState({logout: true});
+      const id = Meteor.userId();
+        Meteor.apply('logoutConseiller',
+         [{
+          id
+            }], {
+            onResultReceived: (error, response) => {
+              if (error) console.warn(error.reason);
+              },
+        });
       Meteor.logout();
     }
 

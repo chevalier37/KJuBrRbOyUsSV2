@@ -29,6 +29,7 @@ class ajouterModerateur extends Component {
     toggleHidden = () => this.setState({ visible: false })
 
     componentWillMount(){
+      this.el.scrollIntoView();
       let id = this.props.match.params.id
       }
 
@@ -43,6 +44,7 @@ class ajouterModerateur extends Component {
     
     return (
       <div className="container">
+       <div ref={el => { this.el = el; }} ></div>
         <header> 
           {/* Header site*/}
           <div className="containerHeader ecran">

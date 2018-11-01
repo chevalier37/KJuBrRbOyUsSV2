@@ -66,6 +66,10 @@ class MOBILEChat extends Component {
 
     handleCancel = () => this.setState({ open: false })
 
+    componentDidMount() {
+        this.el.scrollIntoView();
+    }
+
     componentWillMount(){
        const id = this.props.match.params.id;
        const to_id = this.props.match.params.id;
@@ -247,6 +251,7 @@ class MOBILEChat extends Component {
 
     return (
       <div className="container">
+      <div ref={el => { this.el = el; }} ></div>
         <div className="containerSiteChat" onClick={this.toggleHidden}>
           <div className="containerChat">
             <div className="containerDiscussion">

@@ -46,7 +46,7 @@ class contactChat extends Component {
 		      	<div className="ChatContactLeft">
   					  <Menu vertical>
       					<div
-      					 className="HeaderLastConseiller"
+      					 className="HeaderLastConseiller ecran"
       					 >
       					 Mes contacts
       					 </div>

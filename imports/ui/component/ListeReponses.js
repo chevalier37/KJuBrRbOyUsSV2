@@ -220,7 +220,7 @@ class ListeReponses extends Component {
 		  			<Divider />
 		  			<Comment>
 	      				<div className="commentReponse">
-	         				<div className="dateMessage">
+	         				<div className="dateMessage ecran">
 		         			{	this.state.nbrSeconde<60 ? "Il y a 30 secondes": 
 		         				this.state.nbrMinutes<2 ? "Il y a " + this.state.nbrMinutes +" minute": 
 		         				this.state.nbrMinutes<60 ? "Il y a " + this.state.nbrMinutes +" minutes":

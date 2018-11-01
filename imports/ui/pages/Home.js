@@ -29,6 +29,10 @@ class Home extends Component {
           /*this.handleScroll = this.handleScroll.bind(this);*/
       }
 
+    componentDidMount() {
+        this.el.scrollIntoView();
+    }
+
      /* handleScroll() {
         const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
         const body = document.body;
@@ -70,6 +74,7 @@ class Home extends Component {
     
     return (
       <div className="container">
+      <div ref={el => { this.el = el; }} ></div>
         <header> 
           {/* Header site*/}
           <div className="containerHeader ecran">
