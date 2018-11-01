@@ -189,8 +189,8 @@ class chat extends Component {
           onResultReceived: (error, response) => {
             if (error) console.warn(error.reason);
             let now = new Date();
-            let userAge = response.profile.naissance;
-            if(userAge){
+            if(response.profile.naissance){
+              let userAge = response.profile.naissance;
               let diff = now - userAge;
               let age = Math.round(diff / 31536000000);
               
