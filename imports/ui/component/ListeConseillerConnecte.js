@@ -416,16 +416,27 @@ class ListeConseillerConnecte extends Component {
 						<div className="buttonMobile">
 				  			<div className="ageAuthorReponse">
 		        				<div className="ageConseiller">{age} ans</div>
+		        				
 		        				<Button size="tiny"  color='blue'>
 											<Link to={'/VisiteProfil/' + this.props.message.user_id }>
 											Profil
 											</Link>
 								</Button>
-		        				<Button size="tiny"  color='green'>
-											<Link to={'/MobileChat/' + this.props.message.user_id }>
-											Contacter
-											</Link>
-								</Button>
+					
+								<div className="ecran butttonContact">
+			        				<Button size="tiny"  color='green' >
+												<Link to={'/Chat/' + this.props.message.user_id }>
+												Contacter
+												</Link>
+									</Button>
+								</div>
+								<div className="mobile butttonContact">
+									<Button size="tiny"  color='green' className="mobile">
+												<Link to={'/MOBILEChat/' + this.props.message.user_id }>
+												Contacter
+												</Link>
+									</Button>
+								</div>
 		        			</div>
 		        		</div>
 		  			</div>
