@@ -363,7 +363,7 @@ class MainContent extends Component {
 					    	onClick={this.poster.bind(this)}
 					    	 >
 					    	 <div className="textPoster">
-					    	 <Img className="iconPoster" src="/sort.svg"/>
+					    	 <Img className="iconPoster" src="/sort.png"/>
 					    	 Trier les messages
 					    	 </div>
 					    </div>

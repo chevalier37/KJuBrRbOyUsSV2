@@ -195,6 +195,7 @@ class MOBILEChat extends Component {
           onResultReceived: (error, response) => {
             if (error) console.warn(error.reason);
             let now = new Date();
+            console.log(response)
             if(response.profile.naissance){
               let userAge = response.profile.naissance;
               let diff = now - userAge;
