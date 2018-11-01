@@ -142,7 +142,7 @@ renderAllreponses() {
                   </div>
 
                   {/* PUB mobile*/}
-                  <div className="pubMobile mobile">
+                  {/*<div className="pubMobile mobile">
                     <div className="space" />
                     <div className="pubHome">
                             <AdSense.Google
@@ -152,7 +152,7 @@ renderAllreponses() {
                               format=''
                             />
                     </div>
-                  </div>
+                  </div>*/}
                    {this.renderAllreponses()}
                   </div>    
                       

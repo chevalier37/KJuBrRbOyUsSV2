@@ -40,6 +40,7 @@ class MainContent extends Component {
 			    };
 			}
 
+
 	renderAllMessages() {
 	    let AllMessages = this.props.allMessages;
 	    let more = this.state.more;
@@ -345,7 +346,7 @@ class MainContent extends Component {
 				</div>
 
 				{/* PUB mobile*/}
-				<div className="pubMobile mobile">
+				{/*<div className="pubMobile mobile">
 					<div className="space" />
 					<div className="pubHome">
 					        <AdSense.Google
@@ -355,7 +356,7 @@ class MainContent extends Component {
 					          format=''
 					        />
 					</div>
-				</div>
+				</div>*/}
 
 				<div className='inlinePoster'>
 					  	 <div 

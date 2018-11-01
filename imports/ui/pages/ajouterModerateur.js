@@ -22,29 +22,47 @@ class ajouterModerateur extends Component {
           visible: false,
           username:'',
           gender:'',
+          SuperModerateur:false,
         }
     }
 
     toggleVisibility = () => this.setState({ visible: !this.state.visible })
     toggleHidden = () => this.setState({ visible: false })
 
-    componentWillMount(){
-      this.el.scrollIntoView();
-      let id = this.props.match.params.id
-      }
+    /*componentWillMount(){
+      Meteor.apply(
+        'SuperModerateur',
+        [{}],
+        {
+          onResultReceived: (error, response) => {
+             if (error) console.warn(error.reason);
+             {
+              response ?  
+               this.setState({SuperModerateur:true}) :
+               ""
+           }
+        },
+    });
+    }*/
+
 
 
     render() {
    
-    const { visible } = this.state  
+    const { visible } = this.state;
+    const { SuperModerateur } = this.state;    
 
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
+
+    /*if (SuperModerateur==false){
+      return <Redirect to="/home" />;
+    }*/
     
     return (
       <div className="container">
-       <div ref={el => { this.el = el; }} ></div>
+     
         <header> 
           {/* Header site*/}
           <div className="containerHeader ecran">

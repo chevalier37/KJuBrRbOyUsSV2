@@ -585,11 +585,11 @@ class HeaderPage extends Component {
 							 <Img className="iconHeader" src="/new.svg"/>
 						</Link>
 					</div>
-					<div className={!this.state.SuperModerateur ? "none" : "ButtonHeader"}>
+					{/*<div className={!this.state.SuperModerateur ? "none" : "ButtonHeader"}>
 						<Link to="/ajouterModerateur" >
 							 <Img className="iconHeader" src="/new.svg"/>
 						</Link>
-					</div>
+					</div>*/}
 					<div className="ButtonAide">
 						<Modal
 						trigger={<Button color='red' onClick={this.open.bind(this)}>Demander de l'aide</Button>}
