@@ -6,12 +6,43 @@ export const Chat = new Mongo.Collection('chat');
 
 import { ContactChat } from './ContactChat.js';
 import { Notifications } from './Notifications.js';
+import { ValidatedMethod } from 'meteor/mdg:validated-method';
 
 if (Meteor.isServer) {
 
-Meteor.startup(function () {  
-  Chat._ensureIndex({ "from_id": 1, "to_id":1});
+export const updateContact = new ValidatedMethod({
+  //on verifie si le pseudo existe déjà
+  name: 'updateContact',
+  validate: new SimpleSchema({
+    to_id: { type: String }
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({ to_id }) {
+            const search = Meteor.users.findOne({'_id':to_id});
+            const to_name = search.username;
+            
+            const searchContact = ContactChat.findOne({$or : [{from_id: this.userId, to_id:to_id}, {from_id: to_id, to_id:this.userId}]});
+            
+
+            {searchContact.authorLastMessage && searchContact.authorLastMessage != this.userId ?
+              ContactChat.update(searchContact._id, {$set: {read:true} }) : ''}
+
+            const searchMessage = Chat.find({$or : [{from_id: to_id, to_id:this.userId}]});
+            ContactChat.update(searchMessage._id, {$set: {read:true}})
+            
+            Chat.update({'to_id':this.userId, 'from_id':to_id},{$set: {read:true}}, {multi: true})
+            
+            Notifications.update({'to_id':this.userId, 'type':'message'},{$set: {read:true}}, {multi: true})
+            
+            return search
+  }
 });
+
+
 
 Meteor.methods({
 
@@ -48,27 +79,6 @@ Meteor.methods({
              : ''}
       },
 
-      updateContact: function(to_id) {
-            check(to_id, Object);
-            const search = Meteor.users.findOne({'_id':to_id.to_id});
-            const to_name = search.username;
-            
-            const searchContact = ContactChat.findOne({$or : [{from_id: this.userId, to_id:to_id.to_id}, {from_id: to_id.to_id, to_id:this.userId}]});
-            
-
-            {searchContact.authorLastMessage && searchContact.authorLastMessage != this.userId ?
-              ContactChat.update(searchContact._id, {$set: {read:true} }) : ''}
-
-            const searchMessage = Chat.find({$or : [{from_id: to_id.to_id, to_id:this.userId}]});
-            ContactChat.update(searchMessage._id, {$set: {read:true}})
-            
-            Chat.update({'to_id':this.userId, 'from_id':to_id.to_id},{$set: {read:true}}, {multi: true})
-            
-            Notifications.update({'to_id':this.userId, 'type':'message'},{$set: {read:true}}, {multi: true})
-            
-            return search
-  
-      },
 
       updateContactOnline: function(to_id) {
             console.log(to_id)
