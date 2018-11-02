@@ -234,14 +234,15 @@
 
 	.MainContent {
     	float: left;
-    	margin-left: 15px !important;
+    	margin-left: 30px !important;
     	width: 750px !important;
 	}
 
 	.vidéos{
-		display: block !important;
+		/*display: block !important;*/
 	    overflow: auto;
 	    height: 1000px;
+	    display: none !important;
 	}
 
 	.titreAmbre {
