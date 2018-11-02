@@ -230,7 +230,7 @@
 
 }
 
-@media only screen and (min-width: 1050px) {
+@media only screen and (min-width: 1000px) {
 
 	.MainContent {
     	float: left;
@@ -239,9 +239,15 @@
 	}
 
 	.vidéos{
-		background-color: red;
-		width: 300px;
-		/*height: 200px;*/
-		margin-left: 770px;
+		display: block !important;
+	    overflow: auto;
+	    height: 1000px;
+	}
+
+	.titreAmbre {
+	    margin-top: 50px;
+	    font-size: 16px;
+	    font-weight: bold;
+	    text-align: center;
 	}
 }

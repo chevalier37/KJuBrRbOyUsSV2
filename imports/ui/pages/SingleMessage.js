@@ -20,6 +20,7 @@ import FormPosterReponse from '../component/FormPosterReponse.js';
 import SingleMessagePost from '../component/SingleMessagePost.js';
 import ListeReponses from '../component/ListeReponses.js';
 import HeaderMobile from '../component/HeaderMobile.js';
+import Contentvideos from '../component/Contentvideos.js';
 
 import { Comments } from '../../api/Reponses.js';
 import { Posts } from '../../api/Messages.js';
@@ -187,6 +188,12 @@ class SingleMessage extends Component {
                   </div>    
                       
                
+                </div>
+                <div className="vidéos">
+                  <div className="titreAmbre">
+                    Les conseils de Ambre
+                  </div>
+                    <Contentvideos />
                 </div>
             </Sidebar.Pusher>
           </Sidebar.Pushable>

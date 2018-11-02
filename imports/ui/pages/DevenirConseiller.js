@@ -17,6 +17,7 @@ import FooterMobile from '../component/FooterMobile.js';
 import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
 import DevenirConseillerContent from '../component/DevenirConseillerContent.js';
+import Contentvideos from '../component/Contentvideos.js';
 
 class DevenirConseiller extends Component {
 
@@ -72,7 +73,13 @@ class DevenirConseiller extends Component {
             </Sidebar>
 
             <Sidebar.Pusher>
-             <DevenirConseillerContent /> 
+             <DevenirConseillerContent />
+             <div className="vidéos">
+              <div className="titreAmbre">
+                Les conseils de Ambre
+              </div>
+                <Contentvideos />
+            </div> 
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>

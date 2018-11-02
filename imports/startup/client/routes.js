@@ -44,6 +44,7 @@ import MOBILEsupprimer from '../../../imports/ui/pages/MOBILEsupprimer.js';
 import MOBILEChat from '../../../imports/ui/pages/MOBILEChat.js';
 import MOBILLEModifierConseiller from '../../../imports/ui/pages/MOBILLEModifierConseiller.js';
 import MOBILERecommander from '../../../imports/ui/pages/MOBILERecommander.js';
+import ajouterVideo from '../../../imports/ui/pages/ajouterVideo.js';
 
 const requireAuth = (nextState, replace) => {
 
@@ -98,6 +99,7 @@ export const renderRoutes = () => (
       <Route path="/MOBILEChat/:id" component={MOBILEChat}/>
       <Route path="/MOBILLEModifierConseiller/" component={MOBILLEModifierConseiller}/>
       <Route path="/MOBILERecommander/:id" component={MOBILERecommander}/>
+      <Route path="/ajouterVideo/" component={ajouterVideo}/>
     
 
     </div>

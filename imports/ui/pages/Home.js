@@ -16,7 +16,7 @@ import HeaderMobile from '../component/HeaderMobile.js';
 import FooterMobile from '../component/FooterMobile.js';
 import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
-import ContentMessagePostes from '../component/ContentMessagePostes.js';
+import Contentvideos from '../component/Contentvideos.js';
 
 class Home extends Component {
 
@@ -141,9 +141,12 @@ class Home extends Component {
             <Sidebar.Pusher>
 
 
-              <MainContent more={moreAutre} nuit={nuit} />
-             <div className="vidéos">
-<ContentMessagePostes />
+            <MainContent more={moreAutre} nuit={nuit} />
+            <div className="vidéos">
+              <div className="titreAmbre">
+                Les conseils de Ambre
+              </div>
+                <Contentvideos />
             </div>
            {/* <Button
               fluid

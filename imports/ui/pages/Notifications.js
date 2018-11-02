@@ -17,6 +17,7 @@ import HeaderMobile from '../component/HeaderMobile.js';
 import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
 import ListeNotification from '../component/ListeNotification.js';
+import Contentvideos from '../component/Contentvideos.js';
 
 import { Notifications } from '../../api/Notifications.js';
 
@@ -175,6 +176,12 @@ class allNotifications extends Component {
                       <div className="espaceNotif"></div>                      
                          {this.renderAllreponses()}
                       </div>    
+              </div>
+              <div className="vidéos">
+                <div className="titreAmbre">
+                  Les conseils de Ambre
+                </div>
+                  <Contentvideos />
               </div>
             </Sidebar.Pusher>
           </Sidebar.Pushable>

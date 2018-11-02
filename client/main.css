@@ -2971,6 +2971,14 @@ header {
     margin-left: 15px;
 }
 
+.containervideo{
+	margin-top: 100px;
+}
+
+.vidéos{
+	display: none;
+}
+
 
 @media only screen and (max-width: 1800px) {
 

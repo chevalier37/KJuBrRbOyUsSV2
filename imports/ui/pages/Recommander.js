@@ -16,7 +16,7 @@ import FooterMobile from '../component/FooterMobile.js';
 import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
 import RecommanderContent from '../component/RecommanderContent.js';
-
+import Contentvideos from '../component/Contentvideos.js';
 
 class recommander extends Component {
 
@@ -125,6 +125,12 @@ class recommander extends Component {
                          <RecommanderContent id={this.props.match.params.id} nuit={nuit}/> 
                       </div>    
 
+                </div>
+                <div className="vidéos">
+                  <div className="titreAmbre">
+                    Les conseils de Ambre
+                  </div>
+                    <Contentvideos />
                 </div> 
             </Sidebar.Pusher>
           </Sidebar.Pushable>

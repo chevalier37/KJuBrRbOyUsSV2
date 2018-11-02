@@ -17,6 +17,7 @@ import HeaderMobile from '../component/HeaderMobile.js';
 import FooterMobile from '../component/FooterMobile.js';
 import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
+import Contentvideos from '../component/Contentvideos.js';
 import { Conseilleres } from '../../api/Conseilleres.js';
 
 class ConseillerConnecter extends Component {
@@ -518,6 +519,12 @@ class ConseillerConnecter extends Component {
                           </div>
                         </div>
                     </div> 
+                </div>
+                <div className="vidéos">
+                  <div className="titreAmbre">
+                    Les conseils de Ambre
+                  </div>
+                    <Contentvideos />
                 </div>
               </Sidebar.Pusher>
         </Sidebar.Pushable>

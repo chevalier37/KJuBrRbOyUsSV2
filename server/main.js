@@ -10,7 +10,7 @@ import '../imports/api/mail.js';
 import '../imports/api/Notifications.js';
 import '../imports/api/BloquerChat.js';
 import '../imports/api/Writing.js';
-
+import '../imports/api/Videos.js';
 
 
 Meteor.startup(() => {

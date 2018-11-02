@@ -16,6 +16,7 @@ import FooterMobile from '../component/FooterMobile.js';
 import HeaderMobile from '../component/HeaderMobile.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
 import ContentModifierRecommandations from '../component/ContentModifierRecommandations.js';
+import Contentvideos from '../component/Contentvideos.js';
 
 class ModifierRecommandation extends Component {
 
@@ -67,7 +68,13 @@ class ModifierRecommandation extends Component {
             </Sidebar>
 
             <Sidebar.Pusher>
-                <ContentModifierRecommandations post_id={this.props.match.params.id} />  
+                <ContentModifierRecommandations post_id={this.props.match.params.id} />
+                <div className="vidéos">
+                  <div className="titreAmbre">
+                    Les conseils de Ambre
+                  </div>
+                    <Contentvideos />
+                </div>  
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>

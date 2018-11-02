@@ -32,6 +32,7 @@ import SupprimerCompte from '../component/SupprimerCompte.js';
 import Deconnexion from '../component/deconnexion.js';
 import Notifications from '../component/Notifications.js';
 import Livre from '../component/Livre.js';
+import Contentvideos from '../component/Contentvideos.js';
 
 
 
@@ -153,6 +154,12 @@ class Profil extends Component {
 
               <div className="mobile">
                 <ProfilContent nuit={nuit}/>
+              </div>
+              <div className="vidéos">
+                <div className="titreAmbre">
+                  Les conseils de Ambre
+                </div>
+                  <Contentvideos />
               </div>
             </Sidebar.Pusher>
           </Sidebar.Pushable>
