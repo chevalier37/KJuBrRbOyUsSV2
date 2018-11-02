@@ -372,6 +372,45 @@ export const sexContact= new ValidatedMethod({
 
 
 
+export const nuit = new ValidatedMethod({
+  //on met à jour le champs nuit si l'utilisateur le souhaite
+  name: 'nuit',
+  validate: new SimpleSchema({
+  nuit: { type: Boolean },
+  }).validator(),
+
+    applyOptions: {
+    noRetry: true,
+  },
+
+  run({nuit}) {
+    Meteor.users.update({_id:this.userId}, {
+                    $set: { "nuit": nuit},
+                    })
+    return nuit
+  }
+});
+
+
+export const ModeNuit = new ValidatedMethod({
+  //on vérifie si l'utilisateur est en mode nuit
+  name: 'ModeNuit',
+  validate: new SimpleSchema({
+  }).validator(),
+
+    applyOptions: {
+    noRetry: true,
+  },
+
+  run() {
+    const search = Meteor.users.findOne({_id:this.userId});
+    const nuit = search.nuit;
+    return nuit
+  }
+});
+
+
+
 Meteor.methods({
 
       FormLogin: function(username,password) {

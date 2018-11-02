@@ -16,6 +16,7 @@ export default class ContentMenuRight extends Component {
 		    chat:'',
 		    activeItem: 'account',
 		    logout:false,
+		    nuit:false,
 	    };
   	}
 
@@ -26,6 +27,15 @@ export default class ContentMenuRight extends Component {
 
   	componentDidMount() {
         this.scrollToTop();
+        this.el.scrollIntoView();
+        Meteor.apply('ModeNuit', [{}], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            {response ?
+             this.setState({nuit: response}) :
+             ""}
+          },
+        });
     }
 
      scrollToTop() {
@@ -33,10 +43,26 @@ export default class ContentMenuRight extends Component {
     }
 
   	handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+  	nuit() {
+       this.setState({
+        nuit: !this.state.nuit,
+      });
+      let nuit = !this.state.nuit;
+      Meteor.apply(
+        'nuit',
+        [{nuit}],
+        {
+          onResultReceived: (error, response) => {
+             if (error) console.warn(error.reason);
+        },
+      });
+    }
   
   	render() {
   		const { activeItem } = this.state
 		const logout = this.state.logout;
+		const { nuit } = this.state
   		
   		if (logout) {
       	return <Redirect to="/" />;
@@ -170,6 +196,15 @@ export default class ContentMenuRight extends Component {
     				        <p className="menuIcon"> Nous contacter</p>
 					    </div>
 					</Link>
+					<Divider />
+					    <div className="ListItem" onClick={this.nuit.bind(this)}>
+                     		<div className="star">   
+                          		<Img className="colorIconblue" src="/jour.png"/>
+                    		</div>
+    				        <p className="menuIcon"> 
+    				        {!this.state.nuit ? "Mode nuit" : "Mode jour"}
+    				        </p>
+					    </div>
 					<Divider />
 					<Link to={'/MOBILEsupprimer/' }>
 					    <div className="ListItem">

@@ -43,6 +43,7 @@ class MainContent extends Component {
 
 	renderAllMessages() {
 	    let AllMessages = this.props.allMessages;
+	    let nuit = this.props.nuit;
 	    let more = this.state.more;
 	    return AllMessages.slice(0, more).map((message) => {
 	     let date = Date.parse(message.post_date);
@@ -52,7 +53,8 @@ class MainContent extends Component {
 	          key={message._id}
 	          message={message}
 	          date={date}
-	          id={message._id}         
+	          id={message._id}
+	          nuit={nuit}         
 	        />
 	      );
 	    });
@@ -61,6 +63,7 @@ class MainContent extends Component {
 	renderNonLu() {
 	    let nonLu = this.props.postNonLu;
 	    let more = this.state.moreNonLu;
+	    let nuit = this.props.nuit;
 	    return nonLu.slice(0, more).map((message) => {
 	     let date = Date.parse(message.post_date);
          
@@ -69,7 +72,8 @@ class MainContent extends Component {
 	          key={message._id}
 	          message={message}
 	          date={date}
-	          id={message._id}         
+	          id={message._id}
+	          nuit={nuit}          
 	        />
 	      );
 	    });
@@ -78,6 +82,7 @@ class MainContent extends Component {
 	renderAutre() {
 	    let autre = this.props.postAutre;
 	    let more = this.state.moreAutre;
+	    let nuit = this.props.nuit;
 	    return autre.slice(0, more).map((message) => {
 	     let date = Date.parse(message.post_date);
          
@@ -86,7 +91,8 @@ class MainContent extends Component {
 	          key={message._id}
 	          message={message}
 	          date={date}
-	          id={message._id}         
+	          id={message._id}
+	          nuit={nuit}          
 	        />
 	      );
 	    });
@@ -95,6 +101,7 @@ class MainContent extends Component {
 	renderAmour() {
 	    let MessageAmour = this.props.postsAmour;
 	    let more = this.state.moreAmour;
+	    let nuit = this.props.nuit;
 	    return MessageAmour.slice(0, more).map((message) => {
 	     let date = Date.parse(message.post_date);
          
@@ -103,7 +110,8 @@ class MainContent extends Component {
 	          key={message._id}
 	          message={message}
 	          date={date}
-	          id={message._id}           
+	          id={message._id}
+	          nuit={nuit}            
 	        />
 	      );
 	    });
@@ -112,6 +120,7 @@ class MainContent extends Component {
 	renderSexo() {
 	    let MessageSexo = this.props.postsSexo;
 	    let more = this.state.moreSexo;
+	    let nuit = this.props.nuit;
 	    return MessageSexo.slice(0, more).map((message) => {
 	     let date = Date.parse(message.post_date);
          
@@ -120,7 +129,8 @@ class MainContent extends Component {
 	          key={message._id}
 	          message={message}
 	          date={date}
-	          id={message._id}           
+	          id={message._id}
+	          nuit={nuit}            
 	        />
 	      );
 	    });
@@ -129,6 +139,7 @@ class MainContent extends Component {
 	renderConfiance() {
 	    let MessageConfiance = this.props.postsConfiance;
 	    let more = this.state.moreConfiance;
+	    let nuit = this.props.nuit;
 	    return MessageConfiance.slice(0, more).map((message) => {
 	     let date = Date.parse(message.post_date);
          
@@ -137,7 +148,8 @@ class MainContent extends Component {
 	          key={message._id}
 	          message={message}
 	          date={date}
-	          id={message._id}           
+	          id={message._id}
+	          nuit={nuit}            
 	        />
 	      );
 	    });
@@ -146,6 +158,7 @@ class MainContent extends Component {
 	renderSante() {
 	    let MessageSante = this.props.postsSante;
 	    let more = this.state.moreSante;
+	    let nuit = this.props.nuit;
 	    return MessageSante.slice(0, more).map((message) => {
 	     let date = Date.parse(message.post_date);
          
@@ -154,7 +167,8 @@ class MainContent extends Component {
 	          key={message._id}
 	          message={message}
 	          date={date} 
-	          id={message._id}          
+	          id={message._id}
+	          nuit={nuit}           
 	        />
 	      );
 	    });
@@ -163,6 +177,7 @@ class MainContent extends Component {
 	renderEcole() {
 	    let MessageEcole = this.props.postsEcole;
 	    let more = this.state.moreEcole;
+	    let nuit = this.props.nuit;
 	    return MessageEcole.slice(0, more).map((message) => {
 	     let date = Date.parse(message.post_date);
          
@@ -171,7 +186,8 @@ class MainContent extends Component {
 	          key={message._id}
 	          message={message}
 	          date={date} 
-	          id={message._id}          
+	          id={message._id}
+	          nuit={nuit}           
 	        />
 	      );
 	    });
@@ -323,6 +339,8 @@ class MainContent extends Component {
   		this.el.scrollIntoView();
   	}
 
+  	let nuit = this.props.nuit;
+
 		return (
 			<div className="MainContent">
 				<div className="centerpub ecran">
@@ -370,7 +388,7 @@ class MainContent extends Component {
 					    </div>
 				</div>
 				<div className={this.state.poster ? 'categories' : "none"}>
-				<Segment>
+				<Segment className={ nuit ? "SegmentNuit" : ""}>
 				       <Button
 				        size="mini"
 				        basic

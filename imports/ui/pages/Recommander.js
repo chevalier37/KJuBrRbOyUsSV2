@@ -30,37 +30,57 @@ class recommander extends Component {
         }
     }
 
+    componentDidMount() {
+        this.el.scrollIntoView();
+        Meteor.apply('ModeNuit', [{}], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            {response ?
+             this.setState({nuit: response}) :
+             ""}
+          },
+        });
+    }
+
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
     handleSidebarHide = () => this.setState({ visible: false })
 
-    componentDidMount() {
-        this.scrollToTop();
-    }
-
-    componentDidUpdate() {
-        this.scrollToTop();
-    }
-
-    scrollToTop() {
-        this.el.scrollIntoView();
+    nuit() {
+       this.setState({
+        nuit: !this.state.nuit,
+      });
+      let nuit = !this.state.nuit;
+      Meteor.apply(
+        'nuit',
+        [{nuit}],
+        {
+          onResultReceived: (error, response) => {
+             if (error) console.warn(error.reason);
+        },
+      });
     }
 
   
     render() {
     
-    const { visible } = this.state 
+    const { visible } = this.state;
+    const { nuit } = this.state; 
 
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
     
     return (
-      <div className="container">
+      <div className={ this.state.nuit ? "containerNuit" : "container"}>
       <div ref={el => { this.el = el; }} ></div>
         <header> 
           {/* Header site*/}
           <div className="containerHeader ecran">
             <div className="headerPage">
+            <div className="lumiere" onClick={this.nuit.bind(this)}>
+                <Img className={!this.state.nuit ? "iconHeader" : "none" } src="/jour.png"/>
+                <Img className={this.state.nuit ? "iconHeader" : "none" } src="/nuit.png"/>
+            </div>
               <HeaderPage />
             </div>
           </div>
@@ -86,7 +106,7 @@ class recommander extends Component {
         </header>
        
         <div>
-          <Sidebar.Pushable as={Segment}>
+          <Sidebar.Pushable >
             <Sidebar
               as={Menu}
               animation='overlay'
@@ -101,11 +121,10 @@ class recommander extends Component {
 
             <Sidebar.Pusher>
              <div className="containerSite" onClick={this.toggleHidden}>
-             <div className="containerIMG">
                       <div className="MainContent">                      
-                         <RecommanderContent id={this.props.match.params.id} /> 
+                         <RecommanderContent id={this.props.match.params.id} nuit={nuit}/> 
                       </div>    
-                </div>
+
                 </div> 
             </Sidebar.Pusher>
           </Sidebar.Pushable>

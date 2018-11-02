@@ -19,6 +19,10 @@ header {
 	width: 100%;
 }
 
+.containerNuit{
+	background-color: black !important;
+}
+
 .HeaderMobile{
 	width: 100%;
 	height: 40px;
@@ -134,7 +138,7 @@ header {
 }
 
 .containerSite{
-	background-color: #e9ebee;
+	/*background-color: #e9ebee;*/
 	display: block;
 	height: 100%;
 }
@@ -151,7 +155,7 @@ header {
 	height: 46px;
 	min-width: 914px;
 	color: #3b5998;
-	background-color: white;
+	background-color: #3b5998;
 	border-bottom-color: #3b5998;
     border-bottom-style: solid;
     border-bottom-width: 1px;
@@ -478,6 +482,25 @@ header {
 
 }
 
+.HeaderLastConseillerNuit{
+	width: 208px;
+    color: #767676;
+    text-align: center;
+    height: 40px;
+    padding-top: 8px;
+    font-size: 16px;
+    position: fixed;
+    margin-bottom: 10px;
+    display: block;
+    font-weight: bold;
+    background-color: #153346;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #e9ebee;
+    z-index: 10;
+    margin-top: 5px;
+}
+
 .HeaderMenu{
 	background-image: linear-gradient(#6c96f5, #1c3c84 100%);
 	/*background-image: linear-gradient(#7ba0ef, #3a5182 100%);*/
@@ -494,7 +517,7 @@ header {
 }
 
 .MainContent {
-    width: 750px;
+    width: 800px;
     margin-top: 45px;
     font-size: 14px;
     margin-left: auto;
@@ -552,6 +575,19 @@ header {
 .ListeMessages{
 	margin-top: 9px;
 	margin-right: 10px;
+	background-color: white;
+
+}
+
+.ListeMessagesNuit{
+	margin-top: 9px;
+	margin-right: 10px;
+	background-color: #183343 !important;
+}
+
+.SegmentNuit{
+	background-color: #173344 !important;
+	color: #8899a6 !important;
 }
 
 .ListeArticles{
@@ -638,6 +674,18 @@ header {
 }
 
 .contacter{
+	display: inline-block;
+	margin-top: 0px;
+	margin-right: 20px;
+	color: red;
+	cursor:pointer;
+}
+
+.contactermobile{
+	display: none;
+}
+
+.contacterecran{
 	display: inline-block;
 	margin-top: 0px;
 	margin-right: 20px;
@@ -813,11 +861,11 @@ header {
 }
 
 .visibleTitre a{
-	color: black;
+	/*color: black;*/
 }
 
 .visibleTitre a:hover{
-	color: black;
+	/*color: black;*/
 }
 
 .cacherCategorie{
@@ -903,8 +951,22 @@ header {
     margin-top: -10px;
     border-top-style: solid;
     border-top-color: #e9ebee;
-    border-top-width: 1px;
-    
+    border-top-width: 1px; 
+}
+
+.ContentDiscussionNuit{
+	background-color: #163345;
+    height: 100%;
+    padding-left: 10px;
+    overflow: auto;
+    position: fixed;
+    padding-right: 4%;
+    width: 85%;
+    padding-bottom: 350px;
+    margin-top: -10px;
+    border-top-style: solid;
+    border-top-color: #e9ebee;
+    border-top-width: 1px; 
 }
 
 @-moz-document url-prefix() {
@@ -1045,7 +1107,7 @@ header {
 
 
 .filleMessageBackground{
-	background-color: white;
+	/*background-color: white;*/
     height: 30px;
     margin-bottom: -15px;
     padding-left: 10px;
@@ -1055,7 +1117,7 @@ header {
 }
 
 .garconMessageBackground{
-	background-color: white;
+	/*background-color: white;*/
     height: 30px;
     margin-bottom: -15px;
     padding-left: 10px;
@@ -1315,6 +1377,11 @@ header {
 	border-bottom-width: 1px;  
 }
 
+.AffficheContactNuit{
+	background-color: #153346;
+	color: #766f61 !important;
+}
+
 .message_droite{
   display: block;
   float: right;
@@ -1377,6 +1444,18 @@ header {
     margin-top: 5px;
 }
 
+.headerChatNuit{
+	height: 50px;
+    padding-left: 20px;
+    background-color: #153346;
+    border-bottom-style: solid;
+    border-bottom-color: #e9ebee;
+    border-bottom-width: 1px;
+    width:1500px;
+    margin-top: 5px;
+
+}
+
 .rientest{
 	    height: 50px;
     background: red;
@@ -1416,6 +1495,7 @@ header {
 	margin-right: 10px;
 	font-weight: bold;
 	font-size: 14px;
+	color: #767676;
 }
 
 .recommmander{
@@ -1617,6 +1697,10 @@ header {
 	margin-right: 5px;
 }
 
+.titreRecomandationNuit{
+	color: #8799a6;
+}
+
 .titreMessageRecommandation a{
 	color: white;
 	font-size: 14px;
@@ -1627,6 +1711,14 @@ header {
 	font-size: 14px;
 }
 
+.textNuit{
+	color: #8799a6 !important;
+}
+
+.consigne1Nuit{
+	color: #8799a6 !important;
+}
+
 .noteRecommandation{
 	float: right;
 }
@@ -1634,7 +1726,7 @@ header {
 .textProfil{
 	padding-top: 15px;
 	font-size: 15px;
-	color: black;
+	color: #797979;
 }
 
 .inputprofil{
@@ -2068,9 +2160,29 @@ header {
     color: white;
 }
 
+.ageAuthorReponseNuit{
+    margin-top: -20px;
+    float: right;
+    margin-right: 20px;
+    margin-left: 10px;
+    color: #8799a6 !important;
+}
+
+.ageAuthorReponseNuit a{
+    color: #8799a6 !important;
+}
+
+.ageAuthorReponseNuit a:hover{
+    color: #8799a6 !important;
+}
+
 .ageConseiller{
 	margin-right: 10px;
 	display: inline-block;
+}
+
+.deleteAllNotif{
+	margin-top: 10px;
 }
 
 .upVote{
@@ -2222,15 +2334,15 @@ header {
 
 .ButtonHeader:hover{
 	text-decoration: none;
-	color: #7598e0;
+	color: white;
 	border-bottom-width: 3px;
-	border-bottom-color: #7598e0;
+	border-bottom-color: white;
 	border-bottom-style: solid; 
 }
 
 .ButtonHeader a:hover{
 	text-decoration: none;
-	color: #7598e0;
+	color: white;
 }
 
 .ButtonHeaderMobile{
@@ -2258,13 +2370,13 @@ header {
 
 .ButtonPseudo a{
 	text-decoration: none;
-	color: #3c64b9;
+	color: white;
 	font-weight: bold;
 }
 
 .ButtonPseudo:hover{
 	text-decoration: none;
-	color: #7598e0;
+	color: white;
 }
 
 .ButtonPseudoHeader{
@@ -2286,7 +2398,7 @@ header {
 
 .ButtonPseudo a:hover{
 	text-decoration: none;
-	color: #7598e0;
+	color: white;
 }
 
 .ButtonHeaderRight{
@@ -2299,7 +2411,7 @@ header {
 .BlocHead{
 	margin-left: auto;
 	margin-right: auto;
-	width: 750px;
+	width: 850px;
 }
 
 .NoteConseiller{
@@ -2383,6 +2495,7 @@ header {
 
 .categories{
 	margin-bottom: 5px;
+	margin-right: 10px;
 }
 
 .space{
@@ -2842,9 +2955,20 @@ header {
     padding-right: 0rem !important;
 }
 
+.ui.menu .item{
+	color: #bcbdbd;
+}
+
 .supprimerConseiller{
 	float: right;
     margin-top: -70px
+}
+
+.lumiere{
+	float: left;
+    margin-top: 9px;
+    margin-right: 20px;
+    margin-left: 15px;
 }
 
 
@@ -2870,6 +2994,10 @@ header {
 	.ContentDiscussion{
 		padding-right: 9%;
 	}
+
+	.ContentDiscussionNuit{
+		padding-right: 9%;
+	}
 }
 
 @media only screen and (max-width: 980px) {
@@ -2889,6 +3017,10 @@ header {
     	padding-right: 29%;
 	}
 
+	.ContentDiscussionNuit{
+		padding-right: 13%;
+	}
+
 
 }
 
@@ -2898,8 +3030,16 @@ header {
 		padding-bottom: 400px;
 	}
 
+	.ContentDiscussionNuit{
+		padding-bottom: 400px;
+	}
+
 	@-moz-document url-prefix() {
   	.ContentDiscussion{
+		padding-bottom: 0px;
+		height: 500px;
+	}
+	.ContentDiscussionNuit{
 		padding-bottom: 0px;
 		height: 500px;
 	}
@@ -2913,6 +3053,10 @@ header {
 		padding-bottom: 400px;
 	}
 
+	.ContentDiscussionNuit{
+		padding-bottom: 400px;
+	}
+
 	.MenuLeftLastConseiller{
 		height: 500px;
 		overflow: auto;
@@ -2920,6 +3064,10 @@ header {
 
 	@-moz-document url-prefix() {
   	.ContentDiscussion{
+		padding-bottom: 0px;
+		height: 450px;
+	}
+	.ContentDiscussionNuit{
 		padding-bottom: 0px;
 		height: 450px;
 	}
@@ -2933,6 +3081,10 @@ header {
 		padding-bottom: 400px;
 	}
 
+	.ContentDiscussionNuit{
+		padding-bottom: 400px;
+	}
+
 	.MenuLeftLastConseiller{
 		height: 450px;
 		overflow: auto;
@@ -2944,12 +3096,21 @@ header {
 		padding-bottom: 0px;
 		height: 400px;
 	}
+
+	.ContentDiscussionNuit{
+		padding-bottom: 0px;
+		height: 400px;
+	}
 	}
 }
 
 @media only screen and (max-height: 700px) {
 
 	.ContentDiscussion{
+		padding-bottom: 400px;
+	}
+
+	.ContentDiscussionNuit{
 		padding-bottom: 400px;
 	}
 
@@ -2963,6 +3124,11 @@ header {
 		padding-bottom: 0px;
 		height: 350px;
 	}
+
+	.ContentDiscussionNuit{
+		padding-bottom: 0px;
+		height: 350px;
+	}
 	}
 }
 
@@ -2972,10 +3138,20 @@ header {
 		padding-bottom: 400px;
 	}
 
+	.ContentDiscussionNuit{
+		padding-bottom: 400px;
+	}
+
 	@-moz-document url-prefix() {
   	.ContentDiscussion{
 		padding-bottom: 0px;
 		height: 250px;
+	}
+
+  	.ContentDiscussionNuit{
+		padding-bottom: 0px;
+		height: 250px;
+
 	}
 	}
 }
@@ -2986,8 +3162,17 @@ header {
 		padding-bottom: 400px;
 	}
 
+	.ContentDiscussionNuit{
+		padding-bottom: 400px;
+	}
+
 	@-moz-document url-prefix() {
   	.ContentDiscussion{
+		padding-bottom: 0px;
+		height: 200px;
+	}
+
+	.ContentDiscussionNuit{
 		padding-bottom: 0px;
 		height: 200px;
 	}
@@ -3000,8 +3185,17 @@ header {
 		padding-bottom: 400px;
 	}
 
+	.ContentDiscussionNuit{
+		padding-bottom: 400px;
+	}
+
 	@-moz-document url-prefix() {
   	.ContentDiscussion{
+		padding-bottom: 0px;
+		height: 150px;
+	}
+
+	.ContentDiscussionNuit{
 		padding-bottom: 0px;
 		height: 150px;
 	}

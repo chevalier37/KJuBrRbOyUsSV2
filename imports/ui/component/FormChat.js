@@ -23,6 +23,7 @@ class FormChat extends Component {
 	focusMessage() {
 	    this.setState({placeholderMessage: ''});
 	    this.setState({writing:true});
+	    this.setState({big:true});
 
 	    Meteor.call(
 	    	'writing',
@@ -38,6 +39,8 @@ class FormChat extends Component {
 	focusMessageOut() {
 	    this.setState({placeholderMessage:'Message'});
 	    this.setState({writing:false});
+	    this.setState({big:false});
+	    
 	      
 	    Meteor.call('NOTwriting',
 	    	this.props.to_id,
@@ -117,6 +120,7 @@ class FormChat extends Component {
               
            		 } else {
 			        ReactDOM.findDOMNode(this.refs.message).value = '';
+			        this.setState({big:false});
             	}
           	})
 
@@ -191,7 +195,7 @@ class FormChat extends Component {
 				       onFocus={this.focusMessage.bind(this)}
 				       onBlur={this.focusMessageOut.bind(this)}
 				       placeholder={placeholderMessage}
-				       rows={6}
+				       rows={this.state.big==true ? 6 : 1}
 				       onChange={this.writing.bind(this)}
 				       />
 					</div>

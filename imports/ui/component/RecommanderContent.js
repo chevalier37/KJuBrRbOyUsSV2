@@ -124,6 +124,7 @@ class RecommanderContent extends Component {
 
   	render() {
 		const { activeIndex } = this.state;
+		const  nuit  = this.props.nuit;
 		const myId = Meteor.userId();
 		    if (!Meteor.loggingIn() && !Meteor.userId()){
       		return <Redirect to="/" />;
@@ -134,9 +135,9 @@ class RecommanderContent extends Component {
 
 		return (
 			<div >
-				<Segment className="MainContent">
+				<Segment className={ nuit ? "SegmentNuit" : ""}>
 					
-						<Header>
+						<Header className={ nuit ? "textNuit" : ""}>
 						Recommander <div className={this.state.gender}>{this.state.username}</div>
 						</Header>
 					
@@ -153,7 +154,7 @@ class RecommanderContent extends Component {
 
 					<Form error onSubmit={this.Submit.bind(this)}>
 					    <Form.Field >
-					      <label ><p className="consigne1">Commentaire</p></label>
+					      <label ><p className={ nuit ? "consigne1Nuit" : "consigne1"}>Commentaire</p></label>
 					      <TextArea autoHeight ref="presentation" rows={5}  />
 					       <Message
 						            hidden={!this.state.errorCommentaire}

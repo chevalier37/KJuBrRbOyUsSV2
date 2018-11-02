@@ -88,13 +88,14 @@ class FormPosterReponse extends Component {
   render() {
   		const { visible } = this.state
   		const { placeholderMessage } = this.state
+  		let nuit = this.props.nuit;
 		
 		return (
 			<div className="AjouterReponse">
-				<Segment>
+				<Segment className={ nuit ? "SegmentNuit" : ""}>
 				    <Form error onSubmit={this.Submit.bind(this)}>
 				    	<Header
-				    	 as='h2'>
+				    	 as='h2' className={ nuit ? "textNuit" : ""}>
 				    	 Ajouter une réponse
 				    	 </Header>
 					    <Form.Field>

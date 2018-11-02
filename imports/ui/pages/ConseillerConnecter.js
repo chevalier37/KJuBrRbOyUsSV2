@@ -43,15 +43,39 @@ class ConseillerConnecter extends Component {
           moreSexo:5,
           moreSante:5,
           moreEcole:5,
+          nuit:false,
         }
     }
 
     componentDidMount() {
         this.scrollToTop();
+        Meteor.apply('ModeNuit', [{}], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            {response ?
+             this.setState({nuit: response}) :
+             ""}
+          },
+        });
     }
 
     scrollToTop() {
         this.el.scrollIntoView();
+    }
+
+    nuit() {
+       this.setState({
+        nuit: !this.state.nuit,
+      });
+      let nuit = !this.state.nuit;
+      Meteor.apply(
+        'nuit',
+        [{nuit}],
+        {
+          onResultReceived: (error, response) => {
+             if (error) console.warn(error.reason);
+        },
+      });
     }
 
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
@@ -60,6 +84,7 @@ class ConseillerConnecter extends Component {
     renderAllMessages() {
       let AllMessages = this.props.allMessages;
       let more = this.state.more;
+      let nuit = this.state.nuit;
       return AllMessages.slice(0, more).map((message) => {
        let gender = message.gender;
        let naissance = message.naissance;
@@ -70,7 +95,8 @@ class ConseillerConnecter extends Component {
             id={message._id}
             message={message}
             date={naissance}
-            gender={gender}        
+            gender={gender}
+            nuit={nuit}            
           />
         );
       });
@@ -79,6 +105,7 @@ class ConseillerConnecter extends Component {
   renderAmour() {
       let MessageAmour = this.props.postsAmour;
       let more = this.state.moreAmour;
+      let nuit = this.state.nuit;
       return MessageAmour.slice(0, more).map((message) => {
        let gender = message.gender;
        let naissance = message.naissance;
@@ -89,7 +116,8 @@ class ConseillerConnecter extends Component {
             id={message._id}
             message={message}
             date={naissance}
-            gender={gender}        
+            gender={gender}
+            nuit={nuit}            
           />
         );
       });
@@ -98,6 +126,7 @@ class ConseillerConnecter extends Component {
   renderSexo() {
       let MessageSexo = this.props.postsSexo;
       let more = this.state.moreSexo;
+      let nuit = this.state.nuit;
       return MessageSexo.slice(0, more).map((message) => {
        let gender = message.gender;
        let naissance = message.naissance;
@@ -108,7 +137,8 @@ class ConseillerConnecter extends Component {
             id={message._id}
             message={message}
             date={naissance}
-            gender={gender}        
+            gender={gender}
+            nuit={nuit}            
           />
         );
       });
@@ -117,6 +147,7 @@ class ConseillerConnecter extends Component {
   renderConfiance() {
       let MessageConfiance = this.props.postsConfiance;
       let more = this.state.moreConfiance;
+      let nuit = this.state.nuit;
       return MessageConfiance.slice(0, more).map((message) => {
        let gender = message.gender;
        let naissance = message.naissance;
@@ -127,7 +158,8 @@ class ConseillerConnecter extends Component {
             id={message._id}
             message={message}
             date={naissance}
-            gender={gender}        
+            gender={gender}
+            nuit={nuit}            
           />
         );
       });
@@ -136,6 +168,7 @@ class ConseillerConnecter extends Component {
   renderSante() {
       let MessageSante = this.props.postsSante;
       let more = this.state.moreSante;
+      let nuit = this.state.nuit;
       return MessageSante.slice(0, more).map((message) => {
        let gender = message.gender;
        let naissance = message.naissance;
@@ -146,7 +179,8 @@ class ConseillerConnecter extends Component {
             id={message._id}
             message={message}
             date={naissance}
-            gender={gender}        
+            gender={gender}
+            nuit={nuit}            
           />
         );
       });
@@ -155,6 +189,7 @@ class ConseillerConnecter extends Component {
   renderEcole() {
       let MessageEcole = this.props.postsEcole;
       let more = this.state.moreEcole;
+      let nuit = this.state.nuit;
       return MessageEcole.slice(0, more).map((message) => {
        let gender = message.gender;
        let naissance = message.naissance;
@@ -165,7 +200,8 @@ class ConseillerConnecter extends Component {
             id={message._id}
             message={message}
             date={naissance}
-            gender={gender}        
+            gender={gender}
+            nuit={nuit}            
           />
         );
       });
@@ -295,19 +331,24 @@ class ConseillerConnecter extends Component {
       }*/
 
     render() {
-    const { visible } = this.state
+    const { visible } = this.state;
+    const { nuit } = this.state
 
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
     
     return (
-      <div className="container">
+      <div className={ this.state.nuit ? "containerNuit" : "container"}>
       <div ref={el => { this.el = el; }} ></div>
         <header> 
           {/* Header site*/}
           <div className="containerHeader ecran">
             <div className="headerPage">
+            <div className="lumiere" onClick={this.nuit.bind(this)}>
+                <Img className={!this.state.nuit ? "iconHeader" : "none" } src="/jour.png"/>
+                <Img className={this.state.nuit ? "iconHeader" : "none" } src="/nuit.png"/>
+            </div>
               <HeaderPage />
             </div>
           </div>
@@ -340,9 +381,9 @@ class ConseillerConnecter extends Component {
         
                 <div className="containerSite" onClick={this.toggleHidden}>
                       <div className="MainContent">
-                         <Segment>
+                         <Segment className={ nuit ? "SegmentNuit" : ""}>
                          <Header>
-                            <div className="titreRecomandation">
+                            <div className={ nuit ? "titreRecomandationNuit" : "titreRecomandation"}>
                              Tous les conseillers en ligne
     
                             </div>
@@ -350,7 +391,7 @@ class ConseillerConnecter extends Component {
                         </Segment>
 
                         <div className="categories">
-                          <Segment>
+                          <Segment className={ nuit ? "SegmentNuit" : ""}>
                                  <Button
                                   size="mini"
                                   basic

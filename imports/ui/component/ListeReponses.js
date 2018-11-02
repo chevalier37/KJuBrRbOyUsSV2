@@ -194,9 +194,10 @@ class ListeReponses extends Component {
    	let now = new Date();
 	let diff = now - this.props.message.naissance;
 	let age = Math.round(diff / 31536000000);
+	let nuit = this.props.nuit;
 
 		return (
-			<div className="ListeMessages">
+			<div className={ nuit ? "ListeMessagesNuit" : "ListeMessages"}>
 	  			<div className={colorSexe=="pink" ?
 	        				  "filleMessageBackground" : "garconMessageBackground"
 	        				}>
@@ -207,13 +208,13 @@ class ListeReponses extends Component {
 				  			{this.props.message.post_author}
 				  			</Link>
 			  			</div>
-			  			<div className="ageAuthorReponse">
+			  			<div className={ nuit ? "ageAuthorReponseNuit" : "ageAuthorReponse"}>
 	        				{age} ans
 	        			</div>
 		  		</div>
 
 
-	  			<Segment color={colorSexe=="pink" ? "pink" : "blue" }>
+	  			<Segment className={ nuit ? "SegmentNuit" : ""} color={colorSexe=="pink" ? "pink" : "blue" }>
 		  			<p className={"ContentQuestion" + " " + "display-linebreak"}>
 		  				{this.props.message.comments}
 		  			</p>
@@ -247,8 +248,13 @@ class ListeReponses extends Component {
 							          cancelButton='Quitter'
           							  confirmButton="Valider"
 							        />
-									<div className="contacter" >
+									<div className="contactermobile" >
 										<Link to={'/MOBILEChat/' + this.props.message.userId }>
+										Message privé
+										</Link>
+									</div> 
+									<div className="contacterecran" >
+										<Link to={'/Chat/' + this.props.message.userId }>
 										Message privé
 										</Link>
 									</div>

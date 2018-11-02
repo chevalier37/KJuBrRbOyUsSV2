@@ -28,6 +28,7 @@ class allNotifications extends Component {
           visible: false,
           username:'',
           gender:'',
+          nuit:false,
 
         }
     }
@@ -57,11 +58,46 @@ class allNotifications extends Component {
                ""}*/
             },
           });
+
+      Meteor.apply('ModeNuit', [{}], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            {response ?
+             this.setState({nuit: response}) :
+             ""}
+          },
+        });
     }
 
+    deleteAllNotif() {
+       Meteor.apply('deleteAllNotif', [{}], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            {response ?
+             this.setState({nuit: response}) :
+             ""}
+          },
+        });
+    }
+
+    nuit() {
+       this.setState({
+        nuit: !this.state.nuit,
+      });
+      let nuit = !this.state.nuit;
+      Meteor.apply(
+        'nuit',
+        [{nuit}],
+        {
+          onResultReceived: (error, response) => {
+             if (error) console.warn(error.reason);
+        },
+      });
+    }
 
     renderAllreponses() {
           let Allreponses = this.props.allreponses;
+          const nuit = this.state.nuit;
 
           return Allreponses.map((message) => {
            let date = Date.parse(message.date);
@@ -70,7 +106,8 @@ class allNotifications extends Component {
               <ListeNotification
                 key={message._id}
                 message={message}
-                date={date}         
+                date={date}
+                nuit={nuit}         
               />
             );
           });
@@ -85,11 +122,15 @@ class allNotifications extends Component {
     }
     
     return (
-      <div className="container">
+      <div className={ this.state.nuit ? "containerNuit" : "container"}>
       <div ref={el => { this.el = el; }} ></div>
         <header> 
           {/* Header site*/}
           <div className="containerHeader ecran">
+          <div className="lumiere" onClick={this.nuit.bind(this)}>
+                <Img className={!this.state.nuit ? "iconHeader" : "none" } src="/jour.png"/>
+                <Img className={this.state.nuit ? "iconHeader" : "none" } src="/nuit.png"/>
+            </div>
             <div className="headerPage">
               <HeaderPage />
             </div>
@@ -123,6 +164,14 @@ class allNotifications extends Component {
             <Sidebar.Pusher>
              <div className="containerSite" onClick={this.toggleHidden}>
                       <div className="MainContent">
+                      <div className={this.props.count==0 ? "none" : "deleteAllNotif"}>
+                        <Button
+                            size="mini"
+                            color="red"
+                            onClick={this.deleteAllNotif.bind(this)}>
+                            Supprimer tous
+                           </Button>
+                        </div>
                       <div className="espaceNotif"></div>                      
                          {this.renderAllreponses()}
                       </div>    
@@ -143,10 +192,13 @@ export default allNotifications =  withTracker(() => {
   const myId = Meteor.userId();
   const Handle = Meteor.subscribe('Notifications', myId);
   const loading = !Handle.ready();
+  const count = Notifications.find({'to_id':myId}).count();
   const allreponses = Notifications.find({'to_id':myId}, { sort: {date: -1 }, limit:30 });
   const reponseExists = !loading && !!allreponses;
+  const countExists = !loading && !!count;
 
   return {
     allreponses: reponseExists ? allreponses.fetch() : [],
+    count: countExists ? count : '',
   };
 })(allNotifications);

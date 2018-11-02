@@ -31,6 +31,7 @@ class SingleMessage extends Component {
         this.state = {
           visible: false,
           visibleForm:false,
+          nuit:false,
         }
     }
 
@@ -42,6 +43,14 @@ class SingleMessage extends Component {
 
     componentDidMount() {
         this.scrollToTop();
+        Meteor.apply('ModeNuit', [{}], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            {response ?
+             this.setState({nuit: response}) :
+             ""}
+          },
+        });
     }
 
 
@@ -53,38 +62,59 @@ class SingleMessage extends Component {
     handleSidebarHide = () => this.setState({ visible: false })
 
 
-renderAllreponses() {
-      let Allreponses = this.props.allreponses;
+    renderAllreponses() {
+          let Allreponses = this.props.allreponses;
+          let nuit = this.state.nuit;
 
-      return Allreponses.map((message) => {
-       let date = Date.parse(message.submitted);
-         
-        return (
-          <ListeReponses
-            key={message._id}
-            message={message}
-            date={date}         
-          />
-        );
-      });
-  }
+          return Allreponses.map((message) => {
+           let date = Date.parse(message.submitted);
+             
+            return (
+              <ListeReponses
+                key={message._id}
+                message={message}
+                date={date}
+                nuit={nuit}         
+              />
+            );
+          });
+      }
 
-
+      nuit() {
+         this.setState({
+          nuit: !this.state.nuit,
+        });
+        let nuit = !this.state.nuit;
+        Meteor.apply(
+          'nuit',
+          [{nuit}],
+          {
+            onResultReceived: (error, response) => {
+               if (error) console.warn(error.reason);
+          },
+        });
+      }
 
 
     render() {
-    const { visible } = this.state  
+    const { visible } = this.state
+    const { nuit } = this.state
+
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
     
     return (
-      <div className="container">
+      <div className={ this.state.nuit ? "containerNuit" : "container"}>
       <div ref={el => { this.el = el; }} ></div>
         <header> 
           {/* Header site*/}
           <div className="containerHeader ecran">
             <div className="headerPage">
+            <div className="lumiere" onClick={this.nuit.bind(this)}>
+                <Img className={!this.state.nuit ? "iconHeader" : "none" } src="/jour.png"/>
+                <Img className={this.state.nuit ? "iconHeader" : "none" } src="/nuit.png"/>
+            </div>
               <HeaderPage />
             </div>
           </div>
@@ -116,16 +146,16 @@ renderAllreponses() {
 
             <Sidebar.Pusher>
                 <div className="containerSite" onClick={this.toggleHidden}>
-                  <div className="containerIMG">
                   <div className="MainContent">
                     <div className="SingeMessagView" onClick={this.visible.bind(this)}>
-                      <SingleMessagePost id={this.props.match.params.id} />
+                      <SingleMessagePost id={this.props.match.params.id} nuit={nuit}/>
                     </div>
                   <div className={this.state.visibleForm ? "visibleForm" : "none"}>
                      <FormPosterReponse
                       id={this.props.match.params.id}
                       authorId={this.props.authorId}
                       titreMessage={this.props.titreMessage}
+                      nuit={nuit}
                       />
                   </div>
                   <Divider />
@@ -156,7 +186,7 @@ renderAllreponses() {
                    {this.renderAllreponses()}
                   </div>    
                       
-                  </div> 
+               
                 </div>
             </Sidebar.Pusher>
           </Sidebar.Pushable>

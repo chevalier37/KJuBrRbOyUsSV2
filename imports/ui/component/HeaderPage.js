@@ -559,12 +559,12 @@ class HeaderPage extends Component {
 				<div className="BlocHead">
 					<div className="ButtonHeader">
 						<Link to="/home" >
-							 <Img className="iconHeader" src="/home.svg"/>
+							 <Img className="iconHeader" src="/home_blanc.png"/>
 						</Link>
 					</div>
 					<div className="ButtonHeader">
 						<Link to="/Notifications" >
-							<Img className="iconHeader" src="/bell.svg"/>
+							<Img className="iconHeader" src="/bellMobile.png"/>
 						</Link>
 						<div className={this.state.notifNonLu > 0 ? "totalNotif" : "none"}>
 						    {notifNonLu}
@@ -572,17 +572,17 @@ class HeaderPage extends Component {
 					</div>
 					<div className="ButtonHeader">
 						<Link to={'/Chat/' + Meteor.userId() }>
-							 <Img className="iconHeader" src="/mail.svg"/>
+							 <Img className="iconHeader" src="/mail_blanc.png"/>
 						</Link>
 					</div>
 					<div className="ButtonHeader">
 						<Link to="/ConseillerConnecter" >
-							 <Img className="iconHeader" src="/advisor.svg"/>
+							 <Img className="iconHeader" src="/help.png"/>
 						</Link>
 					</div>
 					<div className={this.state.IsConseiller ? "none" : "ButtonHeader"}>
 						<Link to="/DevenirConseiller" >
-							 <Img className="iconHeader" src="/new.svg"/>
+							 <Img className="iconHeader" src="/new-user.png"/>
 						</Link>
 					</div>
 					{/*<div className={!this.state.SuperModerateur ? "none" : "ButtonHeader"}>
@@ -591,7 +591,7 @@ class HeaderPage extends Component {
 						</Link>
 					</div>*/}
 					<div className="ButtonAide">
-						<Modal
+						<Modal 
 						trigger={<Button color='red' onClick={this.open.bind(this)}>Demander de l'aide</Button>}
 						centered={false} open={this.state.open ? true : false} 
 						>

@@ -230,10 +230,13 @@ class ListeConseillerConnecte extends Component {
 	let now = new Date();
 	let diff = now - this.props.date;
 	let age = Math.round(diff / 31536000000);
+	let nuit = this.props.nuit;
 
 		return (
-			<div className="ListeMessages">
-		  		<Segment color={this.props.gender == "fille" ?
+			<div className={ nuit ? "ListeMessagesNuit" : "ListeMessages"}>
+		  		<Segment
+		  		 className={ nuit ? "SegmentNuit" : ""}
+		  		 color={this.props.gender == "fille" ?
 	        				  "pink" : "blue" }>
 		  			<div className="ContentQuestion">
 		  				<div className={this.props.gender == "fille" ?

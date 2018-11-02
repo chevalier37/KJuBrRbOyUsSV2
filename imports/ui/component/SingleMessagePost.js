@@ -63,6 +63,7 @@ class ListeMessagePost extends Component {
 	let now = new Date();
 	let diff = now - this.props.message.naissance;
 	let age = Math.round(diff / 31536000000);
+	let nuit = this.props.nuit;
    
 		return (
 			<div className="ListeMessagesSingle">
@@ -78,7 +79,7 @@ class ListeMessagePost extends Component {
 			        			</div>
     					</div>
 	        	
-	  			<Segment color={this.sexe()=="pink" ?
+	  			<Segment className={ nuit ? "SegmentNuit" : ""} color={this.sexe()=="pink" ?
 	        				  "pink" : "blue" }>
 		  			<p className={"ContentQuestion" + " " + "display-linebreak"}>
 		  				{this.props.message.post_content}

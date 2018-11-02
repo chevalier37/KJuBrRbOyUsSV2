@@ -62,9 +62,10 @@ class ListeNotifications extends Component {
     
 	const colorSexe = this.state.sexe;
 	const myId = Meteor.userId();
+	let nuit = this.props.nuit;
    
 		return (
-			<div className="ListeMessages">
+			<div className={ nuit ? "ListeMessagesNuit" : "ListeMessages"}>
 	  			<div className={this.props.message.gender=="fille" ?
 	        				    "filleMessageBackground" : "garconMessageBackground"
 	        				}>
@@ -139,7 +140,9 @@ class ListeNotifications extends Component {
 			  			</span>
 		  		</div>
 	  			
-	  			<Segment color={this.props.message.gender=="fille" ?
+	  			<Segment
+	  			 className={ nuit ? "SegmentNuit" : ""}
+	  			 color={this.props.message.gender=="fille" ?
 	        				  "pink" : "blue" }>			
 		  			<div className="ContentQuestion">
 			  			 <div className={this.props.message.type=='signaler' ? "visibleNotif" : "none"}>

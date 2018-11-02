@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Checkbox, Form,  Message, Confirm } from 'semantic-ui-react'
 import { Route, Redirect } from 'react-router';
 import ReactGA from 'react-ga';
+import Img from 'react-image'
 ReactGA.initialize('UA-108632466-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
 
@@ -34,6 +35,7 @@ class chat extends Component {
           MyConseiller:false,
           open:false,
           mail:"",
+          nuit:false,
         };
     }
 
@@ -78,11 +80,21 @@ class chat extends Component {
                this.setState({bloquer: false})}
               },
         })
+
+         Meteor.apply('ModeNuit', [{}], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            {response ?
+             this.setState({nuit: response}) :
+             ""}
+          },
+        });
     }
 
     renderAllChat() {
           let AllChat = this.props.allChat;
-          let name = this.props.username
+          let name = this.props.username;
+          let nuit = this.state.nuit;
           return AllChat.map((message) => {
            let date = Date.parse(message.post_date);
             return (
@@ -90,6 +102,7 @@ class chat extends Component {
                 key={message._id}
                 message={message}
                 date={date}
+                nuit={nuit}
                 to_id = {this.props.match.params.id} 
               />
             );
@@ -169,10 +182,26 @@ class chat extends Component {
         }
 
     }
+
+    nuit() {
+       this.setState({
+        nuit: !this.state.nuit,
+      });
+      let nuit = !this.state.nuit;
+      Meteor.apply(
+        'nuit',
+        [{nuit}],
+        {
+          onResultReceived: (error, response) => {
+             if (error) console.warn(error.reason);
+        },
+      });
+    }
       
     render() {
     
     const { visible } = this.state
+    const { nuit } = this.state
     
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
@@ -235,6 +264,10 @@ class chat extends Component {
           {/* Header site*/}
           <div className="containerHeader ecran">
             <div className="headerPage">
+             <div className="lumiere" onClick={this.nuit.bind(this)}>
+                <Img className={!this.state.nuit ? "iconHeader" : "none" } src="/jour.png"/>
+                <Img className={this.state.nuit ? "iconHeader" : "none" } src="/nuit.png"/>
+            </div>
               <HeaderPage />
             </div>
           </div>       
@@ -243,11 +276,11 @@ class chat extends Component {
         <div className="containerSiteChat" onClick={this.toggleHidden}>
           <div className="containerChat">
             <div className="containerContactChat"  >
-              <ContactChat to_id = {this.props.match.params.id}  />
+              <ContactChat to_id = {this.props.match.params.id}  nuit={nuit}/>
             </div>
             <div className="containerDiscussion">
               <div className="MainContentChat">
-                <div className="headerChat">
+                <div className={ nuit ? "headerChatNuit" : "headerChat"}>
                   <div className={"ChatUsername" + " " + this.state.gender}>
                       <Link to={'/VisiteProfil/' + this.props.match.params.id}>
                       {this.state.username}
@@ -300,7 +333,7 @@ class chat extends Component {
                         </Button>
                   </div>
                 </div>
-                <div className="ContentDiscussion">
+                <div className={ this.state.nuit ? "ContentDiscussionNuit" : "ContentDiscussion"}>
                    {this.renderAllChat()}
                   <FormChat to_id = {this.props.match.params.id} username={this.state.username} gender={this.state.gender} />
                 </div>

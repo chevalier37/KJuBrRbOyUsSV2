@@ -16,6 +16,7 @@ import HeaderMobile from '../component/HeaderMobile.js';
 import FooterMobile from '../component/FooterMobile.js';
 import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
+import ContentMessagePostes from '../component/ContentMessagePostes.js';
 
 class Home extends Component {
 
@@ -25,12 +26,21 @@ class Home extends Component {
           this.state = {
           visible:false,
           moreAutre:5,
+          nuit:false,
           };
           /*this.handleScroll = this.handleScroll.bind(this);*/
       }
 
     componentDidMount() {
         this.el.scrollIntoView();
+        Meteor.apply('ModeNuit', [{}], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            {response ?
+             this.setState({nuit: response}) :
+             ""}
+          },
+        });
     }
 
      /* handleScroll() {
@@ -64,21 +74,41 @@ class Home extends Component {
         
     }
 
+    nuit() {
+       this.setState({
+        nuit: !this.state.nuit,
+      });
+      let nuit = !this.state.nuit;
+      Meteor.apply(
+        'nuit',
+        [{nuit}],
+        {
+          onResultReceived: (error, response) => {
+             if (error) console.warn(error.reason);
+        },
+      });
+    }
+
     render() {
     const { visible } = this.state
     const { moreAutre } = this.state
+    const { nuit } = this.state
 
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
     
     return (
-      <div className="container">
+      <div className={ this.state.nuit ? "containerNuit" : "container"}>
       <div ref={el => { this.el = el; }} ></div>
         <header> 
           {/* Header site*/}
           <div className="containerHeader ecran">
             <div className="headerPage">
+            <div className="lumiere" onClick={this.nuit.bind(this)}>
+                <Img className={!this.state.nuit ? "iconHeader" : "none" } src="/jour.png"/>
+                <Img className={this.state.nuit ? "iconHeader" : "none" } src="/nuit.png"/>
+            </div>
               <HeaderPage />
             </div>
           </div>
@@ -110,8 +140,11 @@ class Home extends Component {
 
             <Sidebar.Pusher>
 
-              <MainContent more={moreAutre} />
-             
+
+              <MainContent more={moreAutre} nuit={nuit} />
+             <div className="vidéos">
+<ContentMessagePostes />
+            </div>
            {/* <Button
               fluid
                   color="green"

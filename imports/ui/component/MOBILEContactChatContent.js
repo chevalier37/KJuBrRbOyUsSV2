@@ -76,6 +76,7 @@ class MOBILEContactChatContent extends Component {
 				<div className={"AffficheContact" + " "+this.state.message}  >
 					
 						<div className={this.props.currentContact + " " + this.props.read} >
+						<Link to={'/MOBILEChat/' + this.state.toId}>	
 							<Menu.Item
 					         onClick={this.handleItemClick}
 					         as='div'
@@ -84,8 +85,7 @@ class MOBILEContactChatContent extends Component {
 						        <div className="deleteContact" onClick={this.delete.bind(this)} >
 									<Img className="iconread" src="/unread.png"/>
 								</div>
-								<Link to={'/MOBILEChat/' + this.state.toId}>	
-							        <div className={this.props.currentContact + " " + this.props.read + " " + "mobileContact"}>
+								<div className={this.props.currentContact + " " + this.props.read + " " + "mobileContact"}>
 							          	<div className={this.state.sexe == "fille" ? "fille" : "garconMessage"}>
 							          		{this.state.toName}
 							         	</div>
@@ -93,12 +93,13 @@ class MOBILEContactChatContent extends Component {
 								         	{/*<FaCircle />*/}
 								          </div>
 							        </div>
-						         </Link>
+						        
 					          </Menu.Header>
 						          <div className={this.props.currentContact + " " + this.props.read + " " +"display-linebreak"}>
 						          	{this.breaklines()}
 						          </div>
 					        </Menu.Item>
+					         </Link>
 					    </div>
 	    		</div>
 	    )

@@ -237,6 +237,22 @@ export const SearchchoixNotif = new ValidatedMethod({
 
 
 
+export const deleteAllNotif = new ValidatedMethod({
+  //on supprime toute les notifications
+  name: 'deleteAllNotif',
+  validate: new SimpleSchema({
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run() {
+    Notifications.remove({to_id:this.userId});
+  }
+});
+
+
 Meteor.methods({
 
       ChatNotif: function(message,to_id) {

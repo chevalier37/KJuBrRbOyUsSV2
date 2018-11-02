@@ -1,4 +1,4 @@
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 850px) {
 
 	.container-left {
    	 	display: none;
@@ -208,6 +208,40 @@
    		margin-bottom: 45px !important; 
 	}
 
+	.HeaderLastConseiller{
+		display: none;
+	}
 
+	.HeaderLastConseillerNuit{
+		display: none;
+	}
 
+	.contactermobile{
+		display: inline-block !important;
+		margin-top: 0px;
+		margin-right: 20px;
+		color: red;
+		cursor:pointer;
+	}
+
+	.contacterecran{
+		display: none !important;
+	}
+
+}
+
+@media only screen and (min-width: 1050px) {
+
+	.MainContent {
+    	float: left;
+    	margin-left: 15px !important;
+    	width: 750px !important;
+	}
+
+	.vidéos{
+		background-color: red;
+		width: 300px;
+		/*height: 200px;*/
+		margin-left: 770px;
+	}
 }

@@ -331,9 +331,10 @@ class ListeMessages extends Component {
 	let now = new Date();
 	let diff = now - this.props.message.naissance;
 	let age = Math.round(diff / 31536000000);
+	let nuit = this.props.nuit;
 
 		return (
-			<div className="ListeMessages">
+			<div className={ nuit ? "ListeMessagesNuit" : "ListeMessages"}>
 				<div className={colorSexe=="pink" ?
 	        				  "filleMessageBackground" : "garconMessageBackground"
 	        				}>
@@ -350,7 +351,9 @@ class ListeMessages extends Component {
 								</Link>
 						</div>
 		  		</div>
-	  			<Segment color={colorSexe=="pink" ?
+	  			<Segment
+	  			 className={ nuit ? "SegmentNuit" : ""}
+	  			 color={colorSexe=="pink" ?
 	        				  "pink" : "blue" }>
 	  			
 		  			<p className={"ContentQuestion" + " " + "display-linebreak"}>
