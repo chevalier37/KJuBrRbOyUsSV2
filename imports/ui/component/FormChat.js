@@ -178,7 +178,7 @@ class FormChat extends Component {
 				    <div className={"NameWriting" + " " + this.props.gender}>
 				    	<Img className="iconWriting" src="/pen.svg"/> {this.props.username} 
 				    </div>
-				    <div className="TextWriting">
+				    <div className={nuit ? "TextWritingNuit" : "TextWriting"}>
 				    	est en train d'écrire
 				    </div>
 			    </div>
