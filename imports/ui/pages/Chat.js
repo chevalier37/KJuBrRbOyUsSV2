@@ -335,7 +335,7 @@ class chat extends Component {
                 </div>
                 <div className={ this.state.nuit ? "ContentDiscussionNuit" : "ContentDiscussion"}>
                    {this.renderAllChat()}
-                  <FormChat to_id = {this.props.match.params.id} username={this.state.username} gender={this.state.gender} />
+                  <FormChat to_id = {this.props.match.params.id} username={this.state.username} gender={this.state.gender} nuit={this.state.nuit}/>
                 </div>
               </div>
             </div>

@@ -1324,6 +1324,7 @@ class ProfilContentVisite extends Component {
 			let now = new Date();
 			let diff = now - this.props.profile.naissance;
 			let age = Math.round(diff / 31536000000);
+			let nuit = this.props.nuit;
 
 			//on calcul la derniere connection
 			const today = new Date();
@@ -1408,8 +1409,8 @@ class ProfilContentVisite extends Component {
 
 		return (
 			<div className="MainContent">
-				<Segment className="MobileProfil" >
-						<Header>
+				<Segment className={ nuit ? "SegmentNuit" : "MobileProfil"} >
+						<Header className={ nuit ? "SegmentNuit" : ""}>
 						Profil <div className={this.props.profile.gender} >{this.props.user.username} </div>
 						<div className="AgeProfil">{age} ans</div>
 					<div className={this.state.IsConseiller ? 'visiblenote' : 'none'}>

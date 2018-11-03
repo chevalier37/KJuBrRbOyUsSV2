@@ -90,7 +90,7 @@ class ContactChatContent extends Component {
 							          	{this.state.toName}
 							         </div>
 								          <div className={this.props.isOnline == true ? "onlineChat" : "none"} >
-								         	{/*<FaCircle />*/}
+								         	<Img  className="onlineChat" src="/circle.svg"/>
 								          </div>
 							        </div>
 						        

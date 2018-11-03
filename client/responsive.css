@@ -239,10 +239,9 @@
 	}
 
 	.vidéos{
-		/*display: block !important;*/
-	    overflow: auto;
-	    height: 1000px;
-	    display: none !important;
+		/*display: inline-block !important;*/
+	    height: 260px;
+	    display: none;
 	}
 
 	.titreAmbre {

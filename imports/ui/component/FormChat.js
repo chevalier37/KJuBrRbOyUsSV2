@@ -38,9 +38,7 @@ class FormChat extends Component {
 
 	focusMessageOut() {
 	    this.setState({placeholderMessage:'Message'});
-	    this.setState({writing:false});
-	    this.setState({big:false});
-	    
+	    this.setState({writing:false});   
 	      
 	    Meteor.call('NOTwriting',
 	    	this.props.to_id,
@@ -171,8 +169,9 @@ class FormChat extends Component {
 	}
 
   render() {
-  		const { placeholderMessage } = this.state
-		
+  		const { placeholderMessage } = this.state;
+  		let nuit = this.props.nuit;
+
 		return (
 			<div className={this.state.bloquer ? "none" :"valideChatForm"}>
 			    <div className={this.props.IsWriting >0 ? "visible" :"none"}>
@@ -197,6 +196,7 @@ class FormChat extends Component {
 				       placeholder={placeholderMessage}
 				       rows={this.state.big==true ? 6 : 1}
 				       onChange={this.writing.bind(this)}
+				       className={nuit ? "areaNuit" : ""}
 				       />
 					</div>
 					

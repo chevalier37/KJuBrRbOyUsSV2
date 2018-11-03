@@ -974,6 +974,7 @@ export default class DevenirConseillerContent extends Component {
   	render() {
 		const { activeIndex } = this.state;
 		const myId = Meteor.userId();
+		let nuit = this.props.nuit;
 
 	    if (!Meteor.loggingIn() && !Meteor.userId()){
   		return <Redirect to="/" />;
@@ -986,8 +987,8 @@ export default class DevenirConseillerContent extends Component {
 		return (
 			<div className="MainContent">
 				<div className={!this.state.verifConseiller ? '' : 'none'}>
-					<Segment>
-						<Header>
+					<Segment className={ nuit ? "SegmentNuit" : ""}>
+						<Header className={ nuit ? "SegmentNuit" : ""}>
 							Devenir conseiller
 						</Header>
 					<Divider />
@@ -1003,7 +1004,7 @@ export default class DevenirConseillerContent extends Component {
 					</Segment>
 				</div>
 				<div className={!this.state.verifConseiller ? 'none' : ''}>
-				<Segment className="MainContent">
+				<Segment className={ nuit ? "SegmentNuit" : ""}>
 					<Header>
 					Devenir conseiller
 					</Header>

@@ -58,7 +58,7 @@ Meteor.methods({
 
 
 Meteor.publish('AllVideos', function ( ) {
-  return Videos.find();
+  return Videos.find({}, { sort: { date: -1 }, limit:1});
 });
 
 

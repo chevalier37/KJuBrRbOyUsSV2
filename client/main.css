@@ -15,12 +15,13 @@ header {
 }
 
 .container{
-	/*min-height: 600px;*/
+	min-height: 1000px;
 	width: 100%;
 }
 
 .containerNuit{
 	background-color: black !important;
+	min-height: 1000px;
 }
 
 .HeaderMobile{
@@ -1220,9 +1221,21 @@ header {
 }
 
 .onlineChat{
-	float: right;
-	color: #00bf00;
+	float: left;
+    height: 15px;
+    width: 15px;
+    margin-right: 10px
 }
+
+.notCurrent{
+	color: #bcbdbd;
+}
+
+.areaNuit{
+	background-color: #163345 !important;
+	color: #bcbdbd !important;
+}
+
 
 .visibleProfil{
 	display: inline-block;
