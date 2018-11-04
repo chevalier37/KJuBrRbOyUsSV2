@@ -1408,7 +1408,7 @@ class ProfilContentVisite extends Component {
     		}  
 
 		return (
-			<div className="MainContent">
+			<div className="MainContent profilresponsive">
 				<Segment className={ nuit ? "SegmentNuit" : "MobileProfil"} >
 						<Header className={ nuit ? "SegmentNuit" : ""}>
 						Profil <div className={this.props.profile.gender} >{this.props.user.username} </div>

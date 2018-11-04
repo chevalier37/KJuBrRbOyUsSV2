@@ -22,6 +22,7 @@ class ContentModifierMessage extends Component {
 
 	renderAllMessages() {
 	    let AllMessages = this.props.allMessages;
+	    const nuit = this.props.nuit;
 
 	    return AllMessages.map((message) => {
 	    	let date = Date.parse(message.post_date);
@@ -31,20 +32,20 @@ class ContentModifierMessage extends Component {
 	          key={message._id}
 	          message={message}
 	          date={date}
-	          id={message._id}         
+	          id={message._id}
+	          nuit={nuit}         
 	        />
 	      );
 	    });
 	}
 			   
   render() {
+  	const nuit = this.props.nuit;
 		return (
 			<div className="MainContent">
-				<Segment>
-					<Header>
+				 <div className={ nuit ? "titreConseillerNuit" : "titreConseiller"}>
 						Modifier mon message
-					</Header>
-				</Segment>
+				</div>
 	  			<div className="ListeMesMessages">
 	  				{this.renderAllMessages()}
 	  			</div>

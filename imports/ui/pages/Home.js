@@ -16,7 +16,8 @@ import HeaderMobile from '../component/HeaderMobile.js';
 import FooterMobile from '../component/FooterMobile.js';
 import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
-import Contentvideos from '../component/Contentvideos.js';
+import LastRecommandations from '../component/LastRecommandations.js';
+import LastConseillers from '../component/LastConseillers.js';
 
 class Home extends Component {
 
@@ -139,15 +140,10 @@ class Home extends Component {
             </Sidebar>
 
             <Sidebar.Pusher>
-
-
+            
+            <LastRecommandations nuit={nuit}/>
             <MainContent more={moreAutre} nuit={nuit} />
-            <div className="vidéos">
-              <div className="titreAmbre">
-                Les conseils de Ambre
-              </div>
-                <Contentvideos />
-            </div>
+            <LastConseillers nuit={nuit}/>
            {/* <Button
               fluid
                   color="green"

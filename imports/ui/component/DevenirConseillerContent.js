@@ -986,7 +986,7 @@ export default class DevenirConseillerContent extends Component {
 
 		return (
 			<div className="MainContent">
-				<div className={!this.state.verifConseiller ? '' : 'none'}>
+				<div className={!this.state.verifConseiller ? 'segmentMargin' : 'none'}>
 					<Segment className={ nuit ? "SegmentNuit" : ""}>
 						<Header className={ nuit ? "SegmentNuit" : ""}>
 							Devenir conseiller

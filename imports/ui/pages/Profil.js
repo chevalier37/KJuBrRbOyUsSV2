@@ -33,6 +33,8 @@ import Deconnexion from '../component/deconnexion.js';
 import Notifications from '../component/Notifications.js';
 import Livre from '../component/Livre.js';
 import Contentvideos from '../component/Contentvideos.js';
+import LastRecommandations from '../component/LastRecommandations.js';
+import LastConseillers from '../component/LastConseillers.js';
 
 
 
@@ -142,24 +144,19 @@ class Profil extends Component {
             </Sidebar>
 
             <Sidebar.Pusher>
+            <LastRecommandations nuit={nuit}/>
               <div className="containerSite" onClick={this.toggleHidden}>
                   <div className="MainContent">
                   <Tab
                    menu={{ fluid: true, vertical: true, tabular: true }}
                    panes={panes}
-                   className="ecran"
+                   className="ecran profilresponsive"
                     />             
                   </div> 
-              </div>  
-
+              </div> 
+              <LastConseillers nuit={nuit}/> 
               <div className="mobile">
-                <ProfilContent nuit={nuit}/>
-              </div>
-              <div className="vidéos">
-                <div className="titreAmbre">
-                  Les conseils de Ambre
-                </div>
-                  <Contentvideos />
+                  <ProfilContent nuit={nuit}/>
               </div>
             </Sidebar.Pusher>
           </Sidebar.Pushable>

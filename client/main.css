@@ -555,22 +555,37 @@ header {
 }
 
 .MainModifierConseiller{
-	float: right;
     min-width: 700px;
     margin-top: 55px;
     min-height: 800px;
     font-size: 14px;
     margin-left: 240px;
-    margin-right: 20px;
+    margin-right: 10px !important;
+}
+
+.MainModifierConseillerNuit{
+	background-color: #173344 !important;
+	color: #8899a6 !important;
+	margin-right: 10px !important;
 }
 
 
 .Accordeonvisible .ui.styled.accordion {
-    width: 100%;
+    width: 100% !important;
+}
+
+.ui.styled.accordion{
+	width: 100% !important;
 }
 
 .Checkbox{
 	margin-right: 15px;
+}
+
+.profilresponsive{
+	margin-left: 5px;
+    width: 770px; 
+    margin-right: 10px;
 }
 
 .ListeMessages{
@@ -587,6 +602,11 @@ header {
 }
 
 .SegmentNuit{
+	background-color: #173344 !important;
+	color: #8899a6 !important;
+}
+
+.accordeonNuit{
 	background-color: #173344 !important;
 	color: #8899a6 !important;
 }
@@ -1713,6 +1733,35 @@ header {
 
 .titreRecomandationNuit{
 	color: #8799a6;
+}
+
+.titreConseiller{
+	height: 40px;
+	background-color: white;
+	font-weight: bold;
+	font-size: 18px;
+	margin-top: 10px;
+	line-height: 40px;
+	text-align: center;
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+
+.titreConseillerNuit{
+	height: 40px;
+	background-color: #173344;
+	font-weight: bold;
+	font-size: 18px;
+	margin-top: 10px;
+	line-height: 40px;
+	text-align: center;
+	margin-bottom: 10px;
+	margin-right: 10px !important;
+	color: #8799a6;
+}
+
+.segmentMargin{
+	margin-right: 10px;
 }
 
 .titreMessageRecommandation a{
@@ -2994,7 +3043,11 @@ header {
 	margin-top: 100px;
 }
 
-.vidéos{
+.lastReco{
+	display: none;
+}
+
+.lastConseillers{
 	display: none;
 }
 

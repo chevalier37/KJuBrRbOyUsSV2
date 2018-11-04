@@ -202,7 +202,7 @@ export default class ContentMenuRight extends Component {
                           		<Img className="colorIconblue" src="/jour.png"/>
                     		</div>
     				        <p className="menuIcon"> 
-    				        {!this.state.nuit ? "Mode nuit" : "Mode jour"}
+    				        {!this.state.nuit ? "Mode jour" : "Mode nuit"}
     				        </p>
 					    </div>
 					<Divider />

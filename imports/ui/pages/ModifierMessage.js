@@ -16,7 +16,8 @@ import FooterMobile from '../component/FooterMobile.js';
 import ContentModifierMessage from '../component/ContentModifierMessage.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
 import HeaderMobile from '../component/HeaderMobile.js';
-import Contentvideos from '../component/Contentvideos.js';
+import LastRecommandations from '../component/LastRecommandations.js';
+import LastConseillers from '../component/LastConseillers.js';
 
 class ModifierMessage extends Component {
 
@@ -37,19 +38,40 @@ class ModifierMessage extends Component {
         this.el.scrollIntoView();
     }
 
+    nuit() {
+       this.setState({
+        nuit: !this.state.nuit,
+      });
+      let nuit = !this.state.nuit;
+      Meteor.apply(
+        'nuit',
+        [{nuit}],
+        {
+          onResultReceived: (error, response) => {
+             if (error) console.warn(error.reason);
+        },
+      });
+    }
+
     render() {
-    const { visible } = this.state  
+    const { visible } = this.state;
+    const { nuit } = this.state;
+
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
     
     return (
-      <div className="container">
+      <div className={ this.state.nuit ? "containerNuit" : "container"}>
       <div ref={el => { this.el = el; }} ></div>
         <header> 
           {/* Header site*/}
           <div className="containerHeader ecran">
             <div className="headerPage">
+            <div className="lumiere" onClick={this.nuit.bind(this)}>
+                <Img className={!this.state.nuit ? "iconHeader" : "none" } src="/jour.png"/>
+                <Img className={this.state.nuit ? "iconHeader" : "none" } src="/nuit.png"/>
+            </div>
               <HeaderPage />
             </div>
           </div>
@@ -80,13 +102,9 @@ class ModifierMessage extends Component {
             </Sidebar>
 
             <Sidebar.Pusher>
-                <ContentModifierMessage post_id={this.props.match.params.id} />
-                <div className="vidéos">
-                  <div className="titreAmbre">
-                    Les conseils de Ambre
-                  </div>
-                    <Contentvideos />
-                </div>  
+             <LastRecommandations nuit={nuit}/>
+                <ContentModifierMessage post_id={this.props.match.params.id} nuit={nuit}/>
+             <LastConseillers nuit={nuit}/>
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>

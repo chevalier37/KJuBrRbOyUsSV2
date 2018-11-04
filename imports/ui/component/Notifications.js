@@ -10,6 +10,7 @@ import { Route, Redirect } from 'react-router';
 //Component
 import HeaderPage from '../component/HeaderPage.js';
 
+
 class Notifications extends Component {
 
     constructor(props) {

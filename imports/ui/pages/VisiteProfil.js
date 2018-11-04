@@ -17,7 +17,8 @@ import HeaderMobile from '../component/HeaderMobile.js';
 import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
 import ProfilContentVisite from '../component/ProfilContentVisite.js';
-import Contentvideos from '../component/Contentvideos.js';
+import LastRecommandations from '../component/LastRecommandations.js';
+import LastConseillers from '../component/LastConseillers.js';
 
 
 class VisiteProfil extends Component {
@@ -109,15 +110,11 @@ class VisiteProfil extends Component {
             </Sidebar>
 
             <Sidebar.Pusher>
-            <div className="containerSite" onClick={this.toggleHidden}>                 
-                   <ProfilContentVisite id={this.props.match.params.id} nuit={nuit}/>    
-            </div>
-             <div className="vidéos">
-                <div className="titreAmbre">
-                  Les conseils de Ambre
-                </div>
-                  <Contentvideos />
-              </div> 
+            <LastRecommandations nuit={nuit}/>
+              <div className="containerSite" onClick={this.toggleHidden}>                 
+                     <ProfilContentVisite id={this.props.match.params.id} nuit={nuit}/>    
+              </div>
+            <LastConseillers nuit={nuit}/>
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>

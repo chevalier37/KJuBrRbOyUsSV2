@@ -18,6 +18,8 @@ import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
 import ListeNotification from '../component/ListeNotification.js';
 import Contentvideos from '../component/Contentvideos.js';
+import LastRecommandations from '../component/LastRecommandations.js';
+import LastConseillers from '../component/LastConseillers.js';
 
 import { Notifications } from '../../api/Notifications.js';
 
@@ -116,7 +118,8 @@ class allNotifications extends Component {
 
     render() {
     
-    const { visible } = this.state 
+    const { visible } = this.state
+    const { nuit } = this.state  
 
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
@@ -163,6 +166,7 @@ class allNotifications extends Component {
             </Sidebar>
 
             <Sidebar.Pusher>
+             <LastRecommandations nuit={nuit}/>
              <div className="containerSite" onClick={this.toggleHidden}>
                       <div className="MainContent">
                       <div className={this.props.count==0 ? "none" : "deleteAllNotif"}>
@@ -177,12 +181,7 @@ class allNotifications extends Component {
                          {this.renderAllreponses()}
                       </div>    
               </div>
-              <div className="vidéos">
-                <div className="titreAmbre">
-                  Les conseils de Ambre
-                </div>
-                  <Contentvideos />
-              </div>
+              <LastConseillers nuit={nuit}/>
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>

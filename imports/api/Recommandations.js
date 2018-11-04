@@ -177,6 +177,11 @@ Meteor.publish('allRecommandations', function () {
   return Recommandations.find()
 });
 
+Meteor.publish('lastRecommandations', function () {
+  return Recommandations.find({}, { sort: {date: -1 }, limit:5 });
+});
+
+
 Meteor.publish('ModifierRecommandations', function (post_id) {
   new SimpleSchema({
       post_id: {type: String},

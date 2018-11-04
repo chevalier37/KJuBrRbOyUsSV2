@@ -124,11 +124,13 @@ class ListeModifierRecommandation extends Component {
   render() {
     
 	const colorSexe = this.state.sexe;
+	const nuit = this.props.nuit;
+
    	if (this.state.redirect){
       return <Redirect to={"/profil/" + Meteor.userId()} />;
     }
 		return (
-			<div className="ListeMessages">
+			<div className={ nuit ? "ListeMessagesNuit" : "ListeMessages"}>
 	  			
 	  			<div className={colorSexe=="pink" ?
 	        				  "filleMessageBackground" : "garconMessageBackground"
@@ -139,13 +141,14 @@ class ListeModifierRecommandation extends Component {
 			  			{this.props.message.to_name}
 			  			</div>
 		  		</div>
-	  			<Segment color={colorSexe=="pink" ?
-	        				  "pink" : "blue" }>
+	  			<Segment
+	  			className={ nuit ? "SegmentNuit" : ""}
+	  			color={colorSexe=="pink" ? "pink" : "blue" }>
 		  					  			
 		  			<div className={"ContentQuestion" + " " + "display-linebreak"}>
 		  				<Form >
 							    <Form.Field >
-										<Input as='TextArea' ref="presentation">
+										<Input as='TextArea' ref="presentation" className={nuit ? "areaNuit" : ""}>
 											{this.props.message.commentaire}
 										</Input>
 							    </Form.Field>

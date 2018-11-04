@@ -279,12 +279,13 @@ class ListeModifierMessage extends Component {
   render() {
     
 	const colorSexe = this.state.sexe;
+	let nuit = this.props.nuit;
+
    	if (this.state.redirect){
       return <Redirect to="/home" />;
     }
 		return (
-			<div className="ListeMessages">
-	  			
+			<div className={ nuit ? "ListeMessagesNuit" : "ListeMessages"}>
 	  			<div className={colorSexe=="pink" ?
 	        				  "filleMessageBackground" : "garconMessageBackground"
 	        				}>
@@ -294,13 +295,14 @@ class ListeModifierMessage extends Component {
 			  			{this.props.message.post_title}
 			  			</div>
 		  		</div>
-	  			<Segment color={colorSexe=="pink" ?
-	        				  "pink" : "blue" }>
+	  			<Segment
+	  			className={ nuit ? "SegmentNuit" : ""}
+	  			color={colorSexe=="pink" ? "pink" : "blue" }>
 		  					  			
 		  			<div className={"ContentQuestion" + " " + "display-linebreak"}>
 		  				<Form >
 							    <Form.Field >
-										<Input as='TextArea' ref="presentation">
+										<Input as='TextArea' ref="presentation" className={nuit ? "areaNuit" : ""}>
 											{this.props.message.post_content}
 										</Input>
 							    </Form.Field>

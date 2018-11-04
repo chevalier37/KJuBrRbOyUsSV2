@@ -870,6 +870,8 @@ export default class DevenirConseillerContent extends Component {
   render() {
 		const { activeIndex } = this.state;
 		const myId = Meteor.userId();
+		let nuit = this.props.nuit;
+
 		    if (!Meteor.loggingIn() && !Meteor.userId()){
       		return <Redirect to="/" />;
     		}
@@ -879,14 +881,14 @@ export default class DevenirConseillerContent extends Component {
 
 		return (
 			<div className="MainContent">
-				<Segment className="MainModifierConseiller">
-					<Header>
+				<Segment className={nuit ? "MainModifierConseillerNuit" : "MainModifierConseiller"}>
+					<Header className={ nuit ? "SegmentNuit" : ""}>
 					Ajouter une expérience
 					</Header>
 					<Divider />
 
 					 <p></p>
-				<div className="accordeon">	 
+				<div className={nuit ? "accordeonNuit" : "accordeon"}>
 					<Accordion styled>
 				        <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
 				          <Icon name='dropdown' />

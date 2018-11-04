@@ -22,6 +22,7 @@ class ContentModifierRecommandations extends Component {
 
 	renderAllMessages() {
 	    let AllMessages = this.props.allMessages;
+	    let nuit = this.props.nuit;
 
 	    return AllMessages.map((message) => {
 	     let date = Date.parse(message.post_date);
@@ -31,21 +32,21 @@ class ContentModifierRecommandations extends Component {
 	          key={message._id}
 	          message={message}
 	          date={date}
-	          id={message._id}         
+	          id={message._id}
+	          nuit={nuit}         
 	        />
 	      );
 	    });
 	}
 			   
   render() {
+  	let nuit = this.props.nuit;
 		
 		return (
 			<div className="MainContent">
-				<Segment>
-					<Header>
+				<div className={ nuit ? "titreConseillerNuit" : "titreConseiller"}>
 					Modifier une recommandation
-					</Header>
-				</Segment>
+				</div>
 	  			<div className="ListeMesMessages">
 	  				{this.renderAllMessages()}
 	  			</div>

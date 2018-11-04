@@ -134,13 +134,11 @@ class RecommanderContent extends Component {
     		}
 
 		return (
-			<div >
+			<div className="segmentMargin">
 				<Segment className={ nuit ? "SegmentNuit" : ""}>
-					
 						<Header className={ nuit ? "textNuit" : ""}>
 						Recommander <div className={this.state.gender}>{this.state.username}</div>
 						</Header>
-					
 					<Divider />
 
 					<p className="consigne">Les conseils de {this.state.username} ont-ils été utiles ? Dans quel(s) domaine(s) recommanderais-tu {this.state.username} ?</p>
@@ -155,7 +153,7 @@ class RecommanderContent extends Component {
 					<Form error onSubmit={this.Submit.bind(this)}>
 					    <Form.Field >
 					      <label ><p className={ nuit ? "consigne1Nuit" : "consigne1"}>Commentaire</p></label>
-					      <TextArea autoHeight ref="presentation" rows={5}  />
+					      <TextArea autoHeight ref="presentation" rows={5} className={ nuit ? "areaNuit" : ""} />
 					       <Message
 						            hidden={!this.state.errorCommentaire}
 						            error={this.state.errorCommentaire}

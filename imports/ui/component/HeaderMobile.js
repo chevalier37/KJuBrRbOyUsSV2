@@ -107,9 +107,15 @@ class HeaderMobile extends Component {
 	    });
 	    }
 
-	    if(pathname == "MOBILEpassword"){
+	    if(pathname == "MOBILEsignalerBug"){
 	      this.setState({
-	      pathname: "Changer mot de passe",
+	      pathname: "Signaler un bug",
+	    });
+	    }
+
+	    if(pathname == "ModifierConseiller"){
+	      this.setState({
+	      pathname: "Expériences",
 	    });
 	    }
 

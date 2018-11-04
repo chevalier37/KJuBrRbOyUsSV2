@@ -14,5 +14,7 @@ import '../imports/api/Videos.js';
 
 
 Meteor.startup(() => {
-  // code to run on server at startup
+  /*process.env.ROOT_URL = 'https://www.kurbys.com';
+  process.env.MONGO_OPLOG_URL = 'mongodb://jbr:Rocky159*@ds145919-a0.mlab.com:45919,ds145919-a1.mlab.com:45919/local?replicaSet=rs-ds145919&authSource=admin';
+  process.env.MONGO_URL = 'mongodb://jbr:Rocky159*@ds145919-a0.mlab.com:45919,ds145919-a1.mlab.com:45919/kurbys?replicaSet=rs-ds145919';*/
 });

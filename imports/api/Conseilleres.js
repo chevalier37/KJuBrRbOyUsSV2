@@ -1319,4 +1319,8 @@ Meteor.publish('IsConseiller', function (id) {
   return Conseilleres.find({'user_id':id});
 });
 
+Meteor.publish('lastConseillers', function () {
+  return Conseilleres.find({}, { sort: {date: -1 }, limit:5 });
+});
+
 }

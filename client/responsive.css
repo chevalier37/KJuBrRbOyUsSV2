@@ -230,24 +230,121 @@
 
 }
 
-@media only screen and (min-width: 1000px) {
 
-	.MainContent {
-    	float: left;
-    	margin-left: 30px !important;
-    	width: 750px !important;
+@media only screen and (min-width: 900px) {
+	
+	.MainContent{
+		width: 900px !important;
 	}
 
-	.vidéos{
-		/*display: inline-block !important;*/
+	
+}
+
+@media only screen and (min-width: 950px) {
+	
+	.MainContent{
+		width: 930px !important;
+	}
+}
+
+@media only screen and (min-width: 1080px) {
+	
+	.MainContent{
+		float: left !important;
+		margin-left: 220px;
+		width: 800px !important;
+	}
+
+	.lastReco{
+		display: block !important;
 	    height: 260px;
 	    display: none;
+	    float: left;
+	    margin-left: 20px;
+	    margin-top: 50px;
+	    width: 240px;
+	    text-align: justify;
+	    height: 100%;
 	}
 
-	.titreAmbre {
+	.titreLast{
+		font-size: 16px;
+		font-weight: bold;
+		margin-bottom: 20px;
+		margin-left: 5px;
+	}
+
+	.titreLastNuit{
+		color:#c7c7c7;
+		font-size: 16px;
+		font-weight: bold;
+		margin-bottom: 20px;
+		margin-left: 5px;
+	}
+
+	/*.profilresponsive {
+	    margin-left: 15px !important;
+	    width: 770px !important;
+	    margin-right: auto !important;
+	}*/
+
+	
+}
+
+@media only screen and (min-width: 1160px) {
+	
+	.MainContent{
+		width: 900px !important;
+	}
+
+}
+
+@media only screen and (min-width: 1250px) {
+	
+	.MainContent{
+		width: 970px !important;
+	}
+
+}
+
+@media only screen and (min-width: 1305px) {
+	
+	.lastConseillers{
+		display: inline-block !important;
+	    height: 260px;
+	    display: none;
+	    float: left;
 	    margin-top: 50px;
-	    font-size: 16px;
-	    font-weight: bold;
-	    text-align: center;
+	    width: 240px;
+	    text-align: justify;
+	    height: 100%;
+	}
+
+	.MainContent{
+		width: 800px !important;
+
+	}
+
+}
+
+@media only screen and (min-width: 1350px) {
+	
+	.lastReco{
+	    margin-left: 40px !important;
+	}
+}
+
+
+@media only screen and (min-width: 1400px) {
+	
+	.lastReco{
+	    margin-left: 90px !important;
+	}
+}
+
+@media only screen and (min-width: 1450px) {
+	
+	.lastReco{
+	    margin-left: 140px !important;
 	}
 }

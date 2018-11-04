@@ -20,7 +20,8 @@ import FormPosterReponse from '../component/FormPosterReponse.js';
 import SingleMessagePost from '../component/SingleMessagePost.js';
 import ListeReponses from '../component/ListeReponses.js';
 import HeaderMobile from '../component/HeaderMobile.js';
-import Contentvideos from '../component/Contentvideos.js';
+import LastRecommandations from '../component/LastRecommandations.js';
+import LastConseillers from '../component/LastConseillers.js';
 
 import { Comments } from '../../api/Reponses.js';
 import { Posts } from '../../api/Messages.js';
@@ -146,6 +147,7 @@ class SingleMessage extends Component {
             </Sidebar>
 
             <Sidebar.Pusher>
+             <LastRecommandations nuit={nuit}/>
                 <div className="containerSite" onClick={this.toggleHidden}>
                   <div className="MainContent">
                     <div className="SingeMessagView" onClick={this.visible.bind(this)}>
@@ -186,15 +188,8 @@ class SingleMessage extends Component {
                   </div>*/}
                    {this.renderAllreponses()}
                   </div>    
-                      
-               
                 </div>
-                <div className="vidéos">
-                  <div className="titreAmbre">
-                    Les conseils de Ambre
-                  </div>
-                    <Contentvideos />
-                </div>
+                <LastConseillers nuit={nuit}/>
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>

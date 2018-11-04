@@ -18,6 +18,8 @@ import FooterMobile from '../component/FooterMobile.js';
 import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
 import Contentvideos from '../component/Contentvideos.js';
+import LastRecommandations from '../component/LastRecommandations.js';
+import LastConseillers from '../component/LastConseillers.js';
 import { Conseilleres } from '../../api/Conseilleres.js';
 
 class ConseillerConnecter extends Component {
@@ -379,19 +381,13 @@ class ConseillerConnecter extends Component {
               </Sidebar>
               
               <Sidebar.Pusher>
-        
+              <LastRecommandations nuit={nuit}/>
                 <div className="containerSite" onClick={this.toggleHidden}>
                       <div className="MainContent">
-                         <Segment className={ nuit ? "SegmentNuit" : ""}>
-                         <Header>
-                            <div className={ nuit ? "titreRecomandationNuit" : "titreRecomandation"}>
+                            <div className={ nuit ? "titreConseillerNuit" : "titreConseiller"}>
                              Tous les conseillers en ligne
-    
                             </div>
-                          </Header>
-                        </Segment>
-
-                        <div className="categories">
+                         <div className="categories">
                           <Segment className={ nuit ? "SegmentNuit" : ""}>
                                  <Button
                                   size="mini"
@@ -446,18 +442,19 @@ class ConseillerConnecter extends Component {
                         {/*loader au chargement de la page*/}
                          <div className={this.props.loading ? "visibleLoader" : "none"}>
                                 <Loader active>Chargement des conseillers</Loader>
-                          </div>              
-                          <div className={this.state.allMessages}>
-                            {this.renderAllMessages()}
-                            <div className={this.state.more > this.props.countAllMessages ? "none" : "voirPlus" }>
-                            <Button
-                              fluid
-                                  color="green"
-                                  onClick={this.VoirPlus.bind(this)}>
-                                  Voir plus
-                            </Button>
-                          </div>
-                          </div>
+                          </div> 
+                                     
+                            <div className={this.state.allMessages}>
+                              {this.renderAllMessages()}
+                              <div className={this.state.more > this.props.countAllMessages ? "none" : "voirPlus" }>
+                              <Button
+                                fluid
+                                    color="green"
+                                    onClick={this.VoirPlus.bind(this)}>
+                                    Voir plus
+                              </Button>
+                            </div>
+                            </div>
 
                         <div className={this.state.MessageAmour}>
                           {this.renderAmour()}
@@ -520,12 +517,7 @@ class ConseillerConnecter extends Component {
                         </div>
                     </div> 
                 </div>
-                <div className="vidéos">
-                  <div className="titreAmbre">
-                    Les conseils de Ambre
-                  </div>
-                    <Contentvideos />
-                </div>
+              <LastConseillers nuit={nuit}/>
               </Sidebar.Pusher>
         </Sidebar.Pushable>
         <div className="FooterMobile mobile">
