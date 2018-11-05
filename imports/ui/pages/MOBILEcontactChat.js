@@ -52,22 +52,6 @@ class MOBILEcontactChat extends Component {
       this.setState({ visibleLeft: false });
     }
 
-    renderAllChat() {
-          let AllChat = this.props.allChat;
-          let name = this.props.username
-          return AllChat.map((message) => {
-           let date = Date.parse(message.post_date);
-            return (
-              <ChatContent
-                key={message._id}
-                message={message}
-                date={date}
-                to_id = {this.props.match.params.id} 
-              />
-            );
-          });
-    }
-
     componentWillReceiveProps(){
          this.setState({update: false})
     }
@@ -182,16 +166,9 @@ class MOBILEcontactChat extends Component {
 }
 
 
-export default MOBILEcontactChat =  withTracker(({ match }) => {
-  const to_id = match.params.id;
-  const from_id = Meteor.userId();
-  const Handle = Meteor.subscribe('Chat', to_id, from_id);
-  const loading = !Handle.ready();
-  const allreponses = Chat.find({$or : [{from_id: from_id, to_id:to_id}, {from_id: to_id, to_id:from_id}]});
-  const reponseExists = !loading && !!allreponses;
-  let username = '';
-
+export default MOBILEcontactChat =  withTracker(({ }) => {
+  
   return {
-    allChat: reponseExists ? allreponses.fetch() : [],
+    
   };
 })(MOBILEcontactChat);

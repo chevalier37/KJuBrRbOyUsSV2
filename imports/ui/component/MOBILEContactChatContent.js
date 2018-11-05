@@ -82,9 +82,6 @@ class MOBILEContactChatContent extends Component {
 					         as='div'
 					         >
 					          <Menu.Header>
-						        <div className="deleteContact" onClick={this.delete.bind(this)} >
-									<Img className="iconread" src="/unread.png"/>
-								</div>
 								<div className={this.props.currentContact + " " + this.props.read + " " + "mobileContact"}>
 							          	<div className={this.state.sexe == "fille" ? "fille" : "garconMessage"}>
 							          		{this.state.toName}
@@ -100,6 +97,9 @@ class MOBILEContactChatContent extends Component {
 						          </div>
 					        </Menu.Item>
 					         </Link>
+					            <div className="deleteContactMobile" onClick={this.delete.bind(this)} >
+									<Img className="iconread" src="/unread.png"/>
+							    </div>
 					    </div>
 	    		</div>
 	    )

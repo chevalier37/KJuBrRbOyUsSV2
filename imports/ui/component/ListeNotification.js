@@ -73,7 +73,7 @@ class ListeNotifications extends Component {
 			  			<span className={this.props.message.type=='chat' ?
 	        				  "visibleTitre" : "none"
 	        				}>
-				  			<Link to={'/profil/' + this.props.message.from_id}>
+				  			<Link to={'/VisiteProfil/' + this.props.message.from_id}>
 				  			Nouveau message de {this.props.message.from_name} 
 				  			</Link>
 				  			<div className="iconNotif">
@@ -95,7 +95,7 @@ class ListeNotifications extends Component {
 			  			<span className={this.props.message.type=='recommandaton' ?
 	        				  "visibleTitre" : "none"
 	        				}>
-				  			<Link to={'/profil/' + this.props.message.from_id}>
+				  			<Link to={'/VisiteProfil/' + this.props.message.from_id}>
 				  			Nouvelle recommandation de {this.props.message.from_name} 
 				  			</Link>
 				  			<div className="iconNotif">
@@ -250,15 +250,29 @@ class ListeNotifications extends Component {
 										Supprimer 	 
 									</Button>
 								</div>
-								<div className={this.props.message.type=='chat' ? "visiblebutton" : "none"}>
-									<Link to={'/Chat/' + this.props.message.from_id}>
-										<Button
-				         					size="mini"
-											color='green'
-										 >
-											Voir 	 
-										</Button>
-									</Link>
+								<div className="mobileInline">
+									<div className={this.props.message.type=='chat' ? "visiblebutton" : "none"}>
+										<Link to={'/MOBILEChat/' + this.props.message.from_id}>
+											<Button
+					         					size="mini"
+												color='green'
+											 >
+												Voir 	 
+											</Button>
+										</Link>
+									</div>
+								</div>
+								<div className="ecranInline">
+									<div className={this.props.message.type=='chat' ? "visiblebutton" : "none"}>
+										<Link to={'/Chat/' + this.props.message.from_id}>
+											<Button
+					         					size="mini"
+												color='green'
+											 >
+												Voir 	 
+											</Button>
+										</Link>
+									</div>
 								</div>
 
 								<div className={this.props.message.type=='reponse' ? "visiblebutton" : "none"}>

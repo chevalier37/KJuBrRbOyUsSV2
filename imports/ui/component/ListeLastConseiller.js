@@ -88,13 +88,14 @@ class ListeLastConseiller extends Component {
 			  			<div className={this.props.message.gender == "fille" ?
 	        				  "titreMessageFille" : "titreMessageGarcon"
 	        				}>
-				  			<Link to={'/profil/' + this.props.message.user_id}>
+				  			<Link to={'/VisiteProfil/' + this.props.message.user_id}>
 				  				{this.props.message.username} 
 				  			</Link>
 			  			</div>
 		  			</div>
 
 		  		<Segment
+		  		 secondary
 		  		 className={ nuit ? "SegmentNuit" : ""}
 		  		 color={this.props.message.gender == "fille" ?
 	        				  "pink" : "blue" }>
@@ -121,7 +122,7 @@ class ListeLastConseiller extends Component {
 								<span className="vote">
 									<Rating icon='heart'
 			              			defaultRating={this.props.message.note}
-			              			maxRating={4}
+			              			maxRating={5}
 			              			disabled
               	 				/>
 								</span>

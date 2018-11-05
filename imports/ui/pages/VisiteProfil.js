@@ -21,6 +21,7 @@ import LastRecommandations from '../component/LastRecommandations.js';
 import LastConseillers from '../component/LastConseillers.js';
 
 
+
 class VisiteProfil extends Component {
 
     state = { visible: false,
@@ -112,7 +113,7 @@ class VisiteProfil extends Component {
             <Sidebar.Pusher>
             <LastRecommandations nuit={nuit}/>
               <div className="containerSite" onClick={this.toggleHidden}>                 
-                     <ProfilContentVisite id={this.props.match.params.id} nuit={nuit}/>    
+                     <ProfilContentVisite id={this.props.match.params.id} nuit={nuit}/> 
               </div>
             <LastConseillers nuit={nuit}/>
             </Sidebar.Pusher>

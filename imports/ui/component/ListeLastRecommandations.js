@@ -88,13 +88,14 @@ class ListeLastRecommandations extends Component {
 			  			<div className={this.props.message.to_gender == "fille" ?
 	        				  "titreMessageFille" : "titreMessageGarcon"
 	        				}>
-				  			<Link to={'/profil/' + this.props.message.to_id}>
+				  			<Link to={'/VisiteProfil/' + this.props.message.to_id}>
 				  				{this.props.message.to_name} 
 				  			</Link>
 			  			</div>
 		  			</div>
 
-		  		<Segment 
+		  		<Segment
+		  		 secondary
 		  		 className={ nuit ? "SegmentNuit" : ""}
 		  		 color={this.props.message.to_gender == "fille" ?
 	        				  "pink" : "blue" }>
@@ -121,7 +122,7 @@ class ListeLastRecommandations extends Component {
 								<span className="vote">
 									<Rating icon='heart'
 			              			defaultRating={this.props.message.note}
-			              			maxRating={4}
+			              			maxRating={5}
 			              			disabled
               	 				/>
 								</span>

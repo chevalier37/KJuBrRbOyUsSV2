@@ -290,11 +290,14 @@ class chat extends Component {
                       {this.state.naissance} ans
                   </div>
                   <div className={!this.state.IsConseiller ? "none" : "recommmander"}>
-                      <Link to={'/Recommander/' + this.props.match.params.id}>    
+                      <Link to={'/Recommander/' + this.props.match.params.id}
+                       className={this.props.match.params.id == Meteor.userId() ? "none" : ""}
+                       >    
                         <Button
                          basic
                          color='green'
                          size='tiny'
+                         disabled={this.props.match.params.id == Meteor.userId() ? true : false}
                            > 
                            Recommander
                         </Button>

@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import Img from 'react-image'
+import ContentRecommandationsVisite from '../component/ContentRecommandationsVisite.js';
 
 import { Conseilleres } from '../../api/Conseilleres.js';
 import { Recommandations } from '../../api/Recommandations.js';
@@ -1503,8 +1504,8 @@ class ProfilContentVisite extends Component {
 
 					<Divider />
 				<div className={this.state.IsConseiller ? 'MobileProfil' : 'none'}>
-					<Segment >
-			  			<Label attached='top'  basic color='blue' className="headerProfil">
+					<Segment className={ nuit ? "SegmentNuit" : "MobileProfil"} >
+			  			<Label attached='top'  basic color='blue' className="headerProfil" >
 			  			<div className="titreProfil">Présentation</div>
 						       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 						    		<div className={this.state.Modifierpresentation} >
@@ -2705,8 +2706,10 @@ class ProfilContentVisite extends Component {
 				
 
 					 <p></p>
-				
 				</Segment>
+				<div className={this.state.IsConseiller ? 'visiblenote' : 'none'}>
+					<ContentRecommandationsVisite id ={this.props.id} nuit={nuit}/> 
+				</div>  
 			</div>
 
 		);

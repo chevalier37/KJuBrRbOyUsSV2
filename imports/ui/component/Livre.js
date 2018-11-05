@@ -35,8 +35,8 @@ class Livre extends Component {
                   </div>
                       <div className="PubLivre">
                           Disponible dans <u>toutes les librairies</u> et sur :<br />
-                          <a href="https://livre.fnac.com/a5195734/Jean-Benoit-Roussat-Le-secret-de-Cendrillon"><Img src="/Fnac.gif" className="fnac"/></a>
-                          <a href="https://www.amazon.fr/Secret-Cendrillon-J-B-Roussat/dp/B00A9QO52O"><Img src="/amazon.png" className="amazon"/></a>
+                          <a href="https://livre.fnac.com/a5195734/Jean-Benoit-Roussat-Le-secret-de-Cendrillon" target="_blank"><Img src="/Fnac.gif" className="fnac"/></a>
+                          <a href="https://www.amazon.fr/Secret-Cendrillon-J-B-Roussat/dp/B00A9QO52O" target="_blank"><Img src="/amazon.png" className="amazon"/></a>
                           <br />
                       </div>
                       <div  className="textCendrillon">

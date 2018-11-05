@@ -115,7 +115,7 @@ class ListeReponses extends Component {
 								<span className="vote">
 									<Rating icon='heart'
 			              			defaultRating={this.props.message.note}
-			              			maxRating={4}
+			              			maxRating={5}
 			              			disabled
               	 				/>
 								</span>

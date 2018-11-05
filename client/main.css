@@ -81,12 +81,20 @@ header {
 	display: none;
 }
 
+.mobileInline{
+	display: none;
+}
+
 .mobileProfile{
 	display: none ;
 }
 
 .ecranProfile{
 	display: block;
+}
+
+.ecranInline{
+	display: inline-block;
 }
 
 .titreMobile{
@@ -519,7 +527,7 @@ header {
 
 .MainContent {
     width: 800px;
-    margin-top: 45px;
+    margin-top: 55px;
     font-size: 14px;
     margin-left: auto;
     margin-right: auto;
@@ -591,8 +599,21 @@ header {
 .ListeMessages{
 	margin-top: 9px;
 	margin-right: 10px;
-	background-color: white;
+	/*background-color: white;*/
+}
 
+.TitreNuit{
+	line-height: 40px !important;
+    height: 40px;
+    text-align: center;
+    background-color: #173344 !important;
+    color: #8899a6 !important;
+}
+
+.Titrerecommander{
+	line-height: 40px !important;
+    height: 40px;
+    text-align: center;
 }
 
 .ListeMessagesNuit{
@@ -1025,6 +1046,11 @@ header {
 	padding-left: 15px;
 	padding-right: 15px;
 	text-align: justify;
+	margin-top: 40px;
+}
+
+.commandements{
+	margin-top: 40px;
 }
 
 .TitreCommandements{
@@ -2364,13 +2390,22 @@ header {
 	margin-bottom: 10px;
 }
 
-.posterMessageMobile{
-	margin-top: 50px;
-    padding-left: 5px;
-    padding-right: 5px;
+.posterMessageMobile {
+    margin-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin-bottom: 50px;
-    /*background-color: white;*/
+    background-color: white;
     height: 1000px;
+    padding-top: 20px;
+}
+
+.deleteContactMobile {
+    color: red;
+    float: right;
+    width: 20px;
+    height: 20px;
+    margin-top: -20px;
 }
 
 .closeModal{
