@@ -71,7 +71,6 @@ export const UserExiste = new ValidatedMethod({
   //on verifie que l'utilisateur à un compte pour se connecter
   name: 'UserExiste',
   validate: new SimpleSchema({
-    pseudo: { type: String },
     email: { type: String },
   }).validator(),
 
@@ -79,11 +78,11 @@ export const UserExiste = new ValidatedMethod({
     noRetry: true,
   },
 
-  run({ pseudo, email }) {
-    let search = Meteor.users.find({'profile.mail':email, 'username':pseudo}).count();
+  run({ email }) {
+    let search = Meteor.users.find({'profile.mail':email}).count();
     let Istrue = false;
     {search >0 ? Istrue = true : Istrue = false}
-    console.log('test')
+    console.log(Istrue)
     return Istrue;
   }
 });
@@ -98,22 +97,18 @@ export const ResetPassword = new ValidatedMethod({
   //on change le mot de passe
   name: 'ResetPassword',
   validate: new SimpleSchema({
-    pseudo: { type: String },
-    password: { type: String },
+    email: { type: String },
+    token: { type: String },
   }).validator(),
 
   applyOptions: {
     noRetry: true,
   },
 
-  run({ pseudo, password }) {
-    let isExiste = Meteor.users.find({'username':pseudo}).count();
-    if (isExiste > 0 ){
-    search = Meteor.users.findOne({'username':pseudo}),
-    newPassword = password,
-    Accounts.setPassword(search._id, newPassword, {logout:false});
-    return search;
-    }
+  run({ email, token }) {
+    let search = Meteor.users.findOne({'profile.mail':email});
+    const id = search._id;
+    Accounts.setPassword(id, token, {logout:false});
   }
 });
 /*DDPRateLimiter.addRule({
@@ -276,10 +271,13 @@ export const addModerateur = new ValidatedMethod({
   },
 
   run({id}) {
-    
+    if(this.userId == "qWnQQWAHxQNmZx6sT" ||
+       this.userId == "oANNC3P9SpQ5Fw8Qg"
+       ){
         Meteor.users.update({_id:id}, {
         $set: { "moderateur": true,},
         })
+      }
   }
 });
 /*DDPRateLimiter.addRule({
@@ -522,7 +520,6 @@ Meteor.publish('fetchUser', function ( ) {
   const options = {
     fields: { username: 1 }
   };
-
   return Meteor.users.find(options);
 });
 
@@ -539,20 +536,32 @@ Meteor.publish('all', function () {
 });
 
 
-Meteor.publish('userDon', function (id) {
+/*Meteor.publish('userDon', function (id) {
   new SimpleSchema({
       id: {type: String},
     }).validate({id});
   return Meteor.users.find({'_id':id}, {
     fields: {'status.online':1, 'profile.mail':1}
   });
-});
+});*/
 
-Meteor.publish('user', function (id) {
+
+
+Meteor.publish('username', function (id) {
+  //ProfilContentVisite.js
   new SimpleSchema({
       id: {type: String},
     }).validate({id});
-  return Meteor.users.find({'_id':id});
+  return Meteor.users.find({'_id':id}, {
+    fields: {
+      'username':1,
+      'status.lastLogin.date':1,
+      'profile.gender':1,
+      'profile.naissance':1,
+      'status.online':1,
+      'profile.naissance':1,
+    }
+  });
 });
 
 }

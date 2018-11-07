@@ -5,7 +5,8 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
 import { Sidebar, Segment, Button, Header, Divider, Form, Message } from 'semantic-ui-react'
 import { Route, Redirect } from 'react-router';
- 
+import { Accounts } from 'meteor/accounts-base'
+
 //Component
 import HeaderPage from '../component/HeaderPage.js';
 
@@ -14,50 +15,28 @@ class PasswordProfil extends Component {
     constructor(props) {
     super(props);
     this.state = {
-      errorLogin:false,
-      errorPseudo:false,
-      pseudo:false,
-      mail:false,
+      erroroldPassword:false,
+      oldPassword:false,
       password:false,
       connection:false,
       errorPassword:false,
       visible:false, 
       success:false,
-      username:"",    
+ 
     };   
-  }
-
-  componentWillMount(){
-    let id = Meteor.userId();
-    Meteor.apply('Username', [{
-          id,
-          }], {
-          onResultReceived: (error, response) => {
-            if (error) console.warn(error.reason);
-            {response ?
-             this.setState({username: response}) :
-             ""}
-          },
-        });
   }
 
     Submit(event) {
       event.preventDefault();
 
-      const pseudo = ReactDOM.findDOMNode(this.refs.pseudo).value.trim();
-      const email = ReactDOM.findDOMNode(this.refs.email).value.trim();
+      const oldPassword = ReactDOM.findDOMNode(this.refs.oldPassword).value.trim();
       const password = ReactDOM.findDOMNode(this.refs.password2).value.trim();
 
-      //On verifie que le pseudo n'est pas vide
-      {!pseudo ?
-       this.setState({pseudo: true,}) :
-       this.setState({pseudo: false,
-      })}
 
-      //On verifie que le mail n'est pas vide
-      {!email ?
-       this.setState({mail: true,}) :
-       this.setState({mail: false,
+      //On verifie que l'ancien mot de passe n'est pas vide
+      {!oldPassword ?
+       this.setState({oldPassword: true,}) :
+       this.setState({oldPassword: false,
       })}
 
        //Les password ne doivent pas être vide
@@ -67,48 +46,29 @@ class PasswordProfil extends Component {
        ''
       }
 
-      check(pseudo, String);
-      check(email, String);
+      check(oldPassword, String);
       check(password, String);
 
-     //on vérifie que le pseudo et le mail existe
-      Meteor.apply('UserExiste', [{
-          pseudo:pseudo,
-          email:email,
-          }], {
-          onResultReceived: (error, response) => {
-            if (error) console.warn(error.reason);
-            {response ?
-             this.setState({errorLogin: false, }) :
-             this.setState({errorLogin: true, })}
-          },
-      });
-
-      const errorLogin = this.state.errorLogin;
       const errorPassword = this.state.errorPassword;
-      const errorPseudo = this.state.errorPseudo;
+      const erroroldPassword = this.state.erroroldPassword;
       
 
       {
-        errorLogin == false && errorPassword == false && errorPseudo == false
+        errorPassword == false && erroroldPassword == false
         ?
-        Meteor.apply('ResetPassword', [{
-        pseudo:pseudo,
-        password:password,
-        }], {
-        onResultReceived: (error, response) => {
-          if (error) console.warn(error.reason);
-          /*{response ?
-          this.setState({errorLogin: false,})
-           :
-           this.setState({errorLogin: true,})}*/
-          }
-        }) : ""
+         Accounts.changePassword(oldPassword, password,
+          function(Error){
+              if(Error){
+                  console.log(Error)
+              }
+            }
+        )
+
+          : ""
       }
 
-      if (pseudo == this.state.username && pseudo && email && password !== '') {
-        ReactDOM.findDOMNode(this.refs.pseudo).value ="";
-        ReactDOM.findDOMNode(this.refs.email).value="";
+      if ( oldPassword !=='' && password !== '' && !this.state.errorPassword) {
+        ReactDOM.findDOMNode(this.refs.oldPassword).value="";
         ReactDOM.findDOMNode(this.refs.password2).value="";
         this.setState({success: true})
       }
@@ -133,44 +93,18 @@ class PasswordProfil extends Component {
                 <div className="numero">
                    <Form error success onSubmit={this.Submit.bind(this)}>
 
-                        <Message
-                          hidden={!this.state.errorLogin}
-                          error={this.state.errorLogin}
-                          header='Erreur'
-                          content='Erreur identifiant'
-                        />
-                         <Message
-                          hidden={!this.state.errorPseudo}
-                          error={this.state.errorPseudo}
-                          header='Erreur'
-                          content='Erreur identifiant'
-                        />
-                        <Form.Field required error={this.state.pseudo}>
-                          <input
-                           ref="pseudo"
-                           placeholder='Pseudo'
-                           />
-                          
-                        <Message
-                          hidden={!this.state.pseudo}
-                          error={this.state.pseudo}
-                          header='Erreur pseudo'
-                          content="Le pseudo n'est pas le bon"
-                        />
-                        </Form.Field>
 
-
-                        <Form.Field required error={this.state.mail}>
+                        <Form.Field required error={this.state.oldPassword}>
                           <input
-                           ref="email"
-                           type='email'
-                           placeholder='Email'
+                           ref="oldPassword"
+                           type='password'
+                           placeholder='Ancien mot de passe'
                            />
                          <Message
-                          error={this.state.mail}
-                          hidden={!this.state.mail}
-                          header='Erreur email'
-                          content="L'adresse mail est obligatoire"
+                          error={this.state.oldPassword}
+                          hidden={!this.state.oldPassword}
+                          header='Erreur mot de passe'
+                          content="L'ancien mot de passe est obligatoire"
                          />
                         </Form.Field>
 

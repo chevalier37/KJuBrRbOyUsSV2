@@ -2729,7 +2729,7 @@ class ProfilContent extends Component {
 export default ProfilContent =  withTracker(() => {
 	const id = Meteor.userId();
 	const Handle = Meteor.subscribe('IsConseiller', id);
-	const Handle2 = Meteor.subscribe('user', id);
+	const Handle2 = Meteor.subscribe('username', id);
 	const Handle1 = Meteor.subscribe('Recommandations', id);
 	const loading = !Handle.ready();
 	const loading1 = !Handle1.ready();

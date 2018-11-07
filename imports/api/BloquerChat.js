@@ -55,13 +55,14 @@ Meteor.methods({
   return Favoris.find()
 });*/
 
+/*
 Meteor.publish('isContactBloquer', function (from_id) {
   new SimpleSchema({
       from_id: {type: String},
     }).validate({from_id});
 
   return BloquerChat.find({'from_id':from_id, 'to_id':to_id })
-});
+});*/
 /*
 Meteor.publish('isFavoris', function (idMessage, from_id) {
   new SimpleSchema({

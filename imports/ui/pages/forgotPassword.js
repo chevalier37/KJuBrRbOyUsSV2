@@ -23,7 +23,8 @@ static contextTypes = {
       mail:false,
       password:false,
       connection:false,
-      errorPassword:false,     
+      errorPassword:false,
+      success:false,     
     };   
   }
 
@@ -32,19 +33,9 @@ static contextTypes = {
   Submit(event) {
       event.preventDefault();
 
-      this.setState({errorLogin: false, })
-      this.setState({pseudo: false, })
       this.setState({mail: false, })
 
-      const pseudo = ReactDOM.findDOMNode(this.refs.pseudo).value.trim();
       const email = ReactDOM.findDOMNode(this.refs.email).value.trim();
-      const password = ReactDOM.findDOMNode(this.refs.password2).value.trim();
-
-      //On verifie que le pseudo n'est pas vide
-      {!pseudo ?
-       this.setState({pseudo: true,}) :
-       this.setState({pseudo: false,
-      })}
 
       //On verifie que le mail n'est pas vide
       {!email ?
@@ -52,65 +43,45 @@ static contextTypes = {
        this.setState({mail: false,
       })}
 
-       //Les password ne doivent pas être vide
-       {password == '' ?
-       this.setState({errorPassword: true,}) :
-       ''
-      }
-
-      check(pseudo, String);
       check(email, String);
-      check(password, String);
 
      //on vérifie que le pseudo et le mail existe
       Meteor.apply('UserExiste', [{
-          pseudo:pseudo,
           email:email,
           }], {
           onResultReceived: (error, response) => {
             if (error) console.warn(error.reason);
-            {response ?
-             this.setState({errorLogin: false, }) :
-             this.setState({errorLogin: true, })}
+            if(response == true){
+              this.setState({errorLogin: false})
+              
+              var token = "";
+              var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+              for (var i = 0; i < 10; i++)
+              token += possible.charAt(Math.floor(Math.random() * possible.length));
+                if(token){
+                  this.setState({success: true})
+                  ReactDOM.findDOMNode(this.refs.email).value="";
+                  Meteor.call(
+                    'PasswordProvisoire',
+                    email,
+                    'Kurbys <kurbys@mail.kurbys.com>',
+                    'Mot de passe provisoire ',
+                    token,
+                  )
+                  Meteor.apply(
+                  'ResetPassword',
+                    [{email, token}],
+                      {
+                      onResultReceived: (error, response) => {
+                        if (error) console.warn(error.reason);
+                      },
+                    })
+                  }
+            }else{
+               this.setState({errorLogin: true })
+            }         
           },
-      });
-
-      {
-        this.state.errorLogin==false
-        ?
-        Meteor.apply('ResetPassword', [{
-        pseudo:pseudo,
-        password:password,
-        }], {
-        onResultReceived: (error, response) => {
-          if (error) console.warn(error.reason);
-          {response ?
-          this.setState({errorLogin: false,})
-           :
-           this.setState({errorLogin: true,})}
-
-          },
-        })
-        :
-        ''
-      }
-        
-      const errorLogin = this.state.errorLogin;
-      const errorPassword = this.state.errorPassword;
-
-      if (errorLogin == false && errorPassword == false) {
-          Meteor.loginWithPassword(pseudo, password, (err) => {
-            if(err){
-             
-              this.setState({erreurLogin: true,})
-            } else {
-              {
-              Meteor.userId() ? 
-              this.setState({connection: true,}): ''     
-              }
-            }
-          });
-      }
+      });    
   }
 
   render() {
@@ -144,59 +115,30 @@ static contextTypes = {
                 <Header>
                 Mot de passe oublié
                 </Header>
-                Créer un nouveau mot de passe <p></p>
+                Recevoir un mot de passe provisoire : <p></p>
 
-                    <Form error onSubmit={this.Submit.bind(this)}>
+                    <Form error success onSubmit={this.Submit.bind(this)}>
 
-                        <Message
-                          hidden={!this.state.errorLogin}
-                          error={this.state.errorLogin}
-                          header='Erreur'
-                          content='Erreur identifiant'
-                        />
-                        <Form.Field required error={this.state.pseudo}>
-                          <input
-                           ref="pseudo"
-                           placeholder='Pseudo'
-                           />
-                          
-                        <Message
-                          hidden={!this.state.pseudo}
-                          error={this.state.pseudo}
-                          header='Erreur pseudo'
-                          content='Le pseudo est obligatoire'
-                        />
-                        </Form.Field>
-
-
-                        <Form.Field required error={this.state.mail}>
+                        <Form.Field required error={this.state.errorLogin}>
                           <input
                            ref="email"
                            type='email'
                            placeholder='Email'
                            />
                          <Message
-                          error={this.state.mail}
-                          hidden={!this.state.mail}
+                          error={this.state.errorLogin}
+                          hidden={!this.state.errorLogin}
                           header='Erreur email'
-                          content="L'adresse mail est obligatoire"
+                          content="L'adresse mail n'existe pas"
                          />
                         </Form.Field>
 
-                        
-                        <Form.Field required error={this.state.password}>
-                          <input
-                           ref="password2"
-                           type='password'
-                           placeholder='Nouveau mot de passe'
-                          />
-                         <Message
-                          error={this.state.password}
-                          hidden={!this.state.password}
-                          header='Erreur mot de passe'
-                          content="Les mots de passe ne correspondent pas"
+                        <Message
+                          hidden={!this.state.success}
+                          success={this.state.success}
+                          header='Confirmation'
+                          content='Tu as reçu un email avec un mot de passe provisoire pour te connecter'
                         />
-                        </Form.Field>
 
                         <Button type='submit' color='green'>Valider</Button>
 

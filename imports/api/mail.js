@@ -6,6 +6,7 @@ import { EmailReponse } from '../../server/email-reponse.js';
 import { EmailRecommandation } from '../../server/email-recommandation.js';
 import { EmailObtenirRecommandation } from '../../server/email-laisserRecommandation.js';
 import { EmailSignaler } from '../../server/email-signaler.js';
+import { EmailPasswordProvisoire } from '../../server/email-passworProvisoire.js';
 import { Notifications } from './Notifications.js';
 
 Meteor.startup(() => {
@@ -102,6 +103,16 @@ Meteor.methods({
       from: from,
       subject: subject,
       html: EmailSignaler(message),
+    });
+  },
+
+
+  PasswordProvisoire: function(to, from, subject, token){
+   Email.send({
+      to: to,
+      from: from,
+      subject: subject,
+      html: EmailPasswordProvisoire(token),
     });
   },
 

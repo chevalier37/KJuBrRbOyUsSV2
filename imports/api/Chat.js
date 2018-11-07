@@ -122,6 +122,9 @@ Meteor.methods({
        },
 });
 
+
+
+
 Meteor.publish('Chat', function (to_id, from_id) {
   new SimpleSchema({
       to_id: {type: String},

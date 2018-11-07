@@ -1292,6 +1292,9 @@ Meteor.methods({
       },
 });
 
+
+
+
 publishComposite('AllConseillers', {
     find() {
         let allConseiller = Conseilleres.find(
@@ -1312,12 +1315,14 @@ publishComposite('AllConseillers', {
 });
 
 
+
 Meteor.publish('IsConseiller', function (id) {
   new SimpleSchema({
       id: {type: String},
     }).validate({id});
   return Conseilleres.find({'user_id':id});
 });
+
 
 Meteor.publish('lastConseillers', function () {
   return Conseilleres.find({}, { sort: {date: -1 }, limit:5 });
