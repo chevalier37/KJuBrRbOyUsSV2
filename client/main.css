@@ -3090,6 +3090,9 @@ header {
 	display: none;
 }
 
+.demandePassword{
+	margin-bottom: 10px;
+}
 
 @media only screen and (max-width: 1800px) {
 

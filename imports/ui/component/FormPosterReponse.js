@@ -38,7 +38,6 @@ class FormPosterReponse extends Component {
 	  	const message = ReactDOM.findDOMNode(this.refs.message).value.trim();
 	  	const user = Meteor.user();
 	  	const from_name = user.username;
-	  	const mail = this.props.mail;
 	  	const titre = this.props.titreMessage;
 	  	let id = this.props.id;
 
@@ -67,7 +66,6 @@ class FormPosterReponse extends Component {
   		!this.props.isOnline && this.state.messageVide == false  ?
           Meteor.call(
           'NouvelleReponse',
-          mail,
           'Kurbys <kurbys@mail.kurbys.com>',
           'Nouvelle réponse au message : ',
           from_name,
@@ -122,13 +120,16 @@ class FormPosterReponse extends Component {
 
 export default FormPosterReponse =  withTracker(({ authorId }) => {
 
-  const Handle = Meteor.subscribe('user', authorId);
+  const Handle = Meteor.subscribe('username', authorId);
   const loading = !Handle.ready();
-  const user = Meteor.users.findOne({'_id':authorId});
+  const user = Meteor.users.findOne({'_id':authorId}, {
+    fields: {
+      'status.online':1,
+    }
+  });
   const reponseExists = !loading && !!user;
 
   return {
   isOnline:reponseExists ? user.status.online : '',
-  mail:reponseExists ? user.profile.mail : '',  
   };
 })(FormPosterReponse);

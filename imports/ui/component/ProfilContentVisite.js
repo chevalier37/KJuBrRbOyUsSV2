@@ -185,20 +185,19 @@ class ProfilContentVisite extends Component {
 
 
 	   componentWillMount(){
-	   	let id = this.props.id;
-	   	Meteor.apply('IsUserSignaler', [{id
-          }], {
-          onResultReceived: (error, response) => {
-            if (error) console.warn(error.reason);
-            {
-            response ?
-             this.setState({disabled: true})
-             :
-             ""
-            }
-            },
-    	})
-
+		   	let id = this.props.id;
+		   	Meteor.apply('IsUserSignaler', [{id
+	          }], {
+	          onResultReceived: (error, response) => {
+	            if (error) console.warn(error.reason);
+	            {
+	            response ?
+	             this.setState({disabled: true})
+	             :
+	             ""
+	            }
+	            },
+	    	})
 
 			Meteor.apply('usernameRecommander', [{
 		          id,
@@ -234,7 +233,7 @@ class ProfilContentVisite extends Component {
 		          },
 	      	})
 
-		}
+			}	
 
 
 		presentation(){

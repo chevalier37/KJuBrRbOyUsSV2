@@ -178,64 +178,68 @@ class FormPosterMessage extends Component {
 	  	this.setState({TropCat: false})
 	    }				
 
-	  	{ //on verifie qu'il n'y à pas d'erreur avant d'envoyer le formulaire
-			this.state.titreVide ==false &&
-			this.state.messageVide == false &&
-			NBRcategorie > 0 &&
-			NBRcategorie < 3
-			?
-		  	 Meteor.apply('addMessage',
-		  	  [{titre,
-		  	  message,
-		  	  premierAmour,
-		  	  trahison,
-		      Friendzone,
-		      amourdistance,
-		      separation,
-		      timidite,
-		      depression,
-		      suicide,
-		      deces,
-		      mutilation,
-		      premierfois,
-		      Contraception,
-		      mst,
-		      viol,
-		      avortement,
-		      orientationSex,
-		      Anorexie,
-		      obesite,
-		      drogue,
-		      alcool,
-		      complexe,
-		      hopital,
-		      handicap,
-		      Accident,
-		      echecEcole,
-		      Harcelement,
-		      Discrimination,
-		      Violence,
-		      autre}],
-		  	 
-		  	  {
-          onResultReceived: (error, response) => {
-            if (error) console.warn(error.reason);
-	                  // on cache les options après validation
-			        this.setState({
-				      categorie: 'cacherCategorie'
-				    })
+	  	 //on verifie qu'il n'y à pas d'erreur avant d'envoyer le formulaire
 
-				    this.setState({
-				      poster: !this.state.poster,
-				    });
-			    
-				  	// Clear form
-			        {/*ReactDOM.findDOMNode(this.refs.titre).value = '';
-			        ReactDOM.findDOMNode(this.refs.message).value = '';*/}
-              	},
-          	})
-	        : ''
-	    }
+		
+			if (
+					titre.length == 0 &&
+					message.length == 0 &&
+					NBRcategorie > 0 &&
+					NBRcategorie < 3
+				)
+			{
+			  	 Meteor.apply('addMessage',
+			  	  [{titre,
+			  	  message,
+			  	  premierAmour,
+			  	  trahison,
+			      Friendzone,
+			      amourdistance,
+			      separation,
+			      timidite,
+			      depression,
+			      suicide,
+			      deces,
+			      mutilation,
+			      premierfois,
+			      Contraception,
+			      mst,
+			      viol,
+			      avortement,
+			      orientationSex,
+			      Anorexie,
+			      obesite,
+			      drogue,
+			      alcool,
+			      complexe,
+			      hopital,
+			      handicap,
+			      Accident,
+			      echecEcole,
+			      Harcelement,
+			      Discrimination,
+			      Violence,
+			      autre}],
+			  	 
+			  	  {
+	         	 onResultReceived: (error, response) => {
+	            	if (error) console.warn(error.reason);
+		                  // on cache les options après validation
+				       this.setState({
+					      categorie: 'cacherCategorie'
+					    })
+
+					    this.setState({
+					      poster: !this.state.poster,
+					    });
+				    
+					  	// Clear form
+				        ReactDOM.findDOMNode(this.refs.titre).value = '';
+				        ReactDOM.findDOMNode(this.refs.message).value = '';
+	              	},
+	          	})
+	        }
+	    
 	}
 
 	premierAmour(value) {

@@ -19,8 +19,15 @@ if (Meteor.isServer) {
 
 Meteor.methods({
   
-  NouveauMessage: function(to, from, subject, name, message, id){
+  NouveauMessage: function(from, subject, name, message, id){
         const search = Notifications.findOne({'IdChoix':id});
+        let mail = Meteor.users.findOne({'_id':id},{
+        fields: {
+            'profile.mail':1,
+          }
+        });
+        let to = mail.profile.mail;  
+
         if(search){
               const MessagePrive = search.MessagePrive;
                if(MessagePrive){
@@ -41,8 +48,15 @@ Meteor.methods({
           }
       },
 
-  NouvelleReponse: function(to, from, subject, name, message, titre, id){
+  NouvelleReponse: function(from, subject, name, message, titre, id){
     const search = Notifications.findOne({'IdChoix':id});
+    let mail = Meteor.users.findOne({'_id':id},{
+        fields: {
+            'profile.mail':1,
+          }
+        });
+        let to = mail.profile.mail;  
+
         if(search){
               const RecoitConseil = search.RecoitConseil;
               if(RecoitConseil){
@@ -63,30 +77,45 @@ Meteor.methods({
               }
     },
 
-  NouvelleRecommandation: function(to, from, subject, name, message, id){
+  NouvelleRecommandation: function(from, subject, name, message, id){
     const search = Notifications.findOne({'IdChoix':id});
-        if(search){
-              const recommandation = search.recommandation;
-              console.log(recommandation)
-              if(recommandation){
-               Email.send({
-                  to: to,
-                  from: from,
-                  subject: subject + name,
-                  html: EmailRecommandation(message, name),
-                });
-               }
-        }else{
-          Email.send({
-                  to: to,
-                  from: from,
-                  subject: subject + name,
-                  html: EmailRecommandation(message, name),
-                })
-         }
+    let mail = Meteor.users.findOne({'_id':id},{
+    fields: {
+        'profile.mail':1,
+      }
+    });
+    let to = mail.profile.mail; 
+
+    if(search){
+          const recommandation = search.recommandation;
+          console.log(recommandation)
+          if(recommandation){
+           Email.send({
+              to: to,
+              from: from,
+              subject: subject + name,
+              html: EmailRecommandation(message, name),
+            });
+           }
+    }else{
+      Email.send({
+              to: to,
+              from: from,
+              subject: subject + name,
+              html: EmailRecommandation(message, name),
+            })
+     }
   },
 
-  obtenirRecommandationMail: function(to, from, subject, name){
+  obtenirRecommandationMail: function(from, subject, name, to_id){
+
+    let mail = Meteor.users.findOne({'_id':to_id},{
+    fields: {
+        'profile.mail':1,
+      }
+    });
+    let to = mail.profile.mail; 
+
    Email.send({
       to: to,
       from: from,

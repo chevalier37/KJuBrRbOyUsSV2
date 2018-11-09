@@ -107,13 +107,13 @@ const EmailObtenirRecommandationTemplate = function(props) {
   return <Email title="Hello World!" headCSS={css}>
             <Box>
               	<Item style={style.BackgroundTop}>
-		  			<Span style={style.name}>
+		  			<h1>
 				  		Laisse une recommandation à {props.name} 
-			  		</Span>
+			  		</h1>
 				</Item>
 				<Item >
 		  			<Span style={style.margeTop}>
-				  		rien
+				  		
 			  		</Span>
 				</Item>
   			</Box>
@@ -121,8 +121,10 @@ const EmailObtenirRecommandationTemplate = function(props) {
   			<Box>
 				<Item>	  					  			
 				  	<Item style={style.text}>
+				  	<h3> 
 				  		Les conseils de {props.name} ont-ils été utiles?<br />
-				  		Laisse lui une recommandation pour donner ton avis.		
+				  		Laisse lui une recommandation pour donner ton avis.
+				  	</h3>		
 				  	</Item>
 			  	</Item>
 			  	

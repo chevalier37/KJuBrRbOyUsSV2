@@ -34,7 +34,6 @@ class chat extends Component {
           IsConseiller:false,
           MyConseiller:false,
           open:false,
-          mail:"",
           nuit:false,
         };
     }
@@ -53,13 +52,13 @@ class chat extends Component {
               },
         })
       let to_name = this.state.username;
-      let mail = this.state.mail;
+
       Meteor.call(//notification par mail
               'obtenirRecommandationMail',
-              mail,
               'Kurbys <kurbys@mail.kurbys.com>',
               'Laisse une recommandation à ',
               to_name,
+              to_id
               ) 
 
       this.setState({ open: false })
@@ -244,12 +243,6 @@ class chat extends Component {
 
               {response ?
              this.setState({gender: response.profile.gender}) 
-             
-             :
-             ''}
-
-              {response ?
-             this.setState({mail: response.profile.mail}) 
              
              :
              ''}

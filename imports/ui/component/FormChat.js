@@ -107,7 +107,6 @@ class FormChat extends Component {
 		  	const to_name = this.props.username;
 		  	const user = Meteor.user();
 		  	const from_name = user.username;
-		  	const mail = this.props.mail;
 		  	
 		  	Meteor.call(
 		  		'addMessageChat',
@@ -145,7 +144,6 @@ class FormChat extends Component {
       		!this.props.isOnline ?
 	          Meteor.call(
 	          'NouveauMessage',
-	          mail,
 	          'Kurbys <kurbys@mail.kurbys.com>',
 	          'Nouveau message de ',
 	          from_name,
@@ -208,9 +206,13 @@ class FormChat extends Component {
 
 export default FormChat =  withTracker(({ to_id }) => {
 
-  const Handle = Meteor.subscribe('user', to_id);
+  const Handle = Meteor.subscribe('username', to_id);
   const loading = !Handle.ready();
-  const user = Meteor.users.findOne({'_id':to_id});
+  const user = Meteor.users.findOne({'_id':to_id}, {
+    fields: {
+      'status.online':1,
+    }
+  });
   const reponseExists = !loading && !!user;
 
   const Handle1 = Meteor.subscribe('isWriting', to_id);
@@ -220,7 +222,6 @@ export default FormChat =  withTracker(({ to_id }) => {
 
   return {
   isOnline:reponseExists ? user.status.online : '',
-  mail:reponseExists ? user.profile.mail : '',
   IsWriting: reponseExists1 ? search.count():'',
   };
 })(FormChat);

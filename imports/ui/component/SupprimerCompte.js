@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
-import { Sidebar, Segment, Button, Header, Divider, Modal } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Header, Divider, Modal, Form, Message } from 'semantic-ui-react'
 import { Route, Redirect } from 'react-router';
  
 //Component
@@ -15,11 +15,21 @@ class NousContacter extends Component {
       visible: false,
       open:false,
       delete:false,
+      errorPassword:false,
+      Password:false,
+      password:false,
+      connection:false,
+      errorPassword:false,
+      visible:false, 
+      success:false,
+      disabled:true,
        }
 
     supprimer(){
-      Meteor.call('supprimerCompte')
-      this.setState({delete: true})
+      
+
+      /*Meteor.call('supprimerCompte')
+      this.setState({delete: true})*/
     }
 
     non(){
@@ -28,6 +38,52 @@ class NousContacter extends Component {
 
     open(){
       this.setState({open: true})
+    }
+
+    Submit(event) {
+        event.preventDefault();
+
+        const Password = ReactDOM.findDOMNode(this.refs.Password).value.trim();
+
+        //On verifie que l'ancien mot de passe n'est pas vide
+        {!Password ?
+         this.setState({Password: true,}) :
+         this.setState({Password: false,
+        })}
+
+        check(Password, String);
+
+        const errorPassword = this.state.errorPassword;
+        var digest = Package.sha.SHA256(Password);
+
+        {
+           errorPassword == false
+          ?
+
+          Meteor.apply(
+          'CheckPassword',
+          [{
+            digest
+            }],
+            {
+            onResultReceived: (error, response) => {
+              if (error) console.warn(error.reason);
+              {
+                response ?  
+               this.setState({disabled: false}) :
+               this.setState({disabled: true})
+             }
+            },
+
+          })
+            : ""
+        }
+
+        if ( Password !== '' && !this.state.errorPassword) {
+          ReactDOM.findDOMNode(this.refs.Password).value="";
+         
+        }
+        
     }
 
     render() {
@@ -49,7 +105,29 @@ class NousContacter extends Component {
           <div className="ListeMesMessages">
             <div className="register blanc">
                 <div className="numero">
-                    <Modal trigger={<Button color='red' onClick={this.open.bind(this)}>
+                  <div className="demandePassword">
+                      Entre ton mot de passe pour supprimer ton compte :
+                  </div>
+                <Form error success onSubmit={this.Submit.bind(this)}>
+                       <Form.Field required error={this.state.Password}>
+                          <input
+                           ref="Password"
+                           type='password'
+                           placeholder='Mot de passe'
+                           />
+                         <Message
+                          error={this.state.Password}
+                          hidden={!this.state.Password}
+                          header='Erreur mot de passe'
+                          content="Mot de passe est obligatoire"
+                         />
+                        </Form.Field>
+
+                        <Button type='submit' color='green'>Valider</Button>
+                    </Form>
+
+                    <br />
+                    <Modal trigger={<Button color='red' disabled={this.state.disabled} onClick={this.open.bind(this)}>
                           Supprimer mon compte
                           </Button>} basic size='small' open={this.state.open}>
                         <Header content='Supprimer mon compte' />

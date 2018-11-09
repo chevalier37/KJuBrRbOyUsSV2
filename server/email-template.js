@@ -13,8 +13,6 @@ const css = `
 const style = {
 
   title: {
- 
-
   },
 
   BackgroundTop: {
@@ -27,6 +25,7 @@ const style = {
     borderTopRightRadius: '5px',
     marginLeft:'50px',
     width: '1000px',
+    marginLeft: '15px',
 },
 
   BackgroundBottom: {
@@ -85,7 +84,7 @@ text:{
 
 LinkBottom:{
 	marginLeft: '50px',
-	fontSize: '18px',
+	fontSize: '20px',
 	color: 'white',
 	fontWeight:'bold',
 	textAlign:'center'
@@ -106,25 +105,24 @@ link:{
 const ContactMeTemplate = function(props) {
   return <Email title="Hello World!" headCSS={css}>
             <Box>
-              	<Item style={style.BackgroundTop}>
-		  			<Span style={style.name}>
+              	<Item >
+		  			<h1>
 				  		Vous avez un reçu un nouveau message de	{props.name} 
-			  		</Span>
+			  		</h1>
 				</Item>
 				<Item >
 		  			<Span style={style.margeTop}>
-				  		rien
+				  		
 			  		</Span>
 				</Item>
   			</Box>
 
-  			<Box>
-				<Item>	  					  			
-				  	<Item style={style.text}>
-				  				{props.message}
-				  	</Item>
-			  	</Item>
-			  	
+  			<Box>		  			
+		  		<Item style={style.text}>
+		  			<h3> 
+		  				{props.message}
+		  			</h3>
+		  		</Item>
             </Box>
 
              <Box>

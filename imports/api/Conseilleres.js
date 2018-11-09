@@ -20,7 +20,7 @@ export const IsConseiller = new ValidatedMethod({
   //on verifie si l'utilisateur est conseiller
   name: 'IsConseiller',
   validate: new SimpleSchema({
-    id: { type: String },
+  id: { type: String },
   }).validator(),
 
   applyOptions: {
@@ -38,7 +38,7 @@ export const IsConseiller = new ValidatedMethod({
 
     const NBRaide = Comments.find({'userId':this.userId}).count();
 
-    if(!Istrue && ratio > 85 && NBRaide >= 50){// l'utilisateur peut devenir conseiller
+    if(!Istrue && ratio > 85 && NBRaide >= 25){// l'utilisateur peut devenir conseiller
       Notifications.insert({
                   date: new Date(),
                   to_id:this.userId,

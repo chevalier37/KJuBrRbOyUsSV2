@@ -107,13 +107,13 @@ const EmailSignalerTemplate = function(props) {
   return <Email title="Hello World!" headCSS={css}>
             <Box>
               	<Item style={style.BackgroundTop}>
-		  			<Span style={style.name}>
+		  			<h1>
 				  		Ton message a été signalé !
-			  		</Span>
+			  		</h1>
 				</Item>
 				<Item >
 		  			<Span style={style.margeTop}>
-				  		rien
+				  		
 			  		</Span>
 				</Item>
   			</Box>
@@ -121,11 +121,13 @@ const EmailSignalerTemplate = function(props) {
   			<Box>
 				<Item>	  					  			
 				  	<Item style={style.text}>
+				  	<h3>
 				  		Avertissement : ton message a été signalé par un utilisateur.<br />
 				  		A partir de 3 avertissements ton compte sera bloqué.<br />
 				  		Merci de respecter les règles d'utilisation de KURBYS. <br /><br />
 				  		<strong>Le message signalé :</strong><br />
 				  		{props.message}
+				  	</h3>
 				  	</Item>
 			  	</Item>
 			  	

@@ -107,13 +107,13 @@ const EmailReponseTemplate = function(props) {
   return <Email title="Hello World!" headCSS={css}>
             <Box>
               	<Item style={style.BackgroundTop}>
-		  			<Span style={style.name}>
+		  			<h1>
 				  		Vous avez un reçu une nouvelle réponse au message :	{props.titre} 
-			  		</Span>
+			  		</h1>
 				</Item>
 				<Item >
 		  			<Span style={style.margeTop}>
-				  		rien
+				  		
 			  		</Span>
 				</Item>
   			</Box>
@@ -121,7 +121,9 @@ const EmailReponseTemplate = function(props) {
   			<Box>
 				<Item>	  					  			
 				  	<Item style={style.text}>
-				  				{props.message}
+					  	<h3>
+					  		{props.message}
+					  	</h3>
 				  	</Item>
 			  	</Item>
 			  	

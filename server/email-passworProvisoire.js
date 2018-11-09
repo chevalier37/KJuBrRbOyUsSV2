@@ -107,13 +107,13 @@ const EmailPasswordProvisoireTemplate = function(props) {
   return <Email title="Hello World!" headCSS={css}>
             <Box>
               	<Item style={style.BackgroundTop}>
-		  			<Span style={style.name}>
+		  			<h1>
 				  		Voici ton mot de passe provisoire pour te connecter :
-			  		</Span>
+			  		</h1>
 				</Item>
 				<Item >
 		  			<Span style={style.margeTop}>
-				  		rien
+				  		
 			  		</Span>
 				</Item>
   			</Box>
@@ -121,8 +121,9 @@ const EmailPasswordProvisoireTemplate = function(props) {
   			<Box>
 				<Item>	  					  			
 				  	<Item style={style.text}>
-				  		Mot de passe provisoire: <strong>{props.token}</strong><br />
-				  		
+					  	<h3>
+					  		Mot de passe provisoire: <strong>{props.token}</strong><br />
+					  	</h3>
 				  	</Item>
 			  	</Item>
 			  	

@@ -267,6 +267,34 @@ export const SuperModerateur = new ValidatedMethod({
 
 
 
+export const CheckPassword = new ValidatedMethod({
+  //on verifie le mot depasse de l'utilisateur pour supprimer son compte
+  name: 'CheckPassword',
+  validate: new SimpleSchema({
+  digest: { type: String },
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({digest}) {
+      const user = Meteor.user();
+      const password = {digest: digest, algorithm: 'sha-256'};
+      const result = Accounts._checkPassword(user, password);
+      if(result.error == null){
+        return true;
+      }else {
+      return false;
+    }   
+  }
+});
+/*DDPRateLimiter.addRule({
+    type: "method",
+    name: "SuperModerateur",
+}, requestLimit, requestTimeout);*/
+
+
 export const addModerateur = new ValidatedMethod({
   //on ajoute un moderateur
   name: 'addModerateur',

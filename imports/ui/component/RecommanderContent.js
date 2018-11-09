@@ -50,7 +50,6 @@ class RecommanderContent extends Component {
         let note = this.state.rating;
         const user = Meteor.user();
 	  	const from_name = user.username;
-	  	const mail = this.props.mail;
 	  	const titre = this.props.titreMessage;
 
         {presentation == ''
@@ -92,7 +91,6 @@ class RecommanderContent extends Component {
 
 		          Meteor.call(
 		          'NouvelleRecommandation',
-		          mail,
 		          'Kurbys <kurbys@mail.kurbys.com>',
 		          'Nouvelle recommandation de ',
 		          from_name,
@@ -176,14 +174,16 @@ class RecommanderContent extends Component {
 }
 
 export default RecommanderContent =  withTracker(({id}) => {
-	const Handle = Meteor.subscribe('user', id);
+	const Handle = Meteor.subscribe('username', to_id);
   	const loading = !Handle.ready();
-  	const user = Meteor.users.findOne({'_id':id});
+  	const user = Meteor.users.findOne({'_id':to_id}, {
+    fields: {
+      'status.online':1,
+    }
+  });
   	const reponseExists = !loading && !!user;
 
   return {
   	isOnline:reponseExists ? user.status.online : '',
- 	mail:reponseExists ? user.profile.mail : '',	
-
   };
 })(RecommanderContent);

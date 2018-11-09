@@ -245,17 +245,15 @@ class HeaderPage extends Component {
 	     this.setState({TropCat: true}):
 	  	 this.setState({TropCat: false})
 	    }				
-	  
+	  console.log(titre.length)
 
 	  	{ //on verifie qu'il n'y à pas d'erreur avant d'envoyer le formulaire
 
-			this.state.titreVide == false &&
-			this.state.messageVide == false &&
+			titre.length == 0 &&
+			message.length == 0 &&
 			NBRcategorie > 0 &&
 			NBRcategorie < 3
 		
-
-
 			?
 
 		  	Meteor.call('addMessage',
@@ -311,8 +309,8 @@ class HeaderPage extends Component {
 				    });
 			    
 				  	// Clear form
-			        /*ReactDOM.findDOMNode(this.refs.titre).value = '';
-			        ReactDOM.findDOMNode(this.refs.message).value = '';*/
+			        ReactDOM.findDOMNode(this.refs.titre).value = '';
+			        ReactDOM.findDOMNode(this.refs.message).value = '';
 	              	}     
             	}
           	})
