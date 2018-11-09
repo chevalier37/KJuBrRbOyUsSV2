@@ -15,6 +15,13 @@ export default class FormLogin extends Component {
 	    	};
 	}
 
+	 componentWillMount(){
+		let currentLoginToken = Accounts._storedLoginToken();
+		if(currentLoginToken){
+			this.setState({connection: true})
+		}
+	}
+
 	Submit(event) {
     	event.preventDefault();
 
@@ -25,11 +32,41 @@ export default class FormLogin extends Component {
 	      	if(err){
 	          this.setState({erreurLogin: true,})
 	      	} else {
+	      		/*Accounts._storedLoginToken();
+	      		Accounts._autoLoginEnabled = true;*/
+	      		//Accounts._unstoreLoginToken();
 	      		if(Meteor.userId()){
+	      			//Accounts._unstoreLoginToken();
 	      			this.setState({connection: true})
 	      		}
 	      	}
     	});
+
+
+    	  /*var pollLoginState = function () {
+    var currentLoginToken = Accounts._storedLoginToken();
+    if (! currentLoginToken) return;
+
+    // != instead of !== just to make sure undefined and null are treated the same
+    if (Accounts._lastLoginTokenWhenPolled != currentLoginToken) {
+      if (currentLoginToken) {
+        Accounts.loginWithToken(currentLoginToken, function (err) {
+          if (err) {
+            Accounts.makeClientLoggedOut();
+          }
+        });
+      } else {
+        Accounts.logout();
+      }
+    }
+
+    Accounts._lastLoginTokenWhenPolled = currentLoginToken;
+
+
+  setInterval(function () {
+    pollLoginState();
+  }, 3000);
+}*/
   	}
   
   	render() {

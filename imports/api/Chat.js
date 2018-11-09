@@ -22,7 +22,14 @@ export const updateContact = new ValidatedMethod({
   },
 
   run({ to_id }) {
-            const search = Meteor.users.findOne({'_id':to_id});
+            const search = Meteor.users.findOne({'_id':to_id},{
+              fields: {
+                'username':1,
+                'profile.naissance':1,
+                'profile.gender':1,
+                'profile.mail':1,
+              }
+            });
             
             const to_name = search.username;
            

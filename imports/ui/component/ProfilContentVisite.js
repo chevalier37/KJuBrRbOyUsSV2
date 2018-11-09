@@ -2724,7 +2724,16 @@ export default ProfilContentVisite =  withTracker(({id}) => {
 	const loading1 = !Handle1.ready();
 	const loading2 = !Handle2.ready();
  	let Conseiller = Conseilleres.findOne({'user_id':id});
- 	let user = Meteor.users.findOne({'_id':id});
+ 	let user = Meteor.users.findOne({'_id':id}, {
+    fields: {
+      'username':1,
+      'status.lastLogin.date':1,
+      'profile.gender':1,
+      'profile.naissance':1,
+      'status.online':1,
+      'profile.naissance':1,
+    }
+  });
  	let Recommandation = Recommandations.find({'to_id':id});
  	let RecommandationDonner = Recommandations.find({'from_id':id});
  	const reponseExists = !loading && !!Conseiller;

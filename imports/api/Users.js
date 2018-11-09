@@ -168,7 +168,11 @@ export const NBRsignalerUser = new ValidatedMethod({
   },
 
   run() {
-          let search = Meteor.users.findOne(this.userId)
+          let search = Meteor.users.findOne({'_id':this.userId}, {
+            fields: {
+              'signaler':1,
+            }
+          })
           let nbrSignaler = search.signaler;
           if(nbrSignaler=="NaN"){nbrSignaler==0}
           return nbrSignaler  
@@ -220,7 +224,11 @@ export const Username = new ValidatedMethod({
   },
 
   run({ id }) {
-    let search = Meteor.users.findOne({'_id':id});
+    let search = Meteor.users.findOne({'_id':id},{
+    fields: {
+      'username':1,
+    }
+  });
     let username = search.username;  
     return username;
   }
@@ -299,7 +307,11 @@ export const IsModerateur = new ValidatedMethod({
 
   run() {
       
-        let search = Meteor.users.findOne({'_id':this.userId});
+        let search = Meteor.users.findOne({'_id':this.userId},{
+    fields: {
+      'moderateur':1,
+    }
+  });
         let Ismoderateur = search.moderateur;
         return Ismoderateur;        
   }
@@ -342,7 +354,7 @@ export const UserOnline= new ValidatedMethod({
 
 
 export const sexContact= new ValidatedMethod({
-  //on cherche de l'utilisateur pour la liste des contacts
+  //on cherche le sexe de l'utilisateur pour la liste des contacts
   name: 'sexContact',
   validate: new SimpleSchema({
     to_id: { type: String },
@@ -356,12 +368,20 @@ export const sexContact= new ValidatedMethod({
   run({ to_id, from_id}) {
     if(to_id === this.userId){
         const id = from_id;
-        let search = Meteor.users.findOne(id);
+        let search = Meteor.users.findOne({'_id':id},{
+          fields: {
+            'profile.gender':1,
+          }
+        });
         let gender = search.profile.gender;
         return gender
     } else{
         const id = to_id;
-        let search = Meteor.users.findOne(id);
+        let search = Meteor.users.findOne({'_id':id},{
+          fields: {
+            'profile.gender':1,
+          }
+        });
         let gender = search.profile.gender;
         return gender
     }
@@ -385,7 +405,7 @@ export const nuit = new ValidatedMethod({
     Meteor.users.update({_id:this.userId}, {
                     $set: { "nuit": nuit},
                     })
-    return nuit
+    
   }
 });
 
@@ -401,17 +421,18 @@ export const ModeNuit = new ValidatedMethod({
   },
 
   run() {
-    const search = Meteor.users.findOne({_id:this.userId});
+    const search = Meteor.users.findOne({_id:this.userId}, {
+    fields: {
+      'nuit':1
+    }});
     const nuit = search.nuit;
     return nuit
   }
 });
 
-
-
 Meteor.methods({
 
-      FormLogin: function(username,password) {
+      /*FormLogin: function(username,password) {
                    new SimpleSchema({
                     username: {type: String},
                     password: {type: String},
@@ -421,11 +442,11 @@ Meteor.methods({
                   });
                 /*let search = Meteor.users.find({'profile.mail':email.email}).count();
                 let IsMail = false;
-                {search >0 ? IsMail = true : IsMail = false}*/
+                {search >0 ? IsMail = true : IsMail = false}
                 //console.log(IsMail)
                 //console.log(search)
                 return username;
-             },
+             },*/
 
 
       MiseAjourNaissance: function(date) {
@@ -440,7 +461,13 @@ Meteor.methods({
       usernameRecommander: function(id) {
                       check(id, Object);
 
-                      let search = Meteor.users.findOne({'_id':id.id});
+                      let search = Meteor.users.findOne({'_id':id.id},{
+                          fields: {
+                            'username':1,
+                            'profile.gender':1,
+                            'profile.naissance':1,
+                          }
+                        });
                       let IsPseudo = false;
                       {search >0 ? IsPseudo = true : IsPseudo = false}
                       /*console.log(typeof id.id)

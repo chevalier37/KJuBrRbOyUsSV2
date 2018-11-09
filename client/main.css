@@ -502,7 +502,7 @@ header {
     margin-bottom: 10px;
     display: block;
     font-weight: bold;
-    background-color: #153346;
+    background-color: black;
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: #e9ebee;
@@ -619,11 +619,15 @@ header {
 .ListeMessagesNuit{
 	margin-top: 9px;
 	margin-right: 10px;
-	background-color: #183343 !important;
+	background-color: black !important;
+	border-radius: 3px !important;
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: #8799a6 !important;
 }
 
 .SegmentNuit{
-	background-color: #173344 !important;
+	background-color: black !important;
 	color: #8899a6 !important;
 }
 
@@ -997,7 +1001,7 @@ header {
 }
 
 .ContentDiscussionNuit{
-	background-color: #163345;
+	background-color: black;
     height: 100%;
     padding-left: 10px;
     overflow: auto;
@@ -1438,7 +1442,7 @@ header {
 }
 
 .AffficheContactNuit{
-	background-color: #153346;
+	background-color: black;
 	color: #766f61 !important;
 }
 
@@ -1507,7 +1511,7 @@ header {
 .headerChatNuit{
 	height: 50px;
     padding-left: 20px;
-    background-color: #153346;
+    background-color: black;
     border-bottom-style: solid;
     border-bottom-color: #e9ebee;
     border-bottom-width: 1px;
