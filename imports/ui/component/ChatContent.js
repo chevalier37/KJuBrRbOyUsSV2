@@ -60,6 +60,16 @@ export default class ChatContent extends Component {
 
 			let la_date = affiche_date +" " +heure + "h" + minutes;
 			this.setState({date: la_date})
+
+			Meteor.apply('ReadAllChat', [{
+		        }], {
+		        onResultReceived: (error, response) => {
+		          if (error) console.warn(error.reason);
+		          /*{response ?
+		           this.setState({notifNonLu: response}) :
+		           ""}*/
+		        },
+		     });
 		}
 
 		Supprimer(){

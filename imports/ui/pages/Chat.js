@@ -88,6 +88,16 @@ class chat extends Component {
              ""}
           },
         });
+
+         Meteor.apply('ReadAllChat', [{
+        }], {
+        onResultReceived: (error, response) => {
+          if (error) console.warn(error.reason);
+          /*{response ?
+           this.setState({notifNonLu: response}) :
+           ""}*/
+        },
+      });
     }
 
     renderAllChat() {

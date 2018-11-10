@@ -13,7 +13,7 @@ DDPRateLimiter.setErrorMessage("Error DDPRateLimiter")
 
 
 export const notifNonLu = new ValidatedMethod({
-  //on compte le nombre total de notification non lu
+  //on compte le nombre total de notification non lu 
   name: 'notifNonLu',
   validate: new SimpleSchema({
   }).validator(),
@@ -22,8 +22,8 @@ export const notifNonLu = new ValidatedMethod({
     noRetry: true,
   },
 
-  run() {
-    let totalNotif = Notifications.find({'to_id':this.userId, 'read':false}).count();
+  run() {//on compte toutes les notifications sauf le chat
+    let totalNotif = Notifications.find({'to_id':this.userId, 'read':false, 'type': { $ne: 'chat' }}).count();
     return totalNotif
   }
 });
@@ -45,7 +45,7 @@ export const allRead = new ValidatedMethod({
   },
 
   run() {
-    Notifications.update({'to_id':this.userId}, {$set: {'read': true}}, {multi:true})
+    Notifications.update({'to_id':this.userId, 'type': { $ne: 'chat' }}, {$set: {'read': true}}, {multi:true})
   }
 });
 /*DDPRateLimiter.addRule({
@@ -53,6 +53,25 @@ export const allRead = new ValidatedMethod({
     name: "allRead",
 }, requestLimit, requestTimeout);*/
 
+
+export const ReadAllChat = new ValidatedMethod({
+  //on met à jour toute les notifications chat en lu
+  name: 'ReadAllChat',
+  validate: new SimpleSchema({
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run() {
+    Notifications.update({'to_id':this.userId, 'type':'chat'}, {$set: {'read': true}}, {multi:true})
+  }
+});
+/*DDPRateLimiter.addRule({
+    type: "method",
+    name: "allRead",
+}, requestLimit, requestTimeout);*/
 
 
 export const SignalerNotif = new ValidatedMethod({
@@ -395,15 +414,20 @@ Meteor.methods({
 });
 
 Meteor.publish('AllNotifications', function () {
-
   return Notifications.find();
 });
 
-Meteor.publish('Notifications', function (id) {
-  new SimpleSchema({
-      id: {type: String},
-    }).validate({id});
 
-  return Notifications.find({'to_id':id}, { sort: {date: -1 }, limit:30 });
+Meteor.publish('Notifications', function () {
+ const id = this.userId;
+  return Notifications.find({'to_id':id, 'type': { $ne: 'chat' }}, { sort: {date: -1 }, limit:30 });
 });
+
+
+Meteor.publish('NotifiMessageConnecte', function () {
+  // notification des messages privé quand l'utilisateur est connecté
+  const id = this.userId;
+  return Notifications.find({'to_id':id, 'type':'chat', 'read':false});
+});
+
 }

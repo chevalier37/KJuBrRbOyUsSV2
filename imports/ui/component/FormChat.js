@@ -153,17 +153,11 @@ class FormChat extends Component {
 	          : ''
           	}
 
-          	{
-      		!this.props.isOnline ?
 	          Meteor.call(
 	          'ChatNotif',
 	           message,
 	  	  	   to_id,
 	          )
-	        : ''
-          	}
-
-          	
 	}
 
   render() {

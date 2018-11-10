@@ -7,8 +7,14 @@ import { withTracker } from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 import { Route, Redirect } from 'react-router';
 import {Helmet} from "react-helmet";
+import PropTypes from 'prop-types';
+
+import { Notifications } from '../../api/Notifications.js';
 
 class HeaderPage extends Component {
+	static contextTypes = {
+      router: PropTypes.object // replace with PropTypes.object if you use them
+    }
 
 	constructor(props) {
 	    super(props);
@@ -58,11 +64,26 @@ class HeaderPage extends Component {
 	      IsConseiller:false,
 	      notifNonLu:"0",
 	      SuperModerateur:false,
+	      none:"visibleNotif"
 	    };
 	}
 
 	componentWillMount(){
 		let id = Meteor.userId();
+		let first = $(location).attr('pathname');
+	    first.indexOf(1);
+	    first.toLowerCase();
+	    let pathname = first.split("/")[1];
+
+	    if(pathname == "Chat"){
+          this.setState({
+          none: "none",
+        	});
+	    }else{
+          this.setState({
+          none: "visibleNotif",
+        });
+	    }
 
 		Meteor.apply('Username', [{
           id,
@@ -572,6 +593,11 @@ class HeaderPage extends Component {
 						<Link to={'/Chat/' + Meteor.userId() }>
 							 <Img className="iconHeader" src="/mail_blanc.png"/>
 						</Link>
+						<div className={this.state.none}>
+							<div className={this.props.NBRchatUnread > 0 ? "totalNotif" : "none"}>
+							    {this.props.NBRchatUnread}
+							</div>
+						</div>
 					</div>
 					<div className="ButtonHeader">
 						<Link to="/ConseillerConnecter" >
@@ -938,13 +964,12 @@ class HeaderPage extends Component {
 }
 
 export default HeaderPage =  withTracker(() => {
-  /*const userId = Meteor.userId()
-  const Handle = Meteor.subscribe('IsConseiller', userId);
+  const Handle = Meteor.subscribe('NotifiMessageConnecte');
   const loading = !Handle.ready();
-  const allreponses = Conseilleres.find({'user_id':userId});
-  const reponseExists = !loading && !!allreponses;*/
+  const allreponses = Notifications.find({'type':'chat', 'read':false}).count();
+  const reponseExists = !loading && !!allreponses;
 
   return {
-    /*user: reponseExists ? allreponses.count() : [],*/
+    NBRchatUnread: reponseExists ? allreponses : '',
   };
 })(HeaderPage);

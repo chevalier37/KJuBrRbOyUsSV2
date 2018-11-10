@@ -34,6 +34,7 @@ class MOBILEChat extends Component {
           open:false,
           mail:"",
           redirect:false,
+          visible:'',
         };
     }
 
@@ -93,6 +94,16 @@ class MOBILEChat extends Component {
                this.setState({bloquer: false})}
               },
         })
+
+      Meteor.apply('ReadAllChat', [{
+        }], {
+        onResultReceived: (error, response) => {
+          if (error) console.warn(error.reason);
+          /*{response ?
+           this.setState({notifNonLu: response}) :
+           ""}*/
+        },
+      });
     }
 
     renderAllChat() {

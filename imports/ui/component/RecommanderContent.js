@@ -103,19 +103,17 @@ class RecommanderContent extends Component {
           	}
 
          {
-          		!this.props.isOnline &&
-          		this.state.errorRating==false &&
-         		this.state.errorCommentaire==false  ?
+      		this.state.errorRating==false &&
+     		this.state.errorCommentaire==false  ?
 
-		          Meteor.call(
-		          'NotifRecommandation',
-		          	id,
-			  		presentation,
-			  		note,
-		          )  
+	          Meteor.call(
+	          'NotifRecommandation',
+	          	id,
+		  		presentation,
+		  		note,
+	          )  
 
-		          : ''
-
+	          : ''
         }
    
 		}
@@ -174,9 +172,9 @@ class RecommanderContent extends Component {
 }
 
 export default RecommanderContent =  withTracker(({id}) => {
-	const Handle = Meteor.subscribe('username', to_id);
+	const Handle = Meteor.subscribe('username', id);
   	const loading = !Handle.ready();
-  	const user = Meteor.users.findOne({'_id':to_id}, {
+  	const user = Meteor.users.findOne({'_id':id}, {
     fields: {
       'status.online':1,
     }

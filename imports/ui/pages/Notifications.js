@@ -53,14 +53,14 @@ class allNotifications extends Component {
 
     componentWillMount(){
       Meteor.apply('allRead', [{
-            }], {
-            onResultReceived: (error, response) => {
-              if (error) console.warn(error.reason);
-              /*{response ?
-               this.setState({notifNonLu: response}) :
-               ""}*/
-            },
-          });
+        }], {
+        onResultReceived: (error, response) => {
+          if (error) console.warn(error.reason);
+          /*{response ?
+           this.setState({notifNonLu: response}) :
+           ""}*/
+        },
+      });
 
       Meteor.apply('ModeNuit', [{}], {
           onResultReceived: (error, response) => {
@@ -195,11 +195,10 @@ class allNotifications extends Component {
 }
 
 export default allNotifications =  withTracker(() => {
-  const myId = Meteor.userId();
-  const Handle = Meteor.subscribe('Notifications', myId);
+  const Handle = Meteor.subscribe('Notifications');
   const loading = !Handle.ready();
-  const count = Notifications.find({'to_id':myId}).count();
-  const allreponses = Notifications.find({'to_id':myId}, { sort: {date: -1 }, limit:30 });
+  const count = Notifications.find().count();
+  const allreponses = Notifications.find({'type': { $ne: 'chat' }}, { sort: {date: -1 }, limit:30 });
   const reponseExists = !loading && !!allreponses;
   const countExists = !loading && !!count;
 

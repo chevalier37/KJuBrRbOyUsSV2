@@ -1936,6 +1936,11 @@ header {
     /* margin-top: -25px; */
     margin-left: -10px;
     z-index: 100;
+    position: relative;
+}
+
+.visibleNotif{
+	display: block;
 }
 
 .buttonMontant{
@@ -2302,6 +2307,7 @@ header {
 
 .SingeMessagView{
 	margin-top: 50px;
+	margin-right: 10px;
 }
 
 
@@ -2792,7 +2798,7 @@ header {
 }
 
 .pubHome{
-	
+	background-color: white;
 }
 
 .centerpub{
