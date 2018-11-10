@@ -280,8 +280,8 @@ class HeaderPage extends Component {
 
 	  	{ //on verifie qu'il n'y à pas d'erreur avant d'envoyer le formulaire
 
-			titre.length == 0 &&
-			message.length == 0 &&
+			titre.length !== 0 &&
+			message.length !== 0 &&
 			NBRcategorie > 0 &&
 			NBRcategorie < 3
 		
