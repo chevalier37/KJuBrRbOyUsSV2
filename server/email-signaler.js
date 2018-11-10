@@ -106,7 +106,7 @@ link:{
 const EmailSignalerTemplate = function(props) {
   return <Email title="Hello World!" headCSS={css}>
             <Box>
-              	<Item style={style.BackgroundTop}>
+              	<Item >
 		  			<h1>
 				  		Ton message a été signalé !
 			  		</h1>

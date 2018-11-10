@@ -209,14 +209,10 @@ class chat extends Component {
       
     render() {
     
-    const { visible } = this.state
-    const { nuit } = this.state
+    const { visible } = this.state;
+    const { nuit } = this.state;
     
-    if (!Meteor.loggingIn() && !Meteor.userId()){
-      return <Redirect to="/" />;
-    } 
-
-      const to_id = this.props.match.params.id;
+    const to_id = this.props.match.params.id;
        
       if(this.state.update==false && to_id != Meteor.userId()){
 

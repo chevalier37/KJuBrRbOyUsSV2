@@ -121,6 +121,12 @@ class FormChat extends Component {
             	}
           	})
 
+          	Meteor.apply('LastIdContact', [{to_id}], {
+            onResultReceived: (error, response) => {
+              if (error) console.warn(error.reason);
+              },
+       		})
+
           	Meteor.call(
           		'NOTwriting',
 		    	this.props.to_id,

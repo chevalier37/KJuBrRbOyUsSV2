@@ -106,7 +106,7 @@ link:{
 const EmailPasswordProvisoireTemplate = function(props) {
   return <Email title="Hello World!" headCSS={css}>
             <Box>
-              	<Item style={style.BackgroundTop}>
+              	<Item >
 		  			<h1>
 				  		Voici ton mot de passe provisoire pour te connecter :
 			  		</h1>

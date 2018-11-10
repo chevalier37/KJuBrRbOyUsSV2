@@ -8,9 +8,62 @@ export const ContactChat = new Mongo.Collection('contact_Chat');
 
 if (Meteor.isServer) {
 
-Meteor.startup(function () {  
-  ContactChat._ensureIndex({ "from_id": 1, "to_id":1});
+export const LastIdContact = new ValidatedMethod({
+  //on met a jour le dernier contact id
+  name: 'LastIdContact',
+  validate: new SimpleSchema({
+  to_id: { type: String },
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({to_id}) {
+
+    Meteor.users.update({_id:this.userId}, {
+        $set: { "LastIdContact": to_id},
+        })
+  }
+
 });
+/*DDPRateLimiter.addRule({
+    type: "method",
+    name: "MyConseiller",
+}, requestLimit, requestTimeout);*/
+
+
+export const LastContact = new ValidatedMethod({
+  //on met a jour le dernier contact id
+  name: 'LastContact',
+  validate: new SimpleSchema({
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({}) {
+      const MyId = this.userId;
+      const search = Meteor.users.findOne({'_id':this.userId}, {
+            fields: {
+              'LastIdContact':1,
+            }
+          })
+     
+      const LastId = search.LastIdContact;
+      if(LastId){
+        return LastId
+      }else{
+        return MyId
+      }
+  }
+
+});
+/*DDPRateLimiter.addRule({
+    type: "method",
+    name: "MyConseiller",
+}, requestLimit, requestTimeout);*/
 
 Meteor.methods({
 
@@ -53,14 +106,11 @@ Meteor.methods({
 
 
 Meteor.publish('AllContactChat', function () {
-
   return ContactChat.find();
 });
 
-Meteor.publish('ContactChat', function (id) {
-  new SimpleSchema({
-      id: {type: String},
-    }).validate({id});
+Meteor.publish('ContactChat', function () {
+  const id = this.userId;
   return ContactChat.find({$or : [{from_id: id}, {to_id:id}]});
 });
 }

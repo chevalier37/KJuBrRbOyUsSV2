@@ -106,7 +106,7 @@ link:{
 const EmailRecommandationTemplate = function(props) {
   return <Email title="Hello World!" headCSS={css}>
             <Box>
-              	<Item style={style.BackgroundTop}>
+              	<Item >
 		  			<h1>
 				  		Vous avez un reçu une nouvelle recommandation de {props.name} 
 			  		</h1>

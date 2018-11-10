@@ -64,7 +64,8 @@ class HeaderPage extends Component {
 	      IsConseiller:false,
 	      notifNonLu:"0",
 	      SuperModerateur:false,
-	      none:"visibleNotif"
+	      none:"visibleNotif",
+	      LastContactId:""
 	    };
 	}
 
@@ -95,6 +96,15 @@ class HeaderPage extends Component {
              ""}
           },
       	});
+
+      	Meteor.apply('LastContact', [{
+            }], {
+            onResultReceived: (error, response) => {
+              if (error) console.warn(error.reason);
+                {response ?  
+               this.setState({LastContactId: response}) : ""}
+              },
+        })
 
       	Meteor.apply('notifNonLu', [{
           }], {
@@ -548,6 +558,7 @@ class HeaderPage extends Component {
   		const { username } = this.state
   		const { redirectBloquer } = this.state
   		const { notifNonLu } = this.state
+  		const { LastContactId } = this.state
   		const totalNotif = this.state.notifNonLu
   		const NotifHead = totalNotif.toString();
   		
@@ -590,7 +601,7 @@ class HeaderPage extends Component {
 						</div>
 					</div>
 					<div className="ButtonHeader">
-						<Link to={'/Chat/' + Meteor.userId() }>
+						<Link to={'/Chat/' + LastContactId }>
 							 <Img className="iconHeader" src="/mail_blanc.png"/>
 						</Link>
 						<div className={this.state.none}>

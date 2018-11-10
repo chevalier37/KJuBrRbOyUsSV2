@@ -65,10 +65,9 @@ class contactChat extends Component {
   };
 
 export default contactChat =  withTracker(() => {
-  const from_id = Meteor.userId();
-  const Handle = Meteor.subscribe('ContactChat', from_id);
+  const Handle = Meteor.subscribe('ContactChat');
   const loading = !Handle.ready();
-  const allreponses = ContactChat.find({$or : [{from_id: from_id}, {to_id:from_id}]}, { sort: { date: -1 } });
+  const allreponses = ContactChat.find({}, { sort: { date: -1 } });
   const reponseExists = !loading && !!allreponses;
 
   return {

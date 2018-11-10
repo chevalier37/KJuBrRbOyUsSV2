@@ -90,7 +90,7 @@ Meteor.methods({
 
 
       updateContactOnline: function(to_id) {
-            console.log(to_id)
+            
             Chat.update({'to_id':this.userId, 'from_id':to_id},{$set: {read:true}}, {multi: true})
             
   
