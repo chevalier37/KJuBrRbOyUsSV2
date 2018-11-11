@@ -134,7 +134,8 @@ class Notifications extends Component {
     }
 
     render() {
-      const { visible } = this.state
+      const { visible } = this.state;
+      let nuit = this.props.nuit;
       
       if (!Meteor.loggingIn() && !Meteor.userId()){
         return <Redirect to="/" />;
@@ -143,9 +144,9 @@ class Notifications extends Component {
       return (
           <div className="MainContentProfil">
              <div className="ecran">
-                <Header>
+               <div className={ nuit ? "headerNuit" : "headerJour"}>
                 Notifications
-                </Header>
+               </div>
                 <Divider />
             </div>
             <div className="ListeMesMessages">
@@ -160,55 +161,55 @@ class Notifications extends Component {
                           checked={this.state.MessagePrive}
                           toggle
                           onClick={this.MessagePrive.bind(this)} 
-                          />
+                          /> <div className={ nuit ? "checkNuit" : "none"}>Je reçois un message privé</div>
                         </Form.Field>
                         <Form.Field>
                           <Checkbox
-                           label='Je reçois un conseil'
+                           label={ nuit ? '' : "Je reçois un conseil"}
                            toggle
                            onClick={this.RecoitConseil.bind(this)}
                            checked={this.state.RecoitConseil} 
-                           />
+                           /><div className={ nuit ? "checkNuit" : "none"}>Je reçois un conseil</div>
                         </Form.Field>
                         <Form.Field>
                           <Checkbox
-                           label='Je dois laisser une recommandation à un conseiller'
+                           label={ nuit ? '' : 'Je dois laisser une recommandation à un conseiller'}
                            toggle
                            onClick={this.LaisserRecommandation.bind(this)}
                            checked={this.state.LaisserRecommandation} 
-                           />
+                           /><div className={ nuit ? "checkNuit" : "none"}>Je dois laisser une recommandation à un conseiller</div>
                         </Form.Field>
                         <Form.Field>
                           <Checkbox
-                            label='Je reçois une recommandation'
+                            label={ nuit ? '' : 'Je reçois une recommandation'}
                             toggle
                             onClick={this.recommandation.bind(this)}
                             checked={this.state.recommandation} 
-                          />
+                          /><div className={ nuit ? "checkNuit" : "none"}>Je reçois une recommandation</div>
                         </Form.Field>
                         <Form.Field>
                           <Checkbox
-                           label='Mon message a été signalé'
+                           label={ nuit ? '' : 'Mon message a été signalé'}
                            toggle
                            onClick={this.messageSignalé.bind(this)}
                            checked={this.state.messageSignalé} 
-                           />
+                           /><div className={ nuit ? "checkNuit" : "none"}>Mon message a été signalé</div>
                         </Form.Field>
                         <Form.Field>
                           <Checkbox
-                           label='Quand on vote pour mes conseils (pouce vert)'
+                           label={ nuit ? '' : 'Quand on vote pour mes conseils (pouce vert)'}
                            toggle
                            onClick={this.voteUp.bind(this)}
                            checked={this.state.voteUp} 
-                           />
+                           /><div className={ nuit ? "checkNuit" : "none"}>Quand on vote pour mes conseils (pouce vert)</div>
                         </Form.Field>
                         <Form.Field>
                           <Checkbox
-                           label='Je peux devenir conseiller'
+                           label={ nuit ? '' : 'Je peux devenir conseiller'}
                            toggle
                            onClick={this.conseiller.bind(this)}
                            checked={this.state.conseiller} 
-                          />
+                          /><div className={ nuit ? "checkNuit" : "none"}>Je peux devenir conseiller</div>
                         </Form.Field>
 
                         <Button color='green' type='submit'>Valider</Button>

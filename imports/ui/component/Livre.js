@@ -14,6 +14,8 @@ import HeaderPage from '../component/HeaderPage.js';
 class Livre extends Component {
 
     render() {
+    let nuit = this.props.nuit;
+
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }  
@@ -21,13 +23,14 @@ class Livre extends Component {
     return (
       <div className="container">
         <div className="MainContentProfil">
-          <Header>
+          <div className={ nuit ? "headerNuit" : "headerJour"}>
             <div className="center">
               Le Secret de Cendrillon
             </div>
-          </Header>
+          </div>
           <Divider />
           <div className="ListeMesMessages">
+          <div className={ nuit ? "CGUNuit" : "ListeMessages"}>
             <div className="register blanc">
                 <div className="numero">
                   <div className="blocLivre">
@@ -173,6 +176,7 @@ class Livre extends Component {
                         <br /><br /><br /><br /><br /><br />
                       </div><br />
                       </div>
+               </div>
                </div>
             </div>
           </div>

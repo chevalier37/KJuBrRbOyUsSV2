@@ -35,6 +35,7 @@ class MOBILEChat extends Component {
           mail:"",
           redirect:false,
           visible:'',
+          nuit:false,
         };
     }
 
@@ -69,6 +70,14 @@ class MOBILEChat extends Component {
 
     componentDidMount() {
         this.el.scrollIntoView();
+        Meteor.apply('ModeNuit', [{}], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            {response ?
+             this.setState({nuit: response}) :
+             ""}
+          },
+        });
     }
 
     componentWillMount(){
@@ -108,7 +117,8 @@ class MOBILEChat extends Component {
 
     renderAllChat() {
           let AllChat = this.props.allChat;
-          let name = this.props.username
+          let name = this.props.username;
+          let nuit = this.state.nuit;
           return AllChat.map((message) => {
            let date = Date.parse(message.post_date);
             return (
@@ -117,6 +127,7 @@ class MOBILEChat extends Component {
                 message={message}
                 date={date}
                 to_id = {this.props.match.params.id} 
+                nuit={nuit}
               />
             );
           });
@@ -198,9 +209,10 @@ class MOBILEChat extends Component {
       
     render() {
     
-    const { visible } = this.state
-    const { redirect } = this.state
-    
+    const { visible } = this.state;
+    const { redirect } = this.state;
+    const { nuit } = this.state;
+
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     } 
@@ -267,7 +279,7 @@ class MOBILEChat extends Component {
           <div className="containerChat">
             <div className="containerDiscussion">
               <div className="MainContentChat">
-                <div className="headerChat">
+                 <div className={ nuit ? "headerChatNuit" : "headerChat"}>
                   <div className={"ChatUsername" + " " + this.state.gender}>
                       <Link to={'/VisiteProfil/' + this.props.match.params.id}>
                       {this.state.username}
@@ -322,9 +334,9 @@ class MOBILEChat extends Component {
                       </div>
                   </div>
                 </div>
-                <div className="ContentDiscussion">
+                <div className={ this.state.nuit ? "ContentDiscussionNuit" : "ContentDiscussion"}>
                    {this.renderAllChat()}
-                  <FormChat to_id = {this.props.match.params.id} username={this.state.username} gender={this.state.gender} />
+                  <FormChat to_id = {this.props.match.params.id} username={this.state.username} gender={this.state.gender} nuit={nuit}/>
                 </div>
               </div>
             </div>

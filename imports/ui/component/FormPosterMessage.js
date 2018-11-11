@@ -182,8 +182,8 @@ class FormPosterMessage extends Component {
 
 		
 			if (
-					titre.length == 0 &&
-					message.length == 0 &&
+					titre.length !== 0 &&
+					message.length !== 0 &&
 					NBRcategorie > 0 &&
 					NBRcategorie < 3
 				)

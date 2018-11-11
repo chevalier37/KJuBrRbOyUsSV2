@@ -20,22 +20,27 @@ import HeaderMobile from '../component/HeaderMobile.js';
 
 class PosterMessage extends Component {
 
-    state = { visible: false }
+    state = { visible: false, nuit:false, }
 
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
 
     handleSidebarHide = () => this.setState({ visible: false })
 
     componentDidMount() {
-        this.scrollToTop();
-    }
-
-     scrollToTop() {
         this.el.scrollIntoView();
+        Meteor.apply('ModeNuit', [{}], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            {response ?
+             this.setState({nuit: response}) :
+             ""}
+          },
+        });
     }
 
     render() {
-    const { visible } = this.state
+    const { visible } = this.state;
+    const { nuit } = this.state;
     /*if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
@@ -47,7 +52,7 @@ class PosterMessage extends Component {
     }*/
     
     return (
-      <div className="container">
+      <div className={ this.state.nuit ? "containerNuit" : "container"}>
         <header> 
           {/* Header site*/}
           <div className="containerHeader ecran">
@@ -83,7 +88,7 @@ class PosterMessage extends Component {
             </Sidebar>
 
             <Sidebar.Pusher>
-                <FormPosterMessage />
+                <FormPosterMessage nuit={nuit}/>
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>

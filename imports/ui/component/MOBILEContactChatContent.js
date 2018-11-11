@@ -73,7 +73,7 @@ class MOBILEContactChatContent extends Component {
   render() {
     const { contextRef } = this.state
 	    return (
-				<div className={"AffficheContact" + " "+this.state.message}  >
+				<div className={this.props.nuit ? "AffficheContactNuit" + " "+this.state.message : "AffficheContact" + " "+this.state.message}  >
 					
 						<div className={this.props.currentContact + " " + this.props.read} >
 						<Link to={'/MOBILEChat/' + this.state.toId}>	

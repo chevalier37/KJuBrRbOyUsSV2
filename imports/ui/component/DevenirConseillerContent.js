@@ -986,22 +986,25 @@ export default class DevenirConseillerContent extends Component {
 
 		return (
 			<div className="MainContent">
-				<div className={!this.state.verifConseiller ? 'segmentMargin' : 'none'}>
-					<Segment className={ nuit ? "SegmentNuit" : ""}>
-						<Header className={ nuit ? "SegmentNuit" : ""}>
-							Devenir conseiller
-						</Header>
-					<Divider />
-					<div className="expliqConseiller">
-							Tu ne peux pas encore devenir conseiller.<br /><br />
-							Pour devenir conseiller il faut : <br />
-							- Aider au moins 50 personnes <br />
-							- Avoir un taux de vote positif supérieur à 85% <br /><br />
 
-							Tu peux également <strong>devenir modérateur </strong>en rejoignant l'association Kurbys.<br />
-							Pour t'inscrire, il te suffit d'aller sur ton profil puis dans la rubrique "devenir modérateur"
+				<div className={!this.state.verifConseiller ? 'segmentMargin' : 'none'}>
+					<div className={ nuit ? "ListeMessagesNuit" : "ListeMessages"}>
+						<Segment className={ nuit ? "SegmentNuit" : ""}>
+							<Header className={ nuit ? "SegmentNuit" : ""}>
+								Devenir conseiller
+							</Header>
+						<Divider />
+						<div className="expliqConseiller">
+								Tu ne peux pas encore devenir conseiller.<br /><br />
+								Pour devenir conseiller il faut : <br />
+								- Aider au moins 50 personnes <br />
+								- Avoir un taux de vote positif supérieur à 85% <br /><br />
+
+								Tu peux également <strong>devenir modérateur </strong>en rejoignant l'association Kurbys.<br />
+								Pour t'inscrire, il te suffit d'aller sur ton profil puis dans la rubrique "devenir modérateur"
+						</div>
+						</Segment>
 					</div>
-					</Segment>
 				</div>
 				<div className={!this.state.verifConseiller ? 'none' : ''}>
 				<Segment className={ nuit ? "SegmentNuit" : ""}>

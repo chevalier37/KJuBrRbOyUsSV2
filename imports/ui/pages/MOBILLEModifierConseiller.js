@@ -21,23 +21,33 @@ import ModifierConseillerContent from '../component/ModifierConseillerContent.js
 
 class MOBILLEModifierConseiller extends Component {
 
-    state = { visible: false }
+    state = { visible: false, nuit:false, }
 
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
     handleSidebarHide = () => this.setState({ visible: false })
 
     componentDidMount() {
         this.el.scrollIntoView();
+        Meteor.apply('ModeNuit', [{}], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            {response ?
+             this.setState({nuit: response}) :
+             ""}
+          },
+        });
     }   
 
     render() {
     const { visible } = this.state
+    const { nuit } = this.state
+    
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }  
 
     return (
-      <div className="container">
+      <div className={ this.state.nuit ? "containerNuit" : "container"}>
       <div ref={el => { this.el = el; }} ></div>
         <header> 
           {/* Header site*/}
@@ -74,7 +84,7 @@ class MOBILLEModifierConseiller extends Component {
 
             <Sidebar.Pusher>
               <div className="containerSite" onClick={this.toggleHidden}>              
-                    <ModifierConseillerContent /> 
+                    <ModifierConseillerContent nuit={nuit}/> 
                 </div>
             </Sidebar.Pusher>
           </Sidebar.Pushable>

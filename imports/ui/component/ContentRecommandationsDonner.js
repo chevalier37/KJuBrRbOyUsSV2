@@ -53,6 +53,7 @@ class RecommandationsDonné extends Component {
 
     renderAllreponses() {
           let Allreponses = this.props.allreponses;
+          let nuit = this.props.nuit;
           return Allreponses.map((message) => {
            let date = Date.parse(message.date);
              
@@ -60,14 +61,16 @@ class RecommandationsDonné extends Component {
               <ListeRecommandationsDonner
                 key={message._id}
                 message={message}
-                date={date}         
+                date={date}
+                nuit={nuit}           
               />
             );
           });
     }
 
     render() {
-      const { visible } = this.state  
+      const { visible } = this.state;
+      let nuit = this.props.nuit;  
 
       if (!Meteor.loggingIn() && !Meteor.userId()){
         return <Redirect to="/" />;
@@ -75,9 +78,9 @@ class RecommandationsDonné extends Component {
       
       return (
         <div className="MainContentProfil">
-            <Header>
+            <div className={ nuit ? "headerNuit" : "headerJour"}>
               Mes recommandations données
-            </Header>
+            </div>
             <Divider />
             <div className="ListeMesMessages">
               {this.renderAllreponses()}

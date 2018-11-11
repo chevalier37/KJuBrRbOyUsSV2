@@ -36,13 +36,32 @@ import Contentvideos from '../component/Contentvideos.js';
 import LastRecommandations from '../component/LastRecommandations.js';
 import LastConseillers from '../component/LastConseillers.js';
 
-
-
-
 class Profil extends Component {
 
-    state = { visible: false,
-    nuit:false, }
+      constructor(props) {
+        super(props);
+     
+        this.state = {
+          visible: false,
+          nuit:false,
+          visibleProfile:true,
+          visibleMessage:false,
+          visibleConseil:false,
+          visiblerecu:false,
+          visibledonne:false,
+          visiblenotif:false,
+          visiblemoderateur:false,
+          visiblenumeros:false,
+          visibleSignaler:false,
+          visiblePassword:false,
+          visibleLivre:false,
+          visibleCommandement:false,
+          visibleCGU:false,
+          visiblecontact:false,
+          visibleSuprimer:false,
+          visibleLogout:false,
+        };
+      }
 
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
     handleSidebarHide = () => this.setState({ visible: false })
@@ -74,30 +93,345 @@ class Profil extends Component {
       });
     }
 
+    profil() {
+       this.setState({
+          visibleProfile:true,
+          visibleMessage:false,
+          visibleConseil:false,
+          visiblerecu:false,
+          visibledonne:false,
+          visiblenotif:false,
+          visiblemoderateur:false,
+          visiblenumeros:false,
+          visibleSignaler:false,
+          visiblePassword:false,
+          visibleLivre:false,
+          visibleCommandement:false,
+          visibleCGU:false,
+          visiblecontact:false,
+          visibleSuprimer:false,
+          visibleLogout:false,
+      });
+    }
+
+    message() {
+       this.setState({
+          visibleProfile:false,
+          visibleMessage:true,
+          visibleConseil:false,
+          visiblerecu:false,
+          visibledonne:false,
+          visiblenotif:false,
+          visiblemoderateur:false,
+          visiblenumeros:false,
+          visibleSignaler:false,
+          visiblePassword:false,
+          visibleLivre:false,
+          visibleCommandement:false,
+          visibleCGU:false,
+          visiblecontact:false,
+          visibleSuprimer:false,
+          visibleLogout:false,
+      });
+    }
+
+    conseil() {
+       this.setState({
+          visibleProfile:false,
+          visibleMessage:false,
+          visibleConseil:true,
+          visiblerecu:false,
+          visibledonne:false,
+          visiblenotif:false,
+          visiblemoderateur:false,
+          visiblenumeros:false,
+          visibleSignaler:false,
+          visiblePassword:false,
+          visibleLivre:false,
+          visibleCommandement:false,
+          visibleCGU:false,
+          visiblecontact:false,
+          visibleSuprimer:false,
+          visibleLogout:false,
+      });
+    }
+
+    recu() {
+       this.setState({
+          visibleProfile:false,
+          visibleMessage:false,
+          visibleConseil:false,
+          visiblerecu:true,
+          visibledonne:false,
+          visiblenotif:false,
+          visiblemoderateur:false,
+          visiblenumeros:false,
+          visibleSignaler:false,
+          visiblePassword:false,
+          visibleLivre:false,
+          visibleCommandement:false,
+          visibleCGU:false,
+          visiblecontact:false,
+          visibleSuprimer:false,
+          visibleLogout:false,
+      });
+    }
+
+    donnes() {
+       this.setState({
+          visibleProfile:false,
+          visibleMessage:false,
+          visibleConseil:false,
+          visiblerecu:false,
+          visibledonne:true,
+          visiblenotif:false,
+          visiblemoderateur:false,
+          visiblenumeros:false,
+          visibleSignaler:false,
+          visiblePassword:false,
+          visibleLivre:false,
+          visibleCommandement:false,
+          visibleCGU:false,
+          visiblecontact:false,
+          visibleSuprimer:false,
+          visibleLogout:false,
+      });
+    }
+
+    notifications() {
+       this.setState({
+          visibleProfile:false,
+          visibleMessage:false,
+          visibleConseil:false,
+          visiblerecu:false,
+          visibledonne:false,
+          visiblenotif:true,
+          visiblemoderateur:false,
+          visiblenumeros:false,
+          visibleSignaler:false,
+          visiblePassword:false,
+          visibleLivre:false,
+          visibleCommandement:false,
+          visibleCGU:false,
+          visiblecontact:false,
+          visibleSuprimer:false,
+          visibleLogout:false,
+      });
+    }
+
+    moderateur() {
+       this.setState({
+          visibleProfile:false,
+          visibleMessage:false,
+          visibleConseil:false,
+          visiblerecu:false,
+          visibledonne:false,
+          visiblenotif:false,
+          visiblemoderateur:true,
+          visiblenumeros:false,
+          visibleSignaler:false,
+          visiblePassword:false,
+          visibleLivre:false,
+          visibleCommandement:false,
+          visibleCGU:false,
+          visiblecontact:false,
+          visibleSuprimer:false,
+          visibleLogout:false,
+      });
+    }
+
+    numeros() {
+       this.setState({
+          visibleProfile:false,
+          visibleMessage:false,
+          visibleConseil:false,
+          visiblerecu:false,
+          visibledonne:false,
+          visiblenotif:false,
+          visiblemoderateur:false,
+          visiblenumeros:true,
+          visibleSignaler:false,
+          visiblePassword:false,
+          visibleLivre:false,
+          visibleCommandement:false,
+          visibleCGU:false,
+          visiblecontact:false,
+          visibleSuprimer:false,
+          visibleLogout:false,
+      });
+    }
+
+    signaler() {
+       this.setState({
+          visibleProfile:false,
+          visibleMessage:false,
+          visibleConseil:false,
+          visiblerecu:false,
+          visibledonne:false,
+          visiblenotif:false,
+          visiblemoderateur:false,
+          visiblenumeros:false,
+          visibleSignaler:true,
+          visiblePassword:false,
+          visibleLivre:false,
+          visibleCommandement:false,
+          visibleCGU:false,
+          visiblecontact:false,
+          visibleSuprimer:false,
+          visibleLogout:false,
+      });
+    }
+
+    password() {
+       this.setState({
+          visibleProfile:false,
+          visibleMessage:false,
+          visibleConseil:false,
+          visiblerecu:false,
+          visibledonne:false,
+          visiblenotif:false,
+          visiblemoderateur:false,
+          visiblenumeros:false,
+          visibleSignaler:false,
+          visiblePassword:true,
+          visibleLivre:false,
+          visibleCommandement:false,
+          visibleCGU:false,
+          visiblecontact:false,
+          visibleSuprimer:false,
+          visibleLogout:false,
+      });
+    }
+
+    livre() {
+       this.setState({
+          visibleProfile:false,
+          visibleMessage:false,
+          visibleConseil:false,
+          visiblerecu:false,
+          visibledonne:false,
+          visiblenotif:false,
+          visiblemoderateur:false,
+          visiblenumeros:false,
+          visibleSignaler:false,
+          visiblePassword:false,
+          visibleLivre:true,
+          visibleCommandement:false,
+          visibleCGU:false,
+          visiblecontact:false,
+          visibleSuprimer:false,
+          visibleLogout:false,
+      });
+    }
+
+    commandements() {
+       this.setState({
+          visibleProfile:false,
+          visibleMessage:false,
+          visibleConseil:false,
+          visiblerecu:false,
+          visibledonne:false,
+          visiblenotif:false,
+          visiblemoderateur:false,
+          visiblenumeros:false,
+          visibleSignaler:false,
+          visiblePassword:false,
+          visibleLivre:false,
+          visibleCommandement:true,
+          visibleCGU:false,
+          visiblecontact:false,
+          visibleSuprimer:false,
+          visibleLogout:false,
+      });
+    }
+
+    CGU() {
+       this.setState({
+          visibleProfile:false,
+          visibleMessage:false,
+          visibleConseil:false,
+          visiblerecu:false,
+          visibledonne:false,
+          visiblenotif:false,
+          visiblemoderateur:false,
+          visiblenumeros:false,
+          visibleSignaler:false,
+          visiblePassword:false,
+          visibleLivre:false,
+          visibleCommandement:false,
+          visibleCGU:true,
+          visiblecontact:false,
+          visibleSuprimer:false,
+          visibleLogout:false,
+      });
+    }
+
+    contact() {
+       this.setState({
+          visibleProfile:false,
+          visibleMessage:false,
+          visibleConseil:false,
+          visiblerecu:false,
+          visibledonne:false,
+          visiblenotif:false,
+          visiblemoderateur:false,
+          visiblenumeros:false,
+          visibleSignaler:false,
+          visiblePassword:false,
+          visibleLivre:false,
+          visibleCommandement:false,
+          visibleCGU:false,
+          visiblecontact:true,
+          visibleSuprimer:false,
+          visibleLogout:false,
+      });
+    }
+
+    supprimer() {
+       this.setState({
+          visibleProfile:false,
+          visibleMessage:false,
+          visibleConseil:false,
+          visiblerecu:false,
+          visibledonne:false,
+          visiblenotif:false,
+          visiblemoderateur:false,
+          visiblenumeros:false,
+          visibleSignaler:false,
+          visiblePassword:false,
+          visibleLivre:false,
+          visibleCommandement:false,
+          visibleCGU:false,
+          visiblecontact:false,
+          visibleSuprimer:true,
+          visibleLogout:false,
+      });
+    }
+
+    logout() {
+       this.setState({
+          visibleProfile:false,
+          visibleMessage:false,
+          visibleConseil:false,
+          visiblerecu:false,
+          visibledonne:false,
+          visiblenotif:false,
+          visiblemoderateur:false,
+          visiblenumeros:false,
+          visibleSignaler:false,
+          visiblePassword:false,
+          visibleLivre:false,
+          visibleCommandement:false,
+          visibleCGU:false,
+          visiblecontact:false,
+          visibleSuprimer:false,
+          visibleLogout:true,
+      });
+    }
+
     render() {
     const { visible } = this.state
     const { nuit } = this.state
-
-    const panes = [
-      { menuItem: 'Profil', render: () => <Tab.Pane className={ nuit ? "ListeMessagesNuit" + " " +"ecran" : "ecran" }><ProfilContent nuit={nuit}/></Tab.Pane> },
-      { menuItem: 'Messages postés', render: () => <Tab.Pane><ContentMessagePostes  />  </Tab.Pane> },
-      { menuItem: 'Mes conseils', render: () => <Tab.Pane><ContentSuiviConseil  />  </Tab.Pane> },
-      { menuItem: 'Recommandations reçues', render: () => <Tab.Pane><ContentRecommandations  /></Tab.Pane> },
-      { menuItem: 'Recommandations données', render: () => <Tab.Pane><ContentRecommandationsDonner  /></Tab.Pane> },
-      { menuItem: 'Notifications', render: () => <Tab.Pane><Notifications  /></Tab.Pane> },
-      { menuItem: 'Devenir modérateur', render: () => <Tab.Pane><DevenirModerateur  /></Tab.Pane> },
-      { menuItem: 'Numéros utiles', render: () => <Tab.Pane><NumerosUtiles  /></Tab.Pane> },
-      { menuItem: 'Signaler bug', render: () => <Tab.Pane><SignalerBug  /></Tab.Pane> },
-      { menuItem: 'Mot de passe', render: () => <Tab.Pane><PasswordProfil  /></Tab.Pane> },
-      { menuItem: 'Le secret de Cendrillon', render: () => <Tab.Pane><Livre  /></Tab.Pane> },
-      { menuItem: '5 Commandements', render: () => <Tab.Pane><Commandements  /></Tab.Pane> },
-      { menuItem: 'C.G.U', render: () => <Tab.Pane><CGUProfil  /></Tab.Pane> },
-      { menuItem: 'Nous contacter', render: () => <Tab.Pane><NousContacter  /></Tab.Pane> },
-      { menuItem: 'Supprimer compte', render: () => <Tab.Pane><SupprimerCompte  /></Tab.Pane> },
-      { menuItem: 'Déconnexion', render: () => <Tab.Pane ><Deconnexion  /></Tab.Pane> },
-
-    ]
-
 
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
@@ -147,11 +481,144 @@ class Profil extends Component {
             <LastRecommandations nuit={nuit}/>
               <div className="containerSite" onClick={this.toggleHidden}>
                   <div className="MainContent">
-                  <Tab
-                   menu={{ fluid: true, vertical: true, tabular: true }}
-                   panes={panes}
-                   className="ecran profilresponsive"
-                    />             
+
+                      {/*TAB*/}
+                    <div className="contentTAB">
+                      <div className={ nuit ? "menuProfilNuit" : "menuProfil"}>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.profil.bind(this)}>
+                            Profil
+                          </div>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.message.bind(this)}>
+                            Messages postés
+                          </div>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.conseil.bind(this)}>
+                            Mes conseils
+                          </div>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.recu.bind(this)}>
+                            Recom. reçues
+                          </div>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.donnes.bind(this)}>
+                            Recom. données
+                          </div>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.notifications.bind(this)}>
+                            Notifications
+                          </div>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.moderateur.bind(this)}>
+                            Devenir modérateur
+                          </div>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.numeros.bind(this)}>
+                            Numéros utiles
+                          </div>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.signaler.bind(this)}>
+                            Signaler bug
+                          </div>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.password.bind(this)}>
+                            Mot de passe
+                          </div>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.livre.bind(this)}>
+                            Le secret de Cendrillon
+                          </div>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.commandements.bind(this)}>
+                            5 Commandements
+                          </div>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.CGU.bind(this)}>
+                            C.G.U
+                          </div>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.contact.bind(this)}>
+                            Nous contacter
+                          </div>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.supprimer.bind(this)}>
+                            Supprimer compte
+                          </div>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.logout.bind(this)}>
+                            Déconnexion
+                          </div>
+                        </div>
+                      </div>
+
+                     {/*CONTENT*/}
+                      <div className={ nuit ? "contentProfilNuit" : "contentProfil"}>
+                        <div className={this.state.visibleProfile ? "show" : "none"}>
+                            <div className="ecran">
+                                <ProfilContent nuit={nuit}/>
+                            </div>
+                        </div>
+                        <div className={this.state.visibleMessage ? "show" : "none"}>
+                            <div className="ecran">
+                                <ContentMessagePostes nuit={nuit}/>
+                            </div>
+                        </div>
+                        <div className={this.state.visibleConseil ? "show" : "none"}>
+                            <div className="ecran">
+                                <ContentSuiviConseil nuit={nuit}/>
+                            </div>
+                        </div>
+                        <div className={this.state.visiblerecu ? "show" : "none"}>
+                            <div className="ecran">
+                                <ContentRecommandations nuit={nuit}/>
+                            </div>
+                        </div>
+                        <div className={this.state.visibledonne ? "show" : "none"}>
+                            <div className="ecran">
+                                <ContentRecommandationsDonner nuit={nuit}/>
+                            </div>
+                        </div>
+                        <div className={this.state.visiblenotif ? "show" : "none"}>
+                            <div className="ecran">
+                                <Notifications nuit={nuit}/>
+                            </div>
+                        </div>
+                        <div className={this.state.visiblemoderateur ? "show" : "none"}>
+                            <div className="ecran">
+                                <DevenirModerateur nuit={nuit}/>
+                            </div>
+                        </div>
+                        <div className={this.state.visiblenumeros ? "show" : "none"}>
+                            <div className="ecran">
+                                <NumerosUtiles nuit={nuit}/>
+                            </div>
+                        </div>
+                        <div className={this.state.visibleSignaler ? "show" : "none"}>
+                            <div className="ecran">
+                                <SignalerBug nuit={nuit}/>
+                            </div>
+                        </div>
+                        <div className={this.state.visiblePassword ? "show" : "none"}>
+                            <div className="ecran">
+                                <PasswordProfil nuit={nuit}/>
+                            </div>
+                        </div>
+                        <div className={this.state.visibleLivre ? "show" : "none"}>
+                            <div className="ecran">
+                                <Livre nuit={nuit}/>
+                            </div>
+                        </div>
+                        <div className={this.state.visibleCommandement ? "show" : "none"}>
+                            <div className="ecran">
+                                <Commandements nuit={nuit}/>
+                            </div>
+                        </div>
+                        <div className={this.state.visibleCGU ? "show" : "none"}>
+                            <div className="ecran">
+                                <CGUProfil nuit={nuit}/>
+                            </div>
+                        </div>
+                        <div className={this.state.visiblecontact ? "show" : "none"}>
+                            <div className="ecran">
+                                <NousContacter nuit={nuit}/>
+                            </div>
+                        </div>
+                        <div className={this.state.visibleSuprimer ? "show" : "none"}>
+                            <div className="ecran">
+                                <SupprimerCompte nuit={nuit}/>
+                            </div>
+                        </div>
+                        <div className={this.state.visibleLogout ? "show" : "none"}>
+                            <div className="ecran">
+                                <Deconnexion nuit={nuit}/>
+                            </div>
+                        </div>
+                      </div>  
                   </div> 
               </div> 
               <LastConseillers nuit={nuit}/> 

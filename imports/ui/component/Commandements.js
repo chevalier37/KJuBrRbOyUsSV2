@@ -15,7 +15,9 @@ class Commandements extends Component {
 
 
     render() {
-    const { visible } = this.state
+    const { visible } = this.state;
+    let nuit = this.props.nuit;
+    
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }  
@@ -23,11 +25,12 @@ class Commandements extends Component {
     return (
       
         <div className="MainContentProfil">
-          <Header>
+          <div className={ nuit ? "headerNuit" : "headerJour"}>
           Les 5 commandements de Kurbys
-          </Header>
+          </div>
           <Divider />
           <div className="ListeMesMessages">
+          <div className={ nuit ? "CGUNuit" : "ListeMessages"}>
             <div className="register blanc">
                 <div className="numero">
            
@@ -50,8 +53,8 @@ class Commandements extends Component {
                   <div className="RegleCommandements">Les utilisateurs qui ne respectent pas ces commandements seront bannis de kurbys.</div><br />
 
                 </div>
-
-                </div>
+              </div>
+             </div>
             </div>
           </div>
      );

@@ -551,16 +551,17 @@ class HeaderPage extends Component {
   
   	render() {
 
-  		const { visible } = this.state
-  		const { categorie } = this.state
-  		const { placeholderTitre } = this.state
-  		const { placeholderMessage } = this.state
-  		const { username } = this.state
-  		const { redirectBloquer } = this.state
-  		const { notifNonLu } = this.state
-  		const { LastContactId } = this.state
-  		const totalNotif = this.state.notifNonLu
+  		const { visible } = this.state;
+  		const { categorie } = this.state;
+  		const { placeholderTitre } = this.state;
+  		const { placeholderMessage } = this.state;
+  		const { username } = this.state;
+  		const { redirectBloquer } = this.state;
+  		const { notifNonLu } = this.state;
+  		const { LastContactId } = this.state;
+  		const totalNotif = this.state.notifNonLu;
   		const NotifHead = totalNotif.toString();
+  		let nuit = this.props.nuit;
   		
   		if(totalNotif == "0"){
   			const NotifHead = '0';
@@ -628,7 +629,7 @@ class HeaderPage extends Component {
 					<div className="ButtonAide">
 						<Modal 
 						trigger={<Button color='red' onClick={this.open.bind(this)}>Demander de l'aide</Button>}
-						centered={false} open={this.state.open ? true : false} 
+						centered={false} open={this.state.open ? true : false} className={ nuit ? "SegmentNuit" : ""}
 						>
 						    <Modal.Header>
 						    Poster un message

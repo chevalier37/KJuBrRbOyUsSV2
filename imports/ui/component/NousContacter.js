@@ -15,7 +15,9 @@ class NousContacter extends Component {
 
 
     render() {
-    const { visible } = this.state
+    const { visible } = this.state;
+    let nuit = this.props.nuit;
+    
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }  
@@ -23,11 +25,12 @@ class NousContacter extends Component {
     return (
       
         <div className="MainContentProfil">
-          <Header>
+          <div className={ nuit ? "headerNuit" : "headerJour"}>
           Nous contacter
-          </Header>
+          </div>
           <Divider />
           <div className="ListeMesMessages">
+          <div className={ nuit ? "CGUNuit" : "ListeMessages"}>
             <div className="register blanc">
                 <div className="numero">
                     <strong>Qui sommes-nous ?</strong><br /><br />
@@ -39,6 +42,7 @@ class NousContacter extends Component {
 
                     Vous pouvez nous contacter à cette adresse mail :<strong> association.kurbys@gmail.com </strong>
                     </div>
+                  </div>
                 </div>
           </div>
         </div>

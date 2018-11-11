@@ -31,6 +31,7 @@ class MOBILEcontactChat extends Component {
           gender:'',
           visibleLeft:false,
           visible: false,
+          nuit:false,
         };
     }
 
@@ -57,16 +58,22 @@ class MOBILEcontactChat extends Component {
     }
 
     componentDidMount() {
-        this.scrollToTop();
+        this.el.scrollIntoView();
+        Meteor.apply('ModeNuit', [{}], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            {response ?
+             this.setState({nuit: response}) :
+             ""}
+          },
+        });
     }
 
-    scrollToTop() {
-        this.el.scrollIntoView();
-    }
-      
+     
     render() {
     
-    const { visible } = this.state
+    const { visible } = this.state;
+    const { nuit } = this.state;
     
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
@@ -115,7 +122,7 @@ class MOBILEcontactChat extends Component {
       }
 
     return (
-      <div className="container">
+       <div className={ this.state.nuit ? "containerNuit" : "container"}>
       <div ref={el => { this.el = el; }} ></div>
          <header> 
           {/* Header site*/}
@@ -153,7 +160,7 @@ class MOBILEcontactChat extends Component {
             <Sidebar.Pusher>
 
               <div ref={el => { this.el = el; }} ></div>
-                  <MOBILEcontact to_id = {this.props.match.params.id}  />
+                  <MOBILEcontact to_id = {this.props.match.params.id} nuit={nuit} />
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>

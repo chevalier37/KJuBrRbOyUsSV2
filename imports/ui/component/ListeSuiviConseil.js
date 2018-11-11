@@ -106,9 +106,10 @@ class ListeSuiviConseil extends Component {
   render() {
     
 	const colorSexe = this.state.sexe;
+	let nuit = this.props.nuit;
    
 		return (
-			<div className="ListeMessages">
+			<div className={ nuit ? "ListeMessagesNuit" : "ListeMessages"}>
 	  			
 	  			<div className={colorSexe=="pink" ?
 	        				  "filleMessageBackground" : "garconMessageBackground"
@@ -119,7 +120,9 @@ class ListeSuiviConseil extends Component {
 			  			{this.props.message.post_title}
 			  			</div>
 		  		</div>
-	  			<Segment color={colorSexe=="pink" ?
+	  			<Segment
+	  			 className={ nuit ? "SegmentNuit" : ""}
+	  			 color={colorSexe=="pink" ?
 	        				  "pink" : "blue" }>
 		  					  			
 		  			<p className={"ContentQuestion" + " " + "display-linebreak"}>

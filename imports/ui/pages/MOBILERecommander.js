@@ -27,6 +27,7 @@ class MOBILERecommander extends Component {
           visible: false,
           username:'',
           gender:'',
+          nuit:false,
 
         }
     }
@@ -35,24 +36,29 @@ class MOBILERecommander extends Component {
     handleSidebarHide = () => this.setState({ visible: false })
 
     componentDidMount() {
-        this.scrollToTop();
-    }
-
-    scrollToTop() {
         this.el.scrollIntoView();
+        Meteor.apply('ModeNuit', [{}], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            {response ?
+             this.setState({nuit: response}) :
+             ""}
+          },
+        });
     }
 
   
     render() {
     
-    const { visible } = this.state 
+    const { visible } = this.state
+    const { nuit } = this.state 
 
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
     
     return (
-      <div className="container">
+      <div className={ this.state.nuit ? "containerNuit" : "container"}>
       <div ref={el => { this.el = el; }} ></div>
         <header> 
           {/* Header site*/}
@@ -90,7 +96,7 @@ class MOBILERecommander extends Component {
             <Sidebar.Pusher>
              <div className="containerSite" onClick={this.toggleHidden}>
                       <div className="contentReco">                      
-                         <RecommanderContent id={this.props.match.params.id} /> 
+                         <RecommanderContent id={this.props.match.params.id} nuit={nuit}/> 
                       </div>    
                 </div> 
             </Sidebar.Pusher>

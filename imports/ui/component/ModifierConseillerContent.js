@@ -882,15 +882,15 @@ export default class DevenirConseillerContent extends Component {
 		return (
 			<div className="MainContent">
 				<Segment className={nuit ? "MainModifierConseillerNuit" : "MainModifierConseiller"}>
-					<Header className={ nuit ? "SegmentNuit" : ""}>
+					<div className={ nuit ? "headerNuit" : "headerJour"}>
 					Ajouter une expérience
-					</Header>
+					</div>
 					<Divider />
 
 					 <p></p>
 				<div className={nuit ? "accordeonNuit" : "accordeon"}>
 					<Accordion styled>
-				        <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
+				        <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick} >
 				          <Icon name='dropdown' />
 				          Premier amour 
 				        </Accordion.Title>

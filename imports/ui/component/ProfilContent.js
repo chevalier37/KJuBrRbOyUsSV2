@@ -1422,12 +1422,13 @@ class ProfilContent extends Component {
     		let nuit = this.props.nuit;
 
 		return (
-			<div className="MainContentProfil">
+			<div className={ nuit ? "MainContentProfilNuit" : "MainContentProfil"}>
 				
 						<Header>
-						Profil <div className={this.props.profile.gender} >{this.props.user.username} </div>
-						<div className="AgeProfil">{age} ans</div>
-						
+						<div className={ nuit ? "headerNuit" : ""}>
+							Profil <div className={this.props.profile.gender} >{this.props.user.username} </div>
+							<div className="AgeProfil">{age} ans</div>
+						</div>		
 						<div className={this.state.IsConseiller ? 'VisibleAjouter' : 'none'}>
 								<div className={this.props.profile.note<1 ? "visiblenote" : "none"}>
 									<Rating icon='heart'
@@ -1499,8 +1500,8 @@ class ProfilContent extends Component {
 				
 					<Divider />
 				<div className={this.state.IsConseiller ? 'VisibleConseillerProfil' : 'none'}>
-					<Segment className={ nuit ? "SegmentNuit" : ""}>
-			  			<Label attached='top'  basic color='blue' className="headerProfil">
+					<Segment className={ nuit ? "SegmentNuitProfil" : ""}>
+			  			<div className="headerProfilBleu">
 			  			<div className="titreProfil">Présentation</div>
 						       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 						    		<div className={this.state.Modifierpresentation} >
@@ -1519,14 +1520,14 @@ class ProfilContent extends Component {
 							    		</Button>
 						    		</div>
 						    	</div>
-			  			 </Label>
+			  			 </div>
 						<div className={this.state.presentationReadOnly + " " + "textProfil" + " "+ "display-linebreak"}	>  			 
 						{this.props.conseiller.presentation}
 						</div>
 						<div className={this.state.presentationInput + " " + "inputprofil"}>
 							<Form >
 							    <Form.Field >
-										<Input as='TextArea'  ref="presentation">
+										<Input as='TextArea'  ref="presentation" className={nuit ? "areaNuit" : ""}>
 											{this.props.conseiller.presentation}
 										</Input>
 									
@@ -1570,8 +1571,8 @@ class ProfilContent extends Component {
 					</div>
 				</div>
 
-				<Segment className={ nuit ? premierAmour + " " + "SegmentNuit" : premierAmour}>
-		  			<Label attached='top'  basic color='red' >
+				<Segment className={ nuit ? premierAmour + " " + "SegmentNuitProfil" : premierAmour}>
+		  			<div className="headerProfilRed">
 		  			<div className="titreProfil">Premier amour</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.ModifierPremierAmour} >
@@ -1595,14 +1596,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.premierAmourReadOnly + " " + "textProfil" + " "+ "display-linebreak"}	>  			 
 					{this.props.conseiller.premierAmourText}
 					</div>
 					<div className={this.state.premierAmourInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="premierAmour">
+								<Input as='TextArea'  ref="premierAmour" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.premierAmourText}
 								</Input>
 							
@@ -1611,8 +1612,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? trahison + " " + "SegmentNuit" : trahison}>
-		  			<Label attached='top'  basic color='red' className="headerProfil">
+				<Segment className={ nuit ? trahison + " " + "SegmentNuitProfil" : trahison}>
+		  			<div className="headerProfilRed">
 		  			<div className="titreProfil">Trahison amoureuse</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifiertrahison} >
@@ -1636,14 +1637,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.trahisonReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.trahisonText}
 					</div>
 					<div className={this.state.trahisonInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="trahison">
+								<Input as='TextArea'  ref="trahison" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.trahisonText}
 								</Input>
 							
@@ -1652,8 +1653,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? Friendzone + " " + "SegmentNuit" : Friendzone}>
-		  			<Label attached='top'  basic color='red' className="headerProfil">
+				<Segment className={ nuit ? Friendzone + " " + "SegmentNuitProfil" : Friendzone}>
+		  			<div className="headerProfilRed">
 		  			<div className="titreProfil">Friendzone</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifierfriendzone} >
@@ -1677,14 +1678,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.friendzoneReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.FriendzoneText}
 					</div>
 					<div className={this.state.friendzoneInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="friendzone">
+								<Input as='TextArea'  ref="friendzone" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.FriendzoneText}
 								</Input>
 							
@@ -1694,8 +1695,8 @@ class ProfilContent extends Component {
 				</Segment>
 
 
-				<Segment className={ nuit ? amourdistance + " " + "SegmentNuit" : amourdistance}>
-		  			<Label attached='top'  basic color='red' className="headerProfil">
+				<Segment className={ nuit ? amourdistance + " " + "SegmentNuitProfil" : amourdistance}>
+		  			<div className="headerProfilRed">
 		  			<div className="titreProfil">Amour à distance</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.ModifieramourDistance} >
@@ -1718,14 +1719,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.amourDistanceReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.amourdistanceText}
 					</div>
 					<div className={this.state.amourDistanceInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="amourdistance">
+								<Input as='TextArea'  ref="amourdistance" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.amourdistanceText}
 								</Input>
 							
@@ -1734,8 +1735,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? separation + " " + "SegmentNuit" : separation}>
-		  			<Label attached='top'  basic color='red' className="headerProfil">
+				<Segment className={ nuit ? separation + " " + "SegmentNuitProfil" : separation}>
+		  			<div className="headerProfilRed">
 		  			<div className="titreProfil">Séparation</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifierseparation} >
@@ -1759,14 +1760,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.separationReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.separationText}
 					</div>
 					<div className={this.state.separationInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="separation">
+								<Input as='TextArea'  ref="separation" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.separationText}
 								</Input>
 							
@@ -1775,8 +1776,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? timidite + " " + "SegmentNuit" : timidite}>
-		  			<Label attached='top'  basic color='orange' className="headerProfil">
+				<Segment className={ nuit ? timidite + " " + "SegmentNuitProfil" : timidite}>
+		  			<div className="headerProfilOrange">
 		  			<div className="titreProfil">Timidité</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.ModifierTimidite} >
@@ -1800,14 +1801,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.TimiditeReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.timiditeText}
 					</div>
 					<div className={this.state.TimiditeInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="timidite">
+								<Input as='TextArea'  ref="timidite" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.timiditeText}
 								</Input>
 							
@@ -1816,8 +1817,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? depression + " " + "SegmentNuit" : depression}>
-		  			<Label attached='top'  basic color='orange' className="headerProfil">
+				<Segment className={ nuit ? depression + " " + "SegmentNuitProfil" : depression}>
+		  			<div className="headerProfilOrange">
 		  			<div className="titreProfil">Dépression</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifierdepression} >
@@ -1841,14 +1842,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.depressionReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.depressionText}
 					</div>
 					<div className={this.state.depressionInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="depression">
+								<Input as='TextArea'  ref="depression" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.depressionText}
 								</Input>
 							
@@ -1857,8 +1858,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? suicide + " " + "SegmentNuit" : suicide}>
-		  			<Label attached='top'  basic color='orange' className="headerProfil">
+				<Segment className={ nuit ? suicide + " " + "SegmentNuitProfil" : suicide}>
+		  			<div className="headerProfilOrange">
 		  			<div className="titreProfil">Suicide</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifiersuicide} >
@@ -1882,14 +1883,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.suicideReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.suicideText}
 					</div>
 					<div className={this.state.suicideInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="suicide">
+								<Input as='TextArea'  ref="suicide" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.suicideText}
 								</Input>
 							
@@ -1898,8 +1899,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? deces + " " + "SegmentNuit" : deces}>
-		  			<Label attached='top'  basic color='orange' className="headerProfil">
+				<Segment className={ nuit ? deces + " " + "SegmentNuitProfil" : deces}>
+		  			<div className="headerProfilOrange">
 		  			<div className="titreProfil">Décès</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifierdeces} >
@@ -1922,14 +1923,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.decesReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.decesText}
 					</div>
 					<div className={this.state.decesInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="deces">
+								<Input as='TextArea'  ref="deces" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.decesText}
 								</Input>
 							
@@ -1938,8 +1939,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? mutilation + " " + "SegmentNuit" : mutilation}>
-		  			<Label attached='top'  basic color='orange' className="headerProfil">
+				<Segment className={ nuit ? mutilation + " " + "SegmentNuitProfil" : mutilation}>
+		  			<div className="headerProfilOrange">
 		  			<div className="titreProfil">Mutilation</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifiermutilation} >
@@ -1963,14 +1964,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.mutilationReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.mutilationText}
 					</div>
 					<div className={this.state.mutilationInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="mutilation">
+								<Input as='TextArea'  ref="mutilation" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.mutilationText}
 								</Input>
 							
@@ -1979,8 +1980,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? premierfois + " " + "SegmentNuit" : premierfois}>
-		  			<Label attached='top'  basic color='teal' className="headerProfil">
+				<Segment className={ nuit ? premierfois + " " + "SegmentNuitProfil" : premierfois}>
+		  			<div className="headerProfilTeal">
 		  			<div className="titreProfil">Première fois</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.ModifierpremiereFois} >
@@ -2004,14 +2005,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.premiereFoisReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.premierfoisText}
 					</div>
 					<div className={this.state.premiereFoisInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="premierfois">
+								<Input as='TextArea'  ref="premierfois" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.premierfoisText}
 								</Input>
 							
@@ -2020,8 +2021,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? contraception + " " + "SegmentNuit" : contraception}>
-		  			<Label attached='top'  basic color='teal' className="headerProfil">
+				<Segment className={ nuit ? contraception + " " + "SegmentNuitProfil" : contraception}>
+		  			<div className="headerProfilTeal">
 		  			<div className="titreProfil">Contraception</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifiercontracepion} >
@@ -2045,14 +2046,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.contracepionReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.contraceptionText}
 					</div>
 					<div className={this.state.contracepionInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="contraception">
+								<Input as='TextArea'  ref="contraception" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.contraceptionText}
 								</Input>
 							
@@ -2061,8 +2062,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? mst + " " + "SegmentNuit" : mst}>
-		  			<Label attached='top'  basic color='teal' className="headerProfil">
+				<Segment className={ nuit ? mst + " " + "SegmentNuitProfil" : mst}>
+		  			<div className="headerProfilTeal">
 		  			<div className="titreProfil">Maladie, MST</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifiermst} >
@@ -2086,14 +2087,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.mstReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.mstText}
 					</div>
 					<div className={this.state.mstInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="mst">
+								<Input as='TextArea'  ref="mst" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.mstText}
 								</Input>
 							
@@ -2102,8 +2103,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? viol + " " + "SegmentNuit" : viol}>
-		  			<Label attached='top'  basic color='teal' className="headerProfil">
+				<Segment className={ nuit ? viol + " " + "SegmentNuitProfil" : viol}>
+		  			<div className="headerProfilTeal">
 		  			<div className="titreProfil">Viol</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifierviol} >
@@ -2127,14 +2128,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.violReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.violText}
 					</div>
 					<div className={this.state.violInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="viol">
+								<Input as='TextArea'  ref="viol" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.violText}
 								</Input>
 							
@@ -2143,8 +2144,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? avortement + " " + "SegmentNuit" : avortement}>
-		  			<Label attached='top'  basic color='teal' className="headerProfil">
+				<Segment className={ nuit ? avortement + " " + "SegmentNuitProfil" : avortement}>
+		  			<div className="headerProfilTeal">
 		  			<div className="titreProfil">Avortement</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifieravortement} >
@@ -2168,14 +2169,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.avortementReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.avortementText}
 					</div>
 					<div className={this.state.avortementInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="avortement">
+								<Input as='TextArea'  ref="avortement" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.avortementText}
 								</Input>
 							
@@ -2184,8 +2185,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? orientationSex + " " + "SegmentNuit" : orientationSex}>
-		  			<Label attached='top'  basic color='teal' className="headerProfil">
+				<Segment className={ nuit ? orientationSex + " " + "SegmentNuitProfil" : orientationSex}>
+		  			<div className="headerProfilTeal">
 		  			<div className="titreProfil">Orientation sexuelle</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.ModifierorientationSex} >
@@ -2209,14 +2210,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.orientationSexReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.orientationSexText}
 					</div>
 					<div className={this.state.orientationSexInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="orientationSex">
+								<Input as='TextArea'  ref="orientationSex" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.orientationSexText}
 								</Input>
 							
@@ -2225,8 +2226,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? Anorexie + " " + "SegmentNuit" : Anorexie}>
-		  			<Label attached='top'  basic color='violet' className="headerProfil">
+				<Segment className={ nuit ? Anorexie + " " + "SegmentNuitProfil" : Anorexie}>
+		  			<div className="headerProfilViolet">
 		  			<div className="titreProfil">Anorexie</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifieranorexie} >
@@ -2250,14 +2251,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.anorexieReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.AnorexieText}
 					</div>
 					<div className={this.state.anorexieInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="anorexie">
+								<Input as='TextArea'  ref="anorexie" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.AnorexieText}
 								</Input>
 							
@@ -2266,8 +2267,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? obesite + " " + "SegmentNuit" : obesite}>
-		  			<Label attached='top'  basic color='violet' className="headerProfil">
+				<Segment className={ nuit ? obesite + " " + "SegmentNuitProfil" : obesite}>
+		  			<div className="headerProfilViolet">
 		  			<div className="titreProfil">Obésité</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifierobesite} >
@@ -2291,14 +2292,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.obesiteReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.obesiteText}
 					</div>
 					<div className={this.state.obesiteInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="obesite">
+								<Input as='TextArea'  ref="obesite" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.obesiteText}
 								</Input>
 							
@@ -2307,8 +2308,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={ nuit ? drogue + " " + "SegmentNuit" : drogue}>
-		  			<Label attached='top'  basic color='violet' className="headerProfil">
+					<Segment className={ nuit ? drogue + " " + "SegmentNuitProfil" : drogue}>
+		  			<div className="headerProfilViolet">
 		  			<div className="titreProfil">Drogue</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifierdrogue} >
@@ -2332,14 +2333,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.drogueReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.drogueText}
 					</div>
 					<div className={this.state.drogueInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="drogue">
+								<Input as='TextArea'  ref="drogue" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.drogueText}
 								</Input>
 							
@@ -2348,8 +2349,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={ nuit ? alcool + " " + "SegmentNuit" : alcool}>
-		  			<Label attached='top'  basic color='violet' className="headerProfil">
+					<Segment className={ nuit ? alcool + " " + "SegmentNuitProfil" : alcool}>
+		  			<div className="headerProfilViolet">
 		  			<div className="titreProfil">Alcool</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifieralcool} >
@@ -2373,14 +2374,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.alcoolReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.alcoolText}
 					</div>
 					<div className={this.state.alcoolInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="orientationSex">
+								<Input as='TextArea'  ref="orientationSex" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.alcoolText}
 								</Input>
 							
@@ -2389,8 +2390,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={ nuit ? complexe + " " + "SegmentNuit" : complexe}>
-		  			<Label attached='top'  basic color='violet' className="headerProfil">
+					<Segment className={ nuit ? complexe + " " + "SegmentNuitProfil" : complexe}>
+		  			<div className="headerProfilViolet">
 		  			<div className="titreProfil">Complexe</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifiercomplexe} >
@@ -2414,14 +2415,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.complexeReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.complexeText}
 					</div>
 					<div className={this.state.complexeInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="complexe">
+								<Input as='TextArea'  ref="complexe" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.complexeText}
 								</Input>
 							
@@ -2430,8 +2431,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={ nuit ? hopital + " " + "SegmentNuit" : hopital}>
-		  			<Label attached='top'  basic color='violet' className="headerProfil">
+					<Segment className={ nuit ? hopital + " " + "SegmentNuitProfil" : hopital}>
+		  			<div className="headerProfilViolet">
 		  			<div className="titreProfil">Hospitalisation</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifierhospitalisation} >
@@ -2455,14 +2456,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.handicapReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.hopitalText}
 					</div>
 					<div className={this.state.hospitalisationInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="hopital">
+								<Input as='TextArea'  ref="hopital" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.hopitalText}
 								</Input>
 							
@@ -2471,8 +2472,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={ nuit ? handicap + " " + "SegmentNuit" : handicap}>
-		  			<Label attached='top'  basic color='violet' className="headerProfil">
+					<Segment className={ nuit ? handicap + " " + "SegmentNuitProfil" : handicap}>
+		  			<div className="headerProfilViolet">
 		  			<div className="titreProfil">Handicap</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifierhandicap} >
@@ -2496,14 +2497,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.handicapReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.handicapText}
 					</div>
 					<div className={this.state.handicapInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="handicap">
+								<Input as='TextArea'  ref="handicap" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.handicapText}
 								</Input>
 							
@@ -2512,8 +2513,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-				<Segment className={ nuit ? accident + " " + "SegmentNuit" : accident}>
-		  			<Label attached='top'  basic color='violet' className="headerProfil">
+				<Segment className={ nuit ? accident + " " + "SegmentNuitProfil" : accident}>
+		  			<div className="headerProfilViolet">
 		  			<div className="titreProfil">Accident</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifieraccident} >
@@ -2537,14 +2538,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.accidentReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.accidentText}
 					</div>
 					<div className={this.state.accidentInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="accident">
+								<Input as='TextArea'  ref="accident" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.accidentText}
 								</Input>
 							
@@ -2553,8 +2554,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={ nuit ? echecEcole + " " + "SegmentNuit" : echecEcole}>
-		  			<Label attached='top'  basic color='brown' className="headerProfil">
+					<Segment className={ nuit ? echecEcole + " " + "SegmentNuitProfil" : echecEcole}>
+		  			<div className="headerProfilMarron">
 		  			<div className="titreProfil">Echec scolaire</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.ModifierechecEcole} >
@@ -2578,14 +2579,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.echecEcoleReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.echecEcoleText}
 					</div>
 					<div className={this.state.echecEcoleInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="echecEcole">
+								<Input as='TextArea'  ref="echecEcole" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.echecEcoleText}
 								</Input>
 							
@@ -2594,8 +2595,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={ nuit ? Harcelement + " " + "SegmentNuit" : Harcelement}>
-		  			<Label attached='top'  basic color='brown' className="headerProfil">
+					<Segment className={ nuit ? Harcelement + " " + "SegmentNuitProfil" : Harcelement}>
+		  			<div className="headerProfilMarron">
 		  			<div className="titreProfil">Harcèlement</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifierharcelement} >
@@ -2619,14 +2620,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.harcelementReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.HarcelementText}
 					</div>
 					<div className={this.state.harcelementInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="Harcelement">
+								<Input as='TextArea'  ref="Harcelement" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.HarcelementText}
 								</Input>
 							
@@ -2635,8 +2636,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={ nuit ? discrimination + " " + "SegmentNuit" : discrimination}>
-		  			<Label attached='top'  basic color='brown' className="headerProfil">
+					<Segment className={ nuit ? discrimination + " " + "SegmentNuitProfil" : discrimination}>
+		  			<div className="headerProfilMarron">
 		  			<div className="titreProfil">Discrimination</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifierdiscrimination} >
@@ -2660,14 +2661,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.amourDistanceReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.discriminationText}
 					</div>
 					<div className={this.state.amourDistanceInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="discrimination">
+								<Input as='TextArea'  ref="discrimination" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.discriminationText}
 								</Input>
 							
@@ -2676,8 +2677,8 @@ class ProfilContent extends Component {
 					 </div>
 				</Segment>
 
-					<Segment className={ nuit ? Violence + " " + "SegmentNuit" : Violence}>
-		  			<Label attached='top'  basic color='brown' className="headerProfil">
+					<Segment className={ nuit ? Violence + " " + "SegmentNuitProfil" : Violence}>
+		  			<div className="headerProfilMarron">
 		  			<div className="titreProfil">Violence</div>
 					       <div className={"modifierFormProfil" + " "+this.props.IdProfile}>
 					    		<div className={this.state.Modifierviolence} >
@@ -2701,14 +2702,14 @@ class ProfilContent extends Component {
 						    		</Button>
 					    		</div>
 					    	</div>
-		  			 </Label>
+		  			 </div>
 					<div className={this.state.violenceReadOnly + " " + "textProfil" + " "+ "display-linebreak"}>  			 
 					{this.props.conseiller.ViolenceText}
 					</div>
 					<div className={this.state.violenceInput + " " + "inputprofil"}>
 					<Form >
 					    <Form.Field >
-								<Input as='TextArea'  ref="violence">
+								<Input as='TextArea'  ref="violence" className={nuit ? "areaNuit" : ""}>
 									{this.props.conseiller.ViolenceText}
 								</Input>
 							

@@ -17,6 +17,7 @@ export default class ContentMenuRight extends Component {
 		    activeItem: 'account',
 		    logout:false,
 		    nuit:false,
+        profil:false,
 	    };
   	}
 
@@ -55,18 +56,29 @@ export default class ContentMenuRight extends Component {
         {
           onResultReceived: (error, response) => {
              if (error) console.warn(error.reason);
+             
         },
-      });
+      }); 
+
+      this.setState({
+                profil: true,
+              });   
     }
   
   	render() {
-  		const { activeItem } = this.state
+  	const { activeItem } = this.state;
 		const logout = this.state.logout;
-		const { nuit } = this.state
+		const { nuit } = this.state;
+    const { profil } = this.state
+      
   		
-  		if (logout) {
-      	return <Redirect to="/" />;
-    	}
+		if (logout) {
+    	return <Redirect to="/" />;
+  	}
+
+    if (profil) {
+      return <Redirect to={'/profil/' + Meteor.userId()} />;
+    }
 
 		return (
 			<div className="ListeSideBar">

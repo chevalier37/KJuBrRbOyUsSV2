@@ -22,6 +22,7 @@ class contactChat extends Component {
 
 	renderAllContactChat() {
           let AllChat = this.props.allContactChat;
+          let nuit = this.props.nuit;
 
           return AllChat.map((message) => {
            let date = Date.parse(message.post_date);
@@ -32,6 +33,7 @@ class contactChat extends Component {
                 contact={message}
                 date={date}
                 to_id={this.props.to_id}
+                nuit={nuit}  
                       
               />
             );
@@ -44,7 +46,7 @@ class contactChat extends Component {
 		
 		return (
 			
-		      	<div className="ChatContactLeft">
+		      	<div className={this.props.nuit ? "ChatContactLeftNuit" : "ChatContactLeft" }>
   					 <div>
                  <div className="espaceContact">
                  </div>

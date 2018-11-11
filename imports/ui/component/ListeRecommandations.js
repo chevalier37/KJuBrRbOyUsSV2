@@ -77,9 +77,10 @@ class ListeReponses extends Component {
   	render() {
     
 	const colorSexe = this.state.sexe;
+	let nuit = this.props.nuit;
    
 		return (
-			<div className="ListeMessages">
+			<div className={ nuit ? "ListeMessagesNuit" : "ListeMessages"}>
 	  				<div className={this.props.message.gender == "fille" ? "filleMessageBackground" : "garconMessageBackground"} >
 			  			<div className={this.props.message.gender == "fille" ?
 	        				  "titreMessageFille" : "titreMessageGarcon"
@@ -90,7 +91,9 @@ class ListeReponses extends Component {
 			  			</div>
 		  			</div>
 
-		  		<Segment color={this.props.message.gender == "fille" ?
+		  		<Segment 
+		  		className={ nuit ? "SegmentNuit" : ""}
+		  		color={this.props.message.gender == "fille" ?
 	        				  "pink" : "blue" }>
 		  			<p className="ContentQuestion">
 		  				{this.breaklines()}

@@ -25,24 +25,27 @@ class ContentMessagePostes extends Component {
 
 	    return AllMessages.map((message) => {
 	     let date = Date.parse(message.submitted);
+	     let nuit = this.props.nuit;
          
 	      return (
 	        <ListeSuiviConseil
 	          key={message._id}
 	          message={message}
 	          date={date}
-	          id={message._id}         
+	          id={message._id}
+	          nuit={nuit}          
 	        />
 	      );
 	    });
 	}
 			   
   render() {
+  	let nuit = this.props.nuit;
 		return (
 			<div className="MainContentProfil">
-					<Header>
+					<div className={ nuit ? "headerNuit" : "headerJour"}>
 						Les conseils que j'ai donné
-					</Header>
+					</div>
 					<Divider />
 	  			<div className="ListeMesMessages">
 	  				{this.renderAllMessages()}

@@ -16,7 +16,8 @@ class DevenirModerateur extends Component {
 
 
     render() {
-      const { visible } = this.state
+      const { visible } = this.state;
+      let nuit = this.props.nuit;
       
       if (!Meteor.loggingIn() && !Meteor.userId()){
         return <Redirect to="/" />;
@@ -24,11 +25,12 @@ class DevenirModerateur extends Component {
 
       return (
           <div className="MainContentProfil">
-            <Header>
+            <div className={ nuit ? "headerNuit" : "headerJour"}>
             Devenir modérateur
-            </Header>
+            </div>
             <Divider />
             <div className="ListeMesMessages">
+            <div className={ nuit ? "CGUNuit" : "ListeMessages"}>
               <div className="register blanc">
                   <div className="moderateur">
                       <strong>Vous souhaitez nous aider à la modération du site ?</strong><br />
@@ -46,6 +48,7 @@ class DevenirModerateur extends Component {
                       Pour plus de renseignements, n'hésitez pas à nous contacter à cette adresse mail : association.kurbys@gmail.com 
 
                       </div>
+                  </div>
                   </div>
             </div>
           </div>

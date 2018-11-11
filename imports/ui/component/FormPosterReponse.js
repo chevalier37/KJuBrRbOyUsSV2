@@ -89,7 +89,7 @@ class FormPosterReponse extends Component {
   		let nuit = this.props.nuit;
 		
 		return (
-			<div className="AjouterReponse">
+			<div className={ nuit ? "ListeMessagesNuit" : "ListeMessages"}>
 				<Segment className={ nuit ? "SegmentNuit" : ""}>
 				    <Form error onSubmit={this.Submit.bind(this)}>
 				    	<Header
@@ -102,6 +102,7 @@ class FormPosterReponse extends Component {
 					       onFocus={this.focusMessage.bind(this)}
 					       onBlur={this.focusMessageOut.bind(this)}
 					       placeholder={placeholderMessage}
+					       className={nuit ? "areaNuit" : ""}
 					       rows={6}
 					       />
 					       <Message

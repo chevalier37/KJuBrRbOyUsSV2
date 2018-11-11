@@ -76,7 +76,9 @@ class PasswordProfil extends Component {
   }
 
     render() {
-    const { visible } = this.state
+    const { visible } = this.state;
+    let nuit = this.props.nuit;
+    
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }  
@@ -84,9 +86,9 @@ class PasswordProfil extends Component {
     return (
       
         <div className="MainContentProfil">
-          <Header>
+          <div className={ nuit ? "headerNuit" : "headerJour"}>
           Changer mon mot de passe
-          </Header>
+          </div>
           <Divider />
           <div className="ListeMesMessages">
             <div className="register blanc">

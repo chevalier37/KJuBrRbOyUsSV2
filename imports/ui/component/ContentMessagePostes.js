@@ -20,6 +20,7 @@ class ContentMessagePostes extends Component {
 
 	renderAllMessages() {
 	    let AllMessages = this.props.allMessages;
+	    let nuit = this.props.nuit;
 
 	    return AllMessages.map((message) => {
 	    	let date = Date.parse(message.post_date);
@@ -29,18 +30,20 @@ class ContentMessagePostes extends Component {
 	          key={message._id}
 	          message={message}
 	          date={date}
-	          id={message._id}         
+	          id={message._id}
+	          nuit={nuit}          
 	        />
 	      );
 	    });
 	}
 			   
   render() {
+  	let nuit = this.props.nuit;
 		return (
 			<div className="MainContentProfil">
-					<Header>
+					<div className={ nuit ? "headerNuit" : "headerJour"}>
 						Mes messages
-					</Header>
+					</div>
 					<Divider />
 	  			<div className="ListeMesMessages">
 	  				{this.renderAllMessages()}

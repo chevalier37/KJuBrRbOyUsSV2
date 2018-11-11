@@ -110,7 +110,7 @@ class Home extends Component {
                 <Img className={!this.state.nuit ? "iconHeader" : "none" } src="/jour.png"/>
                 <Img className={this.state.nuit ? "iconHeader" : "none" } src="/nuit.png"/>
             </div>
-              <HeaderPage />
+              <HeaderPage nuit={nuit}/>
             </div>
           </div>
 

@@ -87,7 +87,9 @@ class NousContacter extends Component {
     }
 
     render() {
-    const { visible } = this.state
+    const { visible } = this.state;
+    let nuit = this.props.nuit;
+    
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     } 
@@ -98,11 +100,12 @@ class NousContacter extends Component {
     return (
       
         <div className="MainContentProfil">
-          <Header>
+          <div className={ nuit ? "headerNuit" : "headerJour"}>
           Supprimer mon compte
-          </Header>
+          </div>
           <Divider />
           <div className="ListeMesMessages">
+          <div className={ nuit ? "CGUNuit" : "ListeMessages"}>
             <div className="register blanc">
                 <div className="numero">
                   <div className="demandePassword">
@@ -154,6 +157,7 @@ class NousContacter extends Component {
                         </Modal.Actions>
                       </Modal>
                 </div>
+            </div>
             </div>
           </div>
         </div>

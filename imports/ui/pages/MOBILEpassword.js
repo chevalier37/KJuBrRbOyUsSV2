@@ -20,23 +20,33 @@ import PasswordProfil from '../component/PasswordProfil.js';
 
 class MOBILEpassword extends Component {
 
-    state = { visible: false }
+    state = { visible: false, nuit:false, }
 
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
     handleSidebarHide = () => this.setState({ visible: false })
 
     componentDidMount() {
         this.el.scrollIntoView();
+        Meteor.apply('ModeNuit', [{}], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            {response ?
+             this.setState({nuit: response}) :
+             ""}
+          },
+        });
     }
 
     render() {
-    const { visible } = this.state
+    const { visible } = this.state;
+    const { nuit } = this.state;
+
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
     
     return (
-      <div className="container">
+      <div className={ this.state.nuit ? "containerNuit" : "container"}>
       <div ref={el => { this.el = el; }} ></div>
         <header> 
           {/* Header site*/}
@@ -71,7 +81,7 @@ class MOBILEpassword extends Component {
               <ContentMenuMobile />
             </Sidebar>
             <Sidebar.Pusher>
-             <PasswordProfil /> 
+             <PasswordProfil nuit={nuit}/> 
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>

@@ -66,7 +66,7 @@ class ListeMessagePost extends Component {
 	let nuit = this.props.nuit;
    
 		return (
-			<div className="ListeMessagesSingle">
+			<div className={ nuit ? "ListeMessagesNuit" : "ListeMessages"}>
 	  			
     					<div className={this.sexe()=="pink" ?
     				  			"filleMessageBackground" : "garconMessageBackground"}>

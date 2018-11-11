@@ -141,7 +141,7 @@ class RecommanderContent extends Component {
 					<p className="consigne">
 					Donne une note et explique pourquoi les conseils de {this.state.username} t'on aidés.
 					</p>
-					<div className="consigne2">
+					<div className={ nuit ? "consigne2Nuit" : "consigne2"}>
 					<strong> Note : </strong>
 						<Rating maxRating={5} icon='heart' onRate={this.handleRate} />
 					</div>

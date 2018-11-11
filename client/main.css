@@ -540,6 +540,10 @@ header {
     margin-right: auto;
 }
 
+.MainContentProfilNuit{
+
+}
+
 .MainContentSearchArticle{
     min-width: 670px;
     margin-top: 45px;
@@ -572,7 +576,7 @@ header {
 }
 
 .MainModifierConseillerNuit{
-	background-color: #173344 !important;
+	background-color: black !important;
 	color: #8899a6 !important;
 	margin-right: 10px !important;
 }
@@ -628,6 +632,15 @@ header {
 
 .SegmentNuit{
 	background-color: black !important;
+	color: #8899a6 !important;
+}
+
+.SegmentNuitProfil{
+	background-color: black !important;
+	border-radius: 3px !important;
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: #8799a6 !important;
 	color: #8899a6 !important;
 }
 
@@ -1283,10 +1296,125 @@ header {
 }
 
 .areaNuit{
-	background-color: #163345 !important;
+	background-color: black!important;
 	color: #bcbdbd !important;
+	border-radius: 3px !important;
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: #8799a6 !important;
 }
 
+.headerNuit{
+	color: #bcbdbd !important;
+	padding-top: 10px;
+	padding-left:10px;
+	font-size: 18px;
+    font-weight: bold;
+}
+
+.menuProfil{
+	display: inline-block;
+	float: left;
+	height: 800px;
+	width: 200px;
+	background-color: white !important;
+	color: black !important;
+	border-radius: 3px !important;
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: black !important;
+
+}
+
+.tabProfil{
+	height: 50px;
+	line-height: 50px;
+	border-radius: 3px !important;
+	border-bottom-style: solid !important;
+	border-bottom-width: 1px !important;
+	border-bottom-color: #8799a6 !important;
+	font-size: 16px;
+	padding-left: 10px;
+	cursor: pointer;
+}
+
+.tabProfil:hover{
+	background-color: #e9eaec;
+	color: #38579a;
+}
+
+.contentProfil{
+	display: inline-block;
+	min-height: 800px;
+	background-color: white !important;
+	color: black !important;
+	border-radius: 3px !important;
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: black !important;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+
+}
+
+.contentProfilNuit{
+	display: inline-block;
+	min-height: 850px;
+	background-color: black !important;
+	color:  #8799a6 !important;
+	border-radius: 3px !important;
+	/*border-style: solid !important;
+	border-width: 1px !important;
+	border-color: black !important;*/
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-top: -10px !important;
+}
+
+.menuProfilNuit{
+	display: inline-block;
+	float: left;
+	height: 800px;
+	width: 200px;
+	background-color: black!important;
+	color: #bcbdbd !important;
+	border-radius: 3px !important;
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: #8799a6 !important;
+}
+
+.tabProfilNuit{
+	height: 50px;
+	line-height: 50px;
+	background-color: black!important;
+	color: #bcbdbd !important;
+	border-radius: 3px !important;
+	border-bottom-style: solid !important;
+	border-bottom-width: 1px !important;
+	border-bottom-color: #8799a6 !important;
+	font-size: 16px;
+	padding-left: 10px;
+	cursor: pointer;
+}
+
+.tabProfilNuit:hover{
+	background-color: #a5a7a7;
+	color: #38579a;
+}
+
+.show{
+	display: block;
+}
+
+.headerJour{
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.checkNuit{
+}
 
 .visibleProfil{
 	display: inline-block;
@@ -1347,6 +1475,10 @@ header {
 .consigne2{
 	font-size: 16px;
 	margin-bottom: 15px;
+}
+
+.consigne2Nuit{
+	background-color: #68747d !important;
 }
 
 .consigne3{
@@ -1443,7 +1575,13 @@ header {
 
 .AffficheContactNuit{
 	background-color: black;
-	color: #766f61 !important;
+    color: #766f61 !important;
+    border-bottom-style: solid;
+    border-bottom-color: #e9ebee;
+    border-bottom-width: 1px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 8px; 
 }
 
 .message_droite{
@@ -1779,7 +1917,7 @@ header {
 
 .titreConseillerNuit{
 	height: 40px;
-	background-color: #173344;
+	background-color: black;
 	font-weight: bold;
 	font-size: 18px;
 	margin-top: 10px;
@@ -1788,6 +1926,10 @@ header {
 	margin-bottom: 10px;
 	margin-right: 10px !important;
 	color: #8799a6;
+}
+
+.CGUNuit{
+	color: #a8a9a9 !important;
 }
 
 .segmentMargin{
@@ -1834,6 +1976,85 @@ header {
 
 .headerProfil{
 	height: 40px;
+
+}
+
+.headerProfilBleu{
+	height: 40px;
+	color: #1683d3;
+	font-weight: bold;
+	margin-left: -15px;
+    padding-left: 10px;
+    margin-top: -5px;
+    margin-right: -15px;
+    border-bottom-color: #1683d3;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.headerProfilRed{
+	height: 40px;
+	color: #de302c;
+	font-weight: bold;
+	margin-left: -15px;
+    padding-left: 10px;
+    margin-top: -5px;
+    margin-right: -15px;
+    border-bottom-color: #de302c;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.headerProfilOrange{
+	height: 40px;
+	color: #f47100;
+	font-weight: bold;
+	margin-left: -15px;
+    padding-left: 10px;
+    margin-top: -5px;
+    margin-right: -15px;
+    border-bottom-color: #f47100;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.headerProfilTeal{
+	height: 40px;
+	color: #00b4ae;
+	font-weight: bold;
+	margin-left: -15px;
+    padding-left: 10px;
+    margin-top: -5px;
+    margin-right: -15px;
+    border-bottom-color: #00b4ae;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.headerProfilViolet{
+	height: 40px;
+	color: #c0a0fd;
+	font-weight: bold;
+	margin-left: -15px;
+    padding-left: 10px;
+    margin-top: -5px;
+    margin-right: -15px;
+    border-bottom-color: #c0a0fd;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.headerProfilMarron{
+	height: 40px;
+	color: #cfac94;
+	font-weight: bold;
+	margin-left: -15px;
+    padding-left: 10px;
+    margin-top: -5px;
+    margin-right: -15px;
+    border-bottom-color: #cfac94;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
 }
 
 .MenuLeftLastConseiller{

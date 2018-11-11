@@ -15,7 +15,9 @@ class CGUProfil extends Component {
 
 
     render() {
-    const { visible } = this.state
+    const { visible } = this.state;
+    let nuit = this.props.nuit;
+    
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }  
@@ -23,11 +25,12 @@ class CGUProfil extends Component {
     return (
       
         <div className="MainContentProfil">
-          <Header>
+          <div className={ nuit ? "headerNuit" : "headerJour"}>
          Conditions générales d'utilisation
-          </Header>
+          </div>
           <Divider />
           <div className="ListeMesMessages">
+          <div className={ nuit ? "CGUNuit" : "ListeMessages"}>
             <div className="register blanc">
                 <div className="numero">
                   KURBYS est une association loi 1901, les internautes sont les rédacteurs des contributions présentes sur le site. Au titre de ces informations, la société Seconde Vie Editions est un prestataire technique de l’Internet au sens de la Directive Communautaire 2000/31/EC du 8 Juin 2000 sur le commerce électronique. Son siège social est à Toulouse (SIRET 52946252500026) et son capital social est de 1000 euros. Pour nous contacter editions@seconde-vie.fr. La société OVH est l’hébergeur du présent site Web.<br /><br />
@@ -80,6 +83,7 @@ class CGUProfil extends Component {
                 
                     </div>
                 </div>
+              </div>
           </div>
         </div>
      );

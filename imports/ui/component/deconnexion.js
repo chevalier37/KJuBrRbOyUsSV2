@@ -30,8 +30,9 @@ class deconnexion extends Component {
     }
 
     render() {
-      const { visible } = this.state
+      const { visible } = this.state;
       const logout = this.state.logout;
+      let nuit = this.props.nuit;
       
       if (!Meteor.loggingIn() && !Meteor.userId()){
         return <Redirect to="/" />;
@@ -43,9 +44,9 @@ class deconnexion extends Component {
 
       return (
           <div className="MainContentProfil">
-            <Header>
+            <div className={ nuit ? "headerNuit" : "headerJour"}>
               Se déconnecter
-            </Header>
+            </div>
             <Divider />
             <div className="ListeMesMessages">
               <div className="register blanc">
