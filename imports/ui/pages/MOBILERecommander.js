@@ -94,7 +94,7 @@ class MOBILERecommander extends Component {
             </Sidebar>
 
             <Sidebar.Pusher>
-             <div className="containerSite" onClick={this.toggleHidden}>
+             <div className="containerSiteReco" onClick={this.toggleHidden}>
                       <div className="contentReco">                      
                          <RecommanderContent id={this.props.match.params.id} nuit={nuit}/> 
                       </div>    

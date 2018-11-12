@@ -30,7 +30,9 @@ Push.Configure({
 //
 });
 
-Meteor.methods({
+
+//Method dépacer dans api/Notifications
+/*Meteor.methods({
   'serverNotification'(title, text, id) {
     Push.send({
       title,
@@ -42,4 +44,4 @@ Meteor.methods({
       }
     });
   }
-});
+});*/

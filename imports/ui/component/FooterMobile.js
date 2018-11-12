@@ -59,8 +59,8 @@ class FooterMobile extends Component {
 					</div>
 
 					<div className="ButtonFooterMobile">
-						<Link to={'/profil/' + Meteor.userId()}>
-							 <Img className="iconHeader" src="/userMobile.png"/>
+						<Link to="/ConseillerConnecter" >
+							 <Img className="iconHeader" src="/help.png"/>
 						</Link>
 					</div>
 

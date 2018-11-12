@@ -94,7 +94,7 @@
 	}
 
 	.MobileSubmit{
-		float: right !important;
+		/*float: right !important;*/
 	}
 
 	.choixCat{
@@ -124,6 +124,7 @@
 	    padding-left: 20px;
 	    background-color: white !important;
 	    min-height: 1000px;
+	    margin-bottom: 50px;
 	}
 
 	.ChatContactLeftNuit {

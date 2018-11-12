@@ -142,24 +142,24 @@ class ListeRecommandationsDonner extends Component {
 				              			disabled
 		              	 			/>
 		              	 		</div>
+								<div className="blockReponse">
+									<div className="repondreMesMessage" >
+										<Button
+										  size="tiny"
+										  color='red'
+										  onClick={this.Supprimer.bind(this)}>
+											Supprimer
+										</Button>
+									</div>
 
-							<div className="repondreMessage2" >
-								<Button
-								  size="tiny"
-								  color='red'
-								  onClick={this.Supprimer.bind(this)}>
-									Supprimer
-								</Button>
-							</div>
-
-							<div className="repondreMessage1" >
-								<Button size="tiny"  color='orange'>
-										<Link to={'/ModifierRecommandation/' + this.props.message._id }>
-										Modifier
-										</Link>
-								</Button>
-							</div>
-
+									<div className="repondreMesMessage" >
+										<Button size="tiny"  color='orange'>
+												<Link to={'/ModifierRecommandation/' + this.props.message._id }>
+												Modifier
+												</Link>
+										</Button>
+									</div>
+								</div>
 	      				</Comment.Content>
 	    			</Comment>
 	  			</Segment>

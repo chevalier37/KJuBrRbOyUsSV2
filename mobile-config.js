@@ -4,12 +4,12 @@ App.info({
   /*version: "1.10.18",
   buildNumber: '28'*/              
 });
-/*
+
 App.configurePlugin('phonegap-plugin-push', {
   // Dummy value
   // If using Google GCM you should use your app id instead
   SENDER_ID: '12341234'
-});*/
+});
 
 
 App.icons({

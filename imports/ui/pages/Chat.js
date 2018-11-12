@@ -35,6 +35,7 @@ class chat extends Component {
           MyConseiller:false,
           open:false,
           nuit:false,
+          mobile:false,
         };
     }
 
@@ -60,6 +61,9 @@ class chat extends Component {
               to_name,
               to_id
               ) 
+
+       //push notification
+      Meteor.call('serverNotification','Recommandation','Laisse une recomandation à ' + to_name, to_id)
 
       this.setState({ open: false })
     }
@@ -206,14 +210,16 @@ class chat extends Component {
         },
       });
     }
-      
+
+     
     render() {
     
     const { visible } = this.state;
     const { nuit } = this.state;
-    
+   
     const to_id = this.props.match.params.id;
-       
+
+      
       if(this.state.update==false && to_id != Meteor.userId()){
 
         //on cherche le username, l'age et on met tous les message en 'read'

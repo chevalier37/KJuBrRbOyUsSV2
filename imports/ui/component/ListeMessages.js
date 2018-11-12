@@ -86,6 +86,9 @@ class ListeMessages extends Component {
               message,
         )
 
+        //push notification
+      	Meteor.call('serverNotification','Message signalé','Ton message a été signalé : ' + message, to_id)  
+
 
 	 }
 

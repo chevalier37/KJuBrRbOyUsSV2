@@ -83,6 +83,15 @@ export default class ContentMenuRight extends Component {
 		return (
 			<div className="ListeSideBar">
 			 <div ref={el => { this.el = el; }} ></div>
+          <Link to={'/profil/' + Meteor.userId()}>
+              <div className="ListItem">
+                        <div className="star">   
+                              <Img className="colorIconblue" src="/man-user.png"/>
+                        </div>
+                    <p className="menuIcon"> Profil</p>
+              </div>
+          </Link>
+          <Divider />
 					<Link to={'/DevenirConseiller/' }>
 					    <div className="ListItem">
                      		<div className="star">   

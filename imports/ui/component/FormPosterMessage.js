@@ -757,11 +757,10 @@ class FormPosterMessage extends Component {
 							       value='autre'
 							       />
 							    </Form.Field>
-							    <Header
-						    	 as='h3'>
-						    	</Header>
+							    
+						    <Button type='submit' color="green" className="MobileSubmit">Valider</Button>
 						</div>
-					    <Button type='submit' color="green" className="MobileSubmit">Valider</Button>
+					    
 			
 			  		</Form>
 			</div>

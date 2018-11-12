@@ -81,6 +81,9 @@ class FormPosterReponse extends Component {
 	       	message,
 		  	this.props.id,
 	    )
+	    
+	    //push notification
+	    Meteor.call('serverNotification',titre ,message, this.props.authorId)
 	}
 
   render() {

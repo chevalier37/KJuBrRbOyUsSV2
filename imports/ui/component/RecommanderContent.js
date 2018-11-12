@@ -115,6 +115,16 @@ class RecommanderContent extends Component {
 
 	          : ''
         }
+
+        {
+      		this.state.errorRating==false &&
+     		this.state.errorCommentaire==false  ?
+
+	           //push notification
+      			Meteor.call('serverNotification','Recommandation','Tu as reçu une recommandation de ' + from_name, id)  
+
+	          : ''
+        }
    
 		}
 

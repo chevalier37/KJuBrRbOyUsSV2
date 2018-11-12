@@ -117,6 +117,9 @@ class ListeReponses extends Component {
               to_id,
               message,
         )
+
+         //push notification
+      	Meteor.call('serverNotification','Message signalé','Ton message a été signalé : ' + message, to_id)  
 	 }
 
 	voteUP() {

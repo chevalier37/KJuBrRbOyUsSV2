@@ -411,6 +411,20 @@ Meteor.methods({
 
      },
 
+     //push notification
+     'serverNotification'(title, text, id) {
+      Push.send({
+      title,
+      text,
+      from: 'Kurbys',
+      badge: 1,
+      query: {
+        userId: id,
+      }
+    });
+  }
+
+
 });
 
 Meteor.publish('AllNotifications', function () {

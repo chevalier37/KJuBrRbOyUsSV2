@@ -47,6 +47,7 @@ class ConseillerConnecter extends Component {
           moreSante:5,
           moreEcole:5,
           nuit:false,
+          poster:false,
         }
     }
 
@@ -294,6 +295,12 @@ class ConseillerConnecter extends Component {
         this.setState({moreEcole: plus});
    }
 
+   poster() {
+      this.setState({
+        poster: !this.state.poster,
+      });
+    }
+
     /*componentWillMount(){
        Meteor.apply('AllConseillers', [{
             }], {
@@ -388,7 +395,9 @@ class ConseillerConnecter extends Component {
                              Tous les conseillers en ligne
                             </div>
                          <div className="categories">
-                          <Segment className={ nuit ? "SegmentNuit" : ""}>
+                         
+                         {/*affichage sur ecran*/}
+                         <Segment className={ nuit ? "SegmentNuit ecran" : "ecran"}>
                                  <Button
                                   size="mini"
                                   basic
@@ -437,6 +446,83 @@ class ConseillerConnecter extends Component {
                                   Scolaire
                                  </Button>
                               </Segment>
+
+                              <div className='inlinePoster mobile'>
+                                     <div 
+                                    className='DemanderConseil'
+                                      onClick={this.poster.bind(this)}
+                                       >
+                                       <div className="textPoster">
+                                       <Img className="iconPoster" src="/sort.png"/>
+                                       Trier
+                                       </div>
+                                    </div>
+                              </div>
+
+                            {/*affichage sur mobile*/}
+                            <div className={this.state.poster ? 'categories' : "none"}>
+                              <Segment className={ nuit ? "SegmentNuit mobile" : "mobile"}>
+                                 <Button
+                                  size="medium"
+                                  basic
+                                  fluid
+                                  className="choixMobile"
+                                  color="red"
+                                  onClick={this.showAll.bind(this)}>
+                                  Tous
+                                 </Button>
+
+                                <Button
+                                  size="medium"
+                                  basic
+                                  fluid
+                                  className="choixMobile"
+                                  color="red"
+                                  onClick={this.shawAmour.bind(this)}>
+                                   Amour
+                                 </Button>
+
+                                <Button
+                                  size="medium"
+                                  basic
+                                  fluid
+                                  className="choixMobile"
+                                  color="red"
+                                  onClick={this.showConfiance.bind(this)}>
+                                  Confiance en soi
+                                 </Button>
+
+                                <Button
+                                  size="medium"
+                                  basic
+                                  fluid
+                                  className="choixMobile"
+                                  color="red"
+                                  onClick={this.showSexo.bind(this)}>
+                                  Sexo
+                                 </Button>
+
+                                <Button
+                                  size="medium"
+                                  basic
+                                  fluid
+                                  className="choixMobile"
+                                  color="red"
+                                  onClick={this.showSante.bind(this)}>
+                                  Santé
+                                 </Button>
+
+                                <Button
+                                  size="medium"
+                                  basic
+                                  fluid
+                                  className="choixMobile"
+                                  color="red"
+                                  onClick={this.showEcole.bind(this)}>
+                                  Scolaire
+                                 </Button>
+                              </Segment>
+                            </div>
                           </div>
                           <div className="espace"></div>
                         {/*loader au chargement de la page*/}

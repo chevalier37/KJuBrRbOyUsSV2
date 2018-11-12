@@ -293,31 +293,32 @@ class ListeMessagesPostes extends Component {
 	         				</div>
 	         				
 	         				<div className="dateMessage">{this.props.nbrreponse} {this.reponse()} </div>
-	          				<div className="repondreMessage">
-	          					<Link to={'/singleMessage/' + this.props.message._id} >
-	          						<Button  size="tiny" color="green">
-	          							Les réponses
-	          						</Button>
-	          					</Link>
-	          				</div>
-							
-							<div className="repondreMessage" >
-								<Button
-								  size="tiny"
-								  color='red'
-								  onClick={this.Supprimer.bind(this)}>
-									Supprimer
-								</Button>
-							</div>
-
-							<div className="repondreMessage1" >
-								<Link to={'/ModifierMessage/' + this.props.message._id }>
-									<Button size="tiny"  color='orange'>
-											Modifier
+	          				<div className="blockReponse">
+		          				<div className="repondreMesMessage">
+		          					<Link to={'/singleMessage/' + this.props.message._id} >
+		          						<Button  size="tiny" color="green">
+		          							Les réponses
+		          						</Button>
+		          					</Link>
+		          				</div>
+								
+								<div className="repondreMesMessage" >
+									<Button
+									  size="tiny"
+									  color='red'
+									  onClick={this.Supprimer.bind(this)}>
+										Supprimer
 									</Button>
-								</Link>
-							</div>
+								</div>
 
+								<div className="repondreMesMessage" >
+									<Link to={'/ModifierMessage/' + this.props.message._id }>
+										<Button size="tiny"  color='orange'>
+												Modifier
+										</Button>
+									</Link>
+								</div>
+							</div>
 							<p className="categorie">
 							
 							{ this.state.premierAmour ? 

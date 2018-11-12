@@ -55,7 +55,7 @@ class HeaderMobile extends Component {
 
 	     if(pathname == "ModifierMessage"){
 	      this.setState({
-	      pathname: "Modifier",
+	      pathname: "Modifier message",
 	    });
 	    }
 
@@ -320,11 +320,6 @@ class HeaderMobile extends Component {
                 <div className="ButtonHeaderRight">
                   <Link to="/PosterMessage" >
                      <Img className="iconHeader" src="/editMobile.png"/>
-                  </Link>
-                </div>
-                 <div className="ButtonHeaderRight">
-                  <Link to="/ConseillerConnecter" >
-                     <Img className="iconHeaderHelp" src="/help.png"/>
                   </Link>
                 </div>
 			</div>

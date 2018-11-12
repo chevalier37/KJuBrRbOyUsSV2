@@ -388,7 +388,8 @@ class MainContent extends Component {
 					    </div>
 				</div>
 				<div className={this.state.poster ? 'categories' : "none"}>
-				<Segment className={ nuit ? "SegmentNuit" : ""}>
+			{/*affichage sur ecran*/}
+				<Segment className={ nuit ? "SegmentNuit ecran" : "ecran"}>
 				       <Button
 				        size="mini"
 				        basic
@@ -448,6 +449,90 @@ class MainContent extends Component {
 				       <Button
 				        size="mini"
 				        basic
+				        color="red"
+				        onClick={this.ShowAutre.bind(this)}>
+				        Autre
+				       </Button>
+				    </Segment>
+				
+
+			{/*affichage sur mobile*/}
+				<Segment className={ nuit ? "SegmentNuit mobile" : "mobile"}>
+				       <Button
+				        size="medium"
+				        basic
+				        fluid
+				        className="choixMobile"
+				        color="blue"
+				        onClick={this.nonLu.bind(this)}>
+				        Non répondus
+				       </Button>
+
+				       <Button
+				        size="medium"
+				        basic
+				        fluid
+				        className="choixMobile"
+				        color="red"
+				        onClick={this.showAll.bind(this)}>
+				        Tous
+				       </Button>
+
+				      <Button
+				        size="medium"
+				        basic
+				        fluid
+				        className="choixMobile"
+				        color="red"
+				        onClick={this.shawAmour.bind(this)}>
+				         Amour
+				       </Button>
+
+				      <Button
+				        size="medium"
+				        basic
+				        fluid
+				        className="choixMobile"
+				        color="red"
+				        onClick={this.showConfiance.bind(this)}>
+				        Confiance en soi
+				       </Button>
+
+				      <Button
+				        size="medium"
+				        basic
+				        fluid
+				        className="choixMobile"
+				        color="red"
+				        onClick={this.showSexo.bind(this)}>
+				        Sexo
+				       </Button>
+
+				      <Button
+				        size="medium"
+				        basic
+				        fluid
+				        className="choixMobile"
+				        color="red"
+				        onClick={this.showSante.bind(this)}>
+				        Santé
+				       </Button>
+
+				      <Button
+				        size="medium"
+				        basic
+				        fluid
+				        className="choixMobile"
+				        color="red"
+				        onClick={this.showEcole.bind(this)}>
+				        Scolaire
+				       </Button>
+
+				       <Button
+				        size="medium"
+				        basic
+				        fluid
+				        className="choixMobile"
 				        color="red"
 				        onClick={this.ShowAutre.bind(this)}>
 				        Autre

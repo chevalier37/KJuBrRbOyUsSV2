@@ -42,7 +42,9 @@ class DevenirModerateur extends Component {
                       - Vous participerez à l'assemblée générale qui a lieu une fois par an avec Ambre et tous les membres de l'association<br />
                       <br />
                       <strong> Comment devenir adhérent ? </strong><br />
-                      Il suffit de remplir le <a className="ahref" href = "/Bulletin_adhesion_kurbys.pdf" target = "_blank"> bulletin d'inscription</a>et nous le retourner avec le montant de la cotisation. <br /><br />
+                      Il suffit de remplir le <a className="ahref ecranInline" href = "/Bulletin_adhesion_kurbys.pdf" target = "_blank"> bulletin d'inscription</a> 
+                      <a className="ahref mobileInline" > bulletin d'inscription sur le site www.kurbys.com</a>
+                      et nous le retourner avec le montant de la cotisation. <br /><br />
                       Après validation de votre adhésion, votre compte sera activé pour être modérateur.<br />
                       <br />
                       Pour plus de renseignements, n'hésitez pas à nous contacter à cette adresse mail : association.kurbys@gmail.com 

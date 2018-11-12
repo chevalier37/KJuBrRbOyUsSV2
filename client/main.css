@@ -415,7 +415,7 @@ header {
 }
 
 .pusher{
-	/*display: inline-block;*/
+	min-height: 1000px !important;
 	margin-top: 3px;
 }
 
@@ -425,6 +425,15 @@ header {
 	padding-top: 20px;*/
 	background-color: white;
 	margin-top: 55px;
+}
+
+.repondreMesMessage{
+	display: inline-block;
+}
+
+.blockReponse{
+	margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .ui.thin.left.sidebar, .ui.thin.right.sidebar {
@@ -1322,7 +1331,7 @@ header {
 	border-radius: 3px !important;
 	border-style: solid !important;
 	border-width: 1px !important;
-	border-color: black !important;
+	border-color: #bcbdbd !important;
 
 }
 
@@ -1351,7 +1360,7 @@ header {
 	border-radius: 3px !important;
 	border-style: solid !important;
 	border-width: 1px !important;
-	border-color: black !important;
+	border-color: #bcbdbd !important;
 	padding-top: 10px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -2627,7 +2636,7 @@ header {
     padding-right: 10px;
     margin-bottom: 50px;
     background-color: white;
-    height: 1000px;
+    /*height: 1000px;*/
     padding-top: 20px;
 }
 
@@ -3319,6 +3328,17 @@ header {
 
 .demandePassword{
 	margin-bottom: 10px;
+}
+
+.choixMobile{
+	margin-top: 5px !important;
+	margin-bottom: 5px !important;
+}
+
+.containerSiteReco{
+	display: block;
+    height: 100%;
+    margin-left: 10px;
 }
 
 @media only screen and (max-width: 1800px) {

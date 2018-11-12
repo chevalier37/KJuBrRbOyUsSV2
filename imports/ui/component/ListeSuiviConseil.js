@@ -147,24 +147,24 @@ class ListeSuiviConseil extends Component {
 	         				
 	         				</div>
 	         				
-	         				
-	          				<div className="repondreMessage">
-	          					<Link to={'/singleMessage/' + this.props.message.postId} >
-	          						<Button  size="tiny" color="green">
-	          							Voir le message
-	          						</Button>
-	          					</Link>
-	          				</div>
+	         				<div className="blockReponse">
+		          				<div className="repondreMesMessage">
+		          					<Link to={'/singleMessage/' + this.props.message.postId} >
+		          						<Button  size="tiny" color="green">
+		          							Voir le message
+		          						</Button>
+		          					</Link>
+		          				</div>
 
-							<div className="repondreMessage" >
-								<Button
-								  size="tiny"
-								  color='red'
-								  onClick={this.Supprimer.bind(this)}>
-									Supprimer
-								</Button>
+								<div className="repondreMesMessage" >
+									<Button
+									  size="tiny"
+									  color='red'
+									  onClick={this.Supprimer.bind(this)}>
+										Supprimer
+									</Button>
+								</div>
 							</div>
-
 	      				</Comment.Content>
 	    			</Comment>
 
