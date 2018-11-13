@@ -8,7 +8,7 @@ App.info({
 App.configurePlugin('phonegap-plugin-push', {
   // Dummy value
   // If using Google GCM you should use your app id instead
-  SENDER_ID: '12341234'
+  SENDER_ID: '1081222722675'
 });
 
 
