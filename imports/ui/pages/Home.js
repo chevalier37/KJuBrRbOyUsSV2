@@ -142,6 +142,7 @@ class Home extends Component {
             <Sidebar.Pusher>
             
             <LastRecommandations nuit={nuit}/>
+            
             <MainContent more={moreAutre} nuit={nuit} />
             <LastConseillers nuit={nuit}/>
            {/* <Button

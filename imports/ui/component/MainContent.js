@@ -653,7 +653,7 @@ MainContent.propTypes = {
     allMessages: PropTypes.array.isRequired,
 };
 
-export default withTracker(({more}) => {
+export default withTracker(() => {
   const Handle = Meteor.subscribe('AllMessages');
   const loading = !Handle.ready();
 

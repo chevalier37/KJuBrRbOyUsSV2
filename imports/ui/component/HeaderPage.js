@@ -9,6 +9,8 @@ import { Route, Redirect } from 'react-router';
 import {Helmet} from "react-helmet";
 import PropTypes from 'prop-types';
 
+import SearchUsers from '../component/searchUsers.js';
+
 import { Notifications } from '../../api/Notifications.js';
 
 class HeaderPage extends Component {
@@ -65,7 +67,11 @@ class HeaderPage extends Component {
 	      notifNonLu:"0",
 	      SuperModerateur:false,
 	      none:"visibleNotif",
-	      LastContactId:""
+	      LastContactId:"",
+	      user:"",
+	      length:0,
+	      placeholder:"Chercher un pseudo",
+
 	    };
 	}
 
@@ -548,9 +554,29 @@ class HeaderPage extends Component {
     	});
   	}
 
+  	user() {
+  		 const user = ReactDOM.findDOMNode(this.refs.oldPassword).value.trim();
+  		 const length = user.length;
+  		 if (length ==0){
+  		 	this.setState({length: 0});
+  		 }else{
+  		 	this.setState({length: length});
+  		 }
+  		 this.setState({user: user});
+  	}
+
+  	focus() {
+  		this.setState({placeholder: ""});
+  	}
+
+  	focusOut() {
+  		this.setState({placeholder: "Chercher un pseudo"});
+  		this.setState({length: 0});
+  	}
+
   
   	render() {
-
+		const { user } = this.state;
   		const { visible } = this.state;
   		const { categorie } = this.state;
   		const { placeholderTitre } = this.state;
@@ -621,6 +647,23 @@ class HeaderPage extends Component {
 							 <Img className="iconHeader" src="/new-user.png"/>
 						</Link>
 					</div>
+
+					<div className="InputSearchUser">
+						<Form>
+						 <Form.Field required error={this.state.oldPassword}>
+	                          <input
+	                           ref="oldPassword"
+	                           type='text'
+	                           placeholder={this.state.placeholder}
+	                           onChange={this.user.bind(this)}
+	                           onFocus={this.focus.bind(this)}
+	                           onBlur={this.focusOut.bind(this)}
+	                           />
+	                    </Form.Field>
+	                    </Form>
+	                </div>
+					
+                  
 					{/*<div className={!this.state.SuperModerateur ? "none" : "ButtonHeader"}>
 						<Link to="/ajouterModerateur" >
 							 <Img className="iconHeader" src="/new.svg"/>
@@ -964,10 +1007,14 @@ class HeaderPage extends Component {
 						    </Modal.Content>
   						</Modal>
 					</div>
+
 					<div className="ButtonPseudo">
 						<Link to={'/profil/' + Meteor.userId()}>
 							 {username}
 						</Link>
+					</div>
+					<div className={this.state.length==0 ? "none" : "ListeUser"}>
+					 	<SearchUsers user={user} />
 					</div>
 				</div>
 			</div>

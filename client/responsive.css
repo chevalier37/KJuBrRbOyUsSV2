@@ -283,6 +283,38 @@
 		display: none !important;
 	}
 
+	.InputSearchUserMobile{
+	    width: 400px !important;
+	}
+
+	.ListeUser{
+		width: 100% !important;
+	}
+
+}
+
+@media only screen and (min-width: 320px) {
+	.InputSearchUserMobile{
+	    width: 210px !important;
+	}
+}
+
+@media only screen and (min-width: 360px) {
+	.InputSearchUserMobile{
+	    width: 250px !important;
+	}
+}
+
+@media only screen and (min-width: 375px) {
+	.InputSearchUserMobile{
+	    width: 265px !important;
+	}
+}
+
+@media only screen and (min-width: 414px) {
+	.InputSearchUserMobile{
+	    width: 304px !important;
+	}
 }
 
 @media only screen and (min-width: 851px) {

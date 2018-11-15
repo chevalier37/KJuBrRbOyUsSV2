@@ -10,6 +10,8 @@ import {Helmet} from "react-helmet";
 import { withRouter } from 'react-router'
 import PropTypes from 'prop-types';
 
+import SearchUsers from '../component/searchUsers.js';
+
 class HeaderMobile extends Component {
 	static contextTypes = {
 	    router: PropTypes.object // replace with PropTypes.object if you use them
@@ -25,6 +27,9 @@ class HeaderMobile extends Component {
 	      IsConseiller:false,
 	      pathname:" ",
       	  home:true,
+      	  user:"",
+	      length:0,
+	      placeholder:"Chercher un pseudo",
 
 	    };
 	}
@@ -281,11 +286,30 @@ class HeaderMobile extends Component {
 		});
   	}
 
-
   	open(){
   		this.setState({
 	      open: !this.state.open,
 	    });
+  	}
+
+  	focus() {
+  		this.setState({placeholder: ""});
+  	}
+
+  	focusOut() {
+  		this.setState({placeholder: "Chercher un pseudo"});
+  		this.setState({length: 0});
+  	}
+
+  	user() {
+  		 const user = ReactDOM.findDOMNode(this.refs.oldPassword).value.trim();
+  		 const length = user.length;
+  		 if (length ==0){
+  		 	this.setState({length: 0});
+  		 }else{
+  		 	this.setState({length: length});
+  		 }
+  		 this.setState({user: user});
   	}
 
 
@@ -295,6 +319,7 @@ class HeaderMobile extends Component {
   		const { visible } = this.state
   		const { username } = this.state
   		const { redirectBloquer } = this.state
+  		const { user } = this.state;
 
   		  		
   		if (redirectBloquer){
@@ -304,10 +329,27 @@ class HeaderMobile extends Component {
 
 	return (
 			<div className="headerTitre">
-				
-                <div className={this.state.home ? "ButtonPseudoHeader" : "none"}>
+				<div>
+                {/*<div className={this.state.home ? "ButtonPseudoHeader" : "none"}>
                   {username}
-                </div>
+                </div>*/}
+                <div className={this.state.home ? "InputSearchUserMobile" : "none"}>
+					<Form>
+					 <Form.Field required error={this.state.oldPassword}>
+                          <input
+                           ref="oldPassword"
+                           type='text'
+                           placeholder={this.state.placeholder}
+                           onChange={this.user.bind(this)}
+                           onFocus={this.focus.bind(this)}
+                           onBlur={this.focusOut.bind(this)}
+                           />
+                    </Form.Field>
+                    </Form>
+            	</div>
+            	<div className={this.state.length==0 ? "none" : "ListeUser"}>
+					 	<SearchUsers user={user} />
+				</div>
                 <div className={!this.state.home ? "ButtonPseudoHeader" : "none"}>
                   <div className="name">
 	              		{this.state.pathname}
@@ -322,6 +364,9 @@ class HeaderMobile extends Component {
                      <Img className="iconHeader" src="/editMobile.png"/>
                   </Link>
                 </div>
+                
+				</div>
+
 			</div>
 	);
   }
