@@ -162,7 +162,7 @@ class HeaderPage extends Component {
 		       }
 		    },
 		});
-  	}
+ 	}
 
 	 categorie(event) {
 	 	event.preventDefault();
@@ -571,7 +571,6 @@ class HeaderPage extends Component {
 
   	focusOut() {
   		this.setState({placeholder: "Chercher un pseudo"});
-  		this.setState({length: 0});
   	}
 
   
@@ -658,10 +657,15 @@ class HeaderPage extends Component {
 	                           onChange={this.user.bind(this)}
 	                           onFocus={this.focus.bind(this)}
 	                           onBlur={this.focusOut.bind(this)}
+	                           className="inputUsers"
 	                           />
 	                    </Form.Field>
 	                    </Form>
+	                    <div className={this.state.length==0 ? "none" : "ListeUser"}>
+					 		<SearchUsers user={user} nuit={nuit}/>
+						</div>
 	                </div>
+
 					
                   
 					{/*<div className={!this.state.SuperModerateur ? "none" : "ButtonHeader"}>
@@ -1013,9 +1017,7 @@ class HeaderPage extends Component {
 							 {username}
 						</Link>
 					</div>
-					<div className={this.state.length==0 ? "none" : "ListeUser"}>
-					 	<SearchUsers user={user} />
-					</div>
+					
 				</div>
 			</div>
 	);

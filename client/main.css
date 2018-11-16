@@ -3346,7 +3346,7 @@ header {
 	display: inline-block;
     margin-top: 4px;
     float: left;
-    width: 350px;
+    width: 300px;
 }
 
 .InputSearchUserMobile{
@@ -3359,16 +3359,19 @@ header {
 .ListeUser{
 	display: block;
 	float: left;
-	background: white;
-    width: 350px;
+	background: #f9f9f9;
+    width: 300px;
     border-radius: 3px;
     box-shadow: 0px 0.5px 1px #767676;
 }
 
-
+.inputUsers{
+	background-color: #38579a !important;
+	color: white !important;
+}
 
 .ResultNuit{
-
+	background-color: black !important;
 }
 
 .resultfille{
@@ -3376,6 +3379,9 @@ header {
 	padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+    border-bottom-color: #dbdee0;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
 }
 
 .resultfille:hover{
@@ -3391,6 +3397,9 @@ header {
 	padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+    border-bottom-color: #dbdee0;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
 }
 
 @media only screen and (max-width: 1800px) {

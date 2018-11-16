@@ -120,7 +120,7 @@ class Home extends Component {
             <div className="ButtonHeaderMobile">
                 <Img className="iconHeader" src="/menu.png" onClick={this.handleButtonClick} />
             </div>
-                <HeaderMobile />
+                <HeaderMobile nuit={nuit}/>
             </div>
           </div>
         </header>

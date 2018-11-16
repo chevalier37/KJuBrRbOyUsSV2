@@ -298,7 +298,6 @@ class HeaderMobile extends Component {
 
   	focusOut() {
   		this.setState({placeholder: "Chercher un pseudo"});
-  		this.setState({length: 0});
   	}
 
   	user() {
@@ -320,6 +319,7 @@ class HeaderMobile extends Component {
   		const { username } = this.state
   		const { redirectBloquer } = this.state
   		const { user } = this.state;
+  		let nuit = this.props.nuit;
 
   		  		
   		if (redirectBloquer){
@@ -343,12 +343,13 @@ class HeaderMobile extends Component {
                            onChange={this.user.bind(this)}
                            onFocus={this.focus.bind(this)}
                            onBlur={this.focusOut.bind(this)}
+                           className="inputUsers"
                            />
                     </Form.Field>
                     </Form>
             	</div>
             	<div className={this.state.length==0 ? "none" : "ListeUser"}>
-					 	<SearchUsers user={user} />
+					 	<SearchUsers user={user} nuit={nuit}/>
 				</div>
                 <div className={!this.state.home ? "ButtonPseudoHeader" : "none"}>
                   <div className="name">
