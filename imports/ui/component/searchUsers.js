@@ -23,7 +23,9 @@ class SearchUsers extends Component {
 	    let AllMessages = this.props.resultSearch;
 	    let nuit = this.props.nuit;
 	    return AllMessages.map((user) => {
-         
+	    	/*let username = user.username;
+         let searc = username.substring(0,1);
+         console.log(searc)*/
 	      return (
 	        <ResultSearchUser
 	          key={user._id}

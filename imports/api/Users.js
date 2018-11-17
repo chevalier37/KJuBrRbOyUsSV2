@@ -12,6 +12,10 @@ import { Comments } from './Reponses.js';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { DDPRateLimiter } from 'meteor/ddp-rate-limiter';
 
+Meteor.startup(function () {  
+  Meteor.users._ensureIndex({ username: "text"});
+});
+
 if (Meteor.isServer) {
 const requestLimit = 10;
 const requestTimeout = 5000;
@@ -601,12 +605,22 @@ Meteor.publish('all', function () {
 });*/
 
 Meteor.publish('SearchUsers', function (user) {
-  var pattern = new RegExp(".*" + user + ".");
-  return Meteor.users.find({"username": {$regex: pattern, $options:"i"}}, { sort: { username: -1 }, limit:5, fields: {
+  /*var pattern = new RegExp("^" + user );*/
+  return Meteor.users.find({"username": {$regex:  "^[" + user +"]" , $options:"i"}}, {  limit:5, fields: {
       'username':1,
       'profile.gender':1,
       '_id':1,
     }} );
+
+  /*return Meteor.users.find({$text: {$search:  user }}, { sort: { username: -1 }, limit:5, fields: {
+      'username':1,
+      'profile.gender':1,
+      '_id':1,
+    }} );*/
+
+
+
+
 });
 
 
