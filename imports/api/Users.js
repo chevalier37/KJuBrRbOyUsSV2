@@ -606,7 +606,7 @@ Meteor.publish('all', function () {
 
 Meteor.publish('SearchUsers', function (user) {
   /*var pattern = new RegExp("^" + user );*/
-  return Meteor.users.find({"username": {$regex:  "^[" + user +"]" , $options:"i"}}, { sort: { username: -1 }, limit:5, fields: {
+  return Meteor.users.find({"username": {$regex:  "^[" + user +"]" , $options:"i"}}, {  limit:5, fields: {
       'username':1,
       'profile.gender':1,
       '_id':1,
