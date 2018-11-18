@@ -430,7 +430,7 @@ class ListeMessages extends Component {
 								
 							</div>
 
-							<div className={this.state.IsModerateur ? "repondreMessage ecran" : "none"}>
+							<div className={this.state.IsModerateur ? "repondreMessage" : "none"}>
 	          						<Button 
 	          						 size="mini"
 	          						 color="red"

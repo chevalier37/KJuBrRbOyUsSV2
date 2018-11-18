@@ -38,7 +38,9 @@ class NousContacter extends Component {
                     Tout le monde peut participer et donner ses conseils. Ceux qui ont besoin d'aide sont les bienvenues<br /><br />
                     
                     Si vous souhaitez nous aider à faire grandir la communauté KURBYS, nous seront heureux de vous accueillir dans l'association.<br />
-                    Il vous suffit de remplir le <a className="ahref" href = "/Bulletin_adhesion_kurbys.pdf" target = "_blank"> bulletin d'inscription</a> et nous le retourner.<br /><br />
+                    Il suffit de remplir le <a className="ahref ecranInline" href = "/Bulletin_adhesion_kurbys.pdf" target = "_blank"> bulletin d'inscription</a> 
+                      <a className="ahref mobileInline" > bulletin d'inscription sur le site www.kurbys.com</a>
+                      et nous le retourner avec le montant de la cotisation. <br /><br />
 
                     Vous pouvez nous contacter à cette adresse mail :<strong> association.kurbys@gmail.com </strong>
                     </div>

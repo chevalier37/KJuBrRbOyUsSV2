@@ -12,9 +12,6 @@ import { Comments } from './Reponses.js';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { DDPRateLimiter } from 'meteor/ddp-rate-limiter';
 
-Meteor.startup(function () {  
-  Meteor.users._ensureIndex({ username: "text"});
-});
 
 if (Meteor.isServer) {
 const requestLimit = 10;
@@ -605,13 +602,14 @@ Meteor.publish('all', function () {
 });*/
 
 Meteor.publish('SearchUsers', function (user) {
-  /*var pattern = new RegExp("^" + user );*/
-  return Meteor.users.find({"username": {$regex:  "^[" + user +"]" , $options:"i"}}, {   fields: {
+  /*let pattern = new RegExp("^" + user );*/
+if(user.length >1){
+  return Meteor.users.find({"username": {$regex:  "^[" + user + "]" , $options:"i"}}, {   fields: {
       'username':1,
       'profile.gender':1,
       '_id':1,
     }} );
-
+}
   /*return Meteor.users.find({$text: {$search:  user }}, { sort: { username: -1 }, limit:5, fields: {
       'username':1,
       'profile.gender':1,
@@ -637,6 +635,7 @@ Meteor.publish('username', function (id) {
       'profile.naissance':1,
       'status.online':1,
       'profile.naissance':1,
+      'profile.note':1,
     }
   });
 });

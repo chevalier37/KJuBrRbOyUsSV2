@@ -46,11 +46,17 @@ class ListeReponses extends Component {
     	})
 
 		const sexe = this.props.message.gender;
+		const author_id = this.props.message.userId;
 	    
 	    {
 	    sexe == 'fille' ? 
 	    this.setState({sexe: 'pink'}):
 		this.setState({sexe: 'blue'})
+		}
+
+		{author_id == Meteor.userId() ? 
+	         this.setState({author_id: true}):
+		  	 this.setState({author_id: false})
 		}
 
 		//on calcul la date du post
@@ -211,6 +217,13 @@ class ListeReponses extends Component {
 				  			{this.props.message.post_author}
 				  			</Link>
 			  			</div>
+			  			<div className={this.state.author_id ? "Modifier" : "none"}>
+		        				<Link to={'/ModifierReponse/' + this.props.message._id }>
+									<Button size="mini"  color='orange'>
+										Modifier
+									</Button>
+								</Link>
+						</div>
 			  			<div className={ nuit ? "ageAuthorReponseNuit" : "ageAuthorReponse"}>
 	        				{age} ans
 	        			</div>

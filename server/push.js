@@ -33,8 +33,8 @@ Push.Configure({
 
 //Method dépacer dans api/Notifications
 /*Meteor.methods({
-  'serverNotification'(title, text, id) {
-    Push.send({
+  serverNotification : function(title, text, id) {
+    let test = Push.send({
       title,
       text,
       from: 'Kurbys',
@@ -43,5 +43,6 @@ Push.Configure({
         userId: id,
       }
     });
+    console.log(test)
   }
 });*/

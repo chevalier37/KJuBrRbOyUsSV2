@@ -224,8 +224,22 @@ Meteor.methods({
       supprimerReponse: function(idMessage) {
          check(idMessage, String);
           Comments.remove({_id:idMessage});
+       },
+
+       ModifierReponse: function(idMessage, text) {
+         check(idMessage, String);
+          Comments.update({_id:idMessage}, {
+              $set: { comments: text},
+             })
        }, 
 
+});
+
+Meteor.publish('ModifierMyReponse', function (id) {
+new SimpleSchema({
+      id: {type: String},
+    }).validate({id});
+  return Comments.find({'_id':id});
 });
 
 Meteor.publish('Allreponses', function ( ) {
@@ -245,7 +259,6 @@ Meteor.publish('MyReponses', function (myId) {
 new SimpleSchema({
       myId: {type: String},
     }).validate({myId});
-
   return Comments.find({'userId':myId});
 });
 

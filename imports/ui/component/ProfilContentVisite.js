@@ -2731,6 +2731,7 @@ export default ProfilContentVisite =  withTracker(({id}) => {
       'profile.naissance':1,
       'status.online':1,
       'profile.naissance':1,
+      'profile.note':1,
     }
   });
  	let Recommandation = Recommandations.find({'to_id':id});

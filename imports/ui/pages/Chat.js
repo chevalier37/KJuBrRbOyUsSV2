@@ -110,6 +110,7 @@ class chat extends Component {
           let nuit = this.state.nuit;
           return AllChat.map((message) => {
            let date = Date.parse(message.post_date);
+           
             return (
               <ChatContent
                 key={message._id}

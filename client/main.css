@@ -1,5 +1,5 @@
 html, body{
-   background-color: #e9ebee;
+   background-color: #e9ebee !important;
    /*overflow: hidden;*/
    /*height: 100%;*/
 }
@@ -1181,7 +1181,7 @@ header {
 
 .filleMessageBackground{
 	/*background-color: white;*/
-    height: 30px;
+    min-height: 30px;
     margin-bottom: -15px;
     padding-left: 10px;
     padding-top: 4px;
@@ -1191,12 +1191,21 @@ header {
 
 .garconMessageBackground{
 	/*background-color: white;*/
-    height: 30px;
+    min-height: 30px;
     margin-bottom: -15px;
     padding-left: 10px;
     padding-top: 4px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
+}
+
+.MessagedroiteNuit{
+	background-color: blue !important;
+}
+
+.messageNuit{
+	background-color: #7d7d7d !important;
+    color: #d2d2d2 !important;
 }
 
 .filleSearch{
@@ -2126,7 +2135,7 @@ header {
 }
 
 .numero{
-	text-align: justify;
+	text-align: left;
 	font-size: 16px;
 }
 
@@ -2140,6 +2149,14 @@ header {
 	font-size: 16px;
 	margin-bottom: 5px;
 	
+}
+
+.backgroundNuit{
+	background-color:  black !important;
+}
+
+.backgroundGrey{
+	background-color:  #e9ebee !important;
 }
 
 .cardSection{

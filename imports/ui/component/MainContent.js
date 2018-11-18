@@ -202,6 +202,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'cacher'});
        	this.setState({MessageNonLu: 'cacher'});
        	this.setState({MessageAutre: 'cacher'});
+       	this.setState({poster: false});
 	 }
 
 	 nonLu() {
@@ -213,6 +214,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'cacher'});
        	this.setState({MessageNonLu: 'visibleMessage'});
        	this.setState({MessageAutre: 'cacher'});
+       	this.setState({poster: false});
 	 }
 
 	 ShowAutre() {
@@ -224,6 +226,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'cacher'});
        	this.setState({MessageNonLu: 'cacher'});
        	this.setState({MessageAutre: 'visibleMessage'});
+       	this.setState({poster: false});
 	 }
 
 	 shawAmour() {
@@ -235,6 +238,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'visibleMessage'});
        	this.setState({MessageNonLu: 'cacher'});
        	this.setState({MessageAutre: 'cacher'});
+       	this.setState({poster: false});
 
 	 }
 
@@ -247,6 +251,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'cacher'});
        	this.setState({MessageNonLu: 'cacher'});
        	this.setState({MessageAutre: 'cacher'});
+       	this.setState({poster: false});
 	 }
 
 	 showSexo() {
@@ -258,6 +263,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'cacher'});
        	this.setState({MessageNonLu: 'cacher'});
        	this.setState({MessageAutre: 'cacher'});
+       	this.setState({poster: false});
 	 }
 
 	 showEcole() {
@@ -269,6 +275,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'cacher'});
        	this.setState({MessageNonLu: 'cacher'});
        	this.setState({MessageAutre: 'cacher'});
+       	this.setState({poster: false});
 	 }
 
 	 showSante() {
@@ -280,6 +287,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'cacher'});
        	this.setState({MessageNonLu: 'cacher'});
        	this.setState({MessageAutre: 'cacher'});
+       	this.setState({poster: false});
 	 }
 
 	 VoirPlus() {
@@ -389,7 +397,7 @@ class MainContent extends Component {
 				</div>
 				<div className={this.state.poster ? 'categories' : "none"}>
 			{/*affichage sur ecran*/}
-				<Segment className={ nuit ? "SegmentNuit ecran" : "ecran"}>
+				<div className={ nuit ? "SegmentNuit ecran" : "ecran"}>
 				       <Button
 				        size="mini"
 				        basic
@@ -453,11 +461,11 @@ class MainContent extends Component {
 				        onClick={this.ShowAutre.bind(this)}>
 				        Autre
 				       </Button>
-				    </Segment>
+				</div>
 				
 
 			{/*affichage sur mobile*/}
-				<Segment className={ nuit ? "SegmentNuit mobile" : "mobile"}>
+				<div className={ nuit ? "SegmentNuit mobile" : "mobile"}>
 				       <Button
 				        size="medium"
 				        basic
@@ -537,7 +545,7 @@ class MainContent extends Component {
 				        onClick={this.ShowAutre.bind(this)}>
 				        Autre
 				       </Button>
-				    </Segment>
+				    </div>
 				</div>
 
 	  			{/*loader au chargement de la page*/}

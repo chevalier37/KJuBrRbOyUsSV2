@@ -26,10 +26,8 @@ class NousContacter extends Component {
        }
 
     supprimer(){
-      
-
-      /*Meteor.call('supprimerCompte')
-      this.setState({delete: true})*/
+      Meteor.call('supprimerCompte')
+      this.setState({delete: true})
     }
 
     non(){

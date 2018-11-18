@@ -3,78 +3,39 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Checkbox, Form,  Message } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Header, Menu } from 'semantic-ui-react'
 import Img from 'react-image'
 import { Route, Redirect } from 'react-router';
 import ReactGA from 'react-ga';
 ReactGA.initialize('UA-108632466-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
-
+ 
 //Component
 import HeaderPage from '../component/HeaderPage.js';
-import HeaderMobile from '../component/HeaderMobile.js';
 import FooterMobile from '../component/FooterMobile.js';
-import MainContent from '../component/MainContent.js';
+import ContentModifierReponse from '../component/ContentModifierReponse.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
+import HeaderMobile from '../component/HeaderMobile.js';
 import LastRecommandations from '../component/LastRecommandations.js';
 import LastConseillers from '../component/LastConseillers.js';
 
-class Home extends Component {
+class ModifierReponse extends Component {
 
-    constructor(props) {
-          super(props);
-       
-          this.state = {
-          visible:false,
-          moreAutre:5,
-          nuit:false,
-          ChargeNuit:true,
-          };
-          /*this.handleScroll = this.handleScroll.bind(this);*/
-      }
-
-    componentDidMount() {
-        this.el.scrollIntoView();
-       
-        Meteor.apply('ModeNuit', [{}], {
-          onResultReceived: (error, response) => {
-            if (error) console.warn(error.reason);
-            {response ?
-             this.setState({nuit: response, ChargeNuit: false}) :
-             this.setState({ChargeNuit: false})}
-          },
-        });
-    }
-
-     /* handleScroll() {
-        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-        const body = document.body;
-        const html = document.documentElement;
-        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
-        const windowBottom = windowHeight + window.pageYOffset;
-        if (windowBottom >= docHeight) {
-          let plus = this.state.moreAutre + 5
-        this.setState({moreAutre: plus});
-        } 
-      }
-
-    componentDidMount() {
-      window.addEventListener("scroll", this.handleScroll);
-    }
-
-    componentWillUnmount() {
-      window.removeEventListener("scroll", this.handleScroll);
-    }*/
-
-
+    state = { visible: false }
 
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
     handleSidebarHide = () => this.setState({ visible: false })
 
-    VoirAutre() {
-    let plus = this.state.moreAutre + 5
-        this.setState({moreAutre: plus});
-        
+    componentDidMount() {
+        this.scrollToTop();
+    }
+
+    componentDidUpdate() {
+        this.scrollToTop();
+    }
+
+    scrollToTop() {
+        this.el.scrollIntoView();
     }
 
     nuit() {
@@ -93,16 +54,15 @@ class Home extends Component {
     }
 
     render() {
-    const { visible } = this.state
-    const { moreAutre } = this.state
-    const { nuit } = this.state
+    const { visible } = this.state;
+    const { nuit } = this.state;
 
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
     
     return (
-      <div className={ this.state.nuit  ? "containerNuit" : "container"}>
+      <div className={ this.state.nuit ? "containerNuit" : "container"}>
       <div ref={el => { this.el = el; }} ></div>
         <header> 
           {/* Header site*/}
@@ -112,7 +72,7 @@ class Home extends Component {
                 <Img className={!this.state.nuit ? "iconHeader" : "none" } src="/jour.png"/>
                 <Img className={this.state.nuit ? "iconHeader" : "none" } src="/nuit.png"/>
             </div>
-              <HeaderPage nuit={nuit}/>
+              <HeaderPage />
             </div>
           </div>
 
@@ -122,7 +82,7 @@ class Home extends Component {
             <div className="ButtonHeaderMobile">
                 <Img className="iconHeader" src="/menu.png" onClick={this.handleButtonClick} />
             </div>
-                <HeaderMobile nuit={nuit}/>
+                <HeaderMobile />
             </div>
           </div>
         </header>
@@ -138,22 +98,13 @@ class Home extends Component {
               visible={visible}
               width='thin'
             >
-                <ContentMenuMobile />
+              <ContentMenuMobile />
             </Sidebar>
 
             <Sidebar.Pusher>
-            
-            <LastRecommandations nuit={nuit}/>
-            
-            <MainContent more={moreAutre} nuit={nuit} />
-            <LastConseillers nuit={nuit}/>
-           {/* <Button
-              fluid
-                  color="green"
-                  onClick={this.VoirAutre.bind(this)}>
-                  Voir plus test
-            </Button>*/}
-
+             <LastRecommandations nuit={nuit}/>
+                <ContentModifierReponse post_id={this.props.match.params.id} nuit={nuit}/>
+             <LastConseillers nuit={nuit}/>
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>
@@ -167,8 +118,6 @@ class Home extends Component {
 }
 
 export default withTracker(() => {
-
-  return {
-
+  return {  
   };
-})(Home);
+})(ModifierReponse);

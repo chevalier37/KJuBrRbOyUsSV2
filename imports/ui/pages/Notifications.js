@@ -32,6 +32,7 @@ class allNotifications extends Component {
           username:'',
           gender:'',
           nuit:false,
+          ChargeNuit:true,
 
         }
     }
@@ -66,10 +67,10 @@ class allNotifications extends Component {
           onResultReceived: (error, response) => {
             if (error) console.warn(error.reason);
             {response ?
-             this.setState({nuit: response}) :
-             ""}
+             this.setState({nuit: response, ChargeNuit: false}) :
+             this.setState({ChargeNuit: false})}
           },
-        });
+        })
     }
 
     deleteAllNotif() {

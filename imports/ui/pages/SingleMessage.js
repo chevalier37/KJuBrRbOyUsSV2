@@ -67,7 +67,7 @@ class SingleMessage extends Component {
     renderAllreponses() {
           let Allreponses = this.props.allreponses;
           let nuit = this.state.nuit;
-
+          const message_id=this.props.match.params.id;
           return Allreponses.map((message) => {
            let date = Date.parse(message.submitted);
              
@@ -76,7 +76,8 @@ class SingleMessage extends Component {
                 key={message._id}
                 message={message}
                 date={date}
-                nuit={nuit}         
+                nuit={nuit}
+                message_id={message_id}         
               />
             );
           });

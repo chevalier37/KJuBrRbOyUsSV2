@@ -19,6 +19,7 @@ import MOBILEmessagePoste from '../../../imports/ui/pages/MOBILEmessagePoste.js'
 import Notifications from '../../../imports/ui/pages/Notifications.js';
 import ConseillerConnecter from '../../../imports/ui/pages/ConseillerConnecter.js';
 import ModifierMessage from '../../../imports/ui/pages/ModifierMessage.js';
+import ModifierReponse from '../../../imports/ui/pages/ModifierReponse.js';
 import singleMessage from '../../../imports/ui/pages/SingleMessage.js';
 import Profil from '../../../imports/ui/pages/Profil.js';
 import VisiteProfil from '../../../imports/ui/pages/VisiteProfil.js';
@@ -73,6 +74,7 @@ export const renderRoutes = () => (
       <Route path="/Notifications/" component={Notifications}/>
       <Route path="/ConseillerConnecter/" component={ConseillerConnecter}/>
       <Route path="/ModifierMessage/:id" component={ModifierMessage}/>
+      <Route path="/ModifierReponse/:id" component={ModifierReponse}/>
       <Route path="/singleMessage/:id" component={singleMessage}/>
       <Route path="/Profil/:id" component={Profil}/>
       <Route path="/VisiteProfil/:id" component={VisiteProfil}/>

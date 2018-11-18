@@ -14,6 +14,7 @@ export default class ChatContent extends Component {
 		      messageDate:'',
 		      read:false,
 		      gauche:'',
+		      messageNuit:'',
 		    };
 		}
 	
@@ -26,6 +27,7 @@ export default class ChatContent extends Component {
 		 	this.setState({message: 'message_droite'}) :
 		 	this.setState({message: 'message_gauche'})
 			}
+
 
 			{
 			this.props.message.read ?
@@ -103,6 +105,8 @@ export default class ChatContent extends Component {
         to_id: PropTypes.string.isRequired,
         date:  PropTypes.number.isRequired
     };
+    
+			
 
 	    return (
 	    	<div>
@@ -114,13 +118,20 @@ export default class ChatContent extends Component {
 		    	 onClick={this.Supprimer.bind(this)}
 		    	 >
 		    		supprimer
-		    	</div>
-				<div className={"AffficheDiscussion" + " "+this.state.message}>
+	    		</div>
+		 
+				<div className={
+					this.props.nuit && this.state.message == "message_gauche" ?
+					"AffficheDiscussion" + " "+ this.state.message + " " + "messageNuit" :
+					"AffficheDiscussion" + " "+ this.state.message
+
+				}>
 					<div className="display-linebreak">
-					    {this.breaklines()}
+						    {this.breaklines()}
 					</div>
 					<div ref={el => { this.el = el; }} >
 					</div>
+
 		    	</div>
 		    	<div className={"MessageLu" + " "+this.state.gauche}>
 		    		<div className={this.props.message.read ? "visible" : "none"}>
