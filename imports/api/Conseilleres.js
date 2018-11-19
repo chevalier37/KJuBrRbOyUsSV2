@@ -33,20 +33,21 @@ export const IsConseiller = new ValidatedMethod({
 
     const search = Meteor.users.findOne({'_id':this.userId});
     const voteUP = search.voteUP;
-    const voteDOWN = search.voteDOWN;
+    let voteDOWN = search.voteDOWN;
+    {!voteDOWN ? voteDOWN = 0 : ""}
     const ratio = (voteUP / (voteUP+voteDOWN))*100;
-
     const NBRaide = Comments.find({'userId':this.userId}).count();
-
-    if(!Istrue && ratio > 85 && NBRaide >= 25){// l'utilisateur peut devenir conseiller
-      Notifications.insert({
-                  date: new Date(),
-                  to_id:this.userId,
-                  read:false,
-                  type:'conseiller',
-                });
+     if(!Istrue && ratio >= 85 && NBRaide >= 25){// l'utilisateur peut devenir conseiller
+      const notif = Notifications.find({"to_id":this.userId,"type":'conseiller' }).count()// on regarde si l'utilisateur n'a pas déjà reçu une notification
+      if (notif == 0){
+          Notifications.insert({
+                      date: new Date(),
+                      to_id:this.userId,
+                      read:false,
+                      type:'conseiller',
+                    });
+        }
     }
-
     return Istrue;
   }
 });
@@ -179,16 +180,29 @@ export const verifConseiller = new ValidatedMethod({
   run({}) {
     const search = Meteor.users.findOne({'_id':this.userId});
     const voteUP = search.voteUP;
-    const voteDOWN = search.voteDOWN;
-    const ratio = (voteUP / (voteUP+voteDOWN))*100;
+    let voteDOWN = search.voteDOWN;
 
-    const NBRaide = Comments.find({'userId':this.userId}).count();
-
-    if(ratio > 85 && NBRaide >= 50){
-      return true;
+    if( !voteDOWN){
+      let voteDOWN=0
+      const ratio = (voteUP / (voteUP+voteDOWN))*100;
+      const NBRaide = Comments.find({'userId':this.userId}).count();
+        if(ratio >= 85 && NBRaide >= 25){
+          return true;
+        }else{
+          return false
+        }
     }else{
-      return false
+      const ratio = (voteUP / (voteUP+voteDOWN))*100;
+      const NBRaide = Comments.find({'userId':this.userId}).count();
+        if(ratio >= 85 && NBRaide >= 25){
+          return true;
+        }else{
+          return false
+        }
     }
+    
+
+    
   }
 });
 DDPRateLimiter.addRule({
