@@ -13,7 +13,7 @@ import HeaderPage from '../component/HeaderPage.js';
 import FooterMobile from '../component/FooterMobile.js';
 import FormAjouterModerateur from '../component/FormAjouterModerateur.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
-
+import Test from '../component/test.js';
 class ajouterModerateur extends Component {
 
     constructor(props) {
@@ -112,6 +112,7 @@ class ajouterModerateur extends Component {
                       </Header>
               </Segment>
               <FormAjouterModerateur />
+              <Test />
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>

@@ -8,8 +8,9 @@ import AdSense from 'react-adsense';
 import PropTypes from 'prop-types';
 import FormPosterMessage from './FormPosterMessage.js';
 import ListeMessages from './ListeMessages.js';
-
+import Peer from 'simple-peer';
 import { Posts } from '../../api/Messages.js';
+import ReactDOM from 'react-dom';
 
 class MainContent extends Component {
 
@@ -37,26 +38,33 @@ class MainContent extends Component {
 					posterConseil:false,
 					idSondage:"",
 					titreSondage:"",
+					signal:"",
+					initiator:""
+				
 			    };
 			}
+
+
 
 
 	renderAllMessages() {
 	    let AllMessages = this.props.allMessages;
 	    let nuit = this.props.nuit;
 	    let more = this.state.more;
+	    let lang = this.props.lang;
 	    return AllMessages.slice(0, more).map((message) => {
 	     let date = Date.parse(message.post_date);
-         
 	      return (
 	        <ListeMessages
 	          key={message._id}
 	          message={message}
 	          date={date}
 	          id={message._id}
-	          nuit={nuit}         
+	          nuit={nuit}
+	          lang={lang}         
 	        />
 	      );
+
 	    });
 	}
 
@@ -64,6 +72,7 @@ class MainContent extends Component {
 	    let nonLu = this.props.postNonLu;
 	    let more = this.state.moreNonLu;
 	    let nuit = this.props.nuit;
+	    let lang = this.props.lang;
 	    return nonLu.slice(0, more).map((message) => {
 	     let date = Date.parse(message.post_date);
          
@@ -73,7 +82,8 @@ class MainContent extends Component {
 	          message={message}
 	          date={date}
 	          id={message._id}
-	          nuit={nuit}          
+	          nuit={nuit}
+	          lang={lang}           
 	        />
 	      );
 	    });
@@ -83,6 +93,7 @@ class MainContent extends Component {
 	    let autre = this.props.postAutre;
 	    let more = this.state.moreAutre;
 	    let nuit = this.props.nuit;
+	    let lang = this.props.lang;
 	    return autre.slice(0, more).map((message) => {
 	     let date = Date.parse(message.post_date);
          
@@ -92,7 +103,8 @@ class MainContent extends Component {
 	          message={message}
 	          date={date}
 	          id={message._id}
-	          nuit={nuit}          
+	          nuit={nuit}
+	          lang={lang}           
 	        />
 	      );
 	    });
@@ -102,6 +114,7 @@ class MainContent extends Component {
 	    let MessageAmour = this.props.postsAmour;
 	    let more = this.state.moreAmour;
 	    let nuit = this.props.nuit;
+	    let lang = this.props.lang;
 	    return MessageAmour.slice(0, more).map((message) => {
 	     let date = Date.parse(message.post_date);
          
@@ -111,7 +124,8 @@ class MainContent extends Component {
 	          message={message}
 	          date={date}
 	          id={message._id}
-	          nuit={nuit}            
+	          nuit={nuit}
+	          lang={lang}             
 	        />
 	      );
 	    });
@@ -121,6 +135,7 @@ class MainContent extends Component {
 	    let MessageSexo = this.props.postsSexo;
 	    let more = this.state.moreSexo;
 	    let nuit = this.props.nuit;
+	    let lang = this.props.lang;
 	    return MessageSexo.slice(0, more).map((message) => {
 	     let date = Date.parse(message.post_date);
          
@@ -130,7 +145,8 @@ class MainContent extends Component {
 	          message={message}
 	          date={date}
 	          id={message._id}
-	          nuit={nuit}            
+	          nuit={nuit}
+	          lang={lang}             
 	        />
 	      );
 	    });
@@ -140,6 +156,7 @@ class MainContent extends Component {
 	    let MessageConfiance = this.props.postsConfiance;
 	    let more = this.state.moreConfiance;
 	    let nuit = this.props.nuit;
+	    let lang = this.props.lang;
 	    return MessageConfiance.slice(0, more).map((message) => {
 	     let date = Date.parse(message.post_date);
          
@@ -149,7 +166,8 @@ class MainContent extends Component {
 	          message={message}
 	          date={date}
 	          id={message._id}
-	          nuit={nuit}            
+	          nuit={nuit}
+	          lang={lang}             
 	        />
 	      );
 	    });
@@ -159,6 +177,7 @@ class MainContent extends Component {
 	    let MessageSante = this.props.postsSante;
 	    let more = this.state.moreSante;
 	    let nuit = this.props.nuit;
+	    let lang = this.props.lang;
 	    return MessageSante.slice(0, more).map((message) => {
 	     let date = Date.parse(message.post_date);
          
@@ -168,7 +187,8 @@ class MainContent extends Component {
 	          message={message}
 	          date={date} 
 	          id={message._id}
-	          nuit={nuit}           
+	          nuit={nuit}
+	          lang={lang}            
 	        />
 	      );
 	    });
@@ -178,6 +198,7 @@ class MainContent extends Component {
 	    let MessageEcole = this.props.postsEcole;
 	    let more = this.state.moreEcole;
 	    let nuit = this.props.nuit;
+	    let lang = this.props.lang;
 	    return MessageEcole.slice(0, more).map((message) => {
 	     let date = Date.parse(message.post_date);
          
@@ -187,7 +208,8 @@ class MainContent extends Component {
 	          message={message}
 	          date={date} 
 	          id={message._id}
-	          nuit={nuit}           
+	          nuit={nuit}
+	          lang={lang}            
 	        />
 	      );
 	    });
@@ -341,13 +363,124 @@ class MainContent extends Component {
 	      posterConseil: !this.state.posterConseil,
 	    });
   	}
+
+
+  	Submit(e) {
+  		e.preventDefault();
+		
+  		let signal = JSON.parse(ReactDOM.findDOMNode(this.refs.envoyer).value)//on récupere l'offre
+  		this.setState({signal: signal});
+  		console.log(signal)
+  	}
+
+	startpeer(initiator, signal){//on envoi la vidéo
+		navigator.getUserMedia = navigator.getUserMedia ||
+                         navigator.webkitGetUserMedia ||
+                         navigator.mozGetUserMedia;
+		
+		
+  		if(initiator!==""){
+  		navigator.getUserMedia({
+  			video:true,
+  			audio:true,
+  		}, function(stream){
+
+  			// On récupere le média
+			let emitterVideo = document.querySelector('#emitter-video');
+			emitterVideo.src = window.URL.createObjectURL(stream)
+			console.log(window.URL.createObjectURL(stream))
+			emitterVideo.play()
+			
+  			let p = new Peer({
+  			 initiator: initiator,
+  			 stream: stream,
+  			 config:
+  			  {
+				'iceServers': [
+				    {
+				      'urls': 'stun:eu-turn5.xirsys.com'
+				    },
+				    {
+				      'urls': 'turn:eu-turn5.xirsys.com:80?transport=udp',
+				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
+				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
+				    },
+				    {
+				      'urls': 'turn:eu-turn5.xirsys.com:3478?transport=udp',
+				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
+				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
+				    },
+				    {
+				      'urls': 'turn:eu-turn5.xirsys.com:80?transport=tcp',
+				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
+				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
+				    },
+				    {
+				      'urls': 'turn:eu-turn5.xirsys.com:3478?transport=tcp',
+				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
+				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
+				    },
+				    {
+				      'urls': 'turns:eu-turn5.xirsys.com:443?transport=tcp',
+				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
+				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
+				    },
+				    {
+				      'urls': 'turns:eu-turn5.xirsys.com:5349?transport=tcp',
+				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
+				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
+				    },
+				  ]
+				},
+
+  			 trickle:true
+  			})
+  			
+  			p.on('error', function (err) { console.log('error', err) })
+	  		
+ 			p.on('signal', function (data){
+	  				 document.querySelector('#offer').value = JSON.stringify(data)
+	  		})
+
+	  		p.on('stream', function (stream){
+			let Video = document.querySelector('#receiver-video');
+			//Video.src = window.URL.createObjectURL(stream)
+			Video.srcObject = stream; 
+			Video.play()
+			})
+
+console.log(signal)
+
+	  		if(signal){		
+			p.signal(signal)//on récupere l'offre
+}
+
+  		}, function(){ })//si erreur ou refus de l'activation de la webcam
+
+  		}
+  	}
+
+
+  	peer(){//on envoi la vidéo
+  		this.setState({initiator: true});
+  		
+  	}
+
+  	receive(){
+  		this.setState({initiator: false});
+  	}
+
 			   
   render() {
   	if(this.props.more>5){
   		this.el.scrollIntoView();
   	}
 
+
+
   	let nuit = this.props.nuit;
+  	let {initiator} = this.state;
+  	let {signal} = this.state;
 
 		return (
 			<div className="MainContent">
@@ -370,6 +503,50 @@ class MainContent extends Component {
 				</Message>*/}
 				
 				</div>
+
+{this.startpeer(initiator, signal)}
+
+				<h2>Réception</h2>
+				<video controls id="receiver-video" width="400px" height="400px"></video>
+					<Button //start
+				        size="mini"
+				        basic
+				        color="blue"
+				        onClick={this.peer.bind(this)}>
+				        demarrer la vidéo
+				       </Button>
+						{/* on reception l'offre*/}
+				       <TextArea 
+				       id="offer"
+				       />
+
+
+
+
+				<h2>Envoi</h2>
+				<video  controls  id="emitter-video" width="400px" height="400px"></video>
+				<Button color="green" size="tiny" onClick={this.receive.bind(this)}>
+					    	Recevoir la conversation
+					  	</Button>
+
+				<Form onSubmit={this.Submit.bind(this)} id="incoming">
+			    	<div className="ButtonChatForm1" >
+				     	<Button color="green" size="tiny">
+					    	Enregister l'offre
+					  	</Button>
+			    	</div>
+				    <div className="valideChatArea1">
+				      <TextArea
+				       ref="envoyer"
+	
+				       />
+					</div>
+			  	</Form>
+
+
+
+
+
 
 				{/* PUB mobile*/}
 				{/*<div className="pubMobile mobile">
