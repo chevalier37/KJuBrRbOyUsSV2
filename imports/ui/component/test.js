@@ -387,7 +387,8 @@ class MainContent extends Component {
 
   			// On récupere le média
 			let emitterVideo = document.querySelector('#emitter-video');
-			emitterVideo.src = window.URL.createObjectURL(stream)
+			//emitterVideo.src = window.URL.createObjectURL(stream)
+			emitterVideo.srcObject = stream; 
 			console.log(window.URL.createObjectURL(stream))
 			emitterVideo.play()
 			
@@ -433,13 +434,14 @@ class MainContent extends Component {
 				  ]
 				},
 
-  			 trickle:true
+  			 trickle:false
   			})
   			
   			p.on('error', function (err) { console.log('error', err) })
 	  		
  			p.on('signal', function (data){
 	  				 document.querySelector('#offer').value = JSON.stringify(data)
+	  				 console.log('p.on signal ' + JSON.stringify(data))
 	  		})
 
 	  		p.on('stream', function (stream){
@@ -447,12 +449,14 @@ class MainContent extends Component {
 			//Video.src = window.URL.createObjectURL(stream)
 			Video.srcObject = stream; 
 			Video.play()
+			console.log('stream ' )
 			})
 
 console.log(signal)
 
 	  		if(signal){		
 			p.signal(signal)//on récupere l'offre
+			console.log('p.signal ' )
 }
 
   		}, function(){ })//si erreur ou refus de l'activation de la webcam
