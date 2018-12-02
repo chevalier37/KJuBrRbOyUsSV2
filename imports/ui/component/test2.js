@@ -40,12 +40,19 @@ class MainContent extends Component {
 					idSondage:"",
 					titreSondage:"",
 					signal:"",
-					initiator:""
+					initiator:false,
+					message:""
 				
 			    };
 			}
 
-
+componentWillMount(){
+	if(Meteor.userId()=='qWnQQWAHxQNmZx6sT'){
+		this.setState({initiator: true});
+	}else{
+		this.setState({initiator: false});
+	}
+}
 
 
 	renderAllMessages() {
@@ -369,115 +376,18 @@ class MainContent extends Component {
   	Submit(e) {
   		e.preventDefault();
 		
-  		let signal = JSON.parse(ReactDOM.findDOMNode(this.refs.envoyer).value)//on récupere l'offre
-  		this.setState({signal: signal});
+  		let message = ReactDOM.findDOMNode(this.refs.yourMessage).value;//on récupere l'offre
+  		this.setState({message: message});
   		//console.log(signal)
   	}
 
-	startpeer(initiator, signal){//on envoi la vidéo
-		navigator.getUserMedia = navigator.getUserMedia ||
-                         navigator.webkitGetUserMedia ||
-                         navigator.mozGetUserMedia;
-		console.log(initiator)
-		
-  		if(initiator!==""){
-  		navigator.getUserMedia({
-  			video:true,
-  			audio:true,
-  		}, function(stream){
-
-  			// On récupere le média
-			let emitterVideo = document.querySelector('#emitter-video');
-			//emitterVideo.src = window.URL.createObjectURL(stream)
-			emitterVideo.srcObject = stream; 
-			emitterVideo.play()
-			
-  			let p = new Peer({
-  			 initiator: initiator,
-  			 stream: stream,
-  			 iceTransportPolicy : 'relay',
-  			 config:
-  			  {
-				'iceServers': [
-				    {
-				      'urls': 'stun:eu-turn5.xirsys.com'
-				    },
-				    {
-				      'urls': 'turn:eu-turn5.xirsys.com:80?transport=udp',
-				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
-				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
-				    },
-				    {
-				      'urls': 'turn:eu-turn5.xirsys.com:3478?transport=udp',
-				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
-				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
-				    },
-				    {
-				      'urls': 'turn:eu-turn5.xirsys.com:80?transport=tcp',
-				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
-				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
-				    },
-				    {
-				      'urls': 'turn:eu-turn5.xirsys.com:3478?transport=tcp',
-				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
-				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
-				    },
-				    {
-				      'urls': 'turns:eu-turn5.xirsys.com:443?transport=tcp',
-				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
-				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
-				    },
-				    {
-				      'urls': 'turns:eu-turn5.xirsys.com:5349?transport=tcp',
-				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
-				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
-				    },
-				  ]
-				},
-
-  			 trickle:false
-  			})
-  			console.log(p)
-  			p.on('error', function (err) { console.log('error', err) })
-	  		
- 			p.on('signal', function (data){
-	  				 document.querySelector('#offer').value = JSON.stringify(data)
-	  				 //console.log('p.on signal ' + JSON.stringify(data))
-	  		})
-if(signal){		
-	  		p.on('stream', function (stream){
-			let Video = document.querySelector('#receiver-video');
-			//Video.src = window.URL.createObjectURL(stream)
-			Video.srcObject = stream; 
-			Video.play()
-			//console.log('stream ' )
-			})
-
-			
-
-	  		
-			p.signal(signal)//on récupere l'offre
-			//console.log('p.signal ' )
-			}
-
-  		}, function(err){
-  			console.log(err)
-  		 })//si erreur ou refus de l'activation de la webcam
-
-  		}
-  	}
 
 
-  	peer(){//on envoi la vidéo
-  		this.setState({initiator: true});
-  		
-  	}
-
-  	receive(){
-  		this.setState({initiator: false});
-
-  	}
-
+connect(){
+		let signal = JSON.parse(ReactDOM.findDOMNode(this.refs.otherId).value)//on récupere l'offre
+  		this.setState({signal: signal});
+	
+}
 			   
   render() {
   	if(this.props.more>5){
@@ -489,6 +399,40 @@ if(signal){
   	let nuit = this.props.nuit;
   	let {initiator} = this.state;
   	let {signal} = this.state;
+  	let {message} = this.state;
+
+  	
+
+
+
+let p = new Peer({
+  			 initiator: initiator,
+  			 //stream: stream,
+
+  			 trickle:false
+  			})
+console.log(p)
+  			p.on('error', function (err) { console.log('error', err) })
+ 		
+ 			p.on('signal', function (data){
+	  				 document.querySelector('#yourId').value = JSON.stringify(data)
+	  				 //console.log('p.on signal ' + JSON.stringify(data))
+	  		})
+if(signal){	 
+	  		p.signal(signal)
+}
+
+if(message){
+	  		p.send(message)
+
+}
+
+			p.on('data', function (data){
+	  				 document.querySelector('#messages').value = data
+	  				 //console.log('p.on signal ' + JSON.stringify(data))
+	  		})
+
+
 
 		return (
 			<div className="MainContent">
@@ -512,44 +456,40 @@ if(signal){
 				
 				</div>
 
-{this.startpeer(initiator, signal)}
 
-				<h2>Réception</h2>
-				<video controls id="receiver-video" width="400px" height="400px"></video>
+
+				<h2>Your Id</h2>
+				<TextArea id="yourId"/>
+
+				<h2>Other Id</h2>
+				<TextArea id="otherId" ref="otherId"/>
+				
 					<Button //start
 				        size="mini"
 				        basic
 				        color="blue"
-				        onClick={this.peer.bind(this)}>
-				        demarrer la vidéo
+				        onClick={this.connect.bind(this)}>
+				        connect
 				       </Button>
-						{/* on reception l'offre*/}
-				       <TextArea 
-				       id="offer"
-				       />
 
 
 
-
-				<h2>Envoi</h2>
-				<video  controls  id="emitter-video" width="400px" height="400px"></video>
-				<Button color="green" size="tiny" onClick={this.receive.bind(this)}>
-					    	Recevoir la conversation
-					  	</Button>
-
+				     Enter Message  	
 				<Form onSubmit={this.Submit.bind(this)} id="incoming">
 			    	<div className="ButtonChatForm1" >
 				     	<Button color="green" size="tiny">
-					    	Enregister l'offre
+					    	send
 					  	</Button>
 			    	</div>
 				    <div className="valideChatArea1">
 				      <TextArea
-				       ref="envoyer"
+				       ref="yourMessage"
 	
 				       />
 					</div>
 			  	</Form>
+			  	<pre id="messages"> </pre>
+				
 
 
 
