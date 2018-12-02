@@ -314,7 +314,7 @@ class FormSubscribe extends Component {
               voteUP:0,
               voteDOWN:0,
             }, (err) => {
-              if(err){console.log('erreur inscription')
+              if(err){console.log(err)
               } else {
               	console.log('connexion')
                   Meteor.userId() ? 
