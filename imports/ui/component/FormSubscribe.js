@@ -201,6 +201,13 @@ class FormSubscribe extends Component {
 	    const sexe = this.state.sexe;
       const createdAt = new Date();
 
+      console.log(pseudo)
+       console.log(email)
+        console.log(password)
+         console.log(naissance)
+          console.log(sexe)
+           console.log(createdAt)
+
 	    //On verifie que le pseudo n'est pas vide
 	    {
       pseudo=='' ?
