@@ -201,14 +201,7 @@ class FormSubscribe extends Component {
 	    const sexe = this.state.sexe;
       const createdAt = new Date();
 
-      console.log(pseudo)
-       console.log(email)
-        console.log(password)
-         console.log(naissance)
-          console.log(sexe)
-           console.log(createdAt)
-
-	    //On verifie que le pseudo n'est pas vide
+        //On verifie que le pseudo n'est pas vide
 	    {
       pseudo=='' ?
 	    this.setState({pseudo: true,error:true}) :
@@ -321,8 +314,9 @@ class FormSubscribe extends Component {
               voteUP:0,
               voteDOWN:0,
             }, (err) => {
-              if(err){
+              if(err){console.log('erreur inscription')
               } else {
+              	console.log('connexion')
                   Meteor.userId() ? 
                   this.setState({connection: true,}) : ""
               }
