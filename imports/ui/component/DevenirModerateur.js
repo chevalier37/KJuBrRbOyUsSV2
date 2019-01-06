@@ -39,7 +39,7 @@ class DevenirModerateur extends Component {
                       - Vous participerez à la modération<br />
                       - Vous serez tenus informés des évolutions du site et de l'application mobile<br />
                       - Vous pourrez donner votre avis sur les futures améliorations à apporter<br />
-                      - Vous participerez à l'assemblée générale qui a lieu une fois par an avec Ambre et tous les membres de l'association<br />
+                      - Vous participerez à l'assemblée générale qui a lieu une fois par an avec tous les membres de l'association<br />
                       <br />
                       <strong> Comment devenir adhérent ? </strong><br />
                       Il suffit de remplir le <a className="ahref ecranInline" href = "/Bulletin_adhesion_kurbys.pdf" target = "_blank"> bulletin d'inscription</a> 

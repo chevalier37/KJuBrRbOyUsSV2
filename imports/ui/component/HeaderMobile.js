@@ -217,6 +217,18 @@ class HeaderMobile extends Component {
 	    });
 	    }
 
+	    if(pathname == "Articles"){
+	      this.setState({
+	      pathname: "Articles",
+	    });
+	    }
+
+	    if(pathname == "singleArticle"){
+	      this.setState({
+	      pathname: "Article",
+	    });
+	    }
+
 	    if(pathname == "ValiderRecommandation"){
 	      this.setState({
 	      pathname: "Validation",

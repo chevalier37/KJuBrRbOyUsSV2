@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Checkbox, Form,  Message } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Menu, Input, Icon, Header, Checkbox, Form,  Message } from 'semantic-ui-react'
 import Img from 'react-image'
 import { Route, Redirect } from 'react-router';
 import ReactGA from 'react-ga';
@@ -11,26 +11,38 @@ ReactGA.initialize('UA-108632466-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 //Component
+import MainContentArticles from '../component/MainContentArticles.js';
 import HeaderPage from '../component/HeaderPage.js';
 import HeaderMobile from '../component/HeaderMobile.js';
 import FooterMobile from '../component/FooterMobile.js';
-import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
 import LastRecommandations from '../component/LastRecommandations.js';
 import LastConseillers from '../component/LastConseillers.js';
 
-class Home extends Component {
+import { Articles } from '../../api/Articles.js';
+
+class Allarticles extends Component {
 
     constructor(props) {
-          super(props);
-          this.state = {
-          visible:false,
-          moreAutre:5,
-          nuit:false,
-          ChargeNuit:true,
-          };
-          /*this.handleScroll = this.handleScroll.bind(this);*/
-      }
+        super(props);
+        this.state = {
+            name: '',
+            hidden:true,
+            visible:false,
+            nuit:false,
+            ChargeNuit:true,
+        }
+    }
+
+    handleChange(value){
+      this.setState({hidden: false})
+      this.setState({ name: value })
+    }  
+
+    hidden(){
+      this.setState({hidden: true})
+      this.setState({name: ''})
+    }
 
     componentDidMount() {
         this.el.scrollIntoView();
@@ -45,36 +57,8 @@ class Home extends Component {
         });
     }
 
-     /* handleScroll() {
-        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-        const body = document.body;
-        const html = document.documentElement;
-        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
-        const windowBottom = windowHeight + window.pageYOffset;
-        if (windowBottom >= docHeight) {
-          let plus = this.state.moreAutre + 5
-        this.setState({moreAutre: plus});
-        } 
-      }
-
-    componentDidMount() {
-      window.addEventListener("scroll", this.handleScroll);
-    }
-
-    componentWillUnmount() {
-      window.removeEventListener("scroll", this.handleScroll);
-    }*/
-
-
-
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
     handleSidebarHide = () => this.setState({ visible: false })
-
-    VoirAutre() {
-    let plus = this.state.moreAutre + 5
-        this.setState({moreAutre: plus});
-        
-    }
 
     nuit() {
        this.setState({
@@ -93,9 +77,9 @@ class Home extends Component {
 
     render() {
     const { visible } = this.state
-    const { moreAutre } = this.state
-    const { nuit } = this.state
-
+    const { name} = this.state
+    const { nuit } = this.state    
+    
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
@@ -125,10 +109,9 @@ class Home extends Component {
             </div>
           </div>
         </header>
-
-        <div>
-          <Sidebar.Pushable >
-            <Sidebar
+       
+        <Sidebar.Pushable >
+              <Sidebar
               as={Menu}
               animation='overlay'
               icon='labeled'
@@ -139,24 +122,13 @@ class Home extends Component {
             >
                 <ContentMenuMobile />
             </Sidebar>
-
-            <Sidebar.Pusher>
-            
-            <LastRecommandations nuit={nuit}/>
-            
-            <MainContent more={moreAutre} nuit={nuit} />
-            <LastConseillers nuit={nuit}/>
-           {/* <Button
-              fluid
-                  color="green"
-                  onClick={this.VoirAutre.bind(this)}>
-                  Voir plus test
-            </Button>*/}
-
-            </Sidebar.Pusher>
-          </Sidebar.Pushable>
-        </div>
-
+              
+              <Sidebar.Pusher>
+              <LastRecommandations nuit={nuit}/>
+                      <MainContentArticles nuit={nuit} />
+                <LastConseillers nuit={nuit}/>
+              </Sidebar.Pusher>
+        </Sidebar.Pushable>
         <div className="FooterMobile mobile">
               <FooterMobile />
         </div>
@@ -166,8 +138,13 @@ class Home extends Component {
 }
 
 export default withTracker(() => {
+  
+  const Handle = Meteor.subscribe('AllArticles');
+  const loading = !Handle.ready();
+  const allreponses = Articles.find({valider:true, refuse:false}, {sort:{date: -1}});
+  const reponseExists = !loading && !!allreponses;
 
   return {
-
+    articles: reponseExists ? allreponses.fetch() : [],
   };
-})(Home);
+})(Allarticles);

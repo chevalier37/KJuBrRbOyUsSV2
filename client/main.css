@@ -14,6 +14,20 @@ header {
 	display: block;
 }
 
+.ecranArticle{
+	display: block;
+	margin-bottom: 10px;
+	width: 150px;
+}
+
+.ecranArticle a{
+	color: white;
+}
+
+.ecranArticle a:hover{
+	color: white;
+}
+
 .container{
 	min-height: 1000px;
 	width: 100%;
@@ -236,6 +250,12 @@ header {
 .iconHeader{
 	width: 25px;
     height: 25px;
+    margin-right: 5px;
+}
+
+.iconConseiller{
+	width: 20px;
+    height: 20px;
     margin-right: 5px;
 }
 
@@ -660,6 +680,7 @@ header {
 
 .ListeArticles{
 	margin-top: 15px;
+	margin-right: 10px;
 }
 
 .ListeArticles a{
@@ -670,6 +691,10 @@ header {
 .ListeArticles a:hover{
 	text-decoration: none;
 	color: grey;
+}
+
+.marginRight{
+	margin-right: 10px !important;
 }
 
 .ButtonTrier{
@@ -702,6 +727,7 @@ header {
 
 .ListeMessagesSingle{
 	margin-top: 3px;
+	margin-right: 10px;
 }
 	
 
@@ -743,6 +769,13 @@ header {
 
 .contacter{
 	display: inline-block;
+	margin-top: 0px;
+	margin-right: 20px;
+	color: red;
+	cursor:pointer;
+}
+
+.contacterArticle{
 	margin-top: 0px;
 	margin-right: 20px;
 	color: red;
@@ -1333,7 +1366,7 @@ header {
 .menuProfil{
 	display: inline-block;
 	float: left;
-	height: 800px;
+	height: 850px;
 	width: 200px;
 	background-color: white !important;
 	color: black !important;
@@ -2092,6 +2125,7 @@ header {
 
 .AjouterReponse{
 	margin-top: 10px;
+	margin-right: 10px;
 }
 
 .ListeMesMessages{
@@ -2647,6 +2681,12 @@ header {
 	margin-bottom: 10px;
 }
 
+.consignePoster{
+	color: red;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 .posterMessageMobile {
     margin-top: 30px;
     padding-left: 10px;
@@ -2921,6 +2961,10 @@ header {
     margin-top: 60px;
     width: 500px;
     z-index: 100;
+}
+
+.visibleLogoConseiler{
+	float: left;
 }
 
 .DemanderConseil{
@@ -3363,7 +3407,7 @@ header {
 	display: inline-block;
     margin-top: 4px;
     float: left;
-    width: 300px;
+    width: 250px;
 }
 
 .InputSearchUserMobile{
@@ -3377,7 +3421,7 @@ header {
 	display: block;
 	float: left;
 	background: #f9f9f9;
-    width: 300px;
+    width: 250px;
     border-radius: 3px;
     box-shadow: 0px 0.5px 1px #767676;
 }

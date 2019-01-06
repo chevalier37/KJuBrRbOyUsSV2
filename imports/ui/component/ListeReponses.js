@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Segment, Button, Checkbox, Form, Header, Divider, Label, Comment, Confirm } from 'semantic-ui-react'
+import { Segment, Button, Checkbox, Form, Header, Divider, Label, Comment, Confirm, Popup } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import { confirmAlert } from 'react-confirm-alert'; // Import
@@ -20,6 +20,7 @@ class ListeReponses extends Component {
 			    IsModerateur:false,
 			    open:false,
 			    desactiver:false,
+			    IsConseiller:false,
 		    };
 	}
 
@@ -29,6 +30,7 @@ class ListeReponses extends Component {
     componentWillMount(){
 		//on regarde si l'utilisateur est l'auteur de la réponse
 		let user = this.props.message.userId;
+		let id = this.props.message.userId;
 
 		Meteor.apply('IsModerateur', [{
           }], {
@@ -44,6 +46,20 @@ class ListeReponses extends Component {
 
             },
     	})
+
+    	Meteor.apply(
+	   		'IsConseiller',
+	   		[{id}],
+	   		{
+	        onResultReceived: (error, response) => {
+	           if (error) console.warn(error.reason);
+	           {
+	            response ?  
+	             this.setState({IsConseiller:true}) :
+	             ""
+		       }
+		    },
+		});
 
 		const sexe = this.props.message.gender;
 		const author_id = this.props.message.userId;
@@ -200,6 +216,7 @@ class ListeReponses extends Component {
   render() {
     
 	const colorSexe = this.state.sexe;
+	const IsConseiller = this.state.IsConseiller;
    	let now = new Date();
 	let diff = now - this.props.message.naissance;
 	let age = Math.round(diff / 31536000000);
@@ -213,9 +230,16 @@ class ListeReponses extends Component {
 			  			<div className={colorSexe=="pink" ?
 	        				  "titreMessageFille" : "titreMessageGarcon"
 	        				}>
+						<Popup trigger={
+	        				<div className={IsConseiller ? "visibleLogoConseiler" : "none"}>
+	        					<Img className="iconConseiller" src="/sheriff.png"/>
+	        				</div>
+						} content='Conseiller' />
+						
 				  			<Link to={'/VisiteProfil/' + this.props.message.userId}>
-				  			{this.props.message.post_author}
+				  				{this.props.message.post_author}
 				  			</Link>
+				  			
 			  			</div>
 			  			<div className={this.state.author_id ? "Modifier" : "none"}>
 		        				<Link to={'/ModifierReponse/' + this.props.message._id }>

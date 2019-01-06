@@ -3,34 +3,37 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Checkbox, Form,  Message } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Header, Menu } from 'semantic-ui-react'
 import Img from 'react-image'
 import { Route, Redirect } from 'react-router';
-import ReactGA from 'react-ga';
-ReactGA.initialize('UA-108632466-1');
-ReactGA.pageview(window.location.pathname + window.location.search);
+import { EditorState, convertFromRaw, ContentState } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
 
 //Component
 import HeaderPage from '../component/HeaderPage.js';
 import HeaderMobile from '../component/HeaderMobile.js';
 import FooterMobile from '../component/FooterMobile.js';
-import MainContent from '../component/MainContent.js';
-import ContentMenuMobile from '../component/ContentMenuMobile.js';
 import LastRecommandations from '../component/LastRecommandations.js';
 import LastConseillers from '../component/LastConseillers.js';
+import ListeArticlesModeration from '../component/ListeArticlesModeration.js';
+import ContentMenuMobile from '../component/ContentMenuMobile.js';
 
-class Home extends Component {
+import { Articles } from '../../api/Articles.js';
+
+class ArticlesModeration extends Component {
 
     constructor(props) {
-          super(props);
-          this.state = {
-          visible:false,
-          moreAutre:5,
+        super(props);
+        this.state = {
+          visible: false,
+          username:'',
+          gender:'',
           nuit:false,
           ChargeNuit:true,
-          };
-          /*this.handleScroll = this.handleScroll.bind(this);*/
-      }
+        }
+    }
 
     componentDidMount() {
         this.el.scrollIntoView();
@@ -45,36 +48,8 @@ class Home extends Component {
         });
     }
 
-     /* handleScroll() {
-        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-        const body = document.body;
-        const html = document.documentElement;
-        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
-        const windowBottom = windowHeight + window.pageYOffset;
-        if (windowBottom >= docHeight) {
-          let plus = this.state.moreAutre + 5
-        this.setState({moreAutre: plus});
-        } 
-      }
-
-    componentDidMount() {
-      window.addEventListener("scroll", this.handleScroll);
-    }
-
-    componentWillUnmount() {
-      window.removeEventListener("scroll", this.handleScroll);
-    }*/
-
-
-
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
     handleSidebarHide = () => this.setState({ visible: false })
-
-    VoirAutre() {
-    let plus = this.state.moreAutre + 5
-        this.setState({moreAutre: plus});
-        
-    }
 
     nuit() {
        this.setState({
@@ -91,17 +66,41 @@ class Home extends Component {
       });
     }
 
+
+    renderAllreponses() {
+          let Allreponses = this.props.allreponses;
+
+          return Allreponses.map((message) => {
+           let date = Date.parse(message.post_date);
+           const rawContent = message.post_content;  
+           const contentState = convertFromRaw(JSON.parse(rawContent));
+           const editorState = EditorState.createWithContent(contentState);
+
+            return (
+              <ListeArticlesModeration
+                key={message._id}
+                message={message}
+                //content={rawContent}
+                content={editorState}
+                date={date}         
+              />
+              
+            );
+          
+          });
+    }
+
     render() {
+   
     const { visible } = this.state
-    const { moreAutre } = this.state
-    const { nuit } = this.state
+    const { nuit } = this.state  
 
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
     }
     
     return (
-      <div className={ this.state.nuit  ? "containerNuit" : "container"}>
+     <div className={ this.state.nuit  ? "containerNuit" : "container"}>
       <div ref={el => { this.el = el; }} ></div>
         <header> 
           {/* Header site*/}
@@ -126,9 +125,9 @@ class Home extends Component {
           </div>
         </header>
 
-        <div>
-          <Sidebar.Pushable >
-            <Sidebar
+       
+        <Sidebar.Pushable >
+              <Sidebar
               as={Menu}
               animation='overlay'
               icon='labeled'
@@ -139,24 +138,30 @@ class Home extends Component {
             >
                 <ContentMenuMobile />
             </Sidebar>
+              
+              <Sidebar.Pusher>
+              <LastRecommandations nuit={nuit}/>
+        
+                <div className="containerSite" onClick={this.toggleHidden}>
+                  <div className="containerIMG">
+                  <div className="MainContent">
+                  <Segment>
+                  <Header>
+                    <div className="titreRecomandation"> Modération des articles </div>
+                      
+                  </Header>
+                  </Segment>
+                  
+                   {this.renderAllreponses()}
 
-            <Sidebar.Pusher>
-            
-            <LastRecommandations nuit={nuit}/>
-            
-            <MainContent more={moreAutre} nuit={nuit} />
-            <LastConseillers nuit={nuit}/>
-           {/* <Button
-              fluid
-                  color="green"
-                  onClick={this.VoirAutre.bind(this)}>
-                  Voir plus test
-            </Button>*/}
+                  </div>    
+                      
+                  </div> 
+                </div>
+              <LastConseillers nuit={nuit}/>
+              </Sidebar.Pusher>
 
-            </Sidebar.Pusher>
-          </Sidebar.Pushable>
-        </div>
-
+        </Sidebar.Pushable>
         <div className="FooterMobile mobile">
               <FooterMobile />
         </div>
@@ -165,9 +170,14 @@ class Home extends Component {
   }
 }
 
-export default withTracker(() => {
+export default ArticlesModeration =  withTracker(() => {
+  const id = Meteor.userId();
+  const Handle = Meteor.subscribe('AllArticles');
+  const loading = !Handle.ready();
+  const allreponses = Articles.find({valider:false, refuse:false});
+  const reponseExists = !loading && !!allreponses;
 
   return {
-
+    allreponses: reponseExists ? allreponses.fetch() : [],
   };
-})(Home);
+})(ArticlesModeration);

@@ -71,6 +71,8 @@ class HeaderPage extends Component {
 	      user:"",
 	      length:0,
 	      placeholder:"Chercher un pseudo",
+	      ArticleModeration:0,
+	      IsModerateur:false,
 
 	    };
 	}
@@ -102,6 +104,21 @@ class HeaderPage extends Component {
              ""}
           },
       	});
+
+        Meteor.apply('IsModerateur', [{
+          }], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            
+            {
+            response ?
+             this.setState({IsModerateur: response})
+             :
+             ""
+            }
+
+            },
+    	});
 
       	Meteor.apply('LastContact', [{
             }], {
@@ -162,6 +179,21 @@ class HeaderPage extends Component {
 		       }
 		    },
 		});
+
+	     Meteor.apply('ArticleModeration', [{
+          }], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            
+            {
+            response ?
+             this.setState({ArticleModeration: response})
+             :
+             ""
+          	}
+
+            },
+    });
  	}
 
 	 categorie(event) {
@@ -615,7 +647,7 @@ class HeaderPage extends Component {
 				<div className="BlocHead">
 					<div className="ButtonHeader">
 						<Link to="/home" >
-							 <Img className="iconHeader" src="/home_blanc.png"/>
+							 <Img className="iconHeader" src="/icone_kurbys.png"/>
 						</Link>
 					</div>
 					<div className="ButtonHeader">
@@ -636,6 +668,17 @@ class HeaderPage extends Component {
 							</div>
 						</div>
 					</div>
+					<div className="ButtonHeader">
+						<Link to="/Articles" >
+							 <Img className="iconHeader" src="/article.png"/>
+						</Link>
+					</div>
+
+
+
+
+
+
 					<div className="ButtonHeader">
 						<Link to="/ConseillerConnecter" >
 							 <Img className="iconHeader" src="/help.png"/>
@@ -1017,7 +1060,15 @@ class HeaderPage extends Component {
 							 {username}
 						</Link>
 					</div>
-					
+					<div className={this.state.ArticleModeration > 0 ? " " : "none"}>
+						<div className={this.state.IsModerateur ? "ButtonHeader" : "none"}>
+							<Link to="/ArticlesModeration" >
+								 <Img className="iconHeader" src="/contract.png"/>
+							</Link>
+							<div className="ArticleModeration">{this.state.ArticleModeration}</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 	);

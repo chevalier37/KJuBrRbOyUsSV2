@@ -316,7 +316,6 @@ class FormSubscribe extends Component {
             }, (err) => {
               if(err){console.log(err)
               } else {
-              	console.log('connexion')
                   Meteor.userId() ? 
                   this.setState({connection: true,}) : ""
               }
@@ -513,6 +512,8 @@ class FormSubscribe extends Component {
     			    <Button type='submit' color='green'>Créer un compte</Button>
 
     			</Form>
+    			<br />
+    			<strong>contact: </strong>association.kurbys@gmail.com
     		</div>
 
 	);

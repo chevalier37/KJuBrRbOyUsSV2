@@ -48,6 +48,14 @@
 		display: none !important;
 	}
 
+	.pubArticles{
+		display: none !important;
+	}
+
+	.ecranArticle{
+		display: none !important;
+	}
+
 	.container-connexion {
     	margin-top: 0px !important;
 	}

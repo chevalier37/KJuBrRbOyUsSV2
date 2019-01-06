@@ -378,7 +378,7 @@ class MainContent extends Component {
 		navigator.getUserMedia = navigator.getUserMedia ||
                          navigator.webkitGetUserMedia ||
                          navigator.mozGetUserMedia;
-		console.log(initiator)
+		
 		
   		if(initiator!==""){
   		navigator.getUserMedia({
@@ -490,6 +490,101 @@ if(signal){
   	let {initiator} = this.state;
   	let {signal} = this.state;
 
+
+  	navigator.getUserMedia = navigator.getUserMedia ||
+                         navigator.webkitGetUserMedia ||
+                         navigator.mozGetUserMedia;
+		let p = ""
+		
+  		if(initiator!==""){
+
+  		navigator.getUserMedia({
+  			video:true,
+  			audio:true,
+  		}, function(stream){
+
+  			// On récupere le média
+			let emitterVideo = document.querySelector('#emitter-video');
+			//emitterVideo.src = window.URL.createObjectURL(stream)
+			emitterVideo.srcObject = stream; 
+			emitterVideo.play()
+			
+  			p = new Peer({
+  			 initiator: initiator,
+  			 stream: stream,
+  			 iceTransportPolicy : 'relay',
+  			 config:
+  			  {
+				'iceServers': [
+				    {
+				      'urls': 'stun:eu-turn5.xirsys.com'
+				    },
+				    {
+				      'urls': 'turn:eu-turn5.xirsys.com:80?transport=udp',
+				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
+				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
+				    },
+				    {
+				      'urls': 'turn:eu-turn5.xirsys.com:3478?transport=udp',
+				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
+				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
+				    },
+				    {
+				      'urls': 'turn:eu-turn5.xirsys.com:80?transport=tcp',
+				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
+				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
+				    },
+				    {
+				      'urls': 'turn:eu-turn5.xirsys.com:3478?transport=tcp',
+				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
+				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
+				    },
+				    {
+				      'urls': 'turns:eu-turn5.xirsys.com:443?transport=tcp',
+				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
+				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
+				    },
+				    {
+				      'urls': 'turns:eu-turn5.xirsys.com:5349?transport=tcp',
+				      'credential': '8d8efec2-f22c-11e8-acaf-ed53bcf035a4',
+				      'username': '8d8efe0e-f22c-11e8-9594-bcf4863802c8'
+				    },
+				  ]
+				},
+
+  			 trickle:false
+  			})
+
+  			
+  			
+  			p.on('error', function (err) { console.log('error', err) })
+	  		
+ 			p.on('signal', function (data){
+	  				 document.querySelector('#offer').value = JSON.stringify(data)
+	  				 //console.log('p.on signal ' + JSON.stringify(data))
+	  		})
+	
+	  		p.on('stream', function (stream){
+			let Video = document.querySelector('#receiver-video');
+			//Video.src = window.URL.createObjectURL(stream)
+			Video.srcObject = stream; 
+			Video.play()
+			//console.log('stream ' )
+			})
+
+			
+
+	if(signal){	  		
+			p.signal(signal)//on récupere l'offre
+			//console.log('p.signal ' )
+			}
+
+  		}, function(err){
+  			console.log(err)
+  		 })//si erreur ou refus de l'activation de la webcam
+console.log(p)
+  		}
+
 		return (
 			<div className="MainContent">
 				<div className="centerpub ecran">
@@ -512,7 +607,7 @@ if(signal){
 				
 				</div>
 
-{this.startpeer(initiator, signal)}
+
 
 				<h2>Réception</h2>
 				<video controls id="receiver-video" width="400px" height="400px"></video>

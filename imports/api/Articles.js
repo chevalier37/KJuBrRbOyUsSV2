@@ -4,10 +4,6 @@ import { check } from 'meteor/check';
  
 export const Articles = new Mongo.Collection('articles');
 
-
-
-
-
 if (Meteor.isServer) {
 
 
@@ -248,10 +244,8 @@ new SimpleSchema({
 });
 
 
-Meteor.publish('MesArticles', function (myId) {
-new SimpleSchema({
-      myId: {type: String},
-    }).validate({myId});
+Meteor.publish('MesArticles', function () {
+ let myId = this.userId;
 
   return Articles.find({'post_author_id':myId});
 });

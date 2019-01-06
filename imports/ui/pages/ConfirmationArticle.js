@@ -3,23 +3,21 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Checkbox, Form,  Message } from 'semantic-ui-react'
-import Img from 'react-image'
+import { Sidebar, Segment, Button, Icon, Header, Divider, Menu } from 'semantic-ui-react'
 import { Route, Redirect } from 'react-router';
-import ReactGA from 'react-ga';
-ReactGA.initialize('UA-108632466-1');
-ReactGA.pageview(window.location.pathname + window.location.search);
-
+import Img from 'react-image'
+ 
 //Component
 import HeaderPage from '../component/HeaderPage.js';
 import HeaderMobile from '../component/HeaderMobile.js';
 import FooterMobile from '../component/FooterMobile.js';
-import MainContent from '../component/MainContent.js';
 import ContentMenuMobile from '../component/ContentMenuMobile.js';
 import LastRecommandations from '../component/LastRecommandations.js';
 import LastConseillers from '../component/LastConseillers.js';
 
-class Home extends Component {
+
+
+class ConfirmationVirement extends Component {
 
     constructor(props) {
           super(props);
@@ -45,36 +43,8 @@ class Home extends Component {
         });
     }
 
-     /* handleScroll() {
-        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-        const body = document.body;
-        const html = document.documentElement;
-        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
-        const windowBottom = windowHeight + window.pageYOffset;
-        if (windowBottom >= docHeight) {
-          let plus = this.state.moreAutre + 5
-        this.setState({moreAutre: plus});
-        } 
-      }
-
-    componentDidMount() {
-      window.addEventListener("scroll", this.handleScroll);
-    }
-
-    componentWillUnmount() {
-      window.removeEventListener("scroll", this.handleScroll);
-    }*/
-
-
-
     handleButtonClick = () => this.setState({ visible: !this.state.visible })
     handleSidebarHide = () => this.setState({ visible: false })
-
-    VoirAutre() {
-    let plus = this.state.moreAutre + 5
-        this.setState({moreAutre: plus});
-        
-    }
 
     nuit() {
        this.setState({
@@ -91,15 +61,15 @@ class Home extends Component {
       });
     }
 
+
     render() {
     const { visible } = this.state
-    const { moreAutre } = this.state
     const { nuit } = this.state
 
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
-    }
-    
+    }  
+
     return (
       <div className={ this.state.nuit  ? "containerNuit" : "container"}>
       <div ref={el => { this.el = el; }} ></div>
@@ -126,9 +96,9 @@ class Home extends Component {
           </div>
         </header>
 
-        <div>
-          <Sidebar.Pushable >
-            <Sidebar
+       
+        <Sidebar.Pushable >
+              <Sidebar
               as={Menu}
               animation='overlay'
               icon='labeled'
@@ -139,25 +109,32 @@ class Home extends Component {
             >
                 <ContentMenuMobile />
             </Sidebar>
+              
+              <Sidebar.Pusher>
+                <LastRecommandations nuit={nuit}/>
+                <div className="containerSite" onClick={this.toggleHidden}>
+                  <div className="containerIMG">
+                    <div className="MainContent">
+                      <Segment className="MainContent">
+                        <Header>
+                          Article en cours de modération
+                        </Header>
+                      
+                        <Divider />
 
-            <Sidebar.Pusher>
-            
-            <LastRecommandations nuit={nuit}/>
-            
-            <MainContent more={moreAutre} nuit={nuit} />
-            <LastConseillers nuit={nuit}/>
-           {/* <Button
-              fluid
-                  color="green"
-                  onClick={this.VoirAutre.bind(this)}>
-                  Voir plus test
-            </Button>*/}
+                        <p className="consigne">
+                        Ton article a bien été envoyé.<br />
+                        Il sera posté après modération. 
+                        </p>
 
-            </Sidebar.Pusher>
-          </Sidebar.Pushable>
-        </div>
-
-        <div className="FooterMobile mobile">
+                      </Segment>
+                    </div>
+                  </div> 
+                </div>
+              <LastConseillers nuit={nuit}/>
+              </Sidebar.Pusher>
+        </Sidebar.Pushable>
+          <div className="FooterMobile mobile">
               <FooterMobile />
         </div>
       </div>
@@ -165,9 +142,9 @@ class Home extends Component {
   }
 }
 
+
+
 export default withTracker(() => {
-
   return {
-
   };
-})(Home);
+})(ConfirmationVirement);

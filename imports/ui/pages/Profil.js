@@ -35,6 +35,7 @@ import Livre from '../component/Livre.js';
 import Contentvideos from '../component/Contentvideos.js';
 import LastRecommandations from '../component/LastRecommandations.js';
 import LastConseillers from '../component/LastConseillers.js';
+import MesArticles from '../component/MesArticles.js';
 
 class Profil extends Component {
 
@@ -60,6 +61,8 @@ class Profil extends Component {
           visiblecontact:false,
           visibleSuprimer:false,
           visibleLogout:false,
+          logout:false,
+          visibleArticles:false,
         };
       }
 
@@ -111,6 +114,7 @@ class Profil extends Component {
           visiblecontact:false,
           visibleSuprimer:false,
           visibleLogout:false,
+          visibleArticles:false,
       });
     }
 
@@ -132,6 +136,7 @@ class Profil extends Component {
           visiblecontact:false,
           visibleSuprimer:false,
           visibleLogout:false,
+          visibleArticles:false,
       });
     }
 
@@ -153,6 +158,7 @@ class Profil extends Component {
           visiblecontact:false,
           visibleSuprimer:false,
           visibleLogout:false,
+          visibleArticles:false,
       });
     }
 
@@ -174,6 +180,7 @@ class Profil extends Component {
           visiblecontact:false,
           visibleSuprimer:false,
           visibleLogout:false,
+          visibleArticles:false,
       });
     }
 
@@ -195,6 +202,7 @@ class Profil extends Component {
           visiblecontact:false,
           visibleSuprimer:false,
           visibleLogout:false,
+          visibleArticles:false,
       });
     }
 
@@ -216,6 +224,7 @@ class Profil extends Component {
           visiblecontact:false,
           visibleSuprimer:false,
           visibleLogout:false,
+          visibleArticles:false,
       });
     }
 
@@ -237,6 +246,7 @@ class Profil extends Component {
           visiblecontact:false,
           visibleSuprimer:false,
           visibleLogout:false,
+          visibleArticles:false,
       });
     }
 
@@ -258,6 +268,7 @@ class Profil extends Component {
           visiblecontact:false,
           visibleSuprimer:false,
           visibleLogout:false,
+          visibleArticles:false,
       });
     }
 
@@ -279,6 +290,7 @@ class Profil extends Component {
           visiblecontact:false,
           visibleSuprimer:false,
           visibleLogout:false,
+          visibleArticles:false,
       });
     }
 
@@ -300,6 +312,7 @@ class Profil extends Component {
           visiblecontact:false,
           visibleSuprimer:false,
           visibleLogout:false,
+          visibleArticles:false,
       });
     }
 
@@ -321,6 +334,7 @@ class Profil extends Component {
           visiblecontact:false,
           visibleSuprimer:false,
           visibleLogout:false,
+          visibleArticles:false,
       });
     }
 
@@ -342,6 +356,7 @@ class Profil extends Component {
           visiblecontact:false,
           visibleSuprimer:false,
           visibleLogout:false,
+          visibleArticles:false,
       });
     }
 
@@ -363,6 +378,7 @@ class Profil extends Component {
           visiblecontact:false,
           visibleSuprimer:false,
           visibleLogout:false,
+          visibleArticles:false,
       });
     }
 
@@ -384,6 +400,29 @@ class Profil extends Component {
           visiblecontact:true,
           visibleSuprimer:false,
           visibleLogout:false,
+          visibleArticles:false,
+      });
+    }
+
+    articles() {
+       this.setState({
+          visibleProfile:false,
+          visibleMessage:false,
+          visibleConseil:false,
+          visiblerecu:false,
+          visibledonne:false,
+          visiblenotif:false,
+          visiblemoderateur:false,
+          visiblenumeros:false,
+          visibleSignaler:false,
+          visiblePassword:false,
+          visibleLivre:false,
+          visibleCommandement:false,
+          visibleCGU:false,
+          visiblecontact:false,
+          visibleSuprimer:false,
+          visibleLogout:false,
+          visibleArticles:true,
       });
     }
 
@@ -405,35 +444,25 @@ class Profil extends Component {
           visiblecontact:false,
           visibleSuprimer:true,
           visibleLogout:false,
+          visibleArticles:false,
       });
     }
 
     logout() {
-       this.setState({
-          visibleProfile:false,
-          visibleMessage:false,
-          visibleConseil:false,
-          visiblerecu:false,
-          visibledonne:false,
-          visiblenotif:false,
-          visiblemoderateur:false,
-          visiblenumeros:false,
-          visibleSignaler:false,
-          visiblePassword:false,
-          visibleLivre:false,
-          visibleCommandement:false,
-          visibleCGU:false,
-          visiblecontact:false,
-          visibleSuprimer:false,
-          visibleLogout:true,
-      });
+       this.setState({logout: true});
+       Meteor.logout()
     }
 
     render() {
     const { visible } = this.state
     const { nuit } = this.state
+    const logout = this.state.logout;
 
     if (!Meteor.loggingIn() && !Meteor.userId()){
+      return <Redirect to="/" />;
+    }
+
+    if (logout) {
       return <Redirect to="/" />;
     }
     
@@ -488,6 +517,9 @@ class Profil extends Component {
                           <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.profil.bind(this)}>
                             Profil
                           </div>
+                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.articles.bind(this)}>
+                            Mes articles
+                          </div>
                           <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.message.bind(this)}>
                             Messages postés
                           </div>
@@ -541,6 +573,11 @@ class Profil extends Component {
                         <div className={this.state.visibleProfile ? "show" : "none"}>
                             <div className="ecran">
                                 <ProfilContent nuit={nuit}/>
+                            </div>
+                        </div>
+                        <div className={this.state.visibleArticles ? "show" : "none"}>
+                            <div className="ecran">
+                                <MesArticles nuit={nuit}/>
                             </div>
                         </div>
                         <div className={this.state.visibleMessage ? "show" : "none"}>

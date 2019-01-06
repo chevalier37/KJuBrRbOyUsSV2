@@ -46,6 +46,11 @@ import MOBILEChat from '../../../imports/ui/pages/MOBILEChat.js';
 import MOBILLEModifierConseiller from '../../../imports/ui/pages/MOBILLEModifierConseiller.js';
 import MOBILERecommander from '../../../imports/ui/pages/MOBILERecommander.js';
 import ajouterVideo from '../../../imports/ui/pages/ajouterVideo.js';
+import Articles from '../../../imports/ui/pages/Articles.js';
+import RedigerArticles from '../../../imports/ui/pages/RedigerArticles.js';
+import ConfirmationArticle from '../../../imports/ui/pages/ConfirmationArticle.js';
+import ArticlesModeration from '../../../imports/ui/pages/ArticlesModeration.js';
+import singleArticle from '../../../imports/ui/pages/SingleArticle.js';
 
 const requireAuth = (nextState, replace) => {
 
@@ -102,6 +107,11 @@ export const renderRoutes = () => (
       <Route path="/MOBILLEModifierConseiller/" component={MOBILLEModifierConseiller}/>
       <Route path="/MOBILERecommander/:id" component={MOBILERecommander}/>
       <Route path="/ajouterVideo/" component={ajouterVideo}/>
+      <Route path="/Articles/" component={Articles}/>
+      <Route path="/RedigerArticles/" component={RedigerArticles}/>
+      <Route path="/ConfirmationArticle/" component={ConfirmationArticle}/>
+      <Route path="/ArticlesModeration/" component={ArticlesModeration}/>
+      <Route path="/singleArticle/:id" component={singleArticle}/>
     
 
     </div>
