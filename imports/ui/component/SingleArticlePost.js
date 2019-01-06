@@ -130,7 +130,7 @@ class SingleArticlePost extends Component {
 	        				<div className="NameAuthorMessage"><span className={this.sexe()=="pink" ?
 	        				  			"filleMessage" : "garconMessage"
 	        					}>
-	        				 <Link to={'/profil/' + this.props.message.post_author_id}>
+	        				 <Link to={'/visiteProfil/' + this.props.message.post_author_id}>
 	        				{this.props.message.post_author}
 	        				</Link>
 	        				</span>
