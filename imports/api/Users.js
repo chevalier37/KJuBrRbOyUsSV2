@@ -81,7 +81,7 @@ export const IsModerateurVidéos = new ValidatedMethod({
   run({}) {
     let id = this.userId;
     let isUser = false;
-    if(id == 'qWnQQWAHxQNmZx6sT' || id == 'qWnQQWAHxQNmZx6sf'){
+    if(id == 'qWnQQWAHxQNmZx6sT' || id == 'oANNC3P9SpQ5Fw8Qg'){
       let isUser = true;
       return isUser;
     }
