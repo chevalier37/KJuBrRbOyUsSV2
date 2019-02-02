@@ -8,6 +8,8 @@ import Img from 'react-image'
 import { Route, Redirect } from 'react-router';
 import AdSense from 'react-adsense';
 import ReactGA from 'react-ga';
+import YouTube from 'react-youtube';
+
 ReactGA.initialize('UA-108632466-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
 
@@ -34,6 +36,9 @@ class SingleMessage extends Component {
           visible: false,
           visibleForm:false,
           nuit:false,
+          IDvideo:"",
+          IsModerateurVidéos:false,
+          video:false,
         }
     }
 
@@ -53,6 +58,36 @@ class SingleMessage extends Component {
              ""}
           },
         });
+
+        const idMessage= this.props.match.params.id
+         Meteor.apply('searchVidéo',
+            [{idMessage}],
+            {
+             onResultReceived: (error, response) => {
+                if (error) console.warn(error.reason);
+                this.setState({
+                  IDvideo: response,
+                });
+                this.setState({
+                  video: true,
+                });
+                  },
+          });
+
+         Meteor.apply('IsModerateurVidéos', [{
+          }], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            
+            {
+            response ?
+             this.setState({IsModerateurVidéos: response})
+             :
+             ""
+            }
+
+            },
+       })
     }
 
 
@@ -98,10 +133,34 @@ class SingleMessage extends Component {
         });
       }
 
+      Submit(event) {
+        event.preventDefault();
+        const idVideo = ReactDOM.findDOMNode(this.refs.idVideo).value.trim();
+        const idMessage= this.props.match.params.id;
+        Meteor.apply('addVidéo',
+            [{idVideo, idMessage}],
+            {
+             onResultReceived: (error, response) => {
+                if (error) console.warn(error.reason);
+                ReactDOM.findDOMNode(this.refs.idVideo).value = '';
+                  },
+          })
+      }
+
 
     render() {
     const { visible } = this.state
     const { nuit } = this.state
+    const opts = {
+      height: '445',
+      width: '728',
+      }
+
+    const opts1 = {
+      height: '245',
+      width: '350',
+      }
+
 
     if (!Meteor.loggingIn() && !Meteor.userId()){
       return <Redirect to="/" />;
@@ -152,6 +211,21 @@ class SingleMessage extends Component {
                 <div className="containerSite" onClick={this.toggleHidden}>
                   <div className="MainContent">
                     <div className="SingeMessagView" onClick={this.visible.bind(this)}>
+                    
+                        <Form
+                        className={this.state.IsModerateurVidéos ? "visible" : "none"}
+                         error
+                         onSubmit={this.Submit.bind(this)
+                         }>
+                            <Form.Field>
+                              <label>Ajouter vidéo</label>
+                              <input
+                               ref="idVideo"
+                               />
+                            </Form.Field>
+                           <Button type='submit' color="green" className="MobileSubmit">Valider</Button>
+                        </Form>
+
                       <SingleMessagePost id={this.props.match.params.id} nuit={nuit}/>
                     </div>
                   <div className={this.state.visibleForm ? "visibleForm" : "none"}>
@@ -172,8 +246,30 @@ class SingleMessage extends Component {
                                style={{display:'inline-block', width:728, height:90}}
                               format=''
                             />
-                    </div>                 
+                    </div>  
+                    <div className="containeurVideos">
+                          <div className={this.state.IDvideo ? "visible" : "none"}>
+                              <YouTube
+                                videoId={this.state.IDvideo}
+                                opts={opts}
+                              />
+                          </div>
+                    </div>              
                   </div>
+
+                  <div className="centerpub400 mobile">
+                    <div className="space" />
+                    <div className="containeurVideos">
+                          <div className={this.state.IDvideo ? "visible" : "none"}>
+                              <YouTube
+                                videoId={this.state.IDvideo}
+                                opts={opts1}
+                              />
+                          </div>
+                    </div>              
+                  </div>
+
+                 
 
                   {/* PUB mobile*/}
                   {/*<div className="pubMobile mobile">

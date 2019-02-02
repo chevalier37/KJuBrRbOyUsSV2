@@ -50,6 +50,7 @@ class ListeMessages extends Component {
 			    Discrimination:'',
 			    Violence:'',
 			    autre:'',
+			    autre:'',
 			    disabled:false,
 			    author_id:false,
 			    IsModerateur:false,
@@ -287,6 +288,11 @@ class ListeMessages extends Component {
 		  this.setState({autre: 'Autre '}) : ''
 		}
 
+		const vidéos = this.props.message.video;
+		{ vidéos ? 
+		  this.setState({vidéos: 'Vidéos '}) : ''
+		}
+
 		{
 		Meteor.userId() && _.include(this.props.message.upvoters, Meteor.userId()) ?
        	this.setState({disabled: true}) :
@@ -414,6 +420,15 @@ class ListeMessages extends Component {
 									</Button>
 								</Link>
 								</div>
+
+								<div className={this.state.vidéos ? "VisibleVidéo " : "none"} >
+		          				<Link to={'/singleMessage/' + this.props.message._id} >
+									<Button size="tiny"  color='blue'>
+										Vidéo
+									</Button>
+								</Link>
+								</div>
+
 								<div className="Signaler" >
 									<Button basic size="tiny" disabled={this.state.disabled} color='red' onClick={this.signaler.bind(this)}>
 										Signaler

@@ -67,6 +67,28 @@ export const FormSubscribeMail = new ValidatedMethod({
 }, requestLimit, requestTimeout);*/
 
 
+export const IsModerateurVidéos = new ValidatedMethod({
+  //on verifie si l'utilisateur peut poster une vidéo
+  name: 'IsModerateurVidéos',
+  validate: new SimpleSchema({
+    
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({}) {
+    let id = this.userId;
+    let isUser = false;
+    if(id == 'qWnQQWAHxQNmZx6sT' || id == 'qWnQQWAHxQNmZx6sf'){
+      let isUser = true;
+      return isUser;
+    }
+    
+  }
+});
+
 
 export const UserExiste = new ValidatedMethod({
   //on verifie que l'utilisateur à un compte pour se connecter

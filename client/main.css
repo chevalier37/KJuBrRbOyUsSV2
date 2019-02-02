@@ -933,6 +933,16 @@ header {
 	margin-top: 20px;
 }
 
+.containeurVideos{
+	margin-top: 10px;
+}
+
+
+.VisibleVidéo{
+	display: inline-block;
+
+}
+
 .visibleConseiller{
 	display: block;
 }

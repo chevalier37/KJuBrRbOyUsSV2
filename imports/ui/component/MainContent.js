@@ -25,6 +25,7 @@ class MainContent extends Component {
 					MessageConfiance:'cacher',
 					MessageNonLu:'cacher',
 					MessageAutre:'cacher',
+					Videos:'cacher',
 					more:5,
 					moreNonLu:5,
 					moreAutre:5,
@@ -33,6 +34,7 @@ class MainContent extends Component {
 					moreSexo:5,
 					moreSante:5,
 					moreEcole:5,
+					moreVideos:5,
 					poster:false,
 					posterConseil:false,
 					idSondage:"",
@@ -193,6 +195,25 @@ class MainContent extends Component {
 	    });
 	}
 
+	renderVideos() {
+	    let MessageVideos = this.props.postsVideos;
+	    let more = this.state.moreVideos;
+	    let nuit = this.props.nuit;
+	    return MessageVideos.slice(0, more).map((message) => {
+	     let date = Date.parse(message.post_date);
+         
+	      return (
+	        <ListeMessages
+	          key={message._id}
+	          message={message}
+	          date={date} 
+	          id={message._id}
+	          nuit={nuit}           
+	        />
+	      );
+	    });
+	}
+
 	showAll() {
        	this.setState({allMessages: 'visibleMessage'});
        	this.setState({MessageEcole: 'cacher'});
@@ -202,6 +223,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'cacher'});
        	this.setState({MessageNonLu: 'cacher'});
        	this.setState({MessageAutre: 'cacher'});
+       	this.setState({MessageVideos: 'cacher'});
        	this.setState({poster: false});
 	 }
 
@@ -214,6 +236,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'cacher'});
        	this.setState({MessageNonLu: 'visibleMessage'});
        	this.setState({MessageAutre: 'cacher'});
+       	this.setState({MessageVideos: 'cacher'});
        	this.setState({poster: false});
 	 }
 
@@ -226,6 +249,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'cacher'});
        	this.setState({MessageNonLu: 'cacher'});
        	this.setState({MessageAutre: 'visibleMessage'});
+       	this.setState({MessageVideos: 'cacher'});
        	this.setState({poster: false});
 	 }
 
@@ -238,6 +262,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'visibleMessage'});
        	this.setState({MessageNonLu: 'cacher'});
        	this.setState({MessageAutre: 'cacher'});
+       	this.setState({MessageVideos: 'cacher'});
        	this.setState({poster: false});
 
 	 }
@@ -251,6 +276,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'cacher'});
        	this.setState({MessageNonLu: 'cacher'});
        	this.setState({MessageAutre: 'cacher'});
+       	this.setState({MessageVideos: 'cacher'});
        	this.setState({poster: false});
 	 }
 
@@ -263,6 +289,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'cacher'});
        	this.setState({MessageNonLu: 'cacher'});
        	this.setState({MessageAutre: 'cacher'});
+       	this.setState({MessageVideos: 'cacher'});
        	this.setState({poster: false});
 	 }
 
@@ -275,6 +302,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'cacher'});
        	this.setState({MessageNonLu: 'cacher'});
        	this.setState({MessageAutre: 'cacher'});
+       	this.setState({MessageVideos: 'cacher'});
        	this.setState({poster: false});
 	 }
 
@@ -287,6 +315,20 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'cacher'});
        	this.setState({MessageNonLu: 'cacher'});
        	this.setState({MessageAutre: 'cacher'});
+       	this.setState({MessageVideos: 'cacher'});
+       	this.setState({poster: false});
+	 }
+
+	 showVideos() {
+       	this.setState({allMessages: 'cacher'});
+       	this.setState({MessageEcole: 'cacher'});
+       	this.setState({MessageSante: 'cacher'});
+       	this.setState({MessageConfiance: 'cacher'});
+       	this.setState({MessageSexo: 'cacher'});
+       	this.setState({MessageAmour: 'cacher'});
+       	this.setState({MessageNonLu: 'cacher'});
+       	this.setState({MessageAutre: 'cacher'});
+       	this.setState({MessageVideos: 'visibleMessage'});
        	this.setState({poster: false});
 	 }
 
@@ -328,6 +370,11 @@ class MainContent extends Component {
 	  VoirPlusEcole() {
 	 	let plus = this.state.moreEcole + 5
        	this.setState({moreEcole: plus});
+	 }
+
+	   VoirplusVideos() {
+	 	let plus = this.state.moreVideos + 5
+       	this.setState({moreVideos: plus});
 	 }
 
 	poster() {
@@ -414,6 +461,14 @@ class MainContent extends Component {
 				        Tous
 				       </Button>
 
+				       <Button
+				        size="mini"
+				        basic
+				        color="red"
+				        onClick={this.showVideos.bind(this)}>
+				         Vidéos
+				       </Button>
+
 				      <Button
 				        size="mini"
 				        basic
@@ -484,6 +539,16 @@ class MainContent extends Component {
 				        color="red"
 				        onClick={this.showAll.bind(this)}>
 				        Tous
+				       </Button>
+
+				       <Button
+				        size="medium"
+				        basic
+				        fluid
+				        className="choixMobile"
+				        color="red"
+				        onClick={this.showVideos.bind(this)}>
+				         Vidéos
 				       </Button>
 
 				      <Button
@@ -639,6 +704,18 @@ class MainContent extends Component {
 					</div>
 				</div>
 
+				<div className={this.state.MessageVideos}>
+					{this.renderVideos()}
+					<div className={this.state.moreVideos > this.props.countpostsVideos ? "none" : "voirPlus" }>
+						<Button
+							fluid
+					        color="green"
+					        onClick={this.VoirplusVideos.bind(this)}>
+					        Voir plus
+						</Button>
+					</div>
+				</div>
+
 				<div className={this.state.MessageAutre}>
 					{this.renderAutre()}
 					<div className={this.state.moreAutre > this.props.countAutre ? "none" : "voirPlus" }>
@@ -716,6 +793,9 @@ export default withTracker(() => {
     {Violence:true}]},
     { sort: { post_date: -1 }, limit:30 });
 
+  const vidéos = Posts.find({'video':true},
+    { sort: { post_date: -1 }, limit:30 });
+
    const postExists = !loading && !!allposts;
    const postAmourExists = !loading && !!amour;
    const postConfianceExists = !loading && !!confiance;
@@ -724,6 +804,7 @@ export default withTracker(() => {
    const postEcoleExists = !loading && !!ecole;
    const postNonLuExists = !loading && !!nonLu;
    const postautreExists = !loading && !!autre;
+   const postvideosExists = !loading && !!autre;
 
 
   return {
@@ -750,6 +831,9 @@ export default withTracker(() => {
     
     postsEcole: postExists ? ecole.fetch() : [],
     countpostsEcole: postExists ? ecole.count() : "",
+
+    postsVideos: postExists ? vidéos.fetch() : [],
+    countpostsVideos: postExists ? vidéos.count() : "",
 
     loading:loading,
 

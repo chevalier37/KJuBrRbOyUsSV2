@@ -130,6 +130,52 @@ export const addMessage = new ValidatedMethod({
 });
 
 
+//on ajoute une vidéo au message
+export const addVidéo = new ValidatedMethod({
+  name: 'addVidéo',
+  validate: new SimpleSchema({
+            idVideo: {type: String},
+            idMessage: {type: String},
+          }).validator(),
+            
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({ 
+        idVideo,idMessage,
+   }) {
+          Posts.update(idMessage, {
+          $set: { video: true, idVideo: idVideo },
+          });
+  }
+
+});
+
+//on cherche si le message a une vidéo
+export const searchVidéo = new ValidatedMethod({
+  name: 'searchVidéo',
+  validate: new SimpleSchema({
+            idMessage: {type: String},
+          }).validator(),
+            
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({ 
+        idMessage,
+   }) {
+          
+          let result = Posts.findOne(idMessage);
+          if(result.video){
+            const idVideo = result.idVideo;
+            return idVideo
+          }
+  }
+
+});
+
 
 Meteor.methods({
 
