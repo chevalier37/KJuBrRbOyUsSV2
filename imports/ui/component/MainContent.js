@@ -328,7 +328,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'cacher'});
        	this.setState({MessageNonLu: 'cacher'});
        	this.setState({MessageAutre: 'cacher'});
-       	this.setState({MessageVideos: 'visibleMessage'});
+       	this.setState({Videos: 'visibleMessage'});
        	this.setState({poster: false});
 	 }
 
@@ -704,7 +704,7 @@ class MainContent extends Component {
 					</div>
 				</div>
 
-				<div className={this.state.MessageVideos}>
+				<div className={this.state.Videos}>
 					{this.renderVideos()}
 					<div className={this.state.moreVideos > this.props.countpostsVideos ? "none" : "voirPlus" }>
 						<Button

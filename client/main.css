@@ -133,6 +133,10 @@ header {
 	height: 50px;
 }
 
+.commentLive{
+	height: 20px;
+}
+
 .explication{
 	text-align: left;
 	margin-left: 50px;

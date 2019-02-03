@@ -51,6 +51,7 @@ import RedigerArticles from '../../../imports/ui/pages/RedigerArticles.js';
 import ConfirmationArticle from '../../../imports/ui/pages/ConfirmationArticle.js';
 import ArticlesModeration from '../../../imports/ui/pages/ArticlesModeration.js';
 import singleArticle from '../../../imports/ui/pages/SingleArticle.js';
+import Live from '../../../imports/ui/pages/Live.js';
 
 const requireAuth = (nextState, replace) => {
 
@@ -112,6 +113,7 @@ export const renderRoutes = () => (
       <Route path="/ConfirmationArticle/" component={ConfirmationArticle}/>
       <Route path="/ArticlesModeration/" component={ArticlesModeration}/>
       <Route path="/singleArticle/:id" component={singleArticle}/>
+      <Route path="/Live" component={Live}/>
     
 
     </div>

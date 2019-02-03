@@ -235,6 +235,12 @@ class HeaderMobile extends Component {
 	    });
 	    }
 
+	    if(pathname == "Live"){
+	      this.setState({
+	      pathname: "Le Live",
+	    });
+	    }
+
 		Meteor.apply('Username', [{
           id,
           }], {

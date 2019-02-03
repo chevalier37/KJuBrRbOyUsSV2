@@ -13,7 +13,7 @@ import '../imports/api/Writing.js';
 import '../imports/api/Videos.js';
 import '../imports/api/Articles.js';
 import '../imports/api/CommentArticle.js';
-
+import '../imports/api/Live.js';
 
 Meteor.startup(() => {
   /*process.env.ROOT_URL = 'https://www.kurbys.com';
