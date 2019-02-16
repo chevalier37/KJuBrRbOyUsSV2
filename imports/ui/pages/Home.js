@@ -33,7 +33,7 @@ class Home extends Component {
       }
 
     componentDidMount() {
-        //this.el.scrollIntoView();
+        this.el.scrollIntoView();
        
         Meteor.apply('ModeNuit', [{}], {
           onResultReceived: (error, response) => {

@@ -103,6 +103,36 @@ export const addMessageLive = new ValidatedMethod({
   }
 });
 
+/*
+export const AnnonceLive = new ValidatedMethod({
+  //on annonce un live
+  name: 'AnnonceLive',
+  validate: new SimpleSchema({
+    message: { type: String },
+  }).validator(),
+
+  applyOptions: {
+    noRetry: true,
+  },
+
+  run({message}) {
+
+        const userId = this.userId;
+
+        Live.insert({
+            message:true,
+            comments: message,
+            post_date: new Date(),
+            post_author:author,
+            gender:gender,
+            userId:userId,
+            naissance:naissance,
+          });         
+  }
+});
+*/
+
+
 Meteor.publish('AllMessagesLive', function () {
   return Live.find({'message':true}, { sort: { post_date: -1 }, limit:50});
 });
