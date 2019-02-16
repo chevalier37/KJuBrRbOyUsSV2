@@ -100,7 +100,7 @@ class MainContent extends Component {
 					MessageConfiance:'cacher',
 					MessageNonLu:'cacher',
 					MessageAutre:'cacher',
-					Videos:'cacher',
+					MessageVideos:'cacher',
 					more:5,
 					moreNonLu:5,
 					moreAutre:5,
@@ -414,7 +414,7 @@ class MainContent extends Component {
        	this.setState({MessageAmour: 'cacher'});
        	this.setState({MessageNonLu: 'cacher'});
        	this.setState({MessageAutre: 'cacher'});
-       	this.setState({Videos: 'visibleMessage'});
+       	this.setState({MessageVideos: 'visibleMessage'});
        	this.setState({poster: false});
 	 }
 
@@ -917,7 +917,7 @@ console.log(live)
 					</div>
 				</div>
 
-				<div className={this.state.Videos}>
+				<div className={this.state.MessageVideos}>
 					{this.renderVideos()}
 					<div className={this.state.moreVideos > this.props.countpostsVideos ? "none" : "voirPlus" }>
 						<Button
