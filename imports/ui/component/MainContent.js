@@ -1006,13 +1006,9 @@ export default withTracker(() => {
     {Violence:true}]},
     { sort: { post_date: -1 }, limit:30 });
 
-  const vidéos = Posts.find({$or:
-  	[{premierAmour:true},
-  	{trahison:true},
-    {Friendzone:true},
-    {amourdistance:true},
-    {separation:true}]},
+  const vidéos = Posts.find({video:true},
     { sort: { post_date: -1 }, limit:30 });
+
 
    const postExists = !loading && !!allposts;
    const postAmourExists = !loading && !!amour;
