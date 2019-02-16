@@ -294,7 +294,7 @@ Meteor.methods({
 
 
 Meteor.publish('AllMessages', function (test) {
-  return Posts.find({}, { sort: { post_date: -1 }, limit:50});
+  return Posts.find({}, { sort: { post_date: -1 }});
 });
 
 

@@ -1007,7 +1007,7 @@ export default withTracker(() => {
     { sort: { post_date: -1 }, limit:30 });
 
   const vidéos = Posts.find({video:true},
-    { sort: { post_date: -1 } });
+    { sort: { post_date: -1 }, limit:30 });
 
 
    const postExists = !loading && !!allposts;
