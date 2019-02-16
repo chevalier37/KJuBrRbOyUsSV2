@@ -1006,7 +1006,7 @@ export default withTracker(() => {
     {Violence:true}]},
     { sort: { post_date: -1 }, limit:30 });
 
-  const vidéos = Posts.find({video:true},
+  const vidéos = Posts.find({premierAmour:true},
     { sort: { post_date: -1 }, limit:30 });
 
 
@@ -1018,7 +1018,7 @@ export default withTracker(() => {
    const postEcoleExists = !loading && !!ecole;
    const postNonLuExists = !loading && !!nonLu;
    const postautreExists = !loading && !!autre;
-   const postvideosExists = !loading && !!autre;
+   const postvideosExists = !loading && !!vidéos;
 
 
   return {
