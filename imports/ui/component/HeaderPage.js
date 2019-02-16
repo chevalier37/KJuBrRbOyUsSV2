@@ -54,6 +54,7 @@ class HeaderPage extends Component {
 	      Harcelement:false,
 	      Discrimination:false,
 	      Violence:false,
+	      Famille:false,
 	      autre:false,
 	      titreVide:false,
 	      messageVide:false,
@@ -261,6 +262,7 @@ class HeaderPage extends Component {
 	  	const Harcelement = this.state.Harcelement;
 	  	const Discrimination = this.state.Discrimination;
 	  	const Violence = this.state.Violence;
+	  	const Famille = this.state.Famille;
 	  	const autre = this.state.autre;
 
 	  	{!titre ?
@@ -303,6 +305,7 @@ class HeaderPage extends Component {
 	    				this.state.Harcelement + 
 	    				this.state.Discrimination + 
 	    				this.state.Violence + 
+	    				this.state.Famille + 
 	    				this.state.autre       
 
 	    {NBRcategorie == 0 ?
@@ -314,7 +317,7 @@ class HeaderPage extends Component {
 	     this.setState({TropCat: true}):
 	  	 this.setState({TropCat: false})
 	    }				
-	  console.log(titre.length)
+
 
 	  	{ //on verifie qu'il n'y à pas d'erreur avant d'envoyer le formulaire
 
@@ -356,6 +359,7 @@ class HeaderPage extends Component {
 		      Harcelement,
 		      Discrimination,
 		      Violence,
+		      Famille,
 		      autre},
 		  	 
 		  	  (err) => {
@@ -553,6 +557,12 @@ class HeaderPage extends Component {
   	Violence(value) {
 	    this.setState({
 	      Violence: !this.state.Violence,
+	    });
+  	}
+
+  	Famille(value) {
+	    this.setState({
+	      Famille: !this.state.Famille,
 	    });
   	}
 
@@ -832,6 +842,12 @@ class HeaderPage extends Component {
 									    	 </Header>
 
 										    <Form.Field>
+										    <Checkbox
+										       label='Famille'
+										       className="Checkbox"
+										       onClick={(e, { value }) => this.Famille(value)}
+										       value='Famille'
+										       />
 										      <Checkbox
 										       label='Timidité'
 										       className="Checkbox"

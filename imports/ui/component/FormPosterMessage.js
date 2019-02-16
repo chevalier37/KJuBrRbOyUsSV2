@@ -46,6 +46,7 @@ class FormPosterMessage extends Component {
 	      Harcelement:false,
 	      Discrimination:false,
 	      Violence:false,
+	      Famille:false,
 	      autre:false,
 	      titreVide:false,
 	      messageVide:false,
@@ -121,6 +122,7 @@ class FormPosterMessage extends Component {
 	  	const Harcelement = this.state.Harcelement;
 	  	const Discrimination = this.state.Discrimination;
 	  	const Violence = this.state.Violence;
+	  	const Famille = this.state.Famille;
 	  	const autre = this.state.autre;
 
 	  	{
@@ -164,6 +166,7 @@ class FormPosterMessage extends Component {
 	    				this.state.Harcelement + 
 	    				this.state.Discrimination + 
 	    				this.state.Violence + 
+	    				this.state.Famille + 
 	    				this.state.autre       
 
 	    {
@@ -219,6 +222,7 @@ class FormPosterMessage extends Component {
 			      Harcelement,
 			      Discrimination,
 			      Violence,
+			      Famille,
 			      autre}],
 			  	 
 			  	  {
@@ -409,6 +413,12 @@ class FormPosterMessage extends Component {
 	    });
   	}
 
+  	Famille(value) {
+	    this.setState({
+	      Famille: !this.state.Famille,
+	    });
+  	}
+
   	autre(value) {
 	    this.setState({
 	      autre: !this.state.autre,
@@ -545,6 +555,14 @@ class FormPosterMessage extends Component {
 						    	 </Header>
 
 							    <Form.Field>
+
+							    <Checkbox
+							       label='Famille'
+							       className="Checkbox"
+							       onClick={(e, { value }) => this.Famille(value)}
+							       value='Famille'
+							     />
+
 							      <Checkbox
 							       label='Timidité'
 							       className="Checkbox"

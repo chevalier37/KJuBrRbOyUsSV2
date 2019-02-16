@@ -49,6 +49,7 @@ class ListeMessages extends Component {
 			    Harcelement:'',
 			    Discrimination:'',
 			    Violence:'',
+			    Famille:'',
 			    autre:'',
 			    autre:'',
 			    disabled:false,
@@ -282,6 +283,12 @@ class ListeMessages extends Component {
 		{ Violence ? 
 		  this.setState({Violence: 'Violence '}) : ''
 		}
+
+		const Famille = this.props.message.Famille;
+		{ Famille ? 
+		  this.setState({Famille: 'Famille '}) : ''
+		}
+
 
 		const autre = this.props.message.autre;
 		{ autre ? 
@@ -567,6 +574,10 @@ class ListeMessages extends Component {
 
 							{ this.state.Violence ? 
 							<span className="espace">{this.state.Violence} </span>
+							 : "" }
+
+							 { this.state.Famille ? 
+							<span className="espace">{this.state.Famille} </span>
 							 : "" }
 
 							{ this.state.autre ? 

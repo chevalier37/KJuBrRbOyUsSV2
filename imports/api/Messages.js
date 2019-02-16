@@ -39,6 +39,7 @@ export const addMessage = new ValidatedMethod({
             Harcelement: {type: Boolean},
             Discrimination: {type: Boolean},
             Violence: {type: Boolean},
+            Famille: {type: Boolean},
             autre: {type: Boolean},
           }).validator(),
             
@@ -77,6 +78,7 @@ export const addMessage = new ValidatedMethod({
         Harcelement,
         Discrimination,
         Violence,
+        Famille,
         autre,
    }) {
         const user = Meteor.user();
@@ -116,6 +118,7 @@ export const addMessage = new ValidatedMethod({
                   Harcelement:Harcelement,
                   Discrimination:Discrimination,
                   Violence:Violence,
+                  Famille:Famille,
                   autre:autre,
                   post_date:new Date(),
                   post_author:username,
