@@ -9,6 +9,9 @@ import { Route, Redirect } from 'react-router';
 import AdSense from 'react-adsense';
 import ReactGA from 'react-ga';
 import YouTube from 'react-youtube';
+import Iframe from 'react-iframe';
+import { Player } from 'video-react';
+import ReactPlayer from 'react-player'
 
 ReactGA.initialize('UA-108632466-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
@@ -147,6 +150,7 @@ class SingleMessage extends Component {
           })
       }
 
+      
 
     render() {
     const { visible } = this.state
@@ -261,11 +265,23 @@ class SingleMessage extends Component {
                     <div className="space" />
                     <div className="containeurVideos">
                           <div className={this.state.IDvideo ? "visible" : "none"}>
-                              <YouTube
+                              {/*<YouTube
                                 videoId={this.state.IDvideo}
                                 opts={opts1}
-                              />
-                          </div>
+                              />*/}
+                             
+    
+                        
+
+
+    <Player
+      src="https://www.youtube.com/watch?v=xDMP3i36naA" />
+   
+
+
+
+
+                        </div>
                     </div>              
                   </div>
 
