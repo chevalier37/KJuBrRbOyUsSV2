@@ -5,7 +5,12 @@ import { check } from 'meteor/check';
 export const Posts = new Mongo.Collection('posts');
 
 if (Meteor.isServer) {
-
+/*
+WebApp.rawConnectHandlers.use(function(req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "");
+  return next();
+});
+*/
 export const addMessage = new ValidatedMethod({
   name: 'addMessage',
   validate: new SimpleSchema({
@@ -297,9 +302,13 @@ Meteor.methods({
 
 
 Meteor.publish('AllMessages', function (test) {
-  return Posts.find({}, { sort: { post_date: -1 }});
+  return Posts.find({}, { sort: { post_date: -1 }, limit:30});
 });
 
+Meteor.publish('vidéos', function (test) {
+  return Posts.find({'video':true},
+    { sort: { post_date: -1 }, limit:30 });
+});
 
 Meteor.publish('SingleMessages', function (reponse) {
 new SimpleSchema({

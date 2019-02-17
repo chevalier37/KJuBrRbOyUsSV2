@@ -953,6 +953,9 @@ export default withTracker(() => {
   const Handle = Meteor.subscribe('AllMessages');
   const loading = !Handle.ready();
 
+  const HandleVidéos = Meteor.subscribe('vidéos');
+  const loadingVidéos = !HandleVidéos.ready();
+
   const allposts = Posts.find({}, { sort: { post_date: -1 }, limit:30});
 
   const amour = Posts.find({$or:
@@ -1016,7 +1019,7 @@ export default withTracker(() => {
    const postEcoleExists = !loading && !!ecole;
    const postNonLuExists = !loading && !!nonLu;
    const postautreExists = !loading && !!autre;
-   const postvideosExists = !loading && !!vidéos;
+   const postvideosExists = !loadingVidéos && !!vidéos;
 
 
   return {
@@ -1044,8 +1047,8 @@ export default withTracker(() => {
     postsEcole: postExists ? ecole.fetch() : [],
     countpostsEcole: postExists ? ecole.count() : "",
 
-    postsVideos: postExists ? vidéos.fetch() : [],
-    countpostsVideos: postExists ? vidéos.count() : "",
+    postsVideos: postvideosExists ? vidéos.fetch() : [],
+    countpostsVideos: postvideosExists ? vidéos.count() : "",
 
     loading:loading,
 

@@ -265,6 +265,19 @@ class SingleMessage extends Component {
                     <div className="space" />
                     <div className="containeurVideos">
                           <div className={this.state.IDvideo ? "visible" : "none"}>
+      
+
+<a href={"https://www.youtube.com/watch?v=F5hMWt7GpVE"}>
+ <Button size="mini"  color='orange'>
+                    vidéo
+                  </Button>
+</a>
+
+<a href={"https://www.youtube.com/embed/F5hMWt7GpVE"}>
+ <Button size="mini"  color='orange'>
+                    vidéo
+                  </Button>
+</a>
                               {/*<YouTube
                                 videoId={this.state.IDvideo}
                                 opts={opts1}
@@ -273,12 +286,11 @@ class SingleMessage extends Component {
     
                         
 
+{/*
+    <Player width="320" height="240"
+      src="http://www.youtube.com/embed/xDMP3i36naA" />
 
-    <Player
-      src="https://www.youtube.com/watch?v=xDMP3i36naA" />
-   
-
-
+*/}
 
 
                         </div>
