@@ -660,13 +660,6 @@ console.log(live)
 				<div className={ nuit ? "SegmentNuit ecran" : "ecran"}>
 				       <Button
 				        size="mini"
-				        color="blue"
-				        onClick={this.showVideos.bind(this)}>
-				         Vidéos
-				       </Button>
-
-				       <Button
-				        size="mini"
 				        basic
 				        color="blue"
 				        onClick={this.nonLu.bind(this)}>
@@ -733,15 +726,6 @@ console.log(live)
 
 			{/*affichage sur mobile*/}
 				<div className={ nuit ? "SegmentNuit mobile" : "mobile"}>
-				 		<Button
-				        size="medium"
-				        fluid
-				        className="choixMobile"
-				        color="blue"
-				        onClick={this.showVideos.bind(this)}>
-				         Vidéos
-				       </Button>
-
 				       <Button
 				        size="medium"
 				        basic

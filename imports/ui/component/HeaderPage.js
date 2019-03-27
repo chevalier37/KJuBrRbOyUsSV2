@@ -685,10 +685,6 @@ class HeaderPage extends Component {
 					</div>
 
 
-
-
-
-
 					<div className="ButtonHeader">
 						<Link to="/ConseillerConnecter" >
 							 <Img className="iconHeader" src="/help.png"/>
@@ -746,6 +742,7 @@ class HeaderPage extends Component {
 								       placeholder={placeholderTitre}
 								       onFocus={this.focusTitre.bind(this)}
 								       onBlur={this.focusTitreOut.bind(this)}
+								       maxlength="60"
 								       />
 								       <Message
 							            hidden={!this.state.titreVide}

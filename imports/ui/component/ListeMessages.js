@@ -70,6 +70,7 @@ class ListeMessages extends Component {
        	const to_id = this.props.message.post_author_id;
        	const post_title = this.props.message.post_title;
        	const message = this.props.message.post_content;
+/*
 
        	Meteor.apply('SignalerNotif', [{
        		to_id,
@@ -91,7 +92,7 @@ class ListeMessages extends Component {
         //push notification
       	Meteor.call('serverNotification','Message signalé','Ton message a été signalé : ' + message, to_id)  
 
-
+*/
 	 }
 
 	componentWillMount(){
@@ -428,13 +429,6 @@ class ListeMessages extends Component {
 								</Link>
 								</div>
 
-								<div className={this.state.vidéos ? "VisibleVidéo " : "none"} >
-		          				<Link to={'/singleMessage/' + this.props.message._id} >
-									<Button size="tiny"  color='blue'>
-										Vidéo
-									</Button>
-								</Link>
-								</div>
 
 								<div className="Signaler" >
 									<Button basic size="tiny" disabled={this.state.disabled} color='red' onClick={this.signaler.bind(this)}>

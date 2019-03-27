@@ -456,6 +456,7 @@ class FormPosterMessage extends Component {
 					       placeholder={placeholderTitre}
 					       onFocus={this.focusTitre.bind(this)}
 					       onBlur={this.focusTitreOut.bind(this)}
+					       maxlength="60"
 					       />
 					       <Message
 				            hidden={!this.state.titreVide}
