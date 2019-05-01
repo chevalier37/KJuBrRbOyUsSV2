@@ -1323,7 +1323,7 @@ class ProfilContentVisite extends Component {
 			const { activeIndex } = this.state;
 			let now = new Date();
 			let diff = now - this.props.profile.naissance;
-			let age = Math.round(diff / 31536000000);
+			let age = Math.floor(diff / 31536000000);
 			let nuit = this.props.nuit;
 
 			//on calcul la derniere connection

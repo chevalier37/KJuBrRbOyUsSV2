@@ -347,7 +347,7 @@ class ListeMessages extends Component {
 	const { open } = this.state
 	let now = new Date();
 	let diff = now - this.props.message.naissance;
-	let age = Math.round(diff / 31536000000);
+	let age = Math.floor(diff / 31536000000);
 	let nuit = this.props.nuit;
 
 		return (

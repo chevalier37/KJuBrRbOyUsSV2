@@ -52,6 +52,9 @@ import ConfirmationArticle from '../../../imports/ui/pages/ConfirmationArticle.j
 import ArticlesModeration from '../../../imports/ui/pages/ArticlesModeration.js';
 import singleArticle from '../../../imports/ui/pages/SingleArticle.js';
 import Live from '../../../imports/ui/pages/Live.js';
+import LeSecretCendrillon1 from '../../../imports/ui/pages/LeSecretCendrillon1.js';
+import LeSecretCendrillon2 from '../../../imports/ui/pages/LeSecretCendrillon2.js';
+
 
 const requireAuth = (nextState, replace) => {
 
@@ -114,6 +117,9 @@ export const renderRoutes = () => (
       <Route path="/ArticlesModeration/" component={ArticlesModeration}/>
       <Route path="/singleArticle/:id" component={singleArticle}/>
       <Route path="/Live" component={Live}/>
+      <Route path="/LeSecretCendrillon1" component={LeSecretCendrillon1}/>
+      <Route path="/LeSecretCendrillon2" component={LeSecretCendrillon2}/>
+
     
 
     </div>

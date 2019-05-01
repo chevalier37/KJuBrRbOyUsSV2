@@ -219,7 +219,7 @@ class ListeReponses extends Component {
 	const IsConseiller = this.state.IsConseiller;
    	let now = new Date();
 	let diff = now - this.props.message.naissance;
-	let age = Math.round(diff / 31536000000);
+	let age = Math.floor(diff / 31536000000);
 	let nuit = this.props.nuit;
 
 		return (

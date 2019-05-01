@@ -142,6 +142,18 @@ class HeaderMobile extends Component {
 	    });
 	    }
 
+	     if(pathname == "LeSecretCendrillon1"){
+	      this.setState({
+	      pathname: "Pour les filles",
+	    });
+	    }
+
+	     if(pathname == "LeSecretCendrillon2"){
+	      this.setState({
+	      pathname: "Pour les garçons",
+	    });
+	    }
+
 	     if(pathname == "MOBILEcgu"){
 	      this.setState({
 	      pathname: "G.C.U",

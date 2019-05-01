@@ -154,7 +154,7 @@ export default class ContentMenuRight extends Component {
     				        <p className="menuIcon"> Notifications</p>
 					    </div>
 					</Link>
-					<Divider />
+					{/*<Divider />
 					<Link to={'/MOBILEmoderateur/' }>
 					    <div className="ListItem">
                      		<div className="star">   
@@ -162,7 +162,7 @@ export default class ContentMenuRight extends Component {
                     		</div>
     				        <p className="menuIcon"> Devenir modérateur</p>
 					    </div>
-					</Link>
+					</Link>*/}
 					<Divider />
 					<Link to={'/MOBILEnumerosUtiles/' }>
 					    <div className="ListItem">
@@ -188,15 +188,6 @@ export default class ContentMenuRight extends Component {
                           		<Img className="colorIconblue" src="/lock.png"/>
                     		</div>
     				        <p className="menuIcon"> Mot de passe</p>
-					    </div>
-					</Link>
-					<Divider />
-					<Link to={'/MOBILELivre/' }>
-					    <div className="ListItem">
-                     		<div className="star">   
-                          		<Img className="colorIconblue" src="/book.png"/>
-                    		</div>
-    				        <p className="menuIcon"> Le secret de Cendrillon</p>
 					    </div>
 					</Link>
 					<Divider />

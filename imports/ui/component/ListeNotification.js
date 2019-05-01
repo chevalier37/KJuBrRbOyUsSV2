@@ -15,10 +15,27 @@ class ListeNotifications extends Component {
 		      	sexe: '',
 			    disabled:false,
 			    disabledVote:false,
+			    IsConseiller:false,
 		    };
 		}
 
 	componentWillMount(){
+
+		Meteor.apply('IsModerateur', [{
+          }], {
+          onResultReceived: (error, response) => {
+            if (error) console.warn(error.reason);
+            
+            {
+            response ?
+             this.setState({IsModerateur: response})
+             :
+             ""
+            }
+
+            },
+    	})
+
 		const sexe = this.props.message.gender;
 	    
 	    {sexe == 'fille' ? 

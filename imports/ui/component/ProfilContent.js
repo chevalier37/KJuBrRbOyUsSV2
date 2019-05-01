@@ -1336,8 +1336,8 @@ class ProfilContent extends Component {
 			const myId = Meteor.userId();
 			let now = new Date();
 			let diff = now - this.props.profile.naissance;
-			let age = Math.round(diff / 31536000000);
-
+			let age = Math.floor(diff / 31536000000);
+	
 			//on calcul la derniere connection
 			const today = new Date();
 			const diffToday = Date.parse(today);

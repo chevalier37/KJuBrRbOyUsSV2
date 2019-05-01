@@ -542,15 +542,6 @@ console.log(live)
 		return (
 			<div className="MainContent">
 				<div className="centerpub ecran">
-					<div className="space" />
-					<div className="pubHome">
-					        <AdSense.Google
-					          client='ca-pub-6112176939320267'
-					          slot='4083773640'
-					           style={{display:'inline-block', width:728, height:90}}
-					          format=''
-					        />
-					</div>
 
 				{/*<Message warning>
 				    <Message.Header>NOUVEAUTE : Vidéos</Message.Header>
@@ -642,9 +633,31 @@ console.log(live)
 
 
 */}
+				<div className='MainLivre'>
 
+					<Link to={'/LeSecretCendrillon1/' }>
+						<Button
+							basic
+					        size="fluid"
+					        color="pink">
+					        Pour les filles
+					    </Button>
+					</Link>
 
-				<div className='inlinePoster'>
+					<div className='spaceMain'></div>
+
+				    <Link to={'/LeSecretCendrillon2/' }>
+					    <Button
+					    	basic
+					        size="fluid"
+					        color="blue">
+					        Pour les garçons
+					    </Button>
+					</Link>    
+
+				    <div className='spaceMain'></div>
+
+				
 					  	 <div 
 							className='DemanderConseil'
 					    	onClick={this.poster.bind(this)}
@@ -816,6 +829,19 @@ console.log(live)
 	  			<div className={this.state.allMessages}>
 					
 	  				{this.renderAllMessages()}
+
+	  			<div className="centerpub ecran">
+					<div className="space" />
+					<div className="pubHome">
+					        <AdSense.Google
+					          client='ca-pub-6112176939320267'
+					          slot='4083773640'
+					           style={{display:'inline-block', width:728, height:90}}
+					          format=''
+					        />
+					</div>
+			
+				</div>
 	  				
 	  				<div className={this.state.more > this.props.countAllMessages ? "none" : "voirPlus" }>
 						<Button

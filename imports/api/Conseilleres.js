@@ -37,17 +37,19 @@ export const IsConseiller = new ValidatedMethod({
     {!voteDOWN ? voteDOWN = 0 : ""}
     const ratio = (voteUP / (voteUP+voteDOWN))*100;
     const NBRaide = Comments.find({'userId':this.userId}).count();
-     if(!Istrue && ratio >= 85 && NBRaide >= 25){// l'utilisateur peut devenir conseiller
-      const notif = Notifications.find({"to_id":this.userId,"type":'conseiller' }).count()// on regarde si l'utilisateur n'a pas déjà reçu une notification
-      if (notif == 0){
-          Notifications.insert({
-                      date: new Date(),
-                      to_id:this.userId,
-                      read:false,
-                      type:'conseiller',
-                    });
+      if(IsConseiller<=0){
+       if(!Istrue && ratio >= 85 && NBRaide >= 25){// l'utilisateur peut devenir conseiller
+        const notif = Notifications.find({"to_id":this.userId,"type":'conseiller' }).count()// on regarde si l'utilisateur n'a pas déjà reçu une notification
+          if (notif == 0){
+            Notifications.insert({
+                        date: new Date(),
+                        to_id:this.userId,
+                        read:false,
+                        type:'conseiller',
+                      });
+          }
         }
-    }
+      }
     return Istrue;
   }
 });

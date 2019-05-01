@@ -1350,6 +1350,15 @@ header {
 	margin-right: 10px;
 }
 
+.spaceMain{
+	display: block;
+	height: 5px;
+}
+
+.MainLivre{
+	margin-right: 10px;
+}
+
 .cacher{
 	display: none;
 }
@@ -1389,7 +1398,7 @@ header {
 .menuProfil{
 	display: inline-block;
 	float: left;
-	height: 850px;
+	/*height: 850px;*/
 	width: 200px;
 	background-color: white !important;
 	color: black !important;
@@ -2308,7 +2317,7 @@ header {
 }
 
 .PubLivre{
-	margin-top: 80px;
+	margin-top: 40px;
     font-size: 16px;
     width: 350px;
     margin-left: auto;
@@ -2915,6 +2924,7 @@ header {
 .categories{
 	margin-bottom: 5px;
 	margin-right: 10px;
+	margin-top: 10px;
 }
 
 .space{
@@ -3004,7 +3014,6 @@ header {
 	font-weight: bold;
 	cursor: pointer;
 	color: white;
-	margin-right: 10px;
 
 }
 

@@ -535,9 +535,9 @@ class Profil extends Component {
                           <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.notifications.bind(this)}>
                             Notifications
                           </div>
-                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.moderateur.bind(this)}>
+                            {/*<div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.moderateur.bind(this)}>
                             Devenir modérateur
-                          </div>
+                          </div>*/}
                           <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.numeros.bind(this)}>
                             Numéros utiles
                           </div>
@@ -547,9 +547,9 @@ class Profil extends Component {
                           <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.password.bind(this)}>
                             Mot de passe
                           </div>
-                          <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.livre.bind(this)}>
+                          {/*<div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.livre.bind(this)}>
                             Le secret de Cendrillon
-                          </div>
+                          </div>*/}
                           <div className={ nuit ? "tabProfilNuit" : "tabProfil"} onClick={this.commandements.bind(this)}>
                             5 Commandements
                           </div>

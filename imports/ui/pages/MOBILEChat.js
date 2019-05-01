@@ -235,7 +235,7 @@ class MOBILEChat extends Component {
             if(response.profile.naissance){
               let userAge = response.profile.naissance;
               let diff = now - userAge;
-              let age = Math.round(diff / 31536000000);
+              let age = Math.floor(diff / 31536000000);
               
               {response ?
                this.setState({naissance: age})

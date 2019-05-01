@@ -45,36 +45,34 @@ export const Recommander = new ValidatedMethod({
                   read:false,
                 });
 
-          // on met à jours la note dans la table user
-          let noteActuelle = search.profile.note;
-          if(noteActuelle == 0){
-            noteFuture = note;
-          }else{
-            noteFuture = (noteActuelle + note )*0.5
-          }
-                   
-           Meteor.users.update(id, {
-                    $set: { 'profile.note': noteFuture },
+
+          // on addition le nombre de recommandations
+          let NBRreco = Recommandations.find({'to_id':id}).count()
+          
+          // on addition les notes
+          let total = 0;
+          Recommandations.find({'to_id':id}).map(function(doc) {
+          total += doc.note;
+          });
+
+          // on calcul la moyenne
+          let moyenne = total / NBRreco
+
+          Meteor.users.update(id, {
+                    $set: { 'profile.note': moyenne },
             }) 
 
          // on met à jours la note dans la table conseiller
           let IsConseiller = Conseilleres.findOne({user_id:id});
-          if(IsConseiller){
-            let noteActuelleConseil = IsConseiller.note;
-            {Number.isInteger(noteActuelleConseil) ?
-              noteFutureConseil = (noteActuelleConseil + note )*0.5 :
-              noteFutureConseil = note 
-            }
-
               {
                 IsConseiller
                ?
                Conseilleres.update({user_id:id}, {
-                $set: { note: noteFutureConseil },
+                $set: { note: moyenne },
                 }) 
                : ''
               } 
-          }
+
   }
 });
 /*DDPRateLimiter.addRule({
