@@ -543,12 +543,14 @@ console.log(live)
 			<div className="MainContent">
 				<div className="centerpub ecran">
 
-				{/*<Message warning>
-				    <Message.Header>NOUVEAUTE : Vidéos</Message.Header>
-				    <p>Vous pouvez maintenant regarder toutes les vidéos de Ambre sur Kurbys !<br />
-				       N'hésitez pas rechercher une vidéo selon le conseil que vous avez besoin.
+				<Message warning>
+				    <Message.Header>NOUVEAUTE : Serveur DISCORD</Message.Header>
+				    <p>Bonjour à tous,<br />
+				    	Nous venons de créer un serveur Discord pour la communauté Kurbys.<br />
+				        Discussions, jeux, évènements, youtubeurs...Rejoignez-nous et partagez joie et bonne humeur !<br />
+				       <a target="_blank" href={"https://discord.gg/tpdbd4N"}>Lien du serveur.</a>
 				    </p>
-				</Message>*/}
+				</Message>
 				
 				</div>
 
