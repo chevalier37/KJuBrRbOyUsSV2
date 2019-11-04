@@ -3495,6 +3495,11 @@ header {
     border-bottom-width: 1px;
 }
 
+.discord{
+	margin-right: 10px !important;
+	text-align: center;
+}
+
 @media only screen and (max-width: 1800px) {
 
 .valideChatForm {

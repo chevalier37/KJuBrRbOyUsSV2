@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
-import { Sidebar, Segment, Button, Header, Divider} from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Header, Divider, Message} from 'semantic-ui-react'
 import Img from 'react-image'
 import { Route, Redirect } from 'react-router';
 import PropTypes from 'prop-types';
@@ -77,6 +77,11 @@ class LastRecommandations extends Component {
         
         return (
           <div className="lastReco">
+            <Message success className="discord">
+              <a target="_blank" href={"https://discord.gg/tpdbd4N"}><Message.Header>Serveur DISCORD</Message.Header></a>
+              
+            </Message>
+
               <div className={ nuit ? "titreLastNuit" : "titreLast"}>
                 Dernières recommandations
               </div>

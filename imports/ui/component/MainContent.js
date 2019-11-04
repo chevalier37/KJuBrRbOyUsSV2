@@ -544,11 +544,11 @@ console.log(live)
 				<div className="centerpub ecran">
 
 				<Message warning>
-				    <Message.Header>NOUVEAUTE : Serveur DISCORD</Message.Header>
+				    <Message.Header>Amélioration du site</Message.Header>
 				    <p>Bonjour à tous,<br />
-				    	Nous venons de créer un serveur Discord pour la communauté Kurbys.<br />
-				        Discussions, jeux, évènements, youtubeurs...Rejoignez-nous et partagez joie et bonne humeur !<br />
-				       <a target="_blank" href={"https://discord.gg/tpdbd4N"}>Lien du serveur.</a>
+				    	Nous allons faire une mise à jour du site.<br />
+				        Avez-vous des remarques à nous faire parvenir ? (fonctionnalités souhaitées, design, bugs...)<br />
+				       Envoyer vos suggestions à notre adresse : <a href="mailto:association.kurbys@gmail.com"> association.kurbys@gmail.com </a>.
 				    </p>
 				</Message>
 				
